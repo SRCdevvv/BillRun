@@ -96,7 +96,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             BottomNavigationBarItem(
               icon: Icon(Icons.face),
               label: '마이페이지',
-           ),
+            ),
           ],
 
           onTap: _onItemTapped,
