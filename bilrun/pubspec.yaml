@@ -12,9 +12,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  simple_slider: "^0.0.1"
+  carousel_slider: ^3.0.0
 
 
 cupertino_icons: ^1.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +28,8 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  assets:
+    - assets/images/
 
 
   # fonts:

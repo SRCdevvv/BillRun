@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 final List<String> imgList = [
- 'assets/images/main_1.jpg',
+  'assets/images/main_1.jpg',
   'assets/images/main_2.jpg',
   'assets/images/main_3.jpg',
 
