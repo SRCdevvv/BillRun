@@ -148,55 +148,84 @@ class _MyPageScreenState extends State<MyPageScreen> {
                     Container(
                       color : Colors.white,
                       //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '내 위치 이용하기',
-                          style: TextStyle(
-                              fontSize: 20
+                      child:InkWell(
+                        child: ListTile(
+                          title:Text(
+                            '내 위치 이용하기',
+                            style: TextStyle(
+                                fontSize: 20
+                            ),
                           ),
                         ),
-                      ),
 
-                    ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '배송지 관리',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
-                      ),
+                          onTap:(){
+                          //링크넘어가기
+                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Tap')));
+                          },
 
-                    ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '계좌 관리',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
                       ),
-
+                      
                     ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '알림설정',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
+
+              Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '배송지 관리',
+                      style: TextStyle(
+                          fontSize: 20
                       ),
-
                     ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),
+              Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '계좌 관리',
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),
+              Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '알림 설정',
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),
+                    
+                    
 
                     Container(
                       color : Colors.grey[200],
@@ -212,59 +241,85 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       ),
 
                     ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '이용약관',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
+
+              Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '이용 약관',
+                      style: TextStyle(
+                          fontSize: 20
                       ),
-
                     ),
+                  ),
 
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '개인정보 처리방침',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),
+
+              Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '개인정보 처리 방침',
+                      style: TextStyle(
+                          fontSize: 20
                       ),
-
                     ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '위치기반 서비스 이용 약관',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '위치기반 서비스 이용 약관',
+                      style: TextStyle(
+                          fontSize: 20
                       ),
-
                     ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '버전정보',
-                          style: TextStyle(
-                              fontSize: 20
-                          ),
-                        ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),Container(
+                color : Colors.white,
+                //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                child:InkWell(
+                  child: ListTile(
+                    title:Text(
+                      '버전 정보',
+                      style: TextStyle(
+                          fontSize: 20
                       ),
-
                     ),
+                  ),
+
+                  onTap:(){
+                    //링크넘어가기
+                  },
+                ),
+
+              ),
+              
+              
+              
             ],
           ),
 
