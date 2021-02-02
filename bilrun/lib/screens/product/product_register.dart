@@ -55,7 +55,7 @@ class _ProductRegisterState extends State<ProductRegister> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           //사진 위젯 자리
-          Camera(),
+         // Camera(),
 
 
 
