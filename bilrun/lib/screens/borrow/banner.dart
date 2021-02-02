@@ -2,12 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(BannerWidget());
 }
 
-class MyApp extends StatefulWidget {
+class BannerWidget extends StatefulWidget {
   @override
-  _State createState() => _State();
+  _BannerWidget createState() => _BannerWidget();
 }
 
 final List<String> imgList = [
@@ -17,7 +17,7 @@ final List<String> imgList = [
 
 ];
 
-class _State extends State<MyApp> {
+class _BannerWidget extends State<BannerWidget> {
   int _current = 0;
 
   @override
