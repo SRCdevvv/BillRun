@@ -1,62 +1,81 @@
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-//
-// class Camera extends StatefulWidget {
-//   _Camera createState() => _Camera();
-// }
-//
-// class _Camera extends State<Camera> {
-//   Future<void> _optionsDialogBox() {
-//     return showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return AlertDialog(
-//             content: SingleChildScrollView(
-//               child: ListBody(
-//                 children: <Widget>[
-//                   GestureDetector(
-//                     child: Text('Tomar fotografía'),
-//                     onTap: _openCamera,
-//                   ),
-//                   Padding(
-//                     padding: EdgeInsets.all(8.0),
-//                   ),
-//                   GestureDetector(
-//                     child: Text('Seleccionar de galería'),
-//                     onTap: _openGallery,
-//                   )
-//                 ],
-//               ),
-//             ),
-//           );
-//         }
-//     );
-//   }
-//
-//   void _openCamera() {
-//     var picture = ImagePicker.pickImage(
-//       source: ImageSource.camera,
-//     );
-//   }
-//
-//   void _openGallery() {
-//     var picture = ImagePicker.pickImage(
-//       source: ImageSource.gallery,
-//     );
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Usando la cámara con Flutter'),
-//       ),
-//       body: Center(
-//         child: RaisedButton(
-//           child: Text('Click cámara'),
-//           onPressed: _optionsDialogBox,
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dart:async';
+
+void main() => runApp(CameraImagePicker());
+
+
+class CameraImagePicker extends StatefulWidget {
+  @override
+  _CameraImagePickerState createState() => _CameraImagePickerState();
+}
+
+class _CameraImagePickerState extends State<CameraImagePicker> {
+  File _image;
+  final picker = ImagePicker();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : Scaffold(
+        appBar: AppBar(
+          title: Text('Camera App'),
+        ),
+        body: Center(
+          child: _image == null ? Text('No Image') : Image.file(_image),
+
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _optionDialogBox,
+          child: Icon(Icons.add_a_photo),
+          tooltip: 'Open Camera',
+        ),
+      ),
+    );
+
+  }
+
+  Future <void> _optionDialogBox() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.green.shade100,
+            shape: RoundedRectangleBorder(),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text('Take a Picture',
+                        style: TextStyle(fontSize: 15.0, color: Colors.black)),
+                    onTap: getImage,
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 10.0)),
+                  GestureDetector(
+                    child: Text('Pick from gallery',
+                        style: TextStyle(fontSize: 15.0, color: Colors.black)),
+                    onTap: takeImage,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
+  Future takeImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
+}
