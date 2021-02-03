@@ -59,7 +59,7 @@ class _BannerWidget extends State<BannerWidget> {
                                 borderRadius: BorderRadius.circular(0),
                               ),
                               child: Container(
-                                width: MediaQuery.of(context).size.width,
+                                //width: MediaQuery.of(context).size.width,
                                 // decoration: BoxDecoration(color: Colors.amber),
                                 child: Image.asset(
                                   e,

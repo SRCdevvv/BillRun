@@ -1,8 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:bilrun/widgets/camera_imagepicker_widget.dart';
-
+import '../../widgets/camera_imagepicker_widget.dart';
 
 void main() => runApp(ProductRegisterWidget());
 
@@ -16,7 +15,13 @@ class ProductRegisterWidget extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: ProductRegister(),
+        body:Column(
+          children: <Widget>[
+           // Camera(),
+            ProductRegister(),
+          ],
+        )
+
       ),
     );
   }

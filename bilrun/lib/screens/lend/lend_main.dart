@@ -13,15 +13,25 @@ class LendMainScreen extends StatefulWidget {
 class _LendMainScreenState extends State<LendMainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          BillrunAppbar(),
-          SearchbarApp(),
-          LendProductList(),
+    return  MaterialApp(
+        home :Scaffold(
+          body :Container(
+            width: 200,
+            height: 400,
+            child: Column(
+             children: <Widget>[
+                BillrunAppbar(),
+                SearchbarApp(),
+                //LendProductList(),
 
-        ],
-      ),
+              ],
+
+            ),
+          ),
+
+    ),
+
     );
+
   }
 }
