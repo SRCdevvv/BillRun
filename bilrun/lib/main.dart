@@ -1,40 +1,50 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 
-void main() => runApp(CameraImagePicker());
+void main() => runApp(ProductRegisterWidget());
 
-
-class CameraImagePicker extends StatefulWidget {
-  @override
-  _CameraImagePickerState createState() => _CameraImagePickerState();
-}
-
-class _CameraImagePickerState extends State<CameraImagePicker> {
-  File _image;
-  final picker = ImagePicker();
+/// This is the main application widget.
+class ProductRegisterWidget extends StatelessWidget {
+  static const String _title = '무엇을 빌려주고 싶으신가요?';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home : Scaffold(
-          appBar: AppBar(
-            title: Text('Camera App'),
-          ),
-          body: Center(
-            child: _image == null ? Text('No Image') : Image.file(_image),
+      title: _title,
+      home: Scaffold(
+          appBar: AppBar(title: const Text(_title)),
+          body:Column(
+            children: <Widget>[
+              // Camera(),
+              ProductRegister(),
+            ],
+          )
 
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _optionDialogBox,
-            child: Icon(Icons.add_a_photo),
-            tooltip: 'Open Camera',
-          ),
-        ),
+      ),
     );
-
   }
+}
+
+/// This is the stateful widget that the main application instantiates.
+class ProductRegister extends StatefulWidget {
+  ProductRegister({Key key}) : super(key: key);
+
+  @override
+  _ProductRegisterState createState() => _ProductRegisterState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _ProductRegisterState extends State<ProductRegister> {
+  final _formKey = GlobalKey<FormState>();
+
+  File _image;
+  final picker = ImagePicker();
+
+
 
   Future <void> _optionDialogBox() {
     return showDialog(
@@ -64,6 +74,10 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
         });
   }
 
+
+
+
+
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
 
@@ -77,5 +91,220 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
     setState(() {
       _image = File(pickedFile.path);
     });
+  }
+
+
+
+  // List<String> dropdownList = [
+  //   "전자기기",
+  //   "의류",
+  //   "생활용품",
+  //   '게임',
+  //   '캠핑용품',
+  //
+  // ];
+  //
+  // String dropdownValue = '카테고리를 선택하세요.';
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            //사진 위젯 자리
+             FloatingActionButton(
+              onPressed: _optionDialogBox,
+              child: Icon(Icons.add_a_photo),
+              tooltip: 'Open Camera',
+            ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            TextFormField(
+              decoration: const InputDecoration(
+                hintText: '상품명을 입력하세요',
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                hintText: '가격을 입력하세요.',
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+
+            Column(
+              children: [
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        color: Colors.white,
+                        textColor: Colors.red,
+                        padding: EdgeInsets.all(8.0),
+                        onPressed: () {},
+                        child: Text(
+                          "30분당".toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        color: Colors.white,
+                        textColor: Colors.red,
+                        padding: EdgeInsets.all(8.0),
+                        onPressed: () {},
+                        child: Text(
+                          "시간당".toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        color: Colors.white,
+                        textColor: Colors.red,
+                        padding: EdgeInsets.all(8.0),
+                        onPressed: () {},
+                        child: Text(
+                          "일당".toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
+                      FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        color: Colors.white,
+                        textColor: Colors.red,
+                        padding: EdgeInsets.all(8.0),
+                        onPressed: () {},
+                        child: Text(
+                          "주당".toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
+
+
+
+
+
+
+                    ],
+
+
+                  ),
+                ),
+
+
+                Text('카테고리'),
+
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: '상품 설명을 입력하세요',
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
+
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: '빌림시 주의사항을 입력하세요',
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
+
+
+
+
+
+              ],
+            ),
+
+
+
+
+
+
+
+
+
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: ElevatedButton(
+                onPressed: () {
+
+                  if (_formKey.currentState.validate()) {
+                    // Process data.
+                  }
+                },
+                child: Text('등록하기'),
+              ),
+            ),
+
+
+
+          ],
+        ),
+
+
+
+
+
+      ),
+
+
+    );
+
+
+
   }
 }
