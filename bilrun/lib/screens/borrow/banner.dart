@@ -28,7 +28,7 @@ class _BannerWidget extends State<BannerWidget> {
       home: Scaffold(
         appBar: null,
         drawer: Drawer(),
-        body: SafeArea(
+        body: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

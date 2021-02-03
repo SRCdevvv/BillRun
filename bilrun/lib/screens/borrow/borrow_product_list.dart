@@ -14,7 +14,7 @@ class _ProductState extends State<Product> {
       title:'grid',
       home: Scaffold(
           appBar: null,
-          body: SafeArea(
+          body: Container(
             child: new Column(
                 children: <Widget> [
                   new Text("빌려드림", textAlign: TextAlign.left,style: TextStyle(fontSize: 30.0),),

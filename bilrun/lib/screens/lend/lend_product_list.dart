@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(LendProductList());
 
 /// This is the main application widget.
-class MyApp extends StatelessWidget {
+class LendProductList extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
   @override
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
+        appBar: null,
         body: MyStatelessWidget(),
       ),
     );
@@ -108,27 +108,30 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8.0),
-      itemExtent: 106.0,
-      children: <CustomListItem>[
-        CustomListItem(
-          user: 'Flutter',
-          viewCount: 999000,
-          thumbnail: Container(
-            decoration: const BoxDecoration(color: Colors.blue),
+    return Container(
+      height: 400,
+      child: ListView(
+        padding: const EdgeInsets.all(8.0),
+        itemExtent: 106.0,
+        children: <CustomListItem>[
+          CustomListItem(
+            user: 'Flutter',
+            viewCount: 999000,
+            thumbnail: Container(
+              decoration: const BoxDecoration(color: Colors.blue),
+            ),
+            title: 'The Flutter YouTube Channel',
           ),
-          title: 'The Flutter YouTube Channel',
-        ),
-        CustomListItem(
-          user: 'Dash',
-          viewCount: 884000,
-          thumbnail: Container(
-            decoration: const BoxDecoration(color: Colors.yellow),
+          CustomListItem(
+            user: 'Dash',
+            viewCount: 884000,
+            thumbnail: Container(
+              decoration: const BoxDecoration(color: Colors.yellow),
+            ),
+            title: 'Announcing Flutter 1.0',
           ),
-          title: 'Announcing Flutter 1.0',
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
