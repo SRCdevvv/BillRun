@@ -220,6 +220,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
 
 
+
                         Row(
                           children: [
                             Padding(
@@ -299,35 +300,105 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
 
 
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: const Divider(
+                            color: Colors.grey,
+                            height: 1,
+                            thickness: 1,
+                            indent: 60,
+                            endIndent: 60,
+                          ),
+                        ),
+
+                        // ************* 사용자 물건 리스트 (borrow_product_list)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                          child: Text(
+                            '펭수가 판매중인 다른 물건',
+                            style:TextStyle(
+                              fontSize: 25.0,
+                              color:Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+
+
+                        //그리드 뷰
+
+                        GridView.count(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+
+                            crossAxisCount: 2,
+
+                            children: List.generate(10, (index) {
+                              return Center(
+                                child: Text(
+                                  'Item $index',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .headline5,
+                                ),
+                              );
+                            },
+                            ),
+                        ),
+
 
                         Row(
                           children: [
 
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 5, 20, 0),
+                              padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                               child:
                               IconButton(icon:Icon(Icons.favorite_border_outlined),iconSize: 40,
                               ),
                             ),
 
 
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 5, 20, 0),
-                              child: Text(
-                                '가격',
-                                style:TextStyle(
-                                  fontSize: 20.0,
-                                  color:Colors.black,
-                                  fontWeight: FontWeight.bold,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(10, 5, 20, 0),
+                                  child: Text(
+                                    '가격',
+                                    style:TextStyle(
+                                      fontSize: 20.0,
+                                      color:Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
-                              ),
+
+                                FlatButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: BorderSide(color: Colors.red)),
+                                  color: Colors.white,
+                                  textColor: Colors.red,
+                                  padding: EdgeInsets.all(8.0),
+                                  //onPressed: () {},
+                                  child: Text(
+                                    "시간당".toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.fromLTRB(80, 10, 10, 10),
                               child: RaisedButton(
+                                color: Colors.red,
                                 onPressed: () {},
-                                child: const Text('구매하기', style: TextStyle(fontSize: 20)),
+                                child: const Text('구매하기', style: TextStyle(fontSize: 20,color: Colors.white)),
                               ),
                             ),
 
@@ -340,22 +411,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
 
 
-
-
-
-                      ],
-
-
-
-
-
-
-
-                    ),
-
-
-
-
+],
+                            ),
                   ],
                 ),
               ),
