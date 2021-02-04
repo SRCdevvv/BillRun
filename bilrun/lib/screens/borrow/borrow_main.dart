@@ -116,7 +116,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
                                 height: 240,
                                 //    aspect00Ratio: 2,
                                 enlargeCenterPage: true,
-                                autoPlay: false,
+                                autoPlay: true,
                                 viewportFraction: 1,
                                 onPageChanged: (index, reason) {
                                   setState(() {

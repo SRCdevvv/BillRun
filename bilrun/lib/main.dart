@@ -3,6 +3,7 @@ import 'screens/borrow/borrow_main.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/product/product_register.dart';
 import 'screens/mypage/mypage_screen.dart';
+import 'screens/chat/notyet.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,10 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'BILLRUN main'),
     );
   }
 }
@@ -31,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _currentIndex = 0;
-  final List<Widget> _children = [BorrowProductMain(),LendMainScreen(),ProductRegisterWidget(),null,MyPageScreen()];
+  final List<Widget> _children = [BorrowProductMain(),LendMainScreen(),ProductRegisterWidget(),ChatApp(),MyPageScreen()];
 
   void _onTap(int index) {
     setState(() {

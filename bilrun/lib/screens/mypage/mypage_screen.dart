@@ -63,67 +63,71 @@ class _MyPageScreenState extends State<MyPageScreen> {
                 ),
 
                 //동그라미 버튼 세개
-                Flexible(
-                  flex:3,
-                  child : Row(
+                Row(
+                  children: [
+                    Flexible(
+                      flex:3,
+                      child : Row(
 
-                      children: <Widget> [
+                          children: <Widget> [
 
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                          child: (
-                              RawMaterialButton(
-                                onPressed: () {},
-                                elevation: 2.0,
-                                fillColor: Colors.white,
-                                child: Icon(
-                                  Icons.favorite_border_outlined,
-                                  size: 35.0,
-                                ),
-                                padding: EdgeInsets.all(15.0),
-                                shape: CircleBorder(),
-                              )
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                          child: (
-                              RawMaterialButton(
-                                onPressed: () {},
-                                elevation: 2.0,
-                                fillColor: Colors.white,
-                                child: Icon(
-                                  Icons.preview_sharp,
-                                  size: 35.0,
-                                ),
-                                padding: EdgeInsets.all(15.0),
-                                shape: CircleBorder(),
-                              )
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                          child: (
-                              RawMaterialButton(
-                                onPressed: () {},
-                                elevation: 2.0,
-                                fillColor: Colors.white,
-                                child: Icon(
-                                  Icons.list_alt,
-                                  size: 35.0,
-                                ),
-                                padding: EdgeInsets.all(15.0),
-                                shape: CircleBorder(),
-                              )
-                          ),
-                        ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                              child: (
+                                  RawMaterialButton(
+                                    onPressed: () {},
+                                    elevation: 2.0,
+                                    fillColor: Colors.white,
+                                    child: Icon(
+                                      Icons.favorite_border_outlined,
+                                      size: 35.0,
+                                    ),
+                                    padding: EdgeInsets.all(15.0),
+                                    shape: CircleBorder(),
+                                  )
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                              child: (
+                                  RawMaterialButton(
+                                    onPressed: () {},
+                                    elevation: 2.0,
+                                    fillColor: Colors.white,
+                                    child: Icon(
+                                      Icons.preview_sharp,
+                                      size: 35.0,
+                                    ),
+                                    padding: EdgeInsets.all(15.0),
+                                    shape: CircleBorder(),
+                                  )
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                              child: (
+                                  RawMaterialButton(
+                                    onPressed: () {},
+                                    elevation: 2.0,
+                                    fillColor: Colors.white,
+                                    child: Icon(
+                                      Icons.list_alt,
+                                      size: 35.0,
+                                    ),
+                                    padding: EdgeInsets.all(15.0),
+                                    shape: CircleBorder(),
+                                  )
+                              ),
+                            ),
 
 
 
-                      ]
+                          ]
 
-                  ),
+                      ),
 
+                    ),
+                  ],
                 ),
 
                 //사용자 메뉴

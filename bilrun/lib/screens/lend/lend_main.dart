@@ -3,7 +3,9 @@ import '../../widgets/billrun_appbar.dart';
 import '../../screens/borrow/search.dart';
 import 'lend_product_list.dart';
 
-void main() => runApp(LendMainScreen());
+void main() => runApp(LendMainScreen()
+
+);
 
 class LendMainScreen extends StatefulWidget {
   @override
@@ -17,16 +19,16 @@ class _LendMainScreenState extends State<LendMainScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar:AppBar(
-        backgroundColor: Colors.white,
-        title: Text("BILL RUN",style: TextStyle(fontSize: 30.0, fontWeight : FontWeight.bold,color:Colors.black),
-        ),
-      ),
-        body:Column(
+
+      appBar:null,
+        body:
+        Column(
           children: <Widget> [
+
         Container(
         child: Expanded(
             child: ListView(
+
 
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
@@ -46,10 +48,8 @@ class _LendMainScreenState extends State<LendMainScreen> {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
                     children: <Widget>[
-                      Container(
-                        width: 280,
-
-                        child:  TextField(
+                      Flexible(
+                        child: TextField(
                           controller: _textController,
                           onSubmitted: _handleSubmitted,
                           decoration: new InputDecoration.collapsed(
