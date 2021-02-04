@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 
+
 void main() => runApp(ProductRegisterWidget());
 
 /// This is the main application widget.
@@ -13,9 +14,7 @@ class ProductRegisterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(title: const Text(_title)),
           body:Column(
             children: <Widget>[
@@ -24,7 +23,7 @@ class ProductRegisterWidget extends StatelessWidget {
             ],
           )
 
-      ),
+
     );
   }
 }

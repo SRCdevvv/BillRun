@@ -8,12 +8,10 @@ class LendProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
+    return Scaffold(
         appBar: null,
         body: MyStatelessWidget(),
-      ),
+
     );
   }
 }

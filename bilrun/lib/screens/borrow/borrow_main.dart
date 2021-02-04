@@ -29,8 +29,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
   int _current = 0;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar:AppBar(
           backgroundColor: Colors.white,
           title: Text("BILL RUN",style: TextStyle(fontSize: 30.0, fontWeight : FontWeight.bold,color:Colors.black),
@@ -193,7 +192,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
                       crossAxisCount: 2,
 
 
-                      children: List.generate(LendList.length, (index) {
+                      children: List.generate(10, (index) {
                         return Center(
                           child: Text(
                             'Item $index',
@@ -231,8 +230,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
           ],
         ),
 
-      ),
-    );
+         );
   }
 
   void _handleSubmitted(String text) {
@@ -241,6 +239,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
   }
 }
 
+const LendList = [];
 
 Future<String> getData() async {
   http.Response response = await http.get(
@@ -250,6 +249,7 @@ Future<String> getData() async {
 
 
   dynamic datas = utf8.decode(response.bodyBytes);
+  // ignore: non_constant_identifier_names
   dynamic LendList = jsonDecode(datas);
   var i;
   for ( i=0; i<LendList.length; i++) {
