@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:http/http.dart';
-//import '../../api_fuction/';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+
+
 
 
 void main() => runApp(BorrowProductMain());
@@ -22,6 +25,7 @@ final List<String> imgList = [
 class _BorrowProductMainState extends State<BorrowProductMain> {
   final TextEditingController _textController = new TextEditingController();
 
+
   int _current = 0;
   @override
   Widget build(BuildContext context) {
@@ -37,11 +41,13 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
             Container(
               child: Expanded(
                 child: ListView(
+
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
+
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -186,7 +192,8 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
 
                       crossAxisCount: 2,
 
-                      children: List.generate(10, (index) {
+
+                      children: List.generate(LendList.length, (index) {
                         return Center(
                           child: Text(
                             'Item $index',
@@ -195,6 +202,7 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
                                 .textTheme
                                 .headline5,
                           ),
+
                         );
                       },
                       ),
@@ -212,8 +220,10 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
 
 
 
+
                   ],
                 ),
+
               ),
             )
 
@@ -227,5 +237,23 @@ class _BorrowProductMainState extends State<BorrowProductMain> {
 
   void _handleSubmitted(String text) {
     _textController.clear();
+
   }
+}
+
+
+Future<String> getData() async {
+  http.Response response = await http.get(
+      Uri.encodeFull('http://172.30.1.17:8000/api/lend_product_list/'),
+      headers:{"Accept" : "application/json "});
+
+
+
+  dynamic datas = utf8.decode(response.bodyBytes);
+  dynamic LendList = jsonDecode(datas);
+  var i;
+  for ( i=0; i<LendList.length; i++) {
+    print(LendList[i]);
+  }
+
 }
