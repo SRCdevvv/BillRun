@@ -22,11 +22,10 @@ class _SearchbarScreenState extends State<SearchbarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: null,
         body: _buildTextComposer(),
-      ),
+
       );
 
 
@@ -42,16 +41,20 @@ class _SearchbarScreenState extends State<SearchbarScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
             children: <Widget>[
-              Container(
-                width: 280,
+              Expanded(
+                child: Container(
+                  width: 280,
 
-                child:  TextField(
-                  controller: _textController,
-                  onSubmitted: _handleSubmitted,
-                  decoration: new InputDecoration.collapsed(
-                      hintText: "검색어를 입력하세요."),
-                ),
-                ),
+                  child:  TextField(
+                    controller: _textController,
+                    onSubmitted: _handleSubmitted,
+                    decoration: new InputDecoration.collapsed(
+                        hintText: "검색어를 입력하세요.",
+                        hintStyle: TextStyle(fontSize: 40),
+                    ),
+                  ),
+                  ),
+              ),
 
 
               Container(

@@ -25,49 +25,51 @@ class _LendMainScreenState extends State<LendMainScreen> {
         Column(
           children: <Widget> [
 
-        Container(
-        child: Expanded(
-            child: ListView(
+            Container(
+            child: Expanded(
+                child: ListView(
 
 
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            children: <Widget>[
-        Padding(
-        padding: const EdgeInsets.all(8.0),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                      children: <Widget>[
+                  Padding(
+                  padding: const EdgeInsets.all(8.0),
 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            child: IconTheme(
-                data: IconThemeData(color: Theme
-                    .of(context)
-                    .accentColor),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Flexible(
-                        child: TextField(
-                          controller: _textController,
-                          onSubmitted: _handleSubmitted,
-                          decoration: new InputDecoration.collapsed(
-                              hintText: "검색어를 입력하세요."),
-                        ),
-                      ),
-
-
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () => _handleSubmitted(_textController.text)),
-                      ),
+                      child: IconTheme(
+                          data: IconThemeData(color: Theme
+                              .of(context)
+                              .accentColor),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          children: <Widget>[
+                          Flexible(
+                            child: TextField(
+                              controller: _textController,
+                              onSubmitted: _handleSubmitted,
+                              decoration: new InputDecoration.collapsed(
+                                  hintText: "검색어를 입력하세요."),
+                            ),
+                          ),
 
-                      ],
-                    ),
-                  )
+
+
+
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: IconButton(
+                              icon: Icon(Icons.search),
+                              onPressed: () => _handleSubmitted(_textController.text)),
+                        ),
+
+                        ],
+                      ),
+                    )
 
 
               ),
@@ -78,11 +80,23 @@ class _LendMainScreenState extends State<LendMainScreen> {
                 ),
               ),
 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                          child: const Divider(
+                            height: 1,
+                            color: Colors.red,
+                            thickness: 1.5,
+                            indent: 15,
+                            endIndent: 15,
+                          ),
+                        ),
+
+
               Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 40, 10),
+                padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                 child: Container(
                   child: Text(
-                    '무엇이든 빌려보세요!',
+                    '지금 빌려주세요!',
                     style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                   ),
                 ),

@@ -1,9 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'screens/borrow/borrow_main.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/product/product_register.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'screens/chat/notyet.dart';
+import 'widgets/billrun_appbar.dart';
+import 'screens/product/product_detail.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -43,44 +47,126 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            //Dialog Main Title
+            title: Column(
+              children: <Widget>[
+                new Text("게시글 유형을 선택해주세요"),
+              ],
+            ),
+            //
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // children: <Widget>[
+              //   // Text(
+              //   //   "Dialog Content",
+              //   // ),
+              // ],
+            ),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text("빌려드림"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  print("빌려드림");
+                },
+              ),
+              new FlatButton(
+                child: new Text("빌림"),
+                onPressed: () {
+                  Navigator.pop(context);
+                  print("빌림");
+                },
+              ),
+
+
+            ],
+          );
+        });
+
+
+
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: null,
+        appBar: AppBar(
+          leading: IconButton(
+            icon : Icon(Icons.menu),
+            iconSize: 30,
+            color:Colors.black,
+            tooltip:'menu click',
+            onPressed: ()=>{},
+          ),
+          backgroundColor: Colors.white,
+          title: Image.asset('assets/images/logo.png', height:50, width: 120),
+        ),
         body:
         _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          type:BottomNavigationBarType.fixed,
-          onTap: _onTap,
-          currentIndex:_currentIndex,
+            type:BottomNavigationBarType.fixed,
+            onTap: _onTap,
+            currentIndex:_currentIndex,
 
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: '빌려드림',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.format_paint),
-            label: '빌림',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label:'',
-
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: '채팅',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.face),
-            label: '마이페이지',
-          ),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.attach_money),
+                label: '빌려드림',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.format_paint),
+                label: '빌림',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add_circle_outline),
+                label:'상품 등록',
 
 
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.chat_bubble_outline),
+                label: '채팅',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.face),
+                label: '마이페이지',
+              ),
 
-        ]));
+
+
+            ]));
 
 
   }
 }
+
+
+
+
+//
+// import 'package:flutter/material.dart';
+// import 'api_function/borrow_api.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:async';
+// import 'dart:convert';
+// import 'api_function/UserApi.dart';
+//
+//
+//
+// void main() {
+//   runApp(UserApi());
+// }

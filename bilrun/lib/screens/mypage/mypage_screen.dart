@@ -12,8 +12,7 @@ class MyPageScreen extends StatefulWidget {
 class _MyPageScreenState extends State<MyPageScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Padding(
@@ -67,63 +66,65 @@ class _MyPageScreenState extends State<MyPageScreen> {
                   children: [
                     Flexible(
                       flex:3,
-                      child : Row(
+                      child : Center(
+                        child: Row(
 
-                          children: <Widget> [
+                            children: <Widget> [
 
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                              child: (
-                                  RawMaterialButton(
-                                    onPressed: () {},
-                                    elevation: 2.0,
-                                    fillColor: Colors.white,
-                                    child: Icon(
-                                      Icons.favorite_border_outlined,
-                                      size: 35.0,
-                                    ),
-                                    padding: EdgeInsets.all(15.0),
-                                    shape: CircleBorder(),
-                                  )
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                child: (
+                                    RawMaterialButton(
+                                      onPressed: () {},
+                                      elevation: 2.0,
+                                      fillColor: Colors.white,
+                                      child: Icon(
+                                        Icons.favorite_border_outlined,
+                                        size: 35.0,
+                                      ),
+                                      padding: EdgeInsets.all(15.0),
+                                      shape: CircleBorder(),
+                                    )
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                              child: (
-                                  RawMaterialButton(
-                                    onPressed: () {},
-                                    elevation: 2.0,
-                                    fillColor: Colors.white,
-                                    child: Icon(
-                                      Icons.preview_sharp,
-                                      size: 35.0,
-                                    ),
-                                    padding: EdgeInsets.all(15.0),
-                                    shape: CircleBorder(),
-                                  )
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                child: (
+                                    RawMaterialButton(
+                                      onPressed: () {},
+                                      elevation: 2.0,
+                                      fillColor: Colors.white,
+                                      child: Icon(
+                                        Icons.preview_sharp,
+                                        size: 35.0,
+                                      ),
+                                      padding: EdgeInsets.all(15.0),
+                                      shape: CircleBorder(),
+                                    )
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                              child: (
-                                  RawMaterialButton(
-                                    onPressed: () {},
-                                    elevation: 2.0,
-                                    fillColor: Colors.white,
-                                    child: Icon(
-                                      Icons.list_alt,
-                                      size: 35.0,
-                                    ),
-                                    padding: EdgeInsets.all(15.0),
-                                    shape: CircleBorder(),
-                                  )
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                child: (
+                                    RawMaterialButton(
+                                      onPressed: () {},
+                                      elevation: 2.0,
+                                      fillColor: Colors.white,
+                                      child: Icon(
+                                        Icons.list_alt,
+                                        size: 35.0,
+                                      ),
+                                      padding: EdgeInsets.all(15.0),
+                                      shape: CircleBorder(),
+                                    )
+                                ),
                               ),
-                            ),
 
 
 
-                          ]
+                            ]
 
+                        ),
                       ),
 
                     ),
@@ -339,7 +340,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
 
 
-      ),
+
 
 
     );

@@ -15,7 +15,9 @@ class ProductRegisterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(title: const Text(_title)),
+          appBar: null,
+
+          //AppBar(title: const Text(_title)),
           body:Column(
             children: <Widget>[
               // Camera(),
@@ -50,20 +52,20 @@ class _ProductRegisterState extends State<ProductRegister> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.green.shade100,
+            backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   GestureDetector(
-                    child: Text('Take a Picture',
-                        style: TextStyle(fontSize: 15.0, color: Colors.black)),
+                    child: Text('카메라',
+                        style: TextStyle(fontSize: 20.0, color: Colors.black)),
                     onTap: getImage,
                   ),
-                  Padding(padding: EdgeInsets.only(top: 10.0)),
+                  Padding(padding: EdgeInsets.only(top: 20.0)),
                   GestureDetector(
-                    child: Text('Pick from gallery',
-                        style: TextStyle(fontSize: 15.0, color: Colors.black)),
+                    child: Text('갤러리',
+                        style: TextStyle(fontSize: 20.0, color: Colors.black)),
                     onTap: takeImage,
                   ),
                 ],
@@ -114,11 +116,36 @@ class _ProductRegisterState extends State<ProductRegister> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             //사진 위젯 자리
-            FloatingActionButton(
-              onPressed: _optionDialogBox,
-              child: Icon(Icons.add_a_photo),
-              tooltip: 'Open Camera',
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
+              child: Stack(
+
+                children:<Widget> [
+                  Container(
+
+                    width:100,
+                    height: 100,
+                    color: Colors.grey,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 20, 00, 10),
+                    child: IconButton(icon: Icon(Icons.add_a_photo),
+                        onPressed: _optionDialogBox, color: Colors.white,
+                      iconSize: 40,
+                    ),
+                  )
+
+
+                ],
+              ),
             ),
+
+            // FlatButton(
+            //   onPressed: _optionDialogBox,
+            //   child: Icon(Icons.add_a_photo),
+            //   //tooltip: 'Open Camera',
+            // ),
 
 
 

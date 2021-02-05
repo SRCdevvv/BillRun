@@ -6,19 +6,16 @@ class BillrunAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        appBar: AppBar(
-          leading: Icon(Icons.menu),
-          actions: <Widget>[
-             IconButton( icon : Icon(Icons.menu), tooltip: '까꿍', onPressed: ()=>{},),
-          ],
-          backgroundColor: Colors.white,
-          title: Text("BILL RUN",style: TextStyle(fontSize: 30.0, fontWeight : FontWeight.bold,color:Colors.black),
-
-
-          ),
+      appBar:AppBar(
+        leading: IconButton(
+          icon : Icon(Icons.menu),
+          color:Colors.black,
+          tooltip:'menu click',
+          onPressed: ()=>{},
         ),
-
+        backgroundColor: Colors.white,
+        title: Image.asset('assets/images/logo.png', height:60, width: 120),
+      ),
 
     );
   }
