@@ -7,6 +7,7 @@ import 'screens/mypage/mypage_screen.dart';
 import 'screens/chat/notyet.dart';
 import 'widgets/billrun_appbar.dart';
 import 'screens/product/product_detail.dart';
+import 'widgets/product_register_popup.dart';
 
 
 void main() => runApp(MyApp());
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _currentIndex = 0;
-  final List<Widget> _children = [BorrowProductMain(),LendMainScreen(),ProductRegisterWidget(),ChatApp(),MyPageScreen()];
+  final List<Widget> _children = [BorrowProductMain(),LendMainScreen(),ProductRegister(),ChatApp(),MyPageScreen()];
 
   void _onTap(int index) {
     setState(() {

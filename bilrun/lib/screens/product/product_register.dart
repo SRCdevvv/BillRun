@@ -112,212 +112,261 @@ class _ProductRegisterState extends State<ProductRegister> {
     return Form(
       key: _formKey,
       child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            //사진 위젯 자리
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
-              child: Stack(
-
-                children:<Widget> [
-                  Container(
-
-                    width:100,
-                    height: 100,
-                    color: Colors.grey,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 00, 10),
-                    child: IconButton(icon: Icon(Icons.add_a_photo),
-                        onPressed: _optionDialogBox, color: Colors.white,
-                      iconSize: 40,
-                    ),
-                  )
-
-
-                ],
-              ),
-            ),
-
-            // FlatButton(
-            //   onPressed: _optionDialogBox,
-            //   child: Icon(Icons.add_a_photo),
-            //   //tooltip: 'Open Camera',
-            // ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: '상품명을 입력하세요',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: '가격을 입력하세요.',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-
+        child: ListView(
+          children: <Widget> [
             Column(
-              children: [
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
-                        color: Colors.white,
-                        textColor: Colors.red,
-                        padding: EdgeInsets.all(8.0),
-                        onPressed: () {},
-                        child: Text(
-                          "30분당".toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
-                        color: Colors.white,
-                        textColor: Colors.red,
-                        padding: EdgeInsets.all(8.0),
-                        onPressed: () {},
-                        child: Text(
-                          "시간당".toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
-                        color: Colors.white,
-                        textColor: Colors.red,
-                        padding: EdgeInsets.all(8.0),
-                        onPressed: () {},
-                        child: Text(
-                          "일당".toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
-                        color: Colors.white,
-                        textColor: Colors.red,
-                        padding: EdgeInsets.all(8.0),
-                        onPressed: () {},
-                        child: Text(
-                          "주당".toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                //사진 위젯 자리
 
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+                  child: Stack(
 
+                    children:<Widget> [
+                      Container(
 
-
+                        width:100,
+                        height: 100,
+                        color: Colors.grey,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 00, 10),
+                        child: IconButton(icon: Icon(Icons.add_a_photo),
+                            onPressed: _optionDialogBox, color: Colors.white,
+                          iconSize: 40,
+                        ),
+                      )
 
 
                     ],
+                  ),
+                ),
 
-
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 15, 0, 0),
+                  child: Container(
+                    child: Text("1/12",style: TextStyle(fontSize: 20),)
                   ),
                 ),
 
 
-                Text('카테고리'),
+                // FlatButton(
+                //   onPressed: _optionDialogBox,
+                //   child: Icon(Icons.add_a_photo),
+                //   //tooltip: 'Open Camera',
+                // ),
 
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: '상품 설명을 입력하세요',
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: '상품명을 입력하세요',
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
                 ),
 
-                TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: '빌림시 주의사항을 입력하세요',
+
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: '가격을 입력하세요.',
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
+                ),
+
+                Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.red)),
+                                color: Colors.white,
+                                textColor: Colors.red,
+                                padding: EdgeInsets.all(8.0),
+                                onPressed: () {},
+                                child: Text(
+                                  "30분당".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.red)),
+                                color: Colors.white,
+                                textColor: Colors.red,
+                                padding: EdgeInsets.all(8.0),
+                                onPressed: () {},
+                                child: Text(
+                                  "시간당".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.red)),
+                                color: Colors.white,
+                                textColor: Colors.red,
+                                padding: EdgeInsets.all(8.0),
+                                onPressed: () {},
+                                child: Text(
+                                  "일당".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.red)),
+                                color: Colors.white,
+                                textColor: Colors.red,
+                                padding: EdgeInsets.all(8.0),
+                                onPressed: () {},
+                                child: Text(
+                                  "주당".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+
+
+
+
+
+                          ],
+
+
+                        ),
+                      ),
+                    ),
+
+
+                    Text('카테고리'),
+
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: '상품 설명을 입력하세요',
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: '빌림시 주의사항을 입력하세요',
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 80,
+                      color: Colors.red,
+                        child: Center(child: Text("등록하기",style:TextStyle(color:Colors.white, fontSize :30,fontWeight: FontWeight.bold),)),
+                    ),
+
+
+
+
+
+                  ],
                 ),
 
 
+
+
+
+
+
+
+
+
+
+
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 16.0),
+                //   child: ElevatedButton(
+                //     onPressed: () {
+                //
+                //       if (_formKey.currentState.validate()) {
+                //         // Process data.
+                //       }
+                //     },
+                //     child: Text('등록하기'),
+                //   ),
+                // ),
 
 
 
               ],
             ),
-
-
-
-
-
-
-
-
-
-
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-
-                  if (_formKey.currentState.validate()) {
-                    // Process data.
-                  }
-                },
-                child: Text('등록하기'),
-              ),
-            ),
-
-
-
           ],
         ),
 

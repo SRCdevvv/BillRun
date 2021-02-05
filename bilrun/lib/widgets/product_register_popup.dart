@@ -2,53 +2,20 @@ import 'package:flutter/material.dart';
 import '../screens/product/product_register.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ProductRegisterPopup());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+
+class ProductRegisterPopup extends StatefulWidget {
+  @override
+  _ProductRegisterPopupState createState() => _ProductRegisterPopupState();
+}
+
+class _ProductRegisterPopupState extends State<ProductRegisterPopup> {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Dialog Sample',
-      theme: new ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: new MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Dialog'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              child: Text(
-                'Dialog Open',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.blue,
-                ),
-              ),
-              onPressed: () => FlutterDialog(),
-            )
-          ],
-        ),
-      ),
-    );
+    FlutterDialog();
   }
 
 //sizebox로 버튼 두개를 만들어서 맨 아래에 스택으로 겹치게 하고 이미지에 제스쳐디텍터넣어서 클릭 가능하게하기
