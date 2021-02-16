@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'screens/borrow/borrow_main.dart';
 import 'screens/lend/lend_main.dart';
+import 'screens/rent/rent_main.dart';
 import 'screens/product/product_register.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'screens/chat/notyet.dart';
@@ -34,8 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _currentIndex = 0;
-  final List<Widget> _children = [BorrowProductMain(),LendMainScreen(),ProductRegister(),ChatApp(),MyPageScreen()];
-
+  final List<Widget> _children = [LendMainScreen(),RentMainScreen(),ProductRegister(),ChatApp(),MyPageScreen()];
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
@@ -171,3 +170,5 @@ class _MyHomePageState extends State<MyHomePage> {
 // void main() {
 //   runApp(UserApi());
 // }
+
+
