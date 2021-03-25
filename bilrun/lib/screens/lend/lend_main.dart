@@ -36,7 +36,7 @@ class _LendMainScreenState extends State<LendMainScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        RedDivider(),
+                        OriginDivider(Colors.red[900],10,0,0),
                         //TODO 여백 없애기
                         Stack(
                           children: <Widget>[

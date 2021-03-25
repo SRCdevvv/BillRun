@@ -3,9 +3,6 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
 
-void main() => runApp(CameraImagePicker());
-
-
 class CameraImagePicker extends StatefulWidget {
   @override
   _CameraImagePickerState createState() => _CameraImagePickerState();
@@ -18,13 +15,12 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home : Scaffold(
+      home: Scaffold(
         appBar: AppBar(
           title: Text('Camera App'),
         ),
         body: Center(
           child: _image == null ? Text('No Image') : Image.file(_image),
-
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _optionDialogBox,
@@ -33,10 +29,9 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
         ),
       ),
     );
-
   }
 
-  Future <void> _optionDialogBox() {
+  Future<void> _optionDialogBox() {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -71,6 +66,7 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
       _image = File(pickedFile.path);
     });
   }
+
   Future takeImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 

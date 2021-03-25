@@ -52,31 +52,27 @@ class _BannerWidget extends State<BannerWidget> {
               },
             ),
           ),
-          Positioned(
-            left: 50,
-            bottom: 10,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: imgList.map((url) {
-                int index = imgList.indexOf(url);
-                return Container(
-                  width: 8.0,
-                  height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: _current == index
-                        ? BoxShape.rectangle
-                        : BoxShape.circle,
-                    // borderRadius: _current == index
-                    //     ? BorderRadius.all(Radius.circular(0.5))
-                    //     : null,
-                    //TODO :  BoxDecoration 길고 둥글게 만들기
-                    color: _current == index ? Colors.red[900] : Colors.grey,
-                  ),
-                );
-              }).toList(),
-            ),
-          )
+          Container(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: imgList.map((url) {
+              int index = imgList.indexOf(url);
+              return Container(
+                width: 8.0,
+                height: 8.0,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                decoration: BoxDecoration(
+                  shape:
+                      _current == index ? BoxShape.rectangle : BoxShape.circle,
+                  // borderRadius: _current == index
+                  //     ? BorderRadius.all(Radius.circular(0.5))
+                  //     : null,
+                  //TODO :  BoxDecoration 길고 둥글게 만들기
+                  color: _current == index ? Colors.red[900] : Colors.grey,
+                ),
+              );
+            }).toList(),
+          )),
         ],
       ),
     );

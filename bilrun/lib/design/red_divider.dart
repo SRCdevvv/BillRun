@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
-class RedDivider extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+Divider OriginDivider(Color color, double Thick, double Indent, double EndIndent){
+
     return Divider(
       height: 3,
-      color: Colors.red[900],
-      thickness: 10,
-      indent: 0,
-      endIndent: 0,
+      color: color,
+      thickness: Thick,
+      indent: Indent,
+      endIndent: EndIndent,
     );
   }
-}
+
+
