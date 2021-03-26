@@ -1,4 +1,4 @@
-import 'package:bilrun/design/red_divider.dart';
+import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/billrun_appbar.dart';
 import 'package:bilrun/widgets/location/now_location.dart';

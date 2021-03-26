@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:bilrun/design/red_divider.dart';
+import 'package:bilrun/design/divider_example.dart';
 import 'camera_image_picker.dart';
 
 void main() => runApp(ProductRegister());

@@ -2,7 +2,7 @@ import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
-import 'package:bilrun/design/red_divider.dart';
+import 'package:bilrun/design/divider_example.dart';
 
 //빌려드림
 

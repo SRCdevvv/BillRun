@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
-import 'package:bilrun/design/red_divider.dart';
+import 'package:bilrun/design/divider_example.dart';
 
 void main() => runApp(ProductDetailScreen());
 

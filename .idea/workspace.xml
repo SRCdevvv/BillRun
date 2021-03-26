@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75e89a97-b02f-469f-8ccc-2d9faff1b740" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/design/red_divider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/design/divider_example.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/rent/rent_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/rent/rent_main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
