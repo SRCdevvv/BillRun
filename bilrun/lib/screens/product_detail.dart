@@ -27,6 +27,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     children: <Widget>[
+                      //TODO  배너 상품에 맞게 크기랑 세부 디자인 적용하기
                       BannerWidget(),
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
@@ -153,7 +154,6 @@ Container BoldTitle(String Title, color, double sizeFont) {
   );
 }
 
-//TODO bottomNavigationBar 이용하여 거래 만들기
 Widget _bottomBarWidget() {
   return Container(
     width: 300,
