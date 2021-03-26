@@ -19,7 +19,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             preferredSize: const Size.fromHeight(100),
             child: BillrunAppbar(),
           ),
-          body: Column(
+          body: SafeArea(
+         child: Column(
             children: <Widget>[
               Container(
                 child: Expanded(
@@ -96,7 +97,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               )
             ],
           ),
-          bottomNavigationBar: _bottomBarWidget()),
+          ),
+          bottomNavigationBar: _bottomBarWidget()
+      ),
     );
   }
 }
