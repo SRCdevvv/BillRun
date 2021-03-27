@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
 
 class CameraImagePicker extends StatefulWidget {
   @override
@@ -9,29 +11,6 @@ class CameraImagePicker extends StatefulWidget {
 class _CameraImagePickerState extends State<CameraImagePicker> {
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 200, 0),
-    child: Stack(
-
-    children:<Widget> [
-    Container(
-
-    width:100,
-    height: 100,
-    color: Colors.grey[400],
-    ),
-    Padding(
-    padding: const EdgeInsets.fromLTRB(20, 20, 00, 10),
-    child: IconButton(icon: Icon(Icons.add_a_photo),
-    onPressed: (){},
-    //_optionDialogBox, color: Colors.white,
-    iconSize: 40,
-    ),
-    ),
-      ],
-    ),
-
-
-    );
+    return Container();
   }
 }
