@@ -32,7 +32,7 @@ class _HttpAppState extends State<HttpApp> {
 
             var response = await http.get(url);
             setState(() {
-              result =  response.body;
+              result = utf8.decode(response.bodyBytes);
             });
           },
           child: Icon(Icons.file_download),
