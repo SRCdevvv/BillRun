@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/product/product_register.dart';
 
 void main() {
   runApp(ProductRegisterPopup());

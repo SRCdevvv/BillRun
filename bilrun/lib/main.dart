@@ -1,14 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/rent/rent_main.dart';
-import 'screens/product/product_register.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'screens/chat/notyet.dart';
-import 'widgets/billrun_appbar.dart';
-import 'screens/product/product_detail.dart';
 import 'widgets/product_register_popup.dart';
-
+import 'package:bilrun/screens/product_register/register_main.dart';
+import 'package:bilrun/screens/product_register/register_main.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,7 +31,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _currentIndex = 0;
-  final List<Widget> _children = [LendMainScreen(),RentMainScreen(),ProductRegister(),ChatApp(),MyPageScreen()];
+  final List<Widget> _children = [
+    LendMainScreen(),
+    RentMainScreen(),
+    ProductRegister(),
+    ChatApp(),
+    MyPageScreen()
+  ];
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
@@ -46,7 +49,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
-
 
   void FlutterDialog() {
     showDialog(
@@ -75,53 +77,33 @@ class _MyHomePageState extends State<MyHomePage> {
               // ],
             ),
             actions: <Widget>[
-              new FlatButton(
+              new TextButton(
                 child: new Text("빌려드림"),
                 onPressed: () {
                   Navigator.pop(context);
                   print("빌려드림");
                 },
               ),
-              new FlatButton(
+              new TextButton(
                 child: new Text("빌림"),
                 onPressed: () {
                   Navigator.pop(context);
                   print("빌림");
                 },
               ),
-
-
             ],
           );
         });
-
-
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon : Icon(Icons.menu),
-            iconSize: 30,
-            color:Colors.black,
-            tooltip:'menu click',
-            onPressed: ()=>{},
-          ),
-          backgroundColor: Colors.white,
-          title: Image.asset('assets/images/logo.png', height:50, width: 120),
-        ),
-        body:
-        _children[_currentIndex],
+        body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-            type:BottomNavigationBarType.fixed,
+            type: BottomNavigationBarType.fixed,
             onTap: _onTap,
-            currentIndex:_currentIndex,
-
+            currentIndex: _currentIndex,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.attach_money),
@@ -133,9 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.add_circle_outline),
-                label:'상품 등록',
-
-
+                label: '상품 등록',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.chat_bubble_outline),
@@ -145,30 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.face),
                 label: '마이페이지',
               ),
-
-
-
             ]));
-
-
   }
 }
-
-
-
-
-//
-// import 'package:flutter/material.dart';
-// import 'api_function/borrow_api.dart';
-// import 'package:http/http.dart' as http;
-// import 'dart:async';
-// import 'dart:convert';
-// import 'api_function/UserApi.dart';
-//
-//
-//
-// void main() {
-//   runApp(UserApi());
-// }
-
-

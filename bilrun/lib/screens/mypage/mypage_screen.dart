@@ -20,46 +20,69 @@ class _MyPageScreenState extends State<MyPageScreen> {
             child: ListView(
 
               children:  <Widget> [
-
-
                 Row(
                     children: <Widget> [
 
+                      //TODO 그림자 효과 넣기
+                      //TODO 프로필 사진 바꾸기
                       Padding(
-
                         padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                         child: CircleAvatar(
                           radius: 50.0,
                           backgroundImage: AssetImage('assets/images/main_1.jpg'),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
-                        child: Text(
-                          '사용자 이름',
-                          style:TextStyle(
-                            fontSize: 30.0,
-                            color:Colors.black,
-                            fontWeight: FontWeight.bold,
+                      //TODO 닉네임 바꾸기
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
+                            child: Text(
+                              '사용자 이름',
+                              style:TextStyle(
+                                fontSize: 25.0,
+                                color:Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                child: Text(
+                                  '23,500',
+                                  style:TextStyle(
+                                    fontSize: 20.0,
+                                    color:Colors.red[900],
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                child: Text(
+                                  '원',
+                                  style:TextStyle(
+                                    fontSize: 20.0,
+                                    color:Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                        ],
                       ),
+
+
 
                     ]
 
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
-                  child: Text(
-                    '빌런지수 \$\$\$ 점',
-                    style:TextStyle(
-                      fontSize: 20.0,
-                      color:Colors.red,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
 
                 //동그라미 버튼 세개
                 Row(
@@ -69,58 +92,11 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       child : Center(
                         child: Row(
 
+                        //TODO 아이콘 대신 사진 넣어 제플린이랑 똑같이 만들기
                             children: <Widget> [
-
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                                child: (
-                                    RawMaterialButton(
-                                      onPressed: () {},
-                                      elevation: 2.0,
-                                      fillColor: Colors.white,
-                                      child: Icon(
-                                        Icons.favorite_border_outlined,
-                                        size: 35.0,
-                                      ),
-                                      padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(),
-                                    )
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                                child: (
-                                    RawMaterialButton(
-                                      onPressed: () {},
-                                      elevation: 2.0,
-                                      fillColor: Colors.white,
-                                      child: Icon(
-                                        Icons.preview_sharp,
-                                        size: 35.0,
-                                      ),
-                                      padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(),
-                                    )
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                                child: (
-                                    RawMaterialButton(
-                                      onPressed: () {},
-                                      elevation: 2.0,
-                                      fillColor: Colors.white,
-                                      child: Icon(
-                                        Icons.list_alt,
-                                        size: 35.0,
-                                      ),
-                                      padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(),
-                                    )
-                                ),
-                              ),
-
-
+                              CircleButton(Icons.favorite_outline_sharp, "찜한목록"),
+                              CircleButton(Icons.rate_review_outlined, "리뷰 목록"),
+                              CircleButton(Icons.format_list_bulleted, "거래 관리"),
 
                             ]
 
@@ -135,215 +111,93 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
                 Column(
                   children: [
-                    Container(
-                      color : Colors.grey[200],
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+                    MenuDivider('사용자 설정'),
 
-                      child: ListTile(
-                        title:Text(
-                          '사용자 설정',
-                          style: TextStyle(
-                            fontSize: 20,
+                    MypageMenu('내 위치 관리', (){}),
+                    MypageMenu('배송지 관리', (){}),
+                    MypageMenu('계좌 관리', (){}),
+                    MypageMenu('알림 설정', (){}),
 
-                          ),
-                        ),
-                      ),
+                    MenuDivider('서비스 정보'),
 
-                    ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '내 위치 이용하기',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                          Scaffold.of(context).showSnackBar(SnackBar(content: Text('Tap')));
-                        },
-
-                      ),
-
-                    ),
-
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '배송지 관리',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '계좌 관리',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '알림 설정',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),
-
-
-
-                    Container(
-                      color : Colors.grey[200],
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child: ListTile(
-                        title:Text(
-                          '서비스 정보',
-                          style: TextStyle(
-                            fontSize: 20,
-
-                          ),
-                        ),
-                      ),
-
-                    ),
-
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '이용 약관',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),
-
-                    Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '개인정보 처리 방침',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '위치기반 서비스 이용 약관',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),Container(
-                      color : Colors.white,
-                      //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
-                      child:InkWell(
-                        child: ListTile(
-                          title:Text(
-                            '버전 정보',
-                            style: TextStyle(
-                                fontSize: 20
-                            ),
-                          ),
-                        ),
-
-                        onTap:(){
-                          //링크넘어가기
-                        },
-                      ),
-
-                    ),
-
-
-
+                    MypageMenu('이용 약관', (){}),
+                    MypageMenu('개인정보 처리 방침', (){}),
+                    MypageMenu('위치기반 서비스 이용 약관', (){}),
+                    MypageMenu('버전 정보', (){}),
                   ],
                 ),
-
-
               ],
             ),
-
-
           ),
-
         ),
-
-
-
-
-
-
-
     );
-
   }
 }
+
+
+
+Widget CircleButton (IconData, String title){
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(30,15,10,15),
+    child: Column(
+      children: <Widget>[
+        RawMaterialButton(
+          onPressed: (){},
+          elevation: 2.0,
+          fillColor: Colors.white,
+          child: Icon(
+            IconData,
+            size: 30.0,
+          ),
+          padding: EdgeInsets.all(15.0),
+          shape: CircleBorder(),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+          child: Text("$title",style: TextStyle(fontSize: 15,color: Colors.black),),
+        )
+      ],
+    ),
+  );
+}
+
+
+Container MenuDivider(String title){
+  return Container(
+    color : Colors.grey[200],
+//margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+    child: ListTile(
+      title:Text(
+        '$title',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+Container MypageMenu(String title, GestureTapCallback){
+  return Container(
+    color : Colors.white,
+    //margin: EdgeInsets.symmetric(vertical: 10.0,horizontal: 25.0),
+    child:InkWell(
+      child: ListTile(
+        title:Text(
+          '$title',
+          style: TextStyle(
+              fontSize: 20
+          ),
+        ),
+      ),
+
+      onTap: GestureTapCallback
+
+    ),
+
+  );
+
+}
+
+
