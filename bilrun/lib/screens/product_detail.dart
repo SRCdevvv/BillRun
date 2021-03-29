@@ -17,6 +17,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       home: Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(100),
+            //TODO 앱 바 모양 바꾸 앱바가 아니라 사진에 stack으로 버튼을 붙여야할듯,,
             child: BillrunAppbar(),
           ),
           body: SafeArea(

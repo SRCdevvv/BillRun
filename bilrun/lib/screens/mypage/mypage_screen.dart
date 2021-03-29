@@ -24,6 +24,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                     children: <Widget> [
 
                       //TODO 그림자 효과 넣기
+                      //TODO 프로필 사진 바꾸기
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                         child: CircleAvatar(
@@ -31,6 +32,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                           backgroundImage: AssetImage('assets/images/main_1.jpg'),
                         ),
                       ),
+                      //TODO 닉네임 바꾸기
                       Column(
                         children: [
                           Padding(
@@ -90,6 +92,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       child : Center(
                         child: Row(
 
+                        //TODO 아이콘 대신 사진 넣어 제플린이랑 똑같이 만들기
                             children: <Widget> [
                               CircleButton(Icons.favorite_outline_sharp, "찜한목록"),
                               CircleButton(Icons.rate_review_outlined, "리뷰 목록"),

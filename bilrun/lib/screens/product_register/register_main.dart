@@ -49,7 +49,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-          //TODO 이미지 픽커
+          //TODO 이미지 픽커 추가하기
           CameraImagePicker(),
 
           Padding(
@@ -92,6 +92,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
           Padding(
             padding: const EdgeInsets.fromLTRB(60, 0, 0, 10),
             child: Row(
+            //TODO 버튼 눌리면 빨강색으로 바뀌도록
               children: <Widget>[
                 TimeStandard('30분 당'),
                 TimeStandard("시간 당"),
@@ -133,7 +134,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             ],
           ),
 
-          //TODO gesture detector에 기능 추가하기
+          //TODO gesture detector에 등록하는 기 추가하기
           GestureDetector(
             child: Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -177,7 +178,7 @@ TextButton TimeStandard(String timeStandard) {
     style: TextButton.styleFrom(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18.0),
-        side: BorderSide(color: Colors.red[900]),
+        side: BorderSide(color: Colors.grey[800]),
       ),
       backgroundColor: Colors.white,
     ),
@@ -186,7 +187,7 @@ TextButton TimeStandard(String timeStandard) {
       "$timeStandard",
       style: TextStyle(
         fontSize: 17.0,
-        color: Colors.red[900],
+        color: Colors.grey[800],
       ),
     ),
   ));

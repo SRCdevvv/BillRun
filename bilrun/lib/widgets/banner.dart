@@ -15,6 +15,7 @@ final List<String> imgList = [
 class _BannerWidget extends State<BannerWidget> {
   int _current = 0;
 
+  //TODO 3초에 하나씩 자동으로 넘어가도록 만들
   @override
   Widget build(BuildContext context) {
     return Container(
