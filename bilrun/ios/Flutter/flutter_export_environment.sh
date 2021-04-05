@@ -2,7 +2,7 @@
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/kimwonhee/flutter"
 export "FLUTTER_APPLICATION_PATH=/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun"
-export "FLUTTER_TARGET=/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/lib/api_function/practice_connect/practice_5.dart"
+export "FLUTTER_TARGET=/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/lib/api_function/practice_connect/practice6.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_BUILD_NAME=1.0.0"
