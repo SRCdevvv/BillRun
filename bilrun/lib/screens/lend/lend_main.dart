@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
 import 'package:bilrun/design/divider_example.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -34,7 +35,13 @@ class _LendMainScreenState extends State<LendMainScreen> {
             for (int i = 0; i < products.length; i++) {
               var product = products[i];
               Product productToAdd = Product(product['name'],product['photo'],product['price'],product['price_prop']);
+
               //print(productToAdd.name);
+              //print(_data[1].nickname);
+
+              //TODO user_id 받아오기
+
+
 
               //print(productToAdd.photo);
 
@@ -42,6 +49,7 @@ class _LendMainScreenState extends State<LendMainScreen> {
                 _data.add(productToAdd);
               });
             }
+
           }
           else {
             print("error");
@@ -56,6 +64,7 @@ class _LendMainScreenState extends State<LendMainScreen> {
 void initState() {
     // TODO: implement initState
     super.initState();
+
     _fetchData();
   }
 
@@ -128,21 +137,60 @@ void initState() {
                             //TODO 길이를...????
                             (index) {
                               Product product = _data[index];
+                              // if(product.price_prop=='1h'){
+                              //   product.price_prop= '시간';
+                              // };
+                              switch(product.price_prop){
+                                case "1h" :
+                                  product.price_prop = '시간';
+                                  break;
+                                case "30m" :
+                                  product.price_prop = '30분';
+                                  break;
+                                case "Day" :
+                                  product.price_prop = '일';
+                                  break;
+                              }
 
                               return
-                                Center(
+                                Container(
                                 child:Column(
                                   children: <Widget>[
                                     Text(
                                       ' ${product.name}',
-                                      style: Theme.of(context).textTheme.headline5,
+                                  style: TextStyle(fontSize: 23,color: Colors.black),),
+                                    Row(
+                                      children: <Widget>[
+                                        Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                        child: Text('${product.price} 원',
+                                          style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
+                                        Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                         child: Text('/${product.price_prop}',
+                                           style: TextStyle(fontSize: 15, color: Colors.grey[900],),),
+
+                                        ),
+                                        ],
                                     ),
-                                    Text('${product.price}'),
-                                    Text('${product.price_prop}'),
                                    // Text('${product.nickname}'),
 
                                     //Image.network('${product.photo}'),
 
+                                    Row(
+                                      children:<Widget> [
+                                        Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                          child: CircleAvatar(
+                                            backgroundImage: NetworkImage('http://sniblog.co.kr/wp-content/uploads/2020/01/20200116_002721.jpg'),
+                                            radius: 15,
+                                          )),
+                                        Padding(padding: EdgeInsets.fromLTRB(3, 0, 0, 0),
+                                          child: Text('유저 이름',
+                                            style: TextStyle(fontSize: 18,color: Colors.black),),),
+                                        Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                          child: Text('물품 등록시간',
+                                            style: TextStyle(fontSize: 13, color: Colors.grey[900],),)),
+
+                                          ],
+                                    ),
                                   ],
                                 ),
                                 //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}') ,
@@ -178,7 +226,6 @@ class Product{
   String photo;
   String price;
   String price_prop;
-  String nickname;
 
 
   Product(this.name, this.photo, this.price, this.price_prop);
