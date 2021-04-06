@@ -1,43 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-void main() => runApp(Product());
 
-class Product extends StatefulWidget {
+class ProductRentList extends StatefulWidget {
   @override
-  _ProductState createState() => _ProductState();
+  _ProductRentListState createState() => _ProductRentListState();
 }
 
-class _ProductState extends State<Product> {
+class _ProductRentListState extends State<ProductRentList> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:'grid',
-      home: Scaffold(
-          appBar: null,
+    return Scaffold(
           body: Container(
-            child: new Column(
-                children: <Widget> [
-                  new Text("빌려드림", textAlign: TextAlign.left,style: TextStyle(fontSize: 30.0),),
-                  new Expanded(child:  GridView.count(
-                    crossAxisCount: 2,
-                    children: List.generate(100, (index) {
-                      return Center(
-                        child:Text(
-                          'Item $index',
-                          style:
-                          Theme.of(context).textTheme.headline5,
-                        ),
-                      );
-                    }),
-                  ),),
+            height: MediaQuery.of(context).size.height,
+            child:SingleChildScrollView (
+              child: Column(
+                children: <Widget>[
+                  GridView.count(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    crossAxisCount:2,
+                  children: List.generate(10, (index){
+                    return Center(
+                      child: Text(
+                        'Item $index',
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                    );
+                  }
+                  ),
+                  ),
+                ],
 
 
+              ),
 
-                ]),
+         ),
           )
 
 
-      ),
+
 
 
     );
