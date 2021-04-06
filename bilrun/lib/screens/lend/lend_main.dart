@@ -34,7 +34,7 @@ class _LendMainScreenState extends State<LendMainScreen> {
             for (int i = 0; i < products.length; i++) {
               var product = products[i];
               Product productToAdd = Product(product['name'],product['photo'],product['price'],product['price_prop']);
-              print(productToAdd.name);
+              //print(productToAdd.name);
 
               //print(productToAdd.photo);
 

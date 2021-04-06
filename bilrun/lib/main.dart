@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/rent/rent_main.dart';
 import 'screens/mypage/mypage_screen.dart';
-import 'screens/chat/notyet.dart';
-import 'widgets/product_register_popup.dart';
 import 'package:bilrun/screens/product_register/register_main.dart';
-import 'package:bilrun/screens/product_register/register_main.dart';
+import 'package:bilrun/screens/chat/notyet.dart';
 
 void main() => runApp(MyApp());
 
