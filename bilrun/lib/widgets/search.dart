@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() => runApp(SearchbarApp());
-
-class SearchbarApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title:'searchbar',
-      home: SearchbarScreen(),
-    );
-  }
-}
 
 class SearchbarScreen extends StatefulWidget {
   @override
@@ -23,8 +13,30 @@ class _SearchbarScreenState extends State<SearchbarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: null,
-        body: _buildTextComposer(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: IconButton(
+              icon: Icon(Icons.keyboard_backspace),
+              color: Colors.black,
+              iconSize: 40.0,
+              onPressed: () => { Get.back()},
+            ),
+          ),
+          title: Padding(
+            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            child: Text(
+              "검색",
+              style: TextStyle(color: Colors.black, fontSize: 28.0),
+            ),
+          ),
+          centerTitle: false,
+        ),
+        body:SafeArea(
+          child: _buildTextComposer(),
+
+        )
 
       );
 
@@ -33,43 +45,43 @@ class _SearchbarScreenState extends State<SearchbarScreen> {
 
 
   Widget _buildTextComposer() {
-    return IconTheme(
-        data: IconThemeData(color: Theme
-            .of(context)
-            .accentColor),
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  width: 280,
+    return Column(
 
-                  child:  TextField(
-                    controller: _textController,
-                    onSubmitted: _handleSubmitted,
-                    decoration: new InputDecoration.collapsed(
-                        hintText: "검색어를 입력하세요.",
-                        hintStyle: TextStyle(fontSize: 40),
-                    ),
+        children: <Widget>[
+
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(30, 20, 5, 10),
+                width: Get.width -100,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: '검색어를 입력하세요.',
                   ),
-                  ),
+                ),
               ),
-
-
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: IconButton(
-                    icon: Icon(Icons.search),
+                    icon: Icon(Icons.search,size: 30,),
                     onPressed: () => _handleSubmitted(_textController.text)),
               ),
 
+
             ],
           ),
-        )
+
+
+
+        ],
+
 
 
     );
+
+
+
   }
   void _handleSubmitted(String text) {
     _textController.clear();

@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'camera_image_picker.dart';
+import 'package:get/get.dart';
+import 'package:bilrun/main.dart';
 
 void main() => runApp(ProductRegister());
 
+
+bool ProductCategory= Get.arguments;
+
+
 class ProductRegister extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +25,7 @@ class ProductRegister extends StatelessWidget {
             icon: Icon(Icons.keyboard_backspace),
             color: Colors.black,
             iconSize: 40.0,
-            onPressed: () => {},
+            onPressed: () => {Get.back()},
           ),
         ),
         title: Padding(
@@ -32,11 +40,13 @@ class ProductRegister extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ProductRegisterWidget(),
+
         ],
       ),
     );
   }
 }
+
 
 class ProductRegisterWidget extends StatefulWidget {
   @override
@@ -44,13 +54,18 @@ class ProductRegisterWidget extends StatefulWidget {
 }
 
 class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
+
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
+
       child: Column(
         children: <Widget>[
           //TODO 이미지 픽커
           CameraImagePicker(),
+
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 10, 10),
@@ -70,7 +85,8 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     Icons.keyboard_arrow_right,
                     size: 45,
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    }),
             ),
           ]),
           OriginDivider(Colors.grey[500], 1, 65, 60),
@@ -193,6 +209,7 @@ TextButton TimeStandard(String timeStandard) {
 }
 
 Container ExplainText(String explainText) {
+  print(ProductCategory);
   return Container(
     padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
     child: TextField(
@@ -204,3 +221,4 @@ Container ExplainText(String explainText) {
     ),
   );
 }
+

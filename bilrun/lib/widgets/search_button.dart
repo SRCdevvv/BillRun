@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/search.dart';
+import 'package:get/get.dart';
 
 class SearchButton extends StatelessWidget {
   @override
@@ -9,10 +10,9 @@ class SearchButton extends StatelessWidget {
         iconSize: 38.0,
         color: Colors.black,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SearchbarApp()),
-          );
+            Get.to(SearchbarScreen());
+
+
         });
   }
 }
