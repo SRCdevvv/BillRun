@@ -34,8 +34,10 @@ class _LendMainScreenState extends State<LendMainScreen> {
             List products = jsonDecode(jsonString);
             for (int i = 0; i < products.length; i++) {
               var product = products[i];
-              Product productToAdd = Product(product['name'],product['photo'],product['price'],product['price_prop']);
+              Product productToAdd = Product(product['name'],product['photo'],product['price'],product['price_prop'],product['category']);
 
+
+//print(productToAdd.category);
               //print(productToAdd.name);
               //print(_data[1].nickname);
 
@@ -46,7 +48,8 @@ class _LendMainScreenState extends State<LendMainScreen> {
               //print(productToAdd.photo);
 
               setState(() {
-                _data.add(productToAdd);
+                if(productToAdd.category ==true){
+                _data.add(productToAdd);}
               });
             }
 
@@ -132,7 +135,7 @@ void initState() {
 
 
                             //products.length,
-                            5,
+                            3,
 
                             //TODO 길이를...????
                             (index) {
@@ -226,7 +229,10 @@ class Product{
   String photo;
   String price;
   String price_prop;
+  bool category;
 
 
-  Product(this.name, this.photo, this.price, this.price_prop);
+  Product(this.name, this.photo, this.price, this.price_prop,this.category);
 }
+
+//TODO user_id 불러오기
