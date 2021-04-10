@@ -20,6 +20,7 @@ class LendMainScreen extends StatefulWidget {
 class _LendMainScreenState extends State<LendMainScreen> {
 
   List _data = [];
+  int ListCount =0 ;
 
 
   _fetchData() {
@@ -49,7 +50,8 @@ class _LendMainScreenState extends State<LendMainScreen> {
 
               setState(() {
                 if(productToAdd.category ==true){
-                _data.add(productToAdd);}
+                _data.add(productToAdd);
+                ListCount++;}
               });
             }
 
@@ -135,7 +137,7 @@ void initState() {
 
 
                             //products.length,
-                            3,
+                            ListCount,
 
                             //TODO 길이를...????
                             (index) {

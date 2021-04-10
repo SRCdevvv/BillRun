@@ -20,6 +20,7 @@ class RentMainScreen extends StatefulWidget {
 class _RentMainScreenState extends State<RentMainScreen> {
 
   List _data = [];
+  int ListCount =0;
 
 
   _fetchData() {
@@ -49,7 +50,8 @@ class _RentMainScreenState extends State<RentMainScreen> {
 
             setState(() {
               if(productToAdd.category ==false){
-                _data.add(productToAdd);}
+                _data.add(productToAdd);
+              ListCount++;}
             });
           }
 
@@ -127,7 +129,7 @@ class _RentMainScreenState extends State<RentMainScreen> {
                         ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: 3,
+                            itemCount: ListCount,
 
                             itemBuilder: (BuildContext context, int index){
                               Product product = _data[index];
@@ -142,6 +144,8 @@ class _RentMainScreenState extends State<RentMainScreen> {
                                   product.price_prop = '일';
                                   break;
                               }
+                              var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
+
 
 
                               return  Card(
@@ -191,13 +195,33 @@ class _RentMainScreenState extends State<RentMainScreen> {
                                 child: ListTile(
                                   title: Text('${product.name}',style: TextStyle(fontSize: 20)),
                                   subtitle: Text('${product.price}/ ${product.price_prop}   💁n분전'),
-                                  trailing: Image.network(
-                                      'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.contain,
+                                  trailing: url !=null ?
 
-                                    ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10), //모서리를 둥글게
+                                      border: Border.all(color: Colors.grey[300], width: 3),
+                                  color: Colors.grey[300]),
+
+                                  height: 100,
+                                  width: 60,
+                                  //color: Colors.grey[500],
+                                   child: Icon(
+                                     Icons.camera_alt_outlined,
+                                     color: Colors.white,
+                                     size: 40,
+                                   ),
+
+    
+                                  ) : Image.network(url,
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.contain,)
+
+
+
+
+
 
 
 
