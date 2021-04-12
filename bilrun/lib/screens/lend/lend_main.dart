@@ -177,7 +177,7 @@ void initState() {
 
                                        GestureDetector(
                                          onTap: (){
-                                          Get.to(ProductDetailScreen(),arguments: NameOfProduct) ;
+                                          Get.to(ProductDetailScreen()) ;
                                          },
                                          child : Container(
                                            decoration: BoxDecoration(

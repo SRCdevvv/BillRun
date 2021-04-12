@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 
 void main() => runApp(RentMainScreen());
 
-String NameOfProduct ;
+
 
 class RentMainScreen extends StatefulWidget {
   @override
@@ -25,6 +25,7 @@ class _RentMainScreenState extends State<RentMainScreen> {
 
   List _data = [];
   int ListCount =0;
+  String NameOfProduct ='' ;
 
 
   _fetchData() {
@@ -154,12 +155,13 @@ class _RentMainScreenState extends State<RentMainScreen> {
 
 
 
+
                               return  Card(
                                 elevation: 0.0,
                                 child: ListTile(
                                   title: Text('${product.name}',style: TextStyle(fontSize: 20)),
                                   subtitle: Text('${product.price}/ ${product.price_prop}   💁n분전'),
-                                  onTap: ()=>{ Get.to(ProductDetailScreen(),arguments: NameOfProduct)},
+                                  onTap: ()=>{ Get.to(ProductDetailScreen(),arguments:product.name )},
                                   trailing: url !=null ?
 
                                 Container(

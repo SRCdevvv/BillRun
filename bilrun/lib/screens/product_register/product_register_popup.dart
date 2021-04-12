@@ -29,7 +29,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
       return
       Stack(
         children: <Widget>[
-          LendMainScreen(),
+          //TODO 뭐든 불러오기
           BackdropFilter(filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child : showDialog()),
 

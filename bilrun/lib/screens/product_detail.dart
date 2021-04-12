@@ -9,14 +9,27 @@ import 'package:bilrun/screens/rent/rent_main.dart';
 
 void main() => runApp(ProductDetailScreen());
 
-
+String NameOfProduct = '';
 
 class ProductDetailScreen extends StatefulWidget {
+
+
+
   @override
   _ProductDetailScreenState createState() => _ProductDetailScreenState();
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+
+
+
+
+@override
+void initState() {
+    // TODO: implement initState
+    super.initState();
+    NameOfProduct = Get.arguments;
+  }
 
 
   @override
@@ -67,7 +80,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
                         child: Container(
                           child: Text(
-                            '상품명',
+                            '$NameOfProduct',
                             style: TextStyle(
                                 fontSize: 40, fontWeight: FontWeight.normal),
                           ),
@@ -182,7 +195,7 @@ Container MediumText(String texts) {
 }
 
 Container BoldTitle(String Title, color, double sizeFont) {
-
+print(NameOfProduct);
 
   return Container(
     padding: EdgeInsets.fromLTRB(5, 0, 10, 10),
