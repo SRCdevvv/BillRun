@@ -8,10 +8,11 @@ import 'package:bilrun/main.dart';
 void main() => runApp(ProductRegister());
 
 
-bool ProductCategory= Get.arguments;
+bool ProductCategory;
 
 
 class ProductRegister extends StatelessWidget {
+
 
 
   @override
@@ -54,6 +55,13 @@ class ProductRegisterWidget extends StatefulWidget {
 }
 
 class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ProductCategory = Get.arguments;
+  }
 
 
   @override
