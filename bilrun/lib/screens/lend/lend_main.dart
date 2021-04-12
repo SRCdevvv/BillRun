@@ -1,4 +1,7 @@
 
+import 'package:bilrun/screens/product_register/product_register_popup.dart';
+import 'package:bilrun/screens/product_register/register_main.dart';
+import 'package:bilrun/screens/rent/rent_main.dart';
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
@@ -7,8 +10,11 @@ import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:bilrun/screens/product_detail.dart';
 
 //빌려드림
+
 
 void main() => runApp(LendMainScreen());
 
@@ -21,6 +27,9 @@ class _LendMainScreenState extends State<LendMainScreen> {
 
   List _data = [];
   int ListCount =0 ;
+bool _isPressed=false;
+bool Pressed= false;
+
 
 
   _fetchData() {
@@ -51,7 +60,8 @@ class _LendMainScreenState extends State<LendMainScreen> {
               setState(() {
                 if(productToAdd.category ==true){
                 _data.add(productToAdd);
-                ListCount++;}
+                ListCount++;
+                }
               });
             }
 
@@ -139,7 +149,6 @@ void initState() {
                             //products.length,
                             ListCount,
 
-                            //TODO 길이를...????
                             (index) {
                               Product product = _data[index];
                               // if(product.price_prop=='1h'){
@@ -159,8 +168,50 @@ void initState() {
 
                               return
                                 Container(
+
                                 child:Column(
                                   children: <Widget>[
+                                    Stack(
+                                      children: <Widget>[
+
+
+                                       GestureDetector(
+                                         onTap: (){
+                                          Get.to(ProductDetailScreen(),arguments: NameOfProduct) ;
+                                         },
+                                         child : Container(
+                                           decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.all(Radius.circular(10)),
+                                             color: Colors.black,
+                                             image: DecorationImage(image: NetworkImage('https://www.lge.co.kr/uploads/CONTENTS/REVIEW/objet/review_02.jpg'),
+                                                 fit: BoxFit.fill),
+                                           ),
+                                           width: 140,
+                                           height: 130,
+
+                                         ),
+                                       ),
+
+
+
+                                        Positioned(
+                                          child:IconButton(
+                                            iconSize : 30.0,
+                                            icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
+                                            color: _isPressed? Colors.red[900] : Colors.white,
+                                            onPressed: ()=>{
+                                              setState((){
+                                                _isPressed = !_isPressed;
+                                              })
+                                            }
+                                        ),
+                                          right: 5,
+                                        )
+
+                                      ],
+                                    ),
+
+
                                     Text(
                                       ' ${product.name}',
                                   style: TextStyle(fontSize: 23,color: Colors.black),),
@@ -238,3 +289,9 @@ class Product{
 }
 
 //TODO user_id 불러오기
+
+
+
+
+
+

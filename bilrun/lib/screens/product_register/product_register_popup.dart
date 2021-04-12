@@ -1,34 +1,65 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/screens/product_register/register_main.dart';
+import 'package:bilrun/screens/lend/lend_main.dart';
+import 'package:bilrun/main.dart';
+
+
+
+
+
 
 class DialogProductRegister extends StatefulWidget {
 
   @override
+
   _DialogProductRegisterState createState() => _DialogProductRegisterState();
+
+
 }
 
 class _DialogProductRegisterState extends State<DialogProductRegister> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        CupertinoAlertDialog(
-          title: Text('상품 등록'),
-            actions: <Widget> [
-               TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
-               TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
-            ],
-        );
 
-    //   AlertDialog(
-    //   title: Text('상품 등록'),
-    //   actions: <Widget> [
-    //     TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
-    //
-    //     TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
-    //   ],
-    // );
+      return
+      Stack(
+        children: <Widget>[
+          LendMainScreen(),
+          BackdropFilter(filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child : showDialog()),
+
+        ],
+
+      );
+
+
+
+
+
+
   }
+}
+
+
+
+Widget showDialog() {
+
+  return AlertDialog(
+    backgroundColor:Colors.white,
+
+    title: Text('상품 등록'),
+    actions: <Widget> [
+      TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
+      TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
+
+    ],
+
+
+
+  );
 }

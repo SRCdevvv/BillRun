@@ -1,9 +1,15 @@
+import 'package:bilrun/screens/rent/rent_main.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
 import 'package:bilrun/design/divider_example.dart';
+import 'package:get/get.dart';
+import 'package:bilrun/screens/lend/lend_main.dart';
+import 'package:bilrun/screens/rent/rent_main.dart';
 
 void main() => runApp(ProductDetailScreen());
+
+
 
 class ProductDetailScreen extends StatefulWidget {
   @override
@@ -11,14 +17,12 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(100),
-            child: BillrunAppbar(),
-          ),
           body: SafeArea(
          child: Column(
             children: <Widget>[
@@ -29,7 +33,36 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     shrinkWrap: true,
                     children: <Widget>[
                       //TODO  배너 상품에 맞게 크기랑 세부 디자인 적용하기
-                      BannerWidget(),
+
+                     Stack(
+                       children: <Widget>[
+                         BannerWidget(),
+                         Positioned(
+                           child:IconButton(
+                               iconSize : 40.0,
+                               icon: Icon(Icons.arrow_back),
+                               color:  Colors.white,
+                               onPressed: ()=>{
+                                 Get.back()
+                               }
+                           ),
+                           left: 5,
+                         ),
+                         Positioned(
+                           child:IconButton(
+                               iconSize : 40.0,
+                               icon: Icon(Icons.more_vert),
+                               color:  Colors.white,
+                               onPressed: ()=>{
+
+                               }
+                           ),
+                           right: 5,
+                         ),
+
+                       ],
+                     ),
+
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
                         child: Container(
@@ -149,6 +182,8 @@ Container MediumText(String texts) {
 }
 
 Container BoldTitle(String Title, color, double sizeFont) {
+
+
   return Container(
     padding: EdgeInsets.fromLTRB(5, 0, 10, 10),
     child: Text(Title,
@@ -159,8 +194,7 @@ Container BoldTitle(String Title, color, double sizeFont) {
 
 Widget _bottomBarWidget() {
   return Container(
-    width: 300,
-    //FIXME 미디어 쿼리로 변경 필요 width
+    width: Get.width,
     height: 100,
     color: Colors.white,
     child: Row(

@@ -7,10 +7,14 @@ import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:bilrun/screens/product_detail.dart';
+import 'package:get/get.dart';
 
 //빌
 
 void main() => runApp(RentMainScreen());
+
+String NameOfProduct ;
 
 class RentMainScreen extends StatefulWidget {
   @override
@@ -51,7 +55,9 @@ class _RentMainScreenState extends State<RentMainScreen> {
             setState(() {
               if(productToAdd.category ==false){
                 _data.add(productToAdd);
-              ListCount++;}
+              ListCount++;
+
+              }
             });
           }
 
@@ -69,8 +75,8 @@ class _RentMainScreenState extends State<RentMainScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
     _fetchData();
+
   }
 
 
@@ -150,51 +156,10 @@ class _RentMainScreenState extends State<RentMainScreen> {
 
                               return  Card(
                                 elevation: 0.0,
-
-                                // child: Container(
-                                //   child: Row(
-                                //     children: <Widget>[
-                                //
-                                //   Column(
-                                //     children: <Widget> [
-                                //       Container(
-                                //         width: MediaQuery.of(context).size.width-150,
-                                //         child:
-                                //         Text('${product.name}',style: Theme.of(context).textTheme.headline5),
-                                //       ),
-                                //
-                                //       Row(
-                                //         children: <Widget>[
-                                //
-                                //           Text('${product.price}/',style: TextStyle(fontWeight: FontWeight.bold),),
-                                //           Text('${product.price_prop}'),
-                                //           Padding(
-                                //             padding: const EdgeInsets.fromLTRB(30,0,10,0),
-                                //             child: Text('💁n분전',style: TextStyle(color: Colors.grey[700]),),
-                                //           )
-                                //
-                                //
-                                //         ],
-                                //       ),
-                                //
-                                //     ],
-                                //   ),
-                                //       Image.network(
-                                //         'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
-                                //         height: 100,
-                                //         width: 100,
-                                //         fit: BoxFit.contain,
-                                //       ),
-                                //
-                                //     ],
-                                //
-                                //   ),
-                                //
-                                // ),
-
                                 child: ListTile(
                                   title: Text('${product.name}',style: TextStyle(fontSize: 20)),
                                   subtitle: Text('${product.price}/ ${product.price_prop}   💁n분전'),
+                                  onTap: ()=>{ Get.to(ProductDetailScreen(),arguments: NameOfProduct)},
                                   trailing: url !=null ?
 
                                 Container(

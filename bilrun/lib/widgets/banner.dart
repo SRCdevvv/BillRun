@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 
 class BannerWidget extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _BannerWidget extends State<BannerWidget> {
                       borderRadius: BorderRadius.circular(0),
                     ),
                     child: Container(
-                      width: MediaQuery.of(context).size.width,
+                      width: Get.width,
                       child: Image.asset(
                         e,
                         fit: BoxFit.cover,
@@ -42,7 +43,7 @@ class _BannerWidget extends State<BannerWidget> {
               );
             }).toList(),
             options: CarouselOptions(
-              height: 240,
+              height: Get.height / 3.5,
               enlargeCenterPage: true,
               viewportFraction: 1,
               onPageChanged: (index, reason) {
