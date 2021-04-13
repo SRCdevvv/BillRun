@@ -1,4 +1,3 @@
-import 'package:bilrun/TryLend/LendModel.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'lend_controller.dart';
 import 'lend_product_list.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
-import 'package:bilrun/model/product_model.dart';
+
 
 
 void main()=>runApp(LendMain());
