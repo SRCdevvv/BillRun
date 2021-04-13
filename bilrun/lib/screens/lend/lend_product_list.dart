@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/model/product_model.dart';
+import 'package:bilrun/model/lend_product_model.dart';
 import 'package:bilrun/screens/lend/lend_controller.dart';
 
 import '../product_detail.dart';
@@ -11,8 +11,8 @@ bool _isPressed=false;
 
 class LendProductTile extends StatelessWidget {
 
-  final Product product;
-  const LendProductTile(this.product);
+  final LendProduct lendproduct;
+  const LendProductTile(this.lendproduct);
 
 
 
@@ -22,15 +22,15 @@ class LendProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    switch(product.priceProp){
+    switch(lendproduct.priceProp){
       case "1h" :
-        product.priceProp = '시간';
+        lendproduct.priceProp = '시간';
         break;
       case "30m" :
-        product.priceProp = '30분';
+        lendproduct.priceProp = '30분';
         break;
       case "Day" :
-        product.priceProp = '일';
+        lendproduct.priceProp = '일';
         break;
     }
 
@@ -76,15 +76,15 @@ class LendProductTile extends StatelessWidget {
 
 
                       Text(
-                      ' ${product.name}',
+                      ' ${lendproduct.name}',
                       style: TextStyle(fontSize: 23,color: Colors.black),),
                       Row(
                       children: <Widget>[
                       Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                      child: Text('${product.price} 원',
+                      child: Text('${lendproduct.price} 원',
                       style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
                       Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                      child: Text('/${product.priceProp}',
+                      child: Text('/${lendproduct.priceProp}',
                       style: TextStyle(fontSize: 15, color: Colors.grey[900],),),
 
                       ),
@@ -99,7 +99,7 @@ class LendProductTile extends StatelessWidget {
                           radius: 15,
                         )),
                     Padding(padding: EdgeInsets.fromLTRB(3, 0, 0, 0),
-                      child: Text('${product.userId.nickname}',
+                      child: Text('${lendproduct.userId.nickname}',
                         style: TextStyle(fontSize: 18,color: Colors.black),),),
                     Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
                         child: Text('물품 등록시간',

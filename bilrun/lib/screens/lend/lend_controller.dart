@@ -1,18 +1,18 @@
 import 'package:get/state_manager.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
-import 'package:bilrun/model/product_model.dart';
+import 'package:bilrun/model/lend_product_model.dart';
 
 
 
 
 
-class ProductController extends GetxController {
+class LendProductController extends GetxController {
 
   var isLoading = true.obs;
   // ignore: deprecated_member_use
-  var productList = List<Product>().obs;
+  var productList = List<LendProduct>().obs;
   // ignore: deprecated_member_use
-  var newProductList = List<Product>().obs;
+  var newProductList = List<LendProduct>().obs;
 
 
 

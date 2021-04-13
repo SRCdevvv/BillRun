@@ -1,11 +1,8 @@
-import 'package:bilrun/screens/rent/rent_main.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/billrun_appbar.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/screens/lend/lend_main.dart';
-import 'package:bilrun/screens/rent/rent_main.dart';
 
 void main() => runApp(ProductDetailScreen());
 
