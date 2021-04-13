@@ -1,48 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:bilrun/model/product_model.dart';
+import 'package:bilrun/screens/lend/lend_controller.dart';
 
 
-class ProductRentList extends StatefulWidget {
+int LendProductCount = 0;
+
+class LendProductTile extends StatelessWidget {
+
+  final Product product;
+  const LendProductTile(this.product);
+
+
+
+
   @override
-  _ProductRentListState createState() => _ProductRentListState();
-}
 
-class _ProductRentListState extends State<ProductRentList> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          body: Container(
-            height: MediaQuery.of(context).size.height,
-            child:SingleChildScrollView (
-              child: Column(
-                children: <Widget>[
-                  GridView.count(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    crossAxisCount:2,
-                  children: List.generate(10, (index){
-                    return Center(
-                      child: Text(
-                        'Item $index',
-                        style: Theme.of(context).textTheme.headline5,
+
+
+
+    // if(product.category ==true){
+    //   LendProductCount ++;
+    //   print('리스트: $LendProductCount');
+    //   LendProductTile(this.product);
+
+
+
+
+      return  Card(
+        elevation: 2,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                    children: [
+
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10,0,0,10),
+                        child: Text('${product.name}'),
                       ),
-                    );
-                  }
-                  ),
-                  ),
-                ],
-
-
-              ),
-
-         ),
-          )
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 20, 0),
+                        child: Text(('${product.userId.nickname}')),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(50, 52, 0, 0),
+                        child: Text('${product.price}'),
+                      ),
 
 
 
 
 
-    );
+
+
+                    ]
+                ),
+              ]
+          ),
+        ),
+      );
+
+
+
+
+    // }
+    // else{
+    //   return Text('d');
+    // }
+
+
+
   }
 }
