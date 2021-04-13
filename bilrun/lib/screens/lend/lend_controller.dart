@@ -11,6 +11,10 @@ class ProductController extends GetxController {
   var isLoading = true.obs;
   // ignore: deprecated_member_use
   var productList = List<Product>().obs;
+  // ignore: deprecated_member_use
+  var newProductList = List<Product>().obs;
+
+
 
 
 
