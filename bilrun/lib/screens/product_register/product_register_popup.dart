@@ -1,11 +1,9 @@
 import 'dart:ui';
-
+import 'package:bilrun/screens/product_register/rent_register_main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/screens/product_register/register_main.dart';
-import 'package:bilrun/screens/lend/lend_main.dart';
-import 'package:bilrun/main.dart';
+import 'lend_register_main.dart';
 
 
 
@@ -54,8 +52,8 @@ Widget showDialog() {
 
     title: Text('상품 등록'),
     actions: <Widget> [
-      TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
-      TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
+      TextButton(onPressed: ()=> {Get.to(LendProductRegister(),arguments: true)}, child: Text('빌려드림')),
+      TextButton(onPressed: ()=>{Get.to(RentProductRegister(),arguments: false)}, child: Text('빌림'))
 
     ],
 

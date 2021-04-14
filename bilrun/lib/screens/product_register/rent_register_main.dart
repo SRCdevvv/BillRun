@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'camera_image_picker.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/main.dart';
 
-void main() => runApp(ProductRegister());
+
+void main() => runApp(RentProductRegister());
 
 
 bool ProductCategory;
 
 
-class ProductRegister extends StatelessWidget {
+class RentProductRegister extends StatelessWidget {
 
 
 
@@ -32,7 +31,7 @@ class ProductRegister extends StatelessWidget {
         title: Padding(
           padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
           child: Text(
-            "상품 등록",
+            "빌림 상품 등록",
             style: TextStyle(color: Colors.black, fontSize: 28.0),
           ),
         ),
@@ -94,7 +93,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     size: 45,
                   ),
                   onPressed: () {
-                    }),
+                  }),
             ),
           ]),
           OriginDivider(Colors.grey[500], 1, 65, 60),
@@ -106,9 +105,9 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                 ProductTextfield('가격'),
                 Container(
                     child: Text(
-                  "원",
-                  style: TextStyle(fontSize: 20.0),
-                )),
+                      "원",
+                      style: TextStyle(fontSize: 20.0),
+                    )),
               ],
             ),
           ),
@@ -166,12 +165,12 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               color: Colors.red[900],
               child: Center(
                   child: Text(
-                "등록하기",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              )),
+                    "등록하기",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  )),
             ),
             onTap: () {},
           ),
@@ -198,22 +197,22 @@ Container ProductTextfield(String title) {
 TextButton TimeStandard(String timeStandard) {
   return TextButton(
       child: TextButton(
-    style: TextButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-        side: BorderSide(color: Colors.red[900]),
-      ),
-      backgroundColor: Colors.white,
-    ),
-    onPressed: () {},
-    child: Text(
-      "$timeStandard",
-      style: TextStyle(
-        fontSize: 17.0,
-        color: Colors.red[900],
-      ),
-    ),
-  ));
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+            side: BorderSide(color: Colors.red[900]),
+          ),
+          backgroundColor: Colors.white,
+        ),
+        onPressed: () {},
+        child: Text(
+          "$timeStandard",
+          style: TextStyle(
+            fontSize: 17.0,
+            color: Colors.red[900],
+          ),
+        ),
+      ));
 }
 
 Container ExplainText(String explainText) {

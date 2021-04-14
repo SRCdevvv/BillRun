@@ -1,15 +1,14 @@
 import 'package:bilrun/widgets/location/now_location.dart';
+import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:bilrun/widgets/banner.dart';
-import 'package:bilrun/widgets/billrun_appbar.dart';
 import 'package:bilrun/design/divider_example.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 import 'package:get/get.dart';
+import 'package:bilrun/widgets/search/search_button.dart';
 
-//빌
+//빌림
 
 void main() => runApp(RentMain());
 
@@ -88,10 +87,38 @@ class _RentMainState extends State<RentMain> {
 
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child:
-        BillrunAppbar(),
+      appBar: AppBar(
+        // leading: Padding(
+        //   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+        //   child:
+        //   IconButton(
+        //     icon: Icon(Icons.menu),
+        //     color: Colors.black,
+        //     tooltip: 'menu click',
+        //     iconSize: 30.0,
+        //     onPressed: () => {
+        //       ListTileStyle.drawer
+        //
+        //
+        //     },
+        //   ),
+        // ),
+        backgroundColor: Colors.white,
+        title: Row(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          // mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Image.asset('assets/images/logo.png', height: 40, width: 100)
+          ],
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
+            child: SearchButton(),
+          ),
+
+          //TODO 검색창으로 넘어가도록 네비게이터
+        ],
       ),
 
       body: Column(
@@ -215,6 +242,12 @@ class _RentMainState extends State<RentMain> {
           ),
         ],
       ),
+      drawer: Drawer(
+        child:
+        MainDrawer(),
+      ),
+
+
     );
   }
 

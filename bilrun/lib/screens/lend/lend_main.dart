@@ -1,10 +1,11 @@
 import 'package:bilrun/widgets/banner.dart';
+import 'package:bilrun/widgets/main_drawer.dart';
+import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'lend_controller.dart';
 import 'lend_product_list.dart';
-import 'package:bilrun/widgets/billrun_appbar.dart';
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/design/divider_example.dart';
 
@@ -39,12 +40,30 @@ class _LendMainState extends State<LendMain> {
 
       return Scaffold(
 
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child:
-        BillrunAppbar(),
-      ),
-      body:
+        appBar: AppBar(
+
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.white,
+          title: Row(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Image.asset('assets/images/logo.png', height: 40, width: 100)
+            ],
+          ),
+          actions: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
+              child: SearchButton(),
+            ),
+
+            //TODO 검색창으로 넘어가도록 네비게이터
+          ],
+        ),
+
+        body:
           SafeArea(
           child: Column(
               children: [
@@ -54,8 +73,8 @@ class _LendMainState extends State<LendMain> {
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       children: [
+                        OriginDivider(Colors.red[900], 100, 0, 0),
                         BannerWidget(),
-                        OriginDivider(Colors.red[900], 5, 0, 0),
                         Row(
                           children: [
                             Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -112,6 +131,16 @@ class _LendMainState extends State<LendMain> {
     ],
     ),
     ),
+
+
+          drawer: Drawer(
+            child:
+            MainDrawer(),
+          ),
+
+
+
+
     );
 
 
