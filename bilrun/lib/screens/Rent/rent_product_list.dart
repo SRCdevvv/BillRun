@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:bilrun/model/rent_product_model.dart';
 import 'package:bilrun/screens/Rent/rent_controller.dart';
 
-import '../product_detail.dart';
+import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 
 
-int LendProductCount = 0;
-bool _isPressed=false;
 
-class LendProductTile extends StatelessWidget {
+
+
+class RentProductTile extends StatelessWidget {
 
   final RentProduct product;
-  const LendProductTile(this.product);
+  const RentProductTile(this.product);
 
 
 
@@ -37,84 +37,35 @@ class LendProductTile extends StatelessWidget {
 
 
 
-    return
-      Container(
 
-        child:Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
+    return Card(
+      child: Container(
+        //행 하나하나
 
+        child:Row(
+          children:<Widget> [
+            Column(
+              children: <Widget> [
+                Container(
+                  width: MediaQuery.of(context).size.width - 150,
+                  //화면에서 이미지 크기 제외
 
-                GestureDetector(
-                  onTap: (){
-                    Get.to(ProductDetailScreen());},
-                  child : Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.black,
-                      image: DecorationImage(image: NetworkImage('https://www.lge.co.kr/uploads/CONTENTS/REVIEW/objet/review_02.jpg'),
-                          fit: BoxFit.fill),
-                    ),
-                    width: 140,
-                    height: 130,
-
+                  child: Text(
+                    '${product.name}',
+                    textAlign: TextAlign.center,
                   ),
                 ),
+                Text('${product.price}'),
+                Text( '${product.priceProp}'),
 
-                Positioned(
-                  child:IconButton(
-                    iconSize : 30.0,
-                    icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
-                    color: _isPressed? Colors.red[900] : Colors.white,
-                  ),
-                  right: 5,
-                )
-
+                //Text('${data[index]['datetime']}'),
               ],
-            ),
-
-
-            Text(
-              ' ${product.name}',
-              style: TextStyle(fontSize: 23,color: Colors.black),),
-            Row(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Text('${product.price} 원',
-                    style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
-                Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                  child: Text('/${product.priceProp}',
-                    style: TextStyle(fontSize: 15, color: Colors.grey[900],),),
-
-                ),
-              ],
-            ),
-
-            Row(
-              children:<Widget> [
-                Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage('http://sniblog.co.kr/wp-content/uploads/2020/01/20200116_002721.jpg'),
-                      radius: 15,
-                    )),
-                Padding(padding: EdgeInsets.fromLTRB(3, 0, 0, 0),
-                  child: Text('${product.userId.nickname}',
-                    style: TextStyle(fontSize: 18,color: Colors.black),),),
-                Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                    child: Text('물품 등록시간',
-                      style: TextStyle(fontSize: 13, color: Colors.grey[900],),)),
-
-              ],
-            ),
+            )
           ],
+          mainAxisAlignment: MainAxisAlignment.start,
         ),
-        //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}') ,
-        //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}'),
-
-
-
-      );
+      ),
+    );
 
 
 
