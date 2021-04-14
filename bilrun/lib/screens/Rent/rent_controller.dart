@@ -6,7 +6,7 @@ import 'package:bilrun/model/rent_product_model.dart';
 
 
 
-class ProductController extends GetxController {
+class RentProductController extends GetxController {
 
   var isLoading = true.obs;
   // ignore: deprecated_member_use
@@ -26,7 +26,7 @@ class ProductController extends GetxController {
   Future  fetchProducts() async {
     try {
       isLoading(true);
-      var rentProducts = await RentProductListService.fetchLendProducts();
+      var rentProducts = await RentProductListService.fetchRentProducts();
 
       if (rentProducts != null) {
         rentProductList.value = rentProducts;

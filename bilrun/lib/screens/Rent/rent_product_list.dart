@@ -34,38 +34,46 @@ class RentProductTile extends StatelessWidget {
         break;
     }
 
+    var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
 
 
 
 
     return Card(
-      child: Container(
-        //행 하나하나
+        elevation: 0.0,
+        child: Container(
+          width: Get.width -200,
+          height: (Get.height -200)/8,
+          child: ListTile(
+          title: Text('${product.name}',style: TextStyle(fontSize: 20)),
+          subtitle: Text('${product.price}/ ${product.priceProp}   💁n분전'),
+          onTap: ()=>{ Get.to(ProductDetailScreen(),arguments:product.name )},
+          trailing: url !=null ?
 
-        child:Row(
-          children:<Widget> [
-            Column(
-              children: <Widget> [
-                Container(
-                  width: MediaQuery.of(context).size.width - 150,
-                  //화면에서 이미지 크기 제외
+          Container(
+            decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10), //모서리를 둥글게
+            border: Border.all(color: Colors.grey[300], width: 3),
+            color: Colors.grey[300]),
+            height: 100,
+            width: 60,
+            //color: Colors.grey[500],
+            child: Icon(
+            Icons.camera_alt_outlined,
+            color: Colors.white,
+            size: 40,
+            ),
 
-                  child: Text(
-                    '${product.name}',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Text('${product.price}'),
-                Text( '${product.priceProp}'),
 
-                //Text('${data[index]['datetime']}'),
-              ],
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.start,
+            ) : Image.network(url,
+            height: 100,
+            width: 100,
+            fit: BoxFit.contain,)
+       ),
         ),
-      ),
     );
+
+
 
 
 
