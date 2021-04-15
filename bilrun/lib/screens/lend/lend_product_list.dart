@@ -36,59 +36,64 @@ class LendProductTile extends StatelessWidget {
 
 
 
-      return
-        Container(
-
-          child:Column(
+      return   Container(
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-          Stack(
-          children: <Widget>[
+                Stack(
+                  children: <Widget>[
 
 
-              GestureDetector(
-              onTap: (){
-                   Get.to(ProductDetailScreen());},
-                child : Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Colors.black,
-                            image: DecorationImage(image: NetworkImage('https://www.lge.co.kr/uploads/CONTENTS/REVIEW/objet/review_02.jpg'),
-                                fit: BoxFit.fill),
-                          ),
-                          width: 140,
-                          height: 130,
-
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(ProductDetailScreen());},
+                      child : Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.black,
+                          image: DecorationImage(image: NetworkImage('https://www.lge.co.kr/uploads/CONTENTS/REVIEW/objet/review_02.jpg'),
+                              fit: BoxFit.fill),
                         ),
-                      ),
+                        width: 140,
+                        height: 130,
 
-                Positioned(
+                      ),
+                    ),
+
+                    Positioned(
                       child:IconButton(
-                            iconSize : 30.0,
-                            icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
-                            color: _isPressed? Colors.red[900] : Colors.white,
-                            ),
-                            right: 5,
-                            )
+                        iconSize : 30.0,
+                        icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
+                        color: _isPressed? Colors.red[900] : Colors.white,
+                      ),
+                      right: 5,
+                    )
 
-                            ],
-                            ),
+                  ],
+                ),
 
 
-                      Text(
-                      ' ${lendproduct.name}',
-                      style: TextStyle(fontSize: 23,color: Colors.black),),
-                      Row(
-                      children: <Widget>[
-                      Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                Text(
+                  ' ${lendproduct.name}',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 23,color: Colors.black),),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                       child: Text('${lendproduct.price} 원',
-                      style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
-                      Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
+                    Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
                       child: Text('/${lendproduct.priceProp}',
-                      style: TextStyle(fontSize: 15, color: Colors.grey[900],),),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 15, color: Colors.grey[900],),),
 
-                      ),
-                      ],
-                      ),
+                    ),
+                  ],
+                ),
 
                 Row(
                   children:<Widget> [
@@ -99,21 +104,33 @@ class LendProductTile extends StatelessWidget {
                         )),
                     Padding(padding: EdgeInsets.fromLTRB(3, 0, 0, 0),
                       child: Text('${lendproduct.userId.nickname}',
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 18,color: Colors.black),),),
-                    Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
-                        child: Text('물품 등록시간',
-                          style: TextStyle(fontSize: 13, color: Colors.grey[900],),)),
+                    Flexible(
+                      child: Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
+
+                            child: Text('물품 등록시간 ',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontSize: 13, color: Colors.grey[900],),),
+                          ),
+                    ),
 
                   ],
                 ),
               ],
-          ),
-          //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}') ,
-          //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}'),
+            ),
+            //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}') ,
+            //Image.network('http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/${product.photo}'),
 
 
 
-        );
+
+
+
+      );
+
+
+
 
 
 

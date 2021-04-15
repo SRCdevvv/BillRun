@@ -90,7 +90,6 @@ class _LendMainState extends State<LendMain> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0,10,0,0),
-                          child: Expanded(
                             child: Obx(()
                             {
                               if (productController.isLoading.value)
@@ -123,7 +122,7 @@ class _LendMainState extends State<LendMain> {
 
                             ),
                           ),
-                        ),
+
                       ],
           ),
           ),
