@@ -1,4 +1,5 @@
 import 'package:bilrun/screens/Rent/rent_service.dart';
+import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/model/rent_product_model.dart';
 
@@ -32,9 +33,20 @@ class RentProductController extends GetxController {
         rentProductList.value = rentProducts;
 
       }
+      else if(rentProducts == null) {
+        print('error');
+        return Scaffold(
+          body: Column(
+            children: [
+              Text('데이터 로드 실패')
+            ],
+          ),
+        );
+      }
 
 
-    } finally {
+
+      } finally {
       isLoading(false);
     }
   }

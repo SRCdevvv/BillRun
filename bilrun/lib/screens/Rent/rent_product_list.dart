@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/rent_product_model.dart';
-import 'package:bilrun/screens/Rent/rent_controller.dart';
-
-import 'package:bilrun/screens/product_detail/product_detail_main.dart';
-
+import 'package:bilrun/screens/product_detail/rent_product_detail_main.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 
 
@@ -35,6 +33,13 @@ class RentProductTile extends StatelessWidget {
     }
 
     var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
+//     print(product.createdAt);
+//     var currentTime = DateTime.now();
+//
+//    var productTime = product.createdAt;
+//
+// var  TimeAgo = timeago.format(currentTime.subtract(Duration(hours:1)));
+// print(TimeAgo);
 
 
 
@@ -47,7 +52,7 @@ class RentProductTile extends StatelessWidget {
           child: ListTile(
           title: Text('${product.name}',style: TextStyle(fontSize: 20)),
           subtitle: Text('${product.price}/ ${product.priceProp}   💁n분전'),
-          onTap: ()=>{ Get.to(ProductDetailScreen(),arguments:product.name )},
+          onTap: ()=>{ Get.to(RentProductDetailScreen(),arguments:product.name, )},
           trailing: url !=null ?
 
           Container(

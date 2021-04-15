@@ -1,8 +1,8 @@
+import 'package:bilrun/screens/product_detail/lend_product_detail_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/lend_product_model.dart';
-import 'package:bilrun/screens/lend/lend_controller.dart';
-import 'package:bilrun/screens/product_detail/product_detail_main.dart';
+
 
 
 int LendProductCount = 0;
@@ -47,7 +47,7 @@ class LendProductTile extends StatelessWidget {
 
                     GestureDetector(
                       onTap: (){
-                        Get.to(ProductDetailScreen());},
+                        Get.to(LendProductDetailScreen());},
                       child : Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),

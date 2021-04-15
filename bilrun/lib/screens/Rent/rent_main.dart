@@ -104,30 +104,6 @@ class _RentMainState extends State<RentMain> {
                                 itemBuilder: ( BuildContext context, int index){
                                   return RentProductTile(rentProductController.rentProductList[index]);
                                 });
-
-
-
-                        // GridView.count(
-                        //   crossAxisCount: 2,
-                        //   scrollDirection: Axis.vertical,
-                        //   shrinkWrap: true,
-                        //
-                        //   children: List.generate(
-                        //       rentProductController.rentProductList.length,
-                        //
-                        //
-                        //           (index) {
-                        //
-                        //         return RentProductTile(rentProductController.rentProductList[index]);
-                        //       }
-                        //
-                        //
-                        //
-                        //
-                        //   ),
-                        //
-                        //
-                        // );
                       }
 
                       ),
