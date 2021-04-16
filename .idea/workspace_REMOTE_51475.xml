@@ -19,9 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9843a93c-7cf8-49c2-a620-11016c6ee779" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" beforeDir="false" />
+    <list default="true" id="75e89a97-b02f-469f-8ccc-2d9faff1b740" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/design/red_divider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/design/divider_example.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/rent/rent_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/rent/rent_main.dart" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/ios/Flutter/Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/register_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/banner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/banner.dart" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +76,11 @@
       <recent name="C:\Users\woonee\Desktop\BillRun\bilrun\lib\widgets" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager" selected="Flutter.main.dart">
+=======
+  <component name="RunManager" selected="Flutter.product_detail.dart (1)">
+>>>>>>> Stashed changes
     <configuration name="Unnamed" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/bilrun/lib/main.dart" />
       <method v="2" />
@@ -132,10 +151,6 @@
     </state>
     <state x="498" y="201" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1612625394900" />
     <state x="467" y="238" key="#com.intellij.ide.util.TreeFileChooserDialog/0.25.1440.875@0.25.1440.875" timestamp="1616734297352" />
-    <state x="1978" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618560794441">
-      <screen x="1440" y="25" width="1600" height="875" />
-    </state>
-    <state x="1978" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1618560794441" />
     <state x="87" y="124" width="1266" height="678" key="AVDManager" timestamp="1616664008228">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
@@ -145,34 +160,61 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613512385986" />
-    <state width="1558" height="228" key="GridCell.Tab.0.bottom" timestamp="1618560794906">
-      <screen x="1440" y="25" width="1600" height="875" />
+<<<<<<< Updated upstream
+    <state width="678" height="202" key="GridCell.Tab.0.bottom" timestamp="1616740036659">
+=======
+    <state width="678" height="201" key="GridCell.Tab.0.bottom" timestamp="1616984859549">
+>>>>>>> Stashed changes
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state width="1398" height="211" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1616738067049" />
     <state width="1476" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612674112745" />
-    <state width="1558" height="228" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1618560794906" />
+<<<<<<< Updated upstream
     <state width="678" height="202" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1616740036659" />
-    <state width="1558" height="228" key="GridCell.Tab.0.center" timestamp="1618560794906">
-      <screen x="1440" y="25" width="1600" height="875" />
+    <state width="678" height="202" key="GridCell.Tab.0.center" timestamp="1616740036658">
+=======
+    <state width="678" height="201" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1112.809@0.25.1440.875" timestamp="1616857482505" />
+    <state width="1398" height="201" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1616853776620" />
+    <state width="678" height="201" key="GridCell.Tab.0.bottom/1440.25.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1616984859549" />
+    <state width="678" height="201" key="GridCell.Tab.0.center" timestamp="1616984859549">
+>>>>>>> Stashed changes
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state width="1398" height="211" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1616738067049" />
     <state width="1476" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612674112743" />
-    <state width="1558" height="228" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1618560794906" />
+<<<<<<< Updated upstream
     <state width="678" height="202" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1616740036658" />
-    <state width="1558" height="228" key="GridCell.Tab.0.left" timestamp="1618560794904">
-      <screen x="1440" y="25" width="1600" height="875" />
+    <state width="678" height="202" key="GridCell.Tab.0.left" timestamp="1616740036658">
+=======
+    <state width="678" height="201" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1112.809@0.25.1440.875" timestamp="1616857482505" />
+    <state width="1398" height="201" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1616853776619" />
+    <state width="678" height="201" key="GridCell.Tab.0.center/1440.25.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1616984859549" />
+    <state width="678" height="201" key="GridCell.Tab.0.left" timestamp="1616984859548">
+>>>>>>> Stashed changes
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state width="1398" height="211" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1616738067047" />
     <state width="1476" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612674112743" />
-    <state width="1558" height="228" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1618560794904" />
+<<<<<<< Updated upstream
     <state width="678" height="202" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1616740036658" />
-    <state width="1558" height="228" key="GridCell.Tab.0.right" timestamp="1618560794906">
-      <screen x="1440" y="25" width="1600" height="875" />
+    <state width="678" height="202" key="GridCell.Tab.0.right" timestamp="1616740036659">
+=======
+    <state width="678" height="201" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1112.809@0.25.1440.875" timestamp="1616857482505" />
+    <state width="1398" height="201" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1616853776616" />
+    <state width="678" height="201" key="GridCell.Tab.0.left/1440.25.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1616984859548" />
+    <state width="678" height="201" key="GridCell.Tab.0.right" timestamp="1616984859549">
+>>>>>>> Stashed changes
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state width="1398" height="211" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1616738067049" />
     <state width="1476" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612674112744" />
-    <state width="1558" height="228" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1618560794906" />
+<<<<<<< Updated upstream
     <state width="678" height="202" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1616740036659" />
+=======
+    <state width="678" height="201" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1112.809@0.25.1440.875" timestamp="1616857482505" />
+    <state width="1398" height="201" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1616853776619" />
+    <state width="678" height="201" key="GridCell.Tab.0.right/1440.25.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1616984859549" />
+>>>>>>> Stashed changes
     <state x="308" y="209" key="IDE.errors.dialog" timestamp="1616730029258">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
