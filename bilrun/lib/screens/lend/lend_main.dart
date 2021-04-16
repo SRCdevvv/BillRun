@@ -1,94 +1,158 @@
-import 'package:bilrun/widgets/location/now_location.dart';
-import 'package:flutter/material.dart';
 import 'package:bilrun/widgets/banner.dart';
-import 'package:bilrun/widgets/billrun_appbar.dart';
+import 'package:bilrun/widgets/main_drawer.dart';
+import 'package:bilrun/widgets/search/search_button.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'lend_controller.dart';
+import 'lend_product_list.dart';
+import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/design/divider_example.dart';
 
-//빌려드림
 
-void main() => runApp(LendMainScreen());
 
-class LendMainScreen extends StatefulWidget {
+void main()=>runApp(LendMain());
+
+class LendMain extends StatefulWidget {
+
+  LendMain({Key key, this.title}) : super(key: key);
+
+  final String title;
+
   @override
-  _LendMainScreenState createState() => _LendMainScreenState();
+  _LendMainState createState() => _LendMainState();
 }
 
-class _LendMainScreenState extends State<LendMainScreen> {
-  final TextEditingController _textController = new TextEditingController();
+class _LendMainState extends State<LendMain> {
+
+  final LendProductController productController = Get.put(LendProductController());
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: BillrunAppbar(),
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            child: Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        OriginDivider(Colors.red[900],10,0,0),
-                        //TODO 여백 없애기
-                        Stack(
-                          children: <Widget>[
-                            BannerWidget(),
+
+//TODO 전체 화면 스크롤
+  //TODO 오버픽셀 고치기
+
+      return Scaffold(
+
+        appBar: AppBar(
+
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.white,
+          title: Row(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Image.asset('assets/images/logo.png', height: 40, width: 100)
+            ],
+          ),
+          actions: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 20, 0),
+              child: SearchButton(),
+            ),
+
+            //TODO 검색창으로 넘어가도록 네비게이터
+          ],
+        ),
+
+        body:
+          SafeArea(
+          child: Column(
+              children: [
+                Container(
+                  child: Expanded(
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      children: [
+                        OriginDivider(Colors.red[900], 100, 0, 0),
+                        BannerWidget(),
+                        Row(
+                          children: [
+                            Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: NowLocation(),
+                            ),
+                            Text(
+                              '지금 빌려주세요!',
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
+
                           ],
                         ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                            child: Obx(()
+                            {
+                              if (productController.isLoading.value)
+                                return Center(child: CircularProgressIndicator());
 
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                child: NowLocation(),
-                              ),
-                              Text(
-                                '지금 빌려드려요!',
-                                style: TextStyle(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                              else
+                                return
+                                  GridView.count(
+                                    crossAxisCount: 2,
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+
+                                    children: List.generate(
+                                        productController.productList.length,
+
+
+                                            (index) {
+
+                                          return LendProductTile(productController.productList[index]);
+                                        }
+
+
+
+
+                                    ),
+
+
+                                  );
+                            }
+
+                            ),
                           ),
-                        ),
-//TODO 빌려드림 목록으로 바꾸기(데이터 연결)
-                        GridView.count(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          crossAxisCount: 2,
-                          children: List.generate(
-                            10,
-                            (index) {
-                              return Center(
-                                child: Text(
-                                  'Item $index',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+
                       ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
-        ],
+          ),
       ),
-    );
-  }
+    ],
+    ),
+    ),
 
-  void _handleSubmitted(String text) {
-    _textController.clear();
-  }
+
+          drawer: Drawer(
+            child:
+            MainDrawer(),
+          ),
+
+
+
+
+    );
+
+
+
+
+
+
+
+
+
 }
+
+
+
+}
+
