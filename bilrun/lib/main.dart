@@ -26,8 +26,10 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 int currentIndex = 0;
-int passIndex=0;
+int passIndex = 0;
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onTap(int index) {
     setState(() {
       currentIndex = index;
-      });
+    });
   }
 
   void _incrementCounter() {
@@ -50,23 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: _children[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.grey[800],
+            unselectedItemColor: Colors.grey[800],
             selectedItemColor: Colors.red[900],
             type: BottomNavigationBarType.fixed,
             onTap: _onTap,
-            currentIndex: currentIndex  ,
+            currentIndex: currentIndex,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.attach_money),
                 label: '빌려드림',
-
-
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.format_paint),
@@ -87,4 +86,3 @@ class _MyHomePageState extends State<MyHomePage> {
             ]));
   }
 }
-
