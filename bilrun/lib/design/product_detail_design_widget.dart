@@ -18,7 +18,8 @@ Container SmallTitle(String Title, color, double sizeFont) {
     padding: EdgeInsets.fromLTRB(5, 0, 10, 10),
     child: Text(Title,
         style: TextStyle(
-            fontWeight: FontWeight.normal, fontSize: sizeFont, color: color)),
+            fontWeight: FontWeight.normal, fontSize: sizeFont, color: color),
+    ),
   );
 }
 
@@ -29,7 +30,7 @@ Container MediumTitle(String Title) {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30,
-            color: Colors.grey[700])),
+            color: Colors.black)),
   );
 }
 
@@ -58,7 +59,7 @@ Container BoldTitle(String Title, color, double sizeFont) {
 
 
 
-Widget ProductbottomBarWidget() {
+Widget ProductbottomBarWidget( String cost, String priceProp) {
   return Container(
     width: Get.width,
     height: 100,
@@ -86,7 +87,7 @@ Widget ProductbottomBarWidget() {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
               child: Text(
-                "가격",
+                "$cost",
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -104,7 +105,7 @@ Widget ProductbottomBarWidget() {
                   backgroundColor: Colors.white,
                 ),
                 child: Text(
-                  "일 당",
+                  "$priceProp",
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.red[900],
@@ -115,7 +116,7 @@ Widget ProductbottomBarWidget() {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(130,10,30,20),
+          padding: const EdgeInsets.fromLTRB(50,10,30,20),
 
           child: Container(
             width:100 ,

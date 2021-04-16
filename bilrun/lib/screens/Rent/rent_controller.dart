@@ -1,4 +1,5 @@
 import 'package:bilrun/screens/Rent/rent_service.dart';
+import 'package:bilrun/screens/product_detail/rent_product_detail/rent_product_detail_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/model/rent_product_model.dart';
@@ -18,19 +19,23 @@ class RentProductController extends GetxController {
 
 
 
+
   @override
   void onInit() {
     fetchProducts();
     super.onInit();
   }
 
+
   Future  fetchProducts() async {
     try {
       isLoading(true);
       var rentProducts = await RentProductListService.fetchRentProducts();
 
+
       if (rentProducts != null) {
         rentProductList.value = rentProducts;
+        print('컨트롤러: ${rentProductList.value}');
 
       }
       else if(rentProducts == null) {

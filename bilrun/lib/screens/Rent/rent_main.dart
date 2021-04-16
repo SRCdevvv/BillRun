@@ -101,8 +101,14 @@ class _RentMainState extends State<RentMain> {
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
                                 itemCount: rentProductController.rentProductList.length,
+
+
                                 itemBuilder: ( BuildContext context, int index){
-                                  return RentProductTile(rentProductController.rentProductList[index]);
+
+
+                                  print(' 메인: ${rentProductController.rentProductList.value}');
+                                  return
+                                    RentProductTile(rentProductController.rentProductList[index]);
                                 });
                       }
 

@@ -1,4 +1,4 @@
-import 'package:bilrun/screens/product_detail/lend_product_detail_main.dart';
+import 'package:bilrun/screens/product_detail/lend_product_detail/lend_product_detail_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/lend_product_model.dart';
@@ -47,12 +47,12 @@ class LendProductTile extends StatelessWidget {
 
                     GestureDetector(
                       onTap: (){
-                        Get.to(LendProductDetailScreen());},
+                        Get.to(LendDetailScreen(), arguments: lendproduct.id);},
                       child : Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Colors.black,
-                          image: DecorationImage(image: NetworkImage('https://www.lge.co.kr/uploads/CONTENTS/REVIEW/objet/review_02.jpg'),
+                          image: DecorationImage(image: NetworkImage('${lendproduct.photo}'),
                               fit: BoxFit.fill),
                         ),
                         width: 140,
@@ -74,18 +74,22 @@ class LendProductTile extends StatelessWidget {
                 ),
 
 
-                Text(
-                  ' ${lendproduct.name}',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 23,color: Colors.black),),
+                Flexible(
+                  child: Text(
+                    ' ${lendproduct.name}',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 23,color: Colors.black),),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                      child: Text('${lendproduct.price} 원',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),),
+                    Flexible(
+                        child: Padding(padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          child: Text('${lendproduct.price} 원',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),), ),
+
                     Padding(padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
                       child: Text('/${lendproduct.priceProp}',
                         overflow: TextOverflow.ellipsis,
