@@ -1,8 +1,7 @@
 import 'package:bilrun/screens/Rent/rent_service.dart';
-import 'package:bilrun/screens/product_detail/rent_product_detail/rent_product_detail_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
-import 'package:bilrun/model/rent_product_model.dart';
+import 'package:bilrun/model/product_list_model.dart';
 
 
 
@@ -12,7 +11,7 @@ class RentProductController extends GetxController {
 
   var isLoading = true.obs;
   // ignore: deprecated_member_use
-  var rentProductList = List<RentProduct>().obs;
+  var rentProductList = List<ProductList>().obs;
 
 
 

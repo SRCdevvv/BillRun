@@ -14,21 +14,37 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Camera App'),
+    return  Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10,30,250,0),
+          child: Container(
+              child: _image == null ?
+                    Container(
+                      width: 80,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        color: Colors.grey[400],
+                      ),
+                      child: IconButton(
+                        onPressed: _optionDialogBox,
+                        icon: Icon(Icons.add_a_photo_outlined, color: Colors.white,),
+                        tooltip: 'Open Camera',
+                      ),
+                    ) : Image.file(_image),
+            ),
         ),
-        body: Center(
-          child: _image == null ? Text('No Image') : Image.file(_image),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(35,5,0,0),
+          child: Text('0/12'),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _optionDialogBox,
-          child: Icon(Icons.add_a_photo),
-          tooltip: 'Open Camera',
-        ),
-      ),
+    ],
+
     );
+
+
   }
 
   Future<void> _optionDialogBox() {
@@ -36,19 +52,19 @@ class _CameraImagePickerState extends State<CameraImagePicker> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.green.shade100,
+            backgroundColor: Colors.grey[200],
             shape: RoundedRectangleBorder(),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   GestureDetector(
-                    child: Text('Take a Picture',
+                    child: Text('카메라로 사진 찍기',
                         style: TextStyle(fontSize: 15.0, color: Colors.black)),
                     onTap: getImage,
                   ),
                   Padding(padding: EdgeInsets.only(top: 10.0)),
                   GestureDetector(
-                    child: Text('Pick from gallery',
+                    child: Text('휴대폰 앨범에서 가져오기',
                         style: TextStyle(fontSize: 15.0, color: Colors.black)),
                     onTap: takeImage,
                   ),

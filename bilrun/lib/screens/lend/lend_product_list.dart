@@ -1,16 +1,16 @@
-import 'package:bilrun/screens/product_detail/lend_product_detail/lend_product_detail_main.dart';
+import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/model/lend_product_model.dart';
+import 'package:bilrun/model/product_list_model.dart';
 
 
 
-int LendProductCount = 0;
+int ProductCount = 0;
 bool _isPressed=false;
 
 class LendProductTile extends StatelessWidget {
 
-  final LendProduct lendproduct;
+  final ProductList lendproduct;
   const LendProductTile(this.lendproduct);
 
 
@@ -47,7 +47,7 @@ class LendProductTile extends StatelessWidget {
 
                     GestureDetector(
                       onTap: (){
-                        Get.to(LendDetailScreen(), arguments: lendproduct.id);},
+                        Get.to(DetailScreen(), arguments: lendproduct.id);},
                       child : Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),

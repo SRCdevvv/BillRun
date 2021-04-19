@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/model/rent_product_model.dart';
-import 'package:bilrun/screens/product_detail/rent_product_detail/rent_product_detail_main.dart';
+import 'package:bilrun/model/product_list_model.dart';
+import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 
@@ -9,7 +9,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class RentProductTile extends StatelessWidget {
 
-  final RentProduct product;
+  final ProductList product;
   const RentProductTile(this.product);
 
 
@@ -53,7 +53,7 @@ class RentProductTile extends StatelessWidget {
           child: ListTile(
           title: Text('${product.name}',style: TextStyle(fontSize: 20)),
           subtitle: Text('${product.price}/ ${product.priceProp}   💁n분전'),
-          onTap: ()=>{ Get.to(RentDetailScreen(),arguments:product.id, )},
+          onTap: ()=>{ Get.to(DetailScreen(),arguments:product.id, )},
           trailing:
           // url ==null ?
           //

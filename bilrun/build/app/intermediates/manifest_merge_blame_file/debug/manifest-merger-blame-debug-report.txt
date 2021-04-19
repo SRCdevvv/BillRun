@@ -114,6 +114,15 @@
 74                android:resource="@xml/flutter_image_picker_file_paths" />
 74-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
 75        </provider>
-76    </application>
-77
-78</manifest>
+76
+77        <activity
+77-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+78            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+78-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+79            android:exported="false"
+79-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+80            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+80-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+81    </application>
+82
+83</manifest>

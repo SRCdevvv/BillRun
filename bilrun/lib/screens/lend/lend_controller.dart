@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
-import 'package:bilrun/model/lend_product_model.dart';
+import 'package:bilrun/model/product_list_model.dart';
 
 
 
@@ -11,9 +11,9 @@ class LendProductController extends GetxController {
 
   var isLoading = true.obs;
   // ignore: deprecated_member_use
-  var productList = List<LendProduct>().obs;
+  var productList = List<ProductList>().obs;
   // ignore: deprecated_member_use
-  var newProductList = List<LendProduct>().obs;
+  var newProductList = List<ProductList>().obs;
 
 
 
