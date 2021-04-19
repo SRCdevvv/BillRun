@@ -55,6 +55,7 @@ class _LendDetailScreenState extends State<LendDetailScreen> {
 
     String cost = lendDetailController.productList.value.price;
     String priceProp = lendDetailController.productList.value.priceProp;
+    int IdOfProduct= lendDetailController.productList.value.id;
 
 
 
@@ -129,7 +130,7 @@ class _LendDetailScreenState extends State<LendDetailScreen> {
           ),
           //TODO 새로고침해야지 데이터가 불러와지는 현상 고치기
           bottomNavigationBar:
-          ProductbottomBarWidget( '$cost 원', '$priceProp')
+          ProductbottomBarWidget( '$cost 원', '$priceProp', IdOfProduct)
 
 
 
@@ -178,7 +179,7 @@ class RentDetailScreenInfo extends StatelessWidget {
                 SmallIcon(Icons.remove_red_eye_outlined),
                 SmallTitle('29', Colors.grey[700], 20),
                 SmallIcon(Icons.favorite_border_rounded),
-                SmallTitle('32', Colors.grey[700], 20),
+                SmallTitle('${product.likeCount}', Colors.grey[700], 20),
               ],
             ),
 

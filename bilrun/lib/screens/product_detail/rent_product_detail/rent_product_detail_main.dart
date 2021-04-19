@@ -8,6 +8,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/model/rent_product_detail_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 void main() => runApp(RentDetailScreen());
@@ -123,13 +124,111 @@ class _RentDetailScreenState extends State<RentDetailScreen> {
     ],
     ),
     ),
-    bottomNavigationBar: ProductbottomBarWidget( '${rentDetailController.productList.value.price}원', rentDetailController.productList.value.priceProp)
-    ),
+    bottomNavigationBar:ProductDetailBottomBar(),
+      ),
     );
   }
 }
 
 
+class ProductDetailBottomBar extends StatefulWidget {
+  @override
+  _ProductDetailBottomBarState createState() => _ProductDetailBottomBarState();
+}
+
+class _ProductDetailBottomBarState extends State<ProductDetailBottomBar> {
+//TODO 바텀바 값 안불러와지는거 고치기
+
+  final  RentDetailController rentDetailController = Get.put(RentDetailController());
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    String cost = rentDetailController.productList.value.price;
+    String priceProp =rentDetailController.productList.value.priceProp;
+
+
+    return  Container(
+      width: Get.width,
+      height: 100,
+      color: Colors.white,
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
+            child: GestureDetector(
+              onTap: () {_launchURL(rentDetailController.productList.value.id);},
+              child: Icon(Icons.favorite_border_rounded,
+                  size: 40, color: Colors.red[900]),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 15, right: 10),
+            height: 40,
+            width: 1,
+            color: Colors.grey[300],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Text(
+                  "$cost",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10,0,0,0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.red[900]),
+                    ),
+                    backgroundColor: Colors.white,
+                  ),
+                  child: Text(
+                    "$priceProp",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.red[900],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(50,10,30,20),
+
+            child: Container(
+              width:100 ,
+              height: 40,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.red[900],
+                ),
+                child: Text(
+                  "빌리기",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 
 
@@ -168,7 +267,7 @@ class RentDetailScreenInfo extends StatelessWidget {
                 SmallIcon(Icons.remove_red_eye_outlined),
                 SmallTitle('29', Colors.grey[700], 20),
                 SmallIcon(Icons.favorite_border_rounded),
-                SmallTitle('32', Colors.grey[700], 20),
+                SmallTitle('${product.likeCount}', Colors.grey[700], 20),
               ],
             ),
 
@@ -218,23 +317,15 @@ class RentDetailScreenInfo extends StatelessWidget {
             //TODO 상품 정보 불러오기
             ],
           ),
-
-
-
-
-
-
-    );
-
-
-
-
-
+      );
 
   }
 }
 
 
+
+//TODO 좋아요 방식 수
+void _launchURL( IdOfProduct) async=>await canLaunch( 'http://35.175.245.21:8000/api/product_like_toggle/$IdOfProduct') ? await launch( 'http://35.175.245.21:8000/api/product_like_toggle/$IdOfProduct') : throw 'Could not launch';
 
 
 
