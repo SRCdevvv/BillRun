@@ -1,3 +1,4 @@
+import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -46,47 +47,31 @@ class RentProductTile extends StatelessWidget {
 
 
     return Card(
-        elevation: 0.0,
-        child: Container(
-          width: Get.width -200,
-          height: (Get.height -200)/8,
-          child: ListTile(
-          title: Text('${product.name}',style: TextStyle(fontSize: 20)),
-          subtitle: Text('${product.price}/ ${product.priceProp}   💁n분전'),
-          onTap: ()=>{ Get.to(DetailScreen(),arguments:product.id, )},
-          trailing:
-          // url ==null ?
-          //
-          // Container(
-          //   decoration: BoxDecoration(
-          //   borderRadius: BorderRadius.circular(10), //모서리를 둥글게
-          //   border: Border.all(color: Colors.grey[300], width: 3),
-          //   color: Colors.grey[300]),
-          //   height: 100,
-          //   width: 60,
-          //   //color: Colors.grey[500],
-          //   child: Icon(
-          //   Icons.camera_alt_outlined,
-          //   color: Colors.white,
-          //   size: 40,
-          //   ),
-          //
-          //
-          //   ) :
-          Image.network('$url',
-            height: 100,
-            width: 100,
-            fit: BoxFit.contain,)
-       ),
-        ),
+      color: Colors.transparent,
+          elevation: 0.0,
+          child: Column(
+            children: [
+              Container(
+                width: Get.width  * 0.87,
+                height: (Get.height -200)/10,
+                child: ListTile(
+                title: Text('${product.name}',style: TextStyle(fontSize: 20)),
+                subtitle: Text('${product.price}/ ${product.priceProp}   💁n분전'),
+                onTap: ()=>{ Get.to(DetailScreen(),arguments:product.id, )},
+                trailing:
+                Image.network('$url',
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.contain,)
+         ),
+              ),
+              Container(
+               child: OriginDivider(Colors.grey[400], 1, 20, 20),
+              ),
+            ],
+          ),
+
     );
-
-
-
-
-
-
-
 
 
   }
