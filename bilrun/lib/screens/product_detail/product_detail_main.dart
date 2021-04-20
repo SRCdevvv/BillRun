@@ -130,7 +130,9 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           //TODO 새로고침해야지 데이터가 불러와지는 현상 고치기
+          
           bottomNavigationBar:
+
           ProductbottomBarWidget( '$cost 원', '$priceProp', IdOfProduct)
 
 

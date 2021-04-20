@@ -37,6 +37,8 @@ class LendProductTile extends StatelessWidget {
 
 
       return   Container(
+        width: Get.width,
+            height: Get.height,
             child:Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
@@ -56,7 +58,7 @@ class LendProductTile extends StatelessWidget {
                               fit: BoxFit.fill),
                         ),
                         width: 140,
-                        height: 130,
+                        height: 140,
 
                       ),
                     ),
