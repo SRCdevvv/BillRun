@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
 
+import 'lend_like.dart';
+
 class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
   const LendProductTile(this.lendproduct);
@@ -38,6 +40,10 @@ class LendProductTile extends StatelessWidget {
                   ),
                 ),
               ),
+              Positioned(
+                right: 5,
+                child:ProductLike(), ),
+
             ],
           ),
           Container(
