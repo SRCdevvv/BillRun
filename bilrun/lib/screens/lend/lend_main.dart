@@ -89,7 +89,7 @@ class _LendMainState extends State<LendMain> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                          padding: const EdgeInsets.fromLTRB(24,10,24,0),
                             child: Obx(()
                             {
                               if (productController.isLoading.value)
@@ -98,7 +98,12 @@ class _LendMainState extends State<LendMain> {
                               else
                                 return
                                   GridView.count(
+                                    physics: ScrollPhysics(),
+                                    childAspectRatio: (150/216),
+                                    crossAxisSpacing:12 ,
+                                    mainAxisSpacing: 20,
                                     crossAxisCount: 2,
+                                    // childAspectRatio: (Get.width*0.134/Get.height),
                                     scrollDirection: Axis.vertical,
                                     shrinkWrap: true,
 
@@ -108,7 +113,12 @@ class _LendMainState extends State<LendMain> {
 
                                             (index) {
 
-                                          return LendProductTile(productController.productList[index]);
+                                          return
+
+
+                                              LendProductTile(productController.productList[index]);
+
+
                                         }
 
 
@@ -155,4 +165,5 @@ class _LendMainState extends State<LendMain> {
 
 
 }
+bool _isPressed = false;
 
