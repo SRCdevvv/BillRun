@@ -119,10 +119,15 @@ class _RentMainState extends State<RentMain> {
 
                                       itemBuilder: ( BuildContext context, int index){
 
+                                        return Column(
+                                        children: [
 
-                                        print(' 메인: ${rentProductController.rentProductList.value}');
-                                        return
-                                          RentProductTile(rentProductController.rentProductList[index]);
+                                        RentProductTile(rentProductController.rentProductList[index]),
+                                          Container(height: 1, color: Color(0xffdedede),width: Get.width * 0.867,),
+
+                                        ]
+                                        );
+
                                       });
                             }
 
