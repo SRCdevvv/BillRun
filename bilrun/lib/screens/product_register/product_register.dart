@@ -3,6 +3,7 @@ import 'dart:core';
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/product_register/product_register_service.dart';
 import 'package:bilrun/widgets/camera_imagepicker_widget.dart';
+import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter/services.dart';
@@ -73,7 +74,8 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             child: Column(
               children: <Widget>[
                 //TODO 멀티 이미지 픽커로 바꾸기
-                CameraImagePicker(),
+                //CameraImagePicker(),
+                Container(child: MyApps()),
 
                 Padding(
                   padding: const EdgeInsets.fromLTRB(60,10,60,10),
