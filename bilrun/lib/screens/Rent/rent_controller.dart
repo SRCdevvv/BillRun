@@ -1,4 +1,4 @@
-import 'package:bilrun/screens/Rent/rent_service.dart';
+import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/model/product_list_model.dart';

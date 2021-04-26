@@ -5,7 +5,6 @@ import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
-
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/screens/Rent/rent_product_list.dart';
@@ -81,21 +80,16 @@ class _RentMainState extends State<RentMain> {
         child: SafeArea(
           child: Column(
             children: [
-              Stack(
-                children: [
-                       Expanded(
-                        child: ListView(
+
+
+                         ListView(
 
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           children: [
                             OriginDivider(Colors.red[900], 100, 0, 0),
-                            Positioned(
-                              top: 102,
-                                bottom: 614,
-                                left:24 ,
-                                right: 142,
-                                child: Padding(
+                           
+                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(0,20,0,0),
                                   child: Row(
                                     children: [
@@ -108,13 +102,10 @@ class _RentMainState extends State<RentMain> {
                                           style: TextStyle(
                                               fontSize: 22, fontWeight: FontWeight.bold),
                                         ),
-
-
                                     ],
                                   ),
-                                ),
+
                               ),
-                            //
                               Obx(()
                               {
                                 if (RentProductController.isLoading.value)
@@ -147,17 +138,15 @@ class _RentMainState extends State<RentMain> {
 
                           ],
                         ),
-                      ),
+
 
 
 
                 ],
 
               ),
-            ],
           ),
         ),
-      ),
 
 
       drawer: Drawer(
