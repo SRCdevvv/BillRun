@@ -1,9 +1,11 @@
+import 'package:bilrun/screens/rent/rent_controller.dart';
+import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:bilrun/screens/Rent/rent_controller.dart';
+
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/screens/Rent/rent_product_list.dart';
@@ -24,7 +26,14 @@ class RentMain extends StatefulWidget {
 
 class _RentMainState extends State<RentMain> {
 
-  static RentProductController rentProductController = Get.put(RentProductController());
+  RentProductController rentProductController = Get.put(RentProductController());
+
+   Future<Null> refresh() async{
+     RentProductListService.fetchRentProducts();
+     RentProductController.rentfetchProducts();
+     rentProductController = Get.put(RentProductController());
+
+   }
 
 
 
@@ -67,83 +76,86 @@ class _RentMainState extends State<RentMain> {
 
 
       body:
-      SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                     Expanded(
-                      child: ListView(
+      RefreshIndicator(
+        onRefresh: refresh,
+        child: SafeArea(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                       Expanded(
+                        child: ListView(
 
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        children: [
-                          OriginDivider(Colors.red[900], 100, 0, 0),
-                          Positioned(
-                            top: 102,
-                              bottom: 614,
-                              left:24 ,
-                              right: 142,
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(0,20,0,0),
-                                child: Row(
-                                  children: [
-                                    Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                     child: NowLocation(),
-                                    ),
-
-                                     Text(
-                                        '지금 빌려주세요!',
-                                        style: TextStyle(
-                                            fontSize: 22, fontWeight: FontWeight.bold),
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          children: [
+                            OriginDivider(Colors.red[900], 100, 0, 0),
+                            Positioned(
+                              top: 102,
+                                bottom: 614,
+                                left:24 ,
+                                right: 142,
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0,20,0,0),
+                                  child: Row(
+                                    children: [
+                                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                       child: NowLocation(),
                                       ),
 
+                                       Text(
+                                          '지금 빌려주세요!',
+                                          style: TextStyle(
+                                              fontSize: 22, fontWeight: FontWeight.bold),
+                                        ),
 
-                                  ],
+
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          //
-                            Obx(()
-                            {
-                              if (rentProductController.isLoading.value)
-                                return Center(child: CircularProgressIndicator());
-                              else
+                            //
+                              Obx(()
+                              {
+                                if (RentProductController.isLoading.value)
+                                  return Center(child: CircularProgressIndicator());
+                                else
 
-                                return
-                                  ListView.builder(
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      itemCount: rentProductController.rentProductList.length,
-
-
-                                      itemBuilder: ( BuildContext context, int index){
-
-                                        return Column(
-                                        children: [
-
-                                        RentProductTile(rentProductController.rentProductList[index]),
-                                          Container(height: 1, color: Color(0xffdedede),width: Get.width * 0.867,),
-
-                                        ]
-                                        );
-
-                                      });
-                            }
-
-                            ),
+                                  return
+                                    ListView.builder(
+                                        scrollDirection: Axis.vertical,
+                                        shrinkWrap: true,
+                                        itemCount: RentProductController.rentProductList.length,
 
 
-                        ],
+                                        itemBuilder: ( BuildContext context, int index){
+
+                                          return Column(
+                                          children: [
+
+                                          RentProductTile(RentProductController.rentProductList[index]),
+                                            Container(height: 1, color: Color(0xffdedede),width: Get.width * 0.867,),
+
+                                          ]
+                                          );
+
+                                        });
+                              }
+
+                              ),
+
+
+                          ],
+                        ),
                       ),
-                    ),
 
 
 
-              ],
+                ],
 
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
 

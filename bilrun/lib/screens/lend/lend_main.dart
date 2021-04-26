@@ -4,10 +4,11 @@ import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'lend_controller.dart';
+import 'package:bilrun/screens/lend/lend_controller.dart';
 import 'lend_product_list.dart';
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/design/divider_example.dart';
+import 'package:bilrun/screens/lend/lend_service.dart';
 
 
 
@@ -25,10 +26,23 @@ class LendMain extends StatefulWidget {
 
 class _LendMainState extends State<LendMain> {
 
-  final LendProductController productController = Get.put(LendProductController());
 
 
 
+
+
+
+
+  LendProductController productController = Get.put(LendProductController());
+
+
+Future<Null> refresh() async{
+  ProductListService.fetchLendProducts();
+  LendProductController.fetchProducts();
+  this.productController = Get.put(LendProductController());
+
+
+}
 
 
 
@@ -38,7 +52,8 @@ class _LendMainState extends State<LendMain> {
 //TODO 전체 화면 스크롤
   //TODO 오버픽셀 고치기
 
-      return Scaffold(
+      return
+        Scaffold(
 
         appBar: AppBar(
 
@@ -64,93 +79,92 @@ class _LendMainState extends State<LendMain> {
         ),
 
         body:
-          SafeArea(
-          child: Column(
-              children: [
-                Container(
-                  child: Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      children: [
-                        OriginDivider(Colors.red[900], 100, 0, 0),
-                        BannerWidget(),
-                        Row(
-                          children: [
-                            Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              child: NowLocation(),
-                            ),
-                            Text(
-                              '지금 빌려주세요!',
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
-                            ),
+            RefreshIndicator(
+              onRefresh: refresh,
 
+              child:  SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Expanded(
+                        child: ListView(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          children: [
+                            OriginDivider(Colors.red[900], 100, 0, 0),
+                            BannerWidget(),
+                            Row(
+                              children: [
+                                Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                  child: NowLocation(),
+                                ),
+                                Text(
+                                  '지금 빌려주세요!',
+                                  style: TextStyle(
+                                      fontSize: 22, fontWeight: FontWeight.bold),
+                                ),
+
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(24,10,24,0),
+                              child: Obx(()
+                              {
+                                if (LendProductController.isLoading.value)
+                                  return Center(child: CircularProgressIndicator());
+
+                                else
+                                  return
+                                    GridView.count(
+                                      physics: ScrollPhysics(),
+                                      childAspectRatio: (150/216),
+                                      crossAxisSpacing:12 ,
+                                      mainAxisSpacing: 20,
+                                      crossAxisCount: 2,
+                                      // childAspectRatio: (Get.width*0.134/Get.height),
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+
+                                      children: List.generate(
+                                          LendProductController.productList.length,
+
+
+                                              (index) {
+
+                                            return
+
+
+                                              LendProductTile(LendProductController.productList[index]);
+
+
+                                          }
+
+
+
+
+                                      ),
+                                    );
+                              }
+                              ),
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(24,10,24,0),
-                            child: Obx(()
-                            {
-                              if (productController.isLoading.value)
-                                return Center(child: CircularProgressIndicator());
-
-                              else
-                                return
-                                  GridView.count(
-                                    physics: ScrollPhysics(),
-                                    childAspectRatio: (150/216),
-                                    crossAxisSpacing:12 ,
-                                    mainAxisSpacing: 20,
-                                    crossAxisCount: 2,
-                                    // childAspectRatio: (Get.width*0.134/Get.height),
-                                    scrollDirection: Axis.vertical,
-                                    shrinkWrap: true,
-
-                                    children: List.generate(
-                                        productController.productList.length,
-
-
-                                            (index) {
-
-                                          return
-
-
-                                              LendProductTile(productController.productList[index]);
-
-
-                                        }
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        drawer: Drawer(
+          child:
+          MainDrawer(),
+        ),
 
 
 
 
-                                    ),
 
-
-                                  );
-                            }
-
-                            ),
-                          ),
-
-                      ],
-          ),
-          ),
-      ),
-    ],
-    ),
-    ),
-
-
-          drawer: Drawer(
-            child:
-            MainDrawer(),
-          ),
-
-
-
-
-    );
+      );
 
 
 
