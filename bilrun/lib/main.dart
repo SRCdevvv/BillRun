@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/mypage/deal_list.dart';
 import 'package:bilrun/screens/product_register/upload_file.dart';
 import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
     RentMain(),
     DialogProductRegister(),
     //ImageUpload(),
-    ChatApp(),
+    DealManagement(),
+    // ChatApp(),
     MyPageScreen()
   ];
   void _onTap(int index) {
