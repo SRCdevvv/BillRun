@@ -12,7 +12,7 @@ class MyApps extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApps> {
-  List<Asset> images = List<Asset>();
+ static List<Asset> images = List<Asset>();
   String _error;
 
   @override

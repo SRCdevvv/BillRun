@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/product_register/product_register_service.dart';
+import 'package:bilrun/screens/product_register/upload_file.dart';
 import 'package:bilrun/widgets/camera_imagepicker_widget.dart';
 import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
@@ -155,7 +156,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               borderColor: Colors.transparent,
               borderWidth: 5,
               selectedBorderColor: Colors.transparent,
-              selectedColor: Colors.red[900],
+              selectedColor: Color(0xffaa0000),
               splashColor: Colors.transparent,
               color: Colors.transparent,
               focusColor: Colors.transparent,
@@ -178,7 +179,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                               color: isSelected[0] == true ? Color(0xffaa0000): Color(0xff999999),
                               width: 2
                           ),
-                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+
                         ),
                         child:
                         Padding(
@@ -201,7 +202,6 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
                   )
                 ),
-                // second toggle button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Padding(
@@ -217,7 +217,6 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                               color: isSelected[1] == true ? Color(0xffaa0000): Color(0xff999999),
                               width: 2
                           ),
-                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
                         ),
                         child:
                         Padding(
@@ -256,7 +255,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                               color: isSelected[2] == true ? Color(0xffaa0000): Color(0xff999999),
                               width: 2
                           ),
-                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+
                         ),
                         child:
                         Padding(
@@ -280,7 +279,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                   )
                 ),
               ],
-              // logic for button selection below
+
               onPressed: (int index) {
                 setState(() {
                   for (int i = 0; i < isSelected.length; i++) {
@@ -386,6 +385,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                       if(_formKey.currentState.validate()){
                         _formKey.currentState.save();
                          await getOrCreateInitAPIData(_data.price, _data.productName, _data.description, _data.caution, ProductCategory,PriceProp);
+                         //await asyncFileUpload('업로드예시', images[0]);
 
                       }
 
