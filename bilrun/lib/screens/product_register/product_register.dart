@@ -13,12 +13,16 @@ import 'package:get/get.dart';
 void main() => runApp(ProductRegister());
 
 bool ProductCategory;
+String PriceProp;
+
 
 class _initData {
   String productName;
   String description;
   String caution;
   int price;
+  String priceProp;
+
 }
 
 class ProductRegister extends StatelessWidget {
@@ -34,11 +38,14 @@ class ProductRegisterWidget extends StatefulWidget {
 }
 
 class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
+ static List<bool> isSelected;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     ProductCategory = Get.arguments;
+    isSelected = [true,false,false];
   }
 
   _initData _data = new _initData();
@@ -74,8 +81,9 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             child: Column(
               children: <Widget>[
                 //TODO 멀티 이미지 픽커로 바꾸기
-                //CameraImagePicker(),
                 Container(child: MyApps()),
+
+
 
                 Padding(
                   padding: const EdgeInsets.fromLTRB(60,10,60,10),
@@ -140,19 +148,170 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(60, 0, 0, 10),
-                  child: Row(
-                    children: <Widget>[
-                      TimeStandard('30분 당'),
-                      TimeStandard("시간 당"),
-                      TimeStandard("일 당"),
-                      TimeStandard("주 당"),
-                    ],
-                  ),
-                ),
 
-                TextFormField(
+
+
+            ToggleButtons(
+              borderColor: Colors.transparent,
+              borderWidth: 5,
+              selectedBorderColor: Colors.transparent,
+              selectedColor: Colors.red[900],
+              splashColor: Colors.transparent,
+              color: Colors.transparent,
+              focusColor: Colors.transparent,
+              fillColor: Colors.transparent,
+
+              children: <Widget>[
+                // first toggle button
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5,0,5,0),
+                      child: Container(
+                        width: 70,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(15)
+                          ),
+                          border: Border.all(
+                              color: isSelected[0] == true ? Color(0xffaa0000): Color(0xff999999),
+                              width: 2
+                          ),
+                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+                        ),
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                              "시간 당",
+                              style:  TextStyle(
+                                color:  isSelected[0] == true ? Color(0xffaa0000): Color(0xff999999),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "NotoSansCJKkr",
+                                fontStyle:  FontStyle.normal,
+                                fontSize: 14.0
+
+                              ),
+                              textAlign: TextAlign.center
+                          ),
+                        ),
+                      )
+
+
+                  )
+                ),
+                // second toggle button
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5,0,5,0),
+                      child: Container(
+                        width: 70,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(15)
+                          ),
+                          border: Border.all(
+                              color: isSelected[1] == true ? Color(0xffaa0000): Color(0xff999999),
+                              width: 2
+                          ),
+                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+                        ),
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                              "일 당",
+                              style:  TextStyle(
+                                color:  isSelected[1] == true ? Color(0xffaa0000): Color(0xff999999),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "NotoSansCJKkr",
+                                fontStyle:  FontStyle.normal,
+                                fontSize: 14.0,
+
+                              ),
+                              textAlign: TextAlign.center
+                          ),
+                        ),
+                      )
+
+
+                  )
+                ),
+                // third toggle button
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5,0,5,0),
+                      child: Container(
+                        width: 70,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(15)
+                          ),
+                          border: Border.all(
+                              color: isSelected[2] == true ? Color(0xffaa0000): Color(0xff999999),
+                              width: 2
+                          ),
+                          // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+                        ),
+                        child:
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                              "주 당 ",
+                              style:  TextStyle(
+                                color:  isSelected[2] == true ? Color(0xffaa0000): Color(0xff999999),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "NotoSansCJKkr",
+                                fontStyle:  FontStyle.normal,
+                                fontSize: 14.0,
+
+                              ),
+                              textAlign: TextAlign.center
+                          ),
+                        ),
+                      )
+
+
+                  )
+                ),
+              ],
+              // logic for button selection below
+              onPressed: (int index) {
+                setState(() {
+                  for (int i = 0; i < isSelected.length; i++) {
+                    isSelected[i] = i == index;
+                    if(isSelected[i]==true){
+                        switch(i){
+                        case 0 :
+                        PriceProp = "1h";
+                        break;
+                        case 1:
+                        PriceProp = "Day";
+                        break;
+                        case 2:
+                        PriceProp = "Week";
+                        break;
+                        }
+                        print(PriceProp);
+
+    }
+                    }
+                  }
+                );
+              },
+
+
+              isSelected: isSelected,
+            ),
+
+
+
+            TextFormField(
                   maxLines: 8,
                   decoration: InputDecoration(
                     hintText: ProductCategory == true
@@ -207,8 +366,8 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                   ],
                 ),
 
-                //TODO gesture detector에 기능 추가하기
-                GestureDetector(
+
+                InkWell(
                     child: Container(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       width: MediaQuery.of(context).size.width,
@@ -226,7 +385,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     onTap: () async{
                       if(_formKey.currentState.validate()){
                         _formKey.currentState.save();
-                         await getOrCreateInitAPIData(_data.price, _data.productName, _data.description, _data.caution, ProductCategory);
+                         await getOrCreateInitAPIData(_data.price, _data.productName, _data.description, _data.caution, ProductCategory,PriceProp);
 
                       }
 
@@ -256,25 +415,66 @@ Container ProductTextfield(String title) {
   );
 }
 
-TextButton TimeStandard(String timeStandard) {
-  return TextButton(
-      child: TextButton(
-    style: TextButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-        side: BorderSide(color: Colors.red[900]),
-      ),
-      backgroundColor: Colors.white,
-    ),
-    onPressed: () {},
-    child: Text(
-      "$timeStandard",
-      style: TextStyle(
-        fontSize: 17.0,
-        color: Colors.red[900],
-      ),
-    ),
-  ));
+Widget TimeStandard(String timeStandard, List<bool> Selected) {
+
+  return
+    // 사각형 23904
+    Padding(
+      padding: const EdgeInsets.fromLTRB(5,0,5,0),
+      child: Container(
+          width: 70,
+          height: 30,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(15)
+              ),
+              border: Border.all(
+                  color: const Color(0xff999999),
+                  width: 2
+              ),
+             // color: isSelected[i] ==true ? Colors.red[900] : Color(0xffffffff)
+          ),
+        child:
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Text(
+              "$timeStandard",
+              style:  TextStyle(
+                  color:  Selected == true ? Colors.red[900]: Color(0xff999999),
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "NotoSansCJKkr",
+                  fontStyle:  FontStyle.normal,
+                  fontSize: 14.0,
+
+              ),
+              textAlign: TextAlign.center
+          ),
+        ),
+        )
+
+
+    );
+
+
+  //   TextButton(
+  //     child: TextButton(
+  //   style: TextButton.styleFrom(
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.all(Radius.circular(15)),
+  //       side: BorderSide(color: Color(0xff999999)),
+  //     ),
+  //     backgroundColor: Colors.white,
+  //   ),
+  //   onPressed: () {},
+  //   child: Text(
+  //     "$timeStandard",
+  //     style: TextStyle(
+  //       fontSize: 17.0,
+  //       color: Color(0xff999999),
+  //     ),
+  //   ),
+  // ));
+
 }
 
 Container ExplainText(String explainText) {

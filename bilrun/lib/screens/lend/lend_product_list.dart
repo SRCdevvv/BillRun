@@ -11,13 +11,13 @@ class LendProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (lendproduct.priceProp) {
       case "1h":
-        lendproduct.priceProp = '시간';
+        lendproduct.priceProp = '시간 당';
         break;
-      case "30m":
-        lendproduct.priceProp = '30분';
+      case "Week":
+        lendproduct.priceProp = '주 당';
         break;
       case "Day":
-        lendproduct.priceProp = '일';
+        lendproduct.priceProp = '일 당';
         break;
     }
 

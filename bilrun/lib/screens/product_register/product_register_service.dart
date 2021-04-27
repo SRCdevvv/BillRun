@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 
 
-Future<DetailProduct> getOrCreateInitAPIData( RegisterPrice,RegisterName, RegisterDescription, RegisterCaution, RegisterCategory) async {
+Future<DetailProduct> getOrCreateInitAPIData( RegisterPrice,RegisterName, RegisterDescription, RegisterCaution, RegisterCategory, RegisterPriceProp) async {
   String url = 'http://35.175.245.21:8000/api/product_list/';
   var formData = {
 
@@ -15,7 +15,7 @@ Future<DetailProduct> getOrCreateInitAPIData( RegisterPrice,RegisterName, Regist
     "description": "$RegisterDescription",
     "caution": "$RegisterCaution",
     "price": "$RegisterPrice",
-    "price_prop": "1h",
+    "price_prop": "$RegisterPriceProp",
     "user_id": {
       "id": "1",
       "place": "서울시 중구",

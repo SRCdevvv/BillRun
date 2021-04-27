@@ -28,24 +28,24 @@ class _MyAppState extends State<MyApps> {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children:
-            List.generate(images.length, (index) {
-              Asset asset = images[index];
-              return Container(
-                decoration: BoxDecoration(
+          List.generate(images.length, (index) {
+            Asset asset = images[index];
+            return Container(
+              decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
+              ),
 
-                 child:
-                 AssetThumb(
-                    asset: asset,
-                    width: 80,
-                    height: 80,),
-              );
-            }),
+              child:
+              AssetThumb(
+                asset: asset,
+                width: 80,
+                height: 80,),
+            );
+          }),
         ),
       );
     else return Container(color: Colors.white,);
-}
+  }
 
 
 
@@ -77,7 +77,8 @@ class _MyAppState extends State<MyApps> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(24, 30, 0, 0),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             width: 80,
@@ -93,9 +94,8 @@ class _MyAppState extends State<MyApps> {
               onPressed: loadAssets,
             ),
           ),
-          // Container(
-          //   width: Get.width - 100,
-          // ),
+          buildHorizontalListView(),
+
 
         ],
 
