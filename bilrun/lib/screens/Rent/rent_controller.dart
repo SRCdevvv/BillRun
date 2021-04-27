@@ -1,8 +1,7 @@
-import 'package:bilrun/screens/Rent/rent_service.dart';
-import 'package:bilrun/screens/product_detail/rent_product_detail/rent_product_detail_main.dart';
+import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
-import 'package:bilrun/model/rent_product_model.dart';
+import 'package:bilrun/model/product_list_model.dart';
 
 
 
@@ -10,24 +9,18 @@ import 'package:bilrun/model/rent_product_model.dart';
 
 class RentProductController extends GetxController {
 
-  var isLoading = true.obs;
+static  var isLoading = true.obs;
   // ignore: deprecated_member_use
-  var rentProductList = List<RentProduct>().obs;
-
-
-
-
-
-
+static  var rentProductList = List<ProductList>().obs;
 
   @override
   void onInit() {
-    fetchProducts();
+    rentfetchProducts();
     super.onInit();
   }
 
 
-  Future  fetchProducts() async {
+static  Future  rentfetchProducts() async {
     try {
       isLoading(true);
       var rentProducts = await RentProductListService.fetchRentProducts();

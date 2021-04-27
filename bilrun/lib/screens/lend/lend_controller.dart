@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
-import 'package:bilrun/model/lend_product_model.dart';
+import 'package:bilrun/model/product_list_model.dart';
 
 
 
@@ -9,11 +9,11 @@ import 'package:bilrun/model/lend_product_model.dart';
 
 class LendProductController extends GetxController {
 
-  var isLoading = true.obs;
+static  var isLoading = true.obs;
   // ignore: deprecated_member_use
-  var productList = List<LendProduct>().obs;
+static  var productList = List<ProductList>().obs;
   // ignore: deprecated_member_use
-  var newProductList = List<LendProduct>().obs;
+static  var newProductList = List<ProductList>().obs;
 
 
 
@@ -24,15 +24,19 @@ class LendProductController extends GetxController {
   void onInit() {
     fetchProducts();
     super.onInit();
+    print("onit 실행됨");
   }
 
-  Future  fetchProducts() async {
+
+
+static  Future  fetchProducts() async {
     try {
       isLoading(true);
       var products = await ProductListService.fetchLendProducts();
 
       if (products != null) {
         productList.value = products;
+        print("컨트롤러 실행됨");
 
       }
       else if(products == null){
@@ -52,6 +56,8 @@ class LendProductController extends GetxController {
       isLoading(false);
     }
   }
+
+
 
 
 

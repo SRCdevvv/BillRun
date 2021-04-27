@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-RentDetailProduct RentDetailProductFromJson(String str) => RentDetailProduct.fromJson(json.decode(str));
+DetailProduct DetailProductFromJson(String str) => DetailProduct.fromJson(json.decode(str));
 
-String RentDetailProductToJson(RentDetailProduct data) => json.encode(data.toJson());
+String DetailProductToJson(DetailProduct data) => json.encode(data.toJson());
 
-class RentDetailProduct {
-  RentDetailProduct({
+class DetailProduct {
+  DetailProduct({
     this.id,
     this.name,
     this.description,
@@ -19,6 +19,8 @@ class RentDetailProduct {
     this.userId,
     this.category,
     this.placeOption,
+    this.hits,
+    this.likeCount,
     this.createdAt,
     this.updatedAt,
     this.photo,
@@ -33,11 +35,13 @@ class RentDetailProduct {
   UserId userId;
   bool category;
   bool placeOption;
+  int hits;
+  int likeCount;
   DateTime createdAt;
   DateTime updatedAt;
   String photo;
 
-  factory RentDetailProduct.fromJson(Map<String, dynamic> json) => RentDetailProduct(
+  factory DetailProduct.fromJson(Map<String, dynamic> json) => DetailProduct(
     id: json["id"],
     name: json["name"],
     description: json["description"],
@@ -47,6 +51,8 @@ class RentDetailProduct {
     userId: UserId.fromJson(json["user_id"]),
     category: json["category"],
     placeOption: json["place_option"],
+    hits: json["hits"],
+    likeCount: json["like_count"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
     photo: json["photo"],
@@ -62,6 +68,8 @@ class RentDetailProduct {
     "user_id": userId.toJson(),
     "category": category,
     "place_option": placeOption,
+    "hits": hits,
+    "like_count": likeCount,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
     "photo": photo,
@@ -90,7 +98,7 @@ class UserId {
   String level;
   DateTime createdAt;
   DateTime updatedAt;
-  String profile;
+  dynamic profile;
   int user;
 
   factory UserId.fromJson(Map<String, dynamic> json) => UserId(

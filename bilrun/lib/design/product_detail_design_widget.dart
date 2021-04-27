@@ -1,14 +1,18 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 Container SmallIcon(IconData) {
   return Container(
     padding: EdgeInsets.fromLTRB(30, 0, 0, 10),
-    child: Icon(
-      IconData,
-      size: 20,
+    child: IconButton(
+      icon: Icon(IconData),
+      iconSize: 20,
       color: Colors.grey[500],
+      onPressed: (){},
     ),
   );
 }
@@ -59,7 +63,15 @@ Container BoldTitle(String Title, color, double sizeFont) {
 
 
 
-Widget ProductbottomBarWidget( String cost, String priceProp) {
+
+
+
+
+
+
+
+
+Widget ProductbottomBarWidget( String cost, String priceProp, int IdOfProduct) {
   return Container(
     width: Get.width,
     height: 100,
@@ -69,7 +81,7 @@ Widget ProductbottomBarWidget( String cost, String priceProp) {
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
           child: GestureDetector(
-            onTap: () {},
+            //onTap: () { _launchURL(IdOfProduct);},
             child: Icon(Icons.favorite_border_rounded,
                 size: 40, color: Colors.red[900]),
           ),
@@ -139,3 +151,5 @@ Widget ProductbottomBarWidget( String cost, String priceProp) {
     ),
   );
 }
+
+

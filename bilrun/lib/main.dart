@@ -1,3 +1,5 @@
+import 'package:bilrun/screens/product_register/upload_file.dart';
+import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
@@ -37,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     LendMain(),
     RentMain(),
     DialogProductRegister(),
+    //ImageUpload(),
     ChatApp(),
     MyPageScreen()
   ];
