@@ -8,9 +8,10 @@ class BannerWidget extends StatefulWidget {
 }
 
 final List<String> imgList = [
-  'assets/images/main_1.jpg',
+
   'assets/images/main_2.jpg',
   'assets/images/main_3.jpg',
+
 ];
 
 class _BannerWidget extends State<BannerWidget> {
@@ -28,7 +29,7 @@ class _BannerWidget extends State<BannerWidget> {
                 builder: (BuildContext context) {
                   return Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    elevation: 2,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0),
                     ),

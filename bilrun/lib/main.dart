@@ -1,11 +1,8 @@
 import 'package:bilrun/screens/mypage/deal_managemenet/deal_list.dart';
-import 'package:bilrun/screens/product_register/upload_file.dart';
-import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
 import 'screens/mypage/mypage_screen.dart';
-import 'package:bilrun/screens/chat/notyet.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/screens/product_register/product_register_popup.dart';
 
@@ -59,33 +56,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body: _children[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: Colors.grey[800],
-            selectedItemColor: Colors.red[900],
+            unselectedItemColor: Color(0xff999999),
+            selectedItemColor: Color(0xffaa0000),
             type: BottomNavigationBarType.fixed,
             onTap: _onTap,
             currentIndex: currentIndex,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.attach_money),
+                icon: currentIndex == 0 ? Image.asset('assets/images/lendlogored.png',width: 22, height: 22,) : Image.asset('assets/images/lendlogo.png',width: 22,height: 22,),
                 label: '빌려드림',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.format_paint),
+                icon: currentIndex == 1 ? Image.asset('assets/images/rentlogored.png',width: 22, height: 22,) : Image.asset('assets/images/rentlogo.png',width: 22,height: 22,),
                 label: '빌림',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline),
+                icon: Icon(Icons.add_box_rounded,size: 22,),
                 label: '상품 등록',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble_outline),
+                icon: Image.asset('assets/images/chatlogo.png',width: 22,height: 22,),
                 label: '채팅',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.face),
+                icon: Icon(Icons.person),
                 label: '마이페이지',
               ),
             ]));

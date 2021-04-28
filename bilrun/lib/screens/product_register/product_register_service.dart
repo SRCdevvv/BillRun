@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 
 Future<DetailProduct> getOrCreateInitAPIData( RegisterPrice,RegisterName, RegisterDescription, RegisterCaution, RegisterCategory, RegisterPriceProp) async {
-  String url = 'http://35.175.245.21:8000/api/product_list/';
+  String url = 'http://35.175.245.21/api/product_list/';
   var formData = {
 
     "name": "$RegisterName",
