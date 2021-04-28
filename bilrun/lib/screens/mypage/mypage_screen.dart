@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'deal_managemenet/deal_list.dart';
 
 void main() => runApp(
     MyPageScreen());
@@ -94,9 +97,9 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
                         //TODO 아이콘 대신 사진 넣어 제플린이랑 똑같이 만들기
                             children: <Widget> [
-                              CircleButton(Icons.favorite_outline_sharp, "찜한목록"),
-                              CircleButton(Icons.rate_review_outlined, "리뷰 목록"),
-                              CircleButton(Icons.format_list_bulleted, "거래 관리"),
+                              CircleButton(Icons.favorite_outline_sharp, "찜한목록",(){} ),
+                              CircleButton(Icons.rate_review_outlined, "리뷰 목록", (){}),
+                              CircleButton(Icons.format_list_bulleted, "거래 관리" , (){Get.to(DealManagement());}),
 
                             ]
 
@@ -136,13 +139,13 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
 
 
-Widget CircleButton (IconData, String title){
+Widget CircleButton (IconData, String title, VoidCallback){
   return Padding(
     padding: const EdgeInsets.fromLTRB(30,15,10,15),
     child: Column(
       children: <Widget>[
         RawMaterialButton(
-          onPressed: (){},
+          onPressed: VoidCallback,
           elevation: 2.0,
           fillColor: Colors.white,
           child: Icon(

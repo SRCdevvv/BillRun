@@ -39,10 +39,10 @@ Future<DetailProduct> getOrCreateInitAPIData( RegisterPrice,RegisterName, Regist
   if (response.statusCode == 201) {
     var data =
         utf8.decode(response.bodyBytes);
-    print(DetailProductFromJson(data));
+    print(detailProductFromJson(data));
     print(response.statusCode);
 
-    return DetailProductFromJson(data);
+    return detailProductFromJson(data);
 
 
   } else {

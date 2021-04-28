@@ -13,7 +13,7 @@ class ProductListService {
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
 
-      return ProductListFromJson(jsonString);
+      return productListFromJson(jsonString);
     }
     else {
       return null;

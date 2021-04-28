@@ -11,9 +11,8 @@ class RentProductListService {
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
-      print('서비스: ${ProductListFromJson(jsonString)}');
 
-      return ProductListFromJson(jsonString);
+      return productListFromJson(jsonString);
     }
     else {
       return null;

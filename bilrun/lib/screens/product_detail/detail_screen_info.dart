@@ -65,7 +65,7 @@ class DetailScreenInfo extends StatelessWidget {
                   width: Get.width / 3,
                   child: Column(
                     children: <Widget>[
-                      SmallTitle('${product.userId.nickname}', Colors.grey[900], 20),
+                      SmallTitle('${product.user.nickname}', Colors.grey[900], 20),
 
                       SmallTitle('사용자 위치', Colors.grey[900], 15),
                     ],
@@ -84,7 +84,7 @@ class DetailScreenInfo extends StatelessWidget {
             OriginDivider(Colors.grey[300], 1, 30, 30),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
-              child: BoldTitle('${product.userId.nickname}님의 다른 물품', Colors.black, 20),
+              child: BoldTitle('${product.user.nickname}님의 다른 물품', Colors.black, 20),
             ),
             //TODO 상품 정보 불러오기
           ],

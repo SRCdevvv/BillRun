@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
-
+import 'package:get/get.dart';
 import 'lend_like.dart';
+import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 
 class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
@@ -26,25 +27,28 @@ class LendProductTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  padding: EdgeInsets.only(bottom:8),
-                  width:double.infinity,
-                  height: 150,
-                  child: Image.network(
-                    '${lendproduct.photo}',
-                    fit: BoxFit.fill,
+          GestureDetector(
+            onTap: ()=>{ Get.to(DetailScreen(),arguments:lendproduct.id, )},
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    padding: EdgeInsets.only(bottom:8),
+                    width:double.infinity,
+                    height: 150,
+                    child: Image.network(
+                      'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                right: 5,
-                child:ProductLike(), ),
+                Positioned(
+                  right: 5,
+                  child:ProductLike(), ),
 
-            ],
+              ],
+            ),
           ),
           Container(
             width: 150,
@@ -103,14 +107,14 @@ class LendProductTile extends StatelessWidget {
           ),
           Row(
             children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage('${lendproduct.userId.profile}'),
-                radius: 16.0,
-              ),
+              // CircleAvatar(
+              //   backgroundImage: NetworkImage('${lendproduct.user.profile}'),
+              //   radius: 16.0,
+              // ),
               Container(
                 width: 44,
                 height: 22,
-                child: Text('${lendproduct.userId.nickname}',
+                child: Text('${lendproduct.user.nickname}',
                     style: const TextStyle(
                         color: const Color(0xff191919),
                         fontWeight: FontWeight.w400,

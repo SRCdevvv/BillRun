@@ -32,8 +32,7 @@ class RentProductTile extends StatelessWidget {
         product.priceProp = '일';
         break;
     }
-    print(product.photo);
-    var url = product.photo;
+    var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
         //'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
 //     print(product.createdAt);
 //     var currentTime = DateTime.now();

@@ -21,7 +21,7 @@ class DetailProductService {
       String jsonString = utf8.decode(response.bodyBytes);
       // print('아이디: $IdOfProduct');
       //print('서비스: ${RentDetailProductFromJson(jsonString)}');
-      return DetailProductFromJson(jsonString);
+      return detailProductFromJson(jsonString);
     }
     else{
       print('접속오류');
