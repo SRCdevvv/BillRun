@@ -1,13 +1,31 @@
+import 'package:bilrun/model/deal_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
 
 class RentDealList extends StatelessWidget {
+
+  final DealList product;
+   RentDealList(this.product);
+
   double CardWidth = Get.width;
   double CardHeight = Get.height*0.162;
   @override
   Widget build(BuildContext context) {
+
+    switch(product.product.priceProp){
+      case "1h" :
+        product.product.priceProp = '시간';
+        break;
+      case "30m" :
+        product.product.priceProp = '30분';
+        break;
+      case "Day" :
+        product.product.priceProp = '일';
+        break;
+    }
+
     return Card(
       color: Colors.transparent,
       elevation: 0.0,
@@ -33,7 +51,7 @@ class RentDealList extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   width:CardWidth*0.533,
 
-                  child: Text('{product.name}',
+                  child: Text('${product.product.name}',
                     style: const TextStyle(
                         color:  const Color(0xff191919),
                         fontWeight: FontWeight.w400,
@@ -48,7 +66,7 @@ class RentDealList extends StatelessWidget {
                   height: CardHeight *0.183,
                   child: Row(
                     children: [
-                      Text('가격',
+                      Text('${product.product.price}',
                           style:TextStyle(
                               color:  const Color(0xff191919),
                               fontWeight: FontWeight.w700,
@@ -74,7 +92,7 @@ class RentDealList extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 3),
                         child: Text(
-                            "/일",
+                            "${product.product.priceProp}",
                             style: const TextStyle(
                                 color:  const Color(0xff999999),
                                 fontWeight: FontWeight.w400,

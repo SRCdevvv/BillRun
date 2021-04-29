@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/mypage/deal_managemenet/deal_list_controller.dart';
 import 'package:bilrun/screens/rent/rent_controller.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:bilrun/widgets/main_drawer.dart';

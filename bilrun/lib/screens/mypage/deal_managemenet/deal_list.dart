@@ -1,16 +1,35 @@
  import 'package:flutter/material.dart';
  import 'package:get/get.dart';
- import 'deal_list_tile.dart';
+ import 'deal_list_controller.dart';
+import 'deal_list_tile.dart';
 
 
 
  class DealManagement extends StatefulWidget {
+
+   DealManagement({Key key, this.title}) : super(key: key);
+
+   final String title;
+
    @override
    _DealManagementState createState() => _DealManagementState();
  }
 
  class _DealManagementState extends State<DealManagement>
      with SingleTickerProviderStateMixin {
+
+
+   DealListController dealListController = Get.put(DealListController());
+
+
+   Future<Null> refresh() async{
+     DealListController.dealFetchList();
+     DealListController.dealFetchList();
+     dealListController = Get.put(DealListController());
+
+   }
+
+
    TabController _tabController;
    bool isTabed=false;
 
@@ -28,6 +47,8 @@
 
    @override
    Widget build(BuildContext context) {
+
+
      return Scaffold(
         appBar: AppBar(
        backgroundColor: Colors.white,
@@ -115,33 +136,15 @@
                child: TabBarView(
                  controller: _tabController,
                  children: [
-                   ListView.builder(
-                     itemCount: 5,
-                       itemBuilder: (BuildContext context, int index){
-                     return Column(
-                       children: [
-                         RentDealList(),
-                         Container(
-                             width: Get.width*0.866 ,
-                             height: 0,
-                             decoration: BoxDecoration(
-                                 border: Border.all(
-                                     color: const Color(0xffdedede),
-                                     width: 1
-                                 )
-                             )
-                         ),
-                       ],
-                     );
-                   }),
-
+                   //빌려드
+                   rentDealList(),
                    //빌림
                    ListView.builder(
                        itemCount: 5,
                        itemBuilder: (BuildContext context, int index){
                          return Column(
                            children: [
-                             RentDealList(),
+                             //RentDealList(),
                              Container(
                                  width: Get.width*0.866 ,
                                  height: 0,
@@ -180,7 +183,33 @@
 
 
 
+Widget rentDealList(){
+   return Obx(   () {
+     return ListView.builder(
+       itemCount: DealListController.dealLists.length,
+       //DealListController.dealListController.value.length ,
+       itemBuilder: (BuildContext context, int index) {
+         return Column(
+           children: [
+             RentDealList(DealListController.dealLists[index]),
+             Container(
+                 width: Get.width * 0.866,
+                 height: 0,
+                 decoration: BoxDecoration(
+                     border: Border.all(
+                         color: const Color(0xffdedede),
+                         width: 1
+                     )
+                 )
+             ),
+           ],
+         );
+       },
+     );
+   }
+   );
 
+}
 
 
 

@@ -181,7 +181,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                                 child: Column(
                                   children: <Widget>[
                                     IconButton(
-                                      onPressed: (){},
+                                      onPressed: (){Get.to(DealManagement());},
                                       icon: Image.asset('assets/images/dealListButton.png',width: 30, height: 30,),
                                       padding: EdgeInsets.only(bottom:10.0),
                                     ),
