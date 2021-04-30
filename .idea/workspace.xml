@@ -21,11 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9843a93c-7cf8-49c2-a620-11016c6ee779" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/location/now_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/location/now_location.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

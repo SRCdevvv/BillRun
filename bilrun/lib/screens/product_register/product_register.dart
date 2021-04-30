@@ -89,6 +89,13 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(60,10,60,10),
                   child: TextFormField(
+                    validator: (value){
+                      if(value.isEmpty){
+                        return '상품명은 필수 입력 항목입니다!';
+                      } else{
+                        return null;
+                      }
+                    },
                     decoration: InputDecoration(
                       labelText: '상품명',
                     ),
@@ -124,6 +131,13 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                           Container(
                             child: TextFormField(
                             keyboardType: TextInputType.number,
+                            validator: (value){
+                              if(value.isEmpty){
+                                return '가격은 필수 입력 항목입니다!';
+                              } else{
+                                return null;
+                              }
+                            },
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]')),],
                             decoration: InputDecoration(
                               hintText: '가격',
@@ -312,6 +326,13 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
             TextFormField(
                   maxLines: 8,
+              validator: (value){
+                if(value.isEmpty){
+                  return '상품 설명은 필수 입력 항목입니다!';
+                } else{
+                  return null;
+                }
+              },
                   decoration: InputDecoration(
                     hintText: ProductCategory == true
                           ? "빌려줄 상품 정보와 상태를 자세하게 작성해주세요. "
@@ -327,6 +348,13 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
 
                 TextFormField(
+                  validator: (value){
+                    if(value.isEmpty){
+                      return '거래 요구사항은 필수 입력 항목입니다!';
+                    } else{
+                      return null;
+                    }
+                  },
                   maxLines: 8,
                   decoration: InputDecoration(
                     hintText: "거래 관련 요구사항을 적어주세요.",
@@ -390,7 +418,6 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                       }
 
 
-                     Get.back();
                     }),
               ],
             ),
@@ -454,28 +481,7 @@ Widget TimeStandard(String timeStandard, List<bool> Selected) {
 
 
     );
-
-
-  //   TextButton(
-  //     child: TextButton(
-  //   style: TextButton.styleFrom(
-  //     shape: RoundedRectangleBorder(
-  //       borderRadius: BorderRadius.all(Radius.circular(15)),
-  //       side: BorderSide(color: Color(0xff999999)),
-  //     ),
-  //     backgroundColor: Colors.white,
-  //   ),
-  //   onPressed: () {},
-  //   child: Text(
-  //     "$timeStandard",
-  //     style: TextStyle(
-  //       fontSize: 17.0,
-  //       color: Color(0xff999999),
-  //     ),
-  //   ),
-  // ));
-
-}
+  }
 
 Container ExplainText(String explainText) {
   return Container(

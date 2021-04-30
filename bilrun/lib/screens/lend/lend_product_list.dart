@@ -56,6 +56,7 @@ class LendProductTile extends StatelessWidget {
             padding: EdgeInsets.only(top: 3),
 
             child: Text("${lendproduct.name}",
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: const Color(0xff191919),
                     fontWeight: FontWeight.w400,
@@ -71,6 +72,7 @@ class LendProductTile extends StatelessWidget {
               Container(
                 height: 18,
                 child: Text("${lendproduct.price}",
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff191919),
                         fontWeight: FontWeight.w700,
@@ -93,6 +95,7 @@ class LendProductTile extends StatelessWidget {
               Container(
                 height: 18,
                 child: Text("/${lendproduct.priceProp}",
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff999999),
                         fontWeight: FontWeight.w400,
@@ -112,6 +115,7 @@ class LendProductTile extends StatelessWidget {
               Container(
                 height: 22,
                 child: Text('${lendproduct.user.nickname}',
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff191919),
                         fontWeight: FontWeight.w400,
@@ -123,6 +127,7 @@ class LendProductTile extends StatelessWidget {
               Container(
                 height: 16,
                 child: Text(" ᛫ 30분 전",
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff999999),
                         fontWeight: FontWeight.w400,
@@ -138,3 +143,4 @@ class LendProductTile extends StatelessWidget {
     );
   }
 }
+

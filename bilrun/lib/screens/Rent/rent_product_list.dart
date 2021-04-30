@@ -60,6 +60,7 @@ class RentProductTile extends StatelessWidget {
                         width: 246,
                         height: 22,
                         child: Text('${product.name}',
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               color:  const Color(0xff191919),
                               fontWeight: FontWeight.w400,
@@ -76,6 +77,7 @@ class RentProductTile extends StatelessWidget {
                           Container(
                               height: 22,
                               child: Text('${product.price}',
+                                  overflow: TextOverflow.ellipsis,
                                   style:TextStyle(
                                       color:  const Color(0xff191919),
                                       fontWeight: FontWeight.w700,
@@ -103,6 +105,7 @@ class RentProductTile extends StatelessWidget {
                             padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                             height: 18,
                             child: Text('/${product.priceProp}',
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     color:  const Color(0xff999999),
                                     fontWeight: FontWeight.w400,
@@ -119,6 +122,7 @@ class RentProductTile extends StatelessWidget {
                               child: Container(
                                 height: 16,
                                 child: Text(" ᛫ 30분 전",
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                         color: const Color(0xff999999),
                                         fontWeight: FontWeight.w400,
