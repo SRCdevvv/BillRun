@@ -15,13 +15,13 @@ class DetailProductService {
     var IdOfProduct = Get.arguments;
 
     // var IdOfProduct=1;
-    var response = await client.get('http://35.175.245.21:8000/api/lend_product_list/$IdOfProduct?format=json');
+    var response = await client.get('http://35.175.245.21/api/lend_product_list/$IdOfProduct?format=json');
 
     if(response.statusCode ==200){
       String jsonString = utf8.decode(response.bodyBytes);
       // print('아이디: $IdOfProduct');
       //print('서비스: ${RentDetailProductFromJson(jsonString)}');
-      return DetailProductFromJson(jsonString);
+      return detailProductFromJson(jsonString);
     }
     else{
       print('접속오류');

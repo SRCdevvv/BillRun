@@ -48,13 +48,22 @@ static  Future  fetchProducts() async {
             ],
           ),
         );
-
+      }
+      else{
+        return Scaffold(
+          body: Column(
+            children: [
+              Text('인터넷 연결을 확인해주세요.'),
+            ],
+          ),
+        );
       }
 
 
     } finally {
       isLoading(false);
     }
+
   }
 
 

@@ -8,12 +8,12 @@ class ProductListService {
 
   static Future<List<ProductList>> fetchLendProducts() async {
     var response = await client.get(
-        'http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/api/lend_product_list/?format=json');
+        'http://35.175.245.21/api/lend_product_list/?format=json');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
 
-      return ProductListFromJson(jsonString);
+      return productListFromJson(jsonString);
     }
     else {
       return null;

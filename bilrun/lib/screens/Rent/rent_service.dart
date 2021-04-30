@@ -7,13 +7,12 @@ class RentProductListService {
 
   static Future<List<ProductList>> fetchRentProducts() async {
     var response = await client.get(
-        'http://ec2-35-175-245-21.compute-1.amazonaws.com:8000/api/rent_product_list/?format=json');
+        'http://35.175.245.21/api/rent_product_list/?format=json');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
-      print('서비스: ${ProductListFromJson(jsonString)}');
 
-      return ProductListFromJson(jsonString);
+      return productListFromJson(jsonString);
     }
     else {
       return null;

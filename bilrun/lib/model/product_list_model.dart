@@ -1,12 +1,12 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final productList = productListFromJson(jsonString);
 
 import 'dart:convert';
 
-List<ProductList> ProductListFromJson(String str) => List<ProductList>.from(json.decode(str).map((x) => ProductList.fromJson(x)));
+List<ProductList> productListFromJson(String str) => List<ProductList>.from(json.decode(str).map((x) => ProductList.fromJson(x)));
 
-String ProductListToJson(List<ProductList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String productListToJson(List<ProductList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ProductList {
   ProductList({
@@ -16,14 +16,15 @@ class ProductList {
     this.caution,
     this.price,
     this.priceProp,
-    this.userId,
+    this.user,
+    this.photos,
+    this.borrow,
     this.category,
     this.placeOption,
     this.hits,
     this.likeCount,
     this.createdAt,
     this.updatedAt,
-    this.photo,
   });
 
   int id;
@@ -32,14 +33,15 @@ class ProductList {
   String caution;
   String price;
   String priceProp;
-  UserId userId;
-  bool category;
+  User user;
+  List<Photo> photos;
+  bool borrow;
+  String category;
   bool placeOption;
   int hits;
   int likeCount;
   DateTime createdAt;
   DateTime updatedAt;
-  String photo;
 
   factory ProductList.fromJson(Map<String, dynamic> json) => ProductList(
     id: json["id"],
@@ -48,14 +50,15 @@ class ProductList {
     caution: json["caution"],
     price: json["price"],
     priceProp: json["price_prop"],
-    userId: UserId.fromJson(json["user_id"]),
+    user: User.fromJson(json["user"]),
+    photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
+    borrow: json["borrow"],
     category: json["category"],
     placeOption: json["place_option"],
     hits: json["hits"],
     likeCount: json["like_count"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    photo: json["photo"] == null ? null : json["photo"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -65,23 +68,41 @@ class ProductList {
     "caution": caution,
     "price": price,
     "price_prop": priceProp,
-    "user_id": userId.toJson(),
+    "user": user.toJson(),
+    "photos": List<dynamic>.from(photos.map((x) => x.toJson())),
+    "borrow": borrow,
     "category": category,
     "place_option": placeOption,
     "hits": hits,
     "like_count": likeCount,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
-    "photo": photo == null ? null : photo,
   };
 }
 
-class UserId {
-  UserId({
+class Photo {
+  Photo({
+    this.photo,
+  });
+
+  String photo;
+
+  factory Photo.fromJson(Map<String, dynamic> json) => Photo(
+    photo: json["photo"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "photo": photo,
+  };
+}
+
+class User {
+  User({
     this.id,
     this.place,
     this.username,
     this.nickname,
+    this.phone,
     this.money,
     this.level,
     this.createdAt,
@@ -94,6 +115,7 @@ class UserId {
   String place;
   String username;
   String nickname;
+  String phone;
   int money;
   String level;
   DateTime createdAt;
@@ -101,16 +123,17 @@ class UserId {
   String profile;
   int user;
 
-  factory UserId.fromJson(Map<String, dynamic> json) => UserId(
+  factory User.fromJson(Map<String, dynamic> json) => User(
     id: json["id"],
     place: json["place"],
     username: json["username"],
     nickname: json["nickname"],
+    phone: json["phone"],
     money: json["money"],
     level: json["level"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    profile: json["profile"] == null ? null : json["profile"],
+    profile: json["profile"],
     user: json["user"],
   );
 
@@ -119,11 +142,12 @@ class UserId {
     "place": place,
     "username": username,
     "nickname": nickname,
+    "phone": phone,
     "money": money,
     "level": level,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
-    "profile": profile == null ? null : profile,
+    "profile": profile,
     "user": user,
   };
 }

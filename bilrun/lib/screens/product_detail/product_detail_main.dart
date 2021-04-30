@@ -78,7 +78,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
                         Stack(
                           children: <Widget>[
-                            BannerWidget(),
+                            //TODO 사진 추가
+                           // BannerWidget(),
                             Positioned(
                               child:IconButton(
                                   iconSize : 40.0,

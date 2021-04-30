@@ -1,5 +1,6 @@
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
+import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -92,7 +93,7 @@ Future<Null> refresh() async{
                           shrinkWrap: true,
                           children: [
                             OriginDivider(Colors.red[900], 100, 0, 0),
-                            BannerWidget(),
+                            noticeBannerWidget(),
                             Row(
                               children: [
                                 Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
