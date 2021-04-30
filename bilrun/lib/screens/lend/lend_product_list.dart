@@ -1,3 +1,5 @@
+
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
 import 'package:get/get.dart';
@@ -8,8 +10,18 @@ class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
   const LendProductTile(this.lendproduct);
 
+
   @override
   Widget build(BuildContext context) {
+
+
+    int differenceDay  = int.parse(DateTime.now().difference(lendproduct.createdAt).inDays.toString());
+    int differenceHours  = int.parse(DateTime.now().difference(lendproduct.createdAt).inHours.toString());
+
+
+
+
+
     switch (lendproduct.priceProp) {
       case "1h":
         lendproduct.priceProp = '시간 당';
@@ -21,6 +33,8 @@ class LendProductTile extends StatelessWidget {
         lendproduct.priceProp = '일 당';
         break;
     }
+
+
 
     return Container(
       padding: EdgeInsets.only(bottom: 10),
@@ -126,7 +140,12 @@ class LendProductTile extends StatelessWidget {
               ),
               Container(
                 height: 16,
-                child: Text(" ᛫ 30분 전",
+                child: Text(
+
+                    differenceDay < 1 ?
+                    "$differenceHours시간 전 " : " ᛫$differenceDay일 전" ,
+
+
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff999999),

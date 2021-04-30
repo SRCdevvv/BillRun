@@ -21,6 +21,11 @@ class RentProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
+
+    int differenceDay  = int.parse(DateTime.now().difference(product.createdAt).inDays.toString());
+    int differenceHours  = int.parse(DateTime.now().difference(product.createdAt).inHours.toString());
+
+
     switch(product.priceProp){
       case "1h" :
         product.priceProp = '시간';
@@ -121,7 +126,9 @@ class RentProductTile extends StatelessWidget {
                               height: 16,
                               child: Container(
                                 height: 16,
-                                child: Text(" ᛫ 30분 전",
+                                child: Text(
+                                    differenceDay < 1 ?
+                                    "$differenceHours시간 전 " : " ᛫$differenceDay일 전" ,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                         color: const Color(0xff999999),
