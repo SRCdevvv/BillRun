@@ -74,7 +74,6 @@ class RentProductTile extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                              width: 40,
                               height: 22,
                               child: Text('${product.price}',
                                   style:TextStyle(
@@ -86,7 +85,7 @@ class RentProductTile extends StatelessWidget {
                                   ),
                                   textAlign: TextAlign.left )),
                           Container(
-                            width: 13,
+
                             height: 22,
                             child: Text('원',
                                 style:TextStyle(
@@ -102,7 +101,6 @@ class RentProductTile extends StatelessWidget {
 
                           Container(
                             padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            width: 27,
                             height: 18,
                             child: Text('/${product.priceProp}',
                                 style: TextStyle(
@@ -116,40 +114,19 @@ class RentProductTile extends StatelessWidget {
                             ),),
                           Container(
                               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              width: 67,
+
                               height: 16,
-                              child: Stack(children: [
-                                // 7시간 전
-                                PositionedDirectional(
-                                  top: 0,
-                                  start: 7,
-                                  child:
-                                  Text(
-                                      "7시간 전",
-                                      style: const TextStyle(
-                                          color:  const Color(0xff999999),
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: "NotoSansCJKkr",
-                                          fontStyle:  FontStyle.normal,
-                                          fontSize: 10.0
-                                      ),
-                                      textAlign: TextAlign.left
-                                  ),
-                                ),
-                                // 타원 58
-                                PositionedDirectional(
-                                  top: 7,
-                                  start: 0,
-                                  child:
-                                  Container(
-                                      width: 3,
-                                      height: 3,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xff999999)
-                                      )
-                                  ),
-                                )
-                              ])
+                              child: Container(
+                                height: 16,
+                                child: Text(" ᛫ 30분 전",
+                                    style: const TextStyle(
+                                        color: const Color(0xff999999),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 10.0),
+                                    textAlign: TextAlign.left),
+                              ),
 
                           ),
                         ],
@@ -157,19 +134,21 @@ class RentProductTile extends StatelessWidget {
 
                       onTap: ()=>{ Get.to(DetailScreen(),arguments:product.id, )},
                       trailing:
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(10)
-                            )),
-                        child: Image.network('$url',
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          width:Get.width*0.16,
+                          height:Get.width*0.16,
+                          child: Image.network(
+                            'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
 
-                          fit: BoxFit.contain,),
-                      )
+                       )
                   ),
-                ),
+                
 
 
 

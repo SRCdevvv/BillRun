@@ -44,9 +44,9 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
             options: CarouselOptions(
               height: Get.height / 3.5,
               enlargeCenterPage: true,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              // autoPlay: true,
+              // autoPlayInterval: Duration(seconds: 3),
+              // autoPlayAnimationDuration: Duration(milliseconds: 800),
               viewportFraction: 1,
               onPageChanged: (index, reason) {
                 setState(() {
@@ -67,9 +67,7 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
                     decoration: BoxDecoration(
                       shape:
                       _current == index ? BoxShape.rectangle : BoxShape.circle,
-                      // borderRadius: _current == index
-                      //     ? BorderRadius.all(Radius.circular(0.5))
-                      //     : null,
+
                       //TODO :  BoxDecoration 길고 둥글게 만들기
                       color: _current == index ? Colors.red[900] : Colors.grey,
                     ),

@@ -23,6 +23,7 @@ class LendProductTile extends StatelessWidget {
     }
 
     return Container(
+      padding: EdgeInsets.only(bottom: 10),
       color: Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,9 +35,8 @@ class LendProductTile extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
-                    padding: EdgeInsets.only(bottom:8),
-                    width:double.infinity,
-                    height: 150,
+                    width:Get.width*0.417,
+                    height:Get.width*0.417,
                     child: Image.network(
                       'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
                       fit: BoxFit.fill,
@@ -53,6 +53,7 @@ class LendProductTile extends StatelessWidget {
           Container(
             width: 150,
             height: 22,
+            padding: EdgeInsets.only(top: 3),
 
             child: Text("${lendproduct.name}",
                 style: const TextStyle(
@@ -68,7 +69,6 @@ class LendProductTile extends StatelessWidget {
             children: [
 
               Container(
-                width: 39,
                 height: 18,
                 child: Text("${lendproduct.price}",
                     style: const TextStyle(
@@ -80,7 +80,6 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                width: 13,
                 height: 22,
                 child: Text("원",
                     style: const TextStyle(
@@ -92,7 +91,6 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                width: 30,
                 height: 18,
                 child: Text("/${lendproduct.priceProp}",
                     style: const TextStyle(
@@ -112,7 +110,6 @@ class LendProductTile extends StatelessWidget {
               //   radius: 16.0,
               // ),
               Container(
-                width: 44,
                 height: 22,
                 child: Text('${lendproduct.user.nickname}',
                     style: const TextStyle(
@@ -124,13 +121,8 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                  width: 3,
-                  height: 3,
-                  decoration: BoxDecoration(color: const Color(0xff999999))),
-              Container(
-                width: 41,
                 height: 16,
-                child: Text("30분 전",
+                child: Text(" ᛫ 30분 전",
                     style: const TextStyle(
                         color: const Color(0xff999999),
                         fontWeight: FontWeight.w400,
