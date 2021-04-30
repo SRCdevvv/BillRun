@@ -12,6 +12,12 @@
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/image_picker/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/image_picker/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/image_picker/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/multi_image_picker/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/url_launcher/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/url_launcher/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/bilrun/ios/.symlinks/plugins/url_launcher/build" />
