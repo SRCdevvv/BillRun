@@ -26,15 +26,15 @@ class RentProductTile extends StatelessWidget {
     int differenceHours  = int.parse(DateTime.now().difference(product.createdAt).inHours.toString());
 
 
-    switch(product.priceProp){
-      case "1h" :
-        product.priceProp = '시간';
+    switch (product.priceProp) {
+      case "1h":
+        product.priceProp = '시간 당';
         break;
-      case "30m" :
-        product.priceProp = '30분';
+      case "Week":
+        product.priceProp = '주 당';
         break;
-      case "Day" :
-        product.priceProp = '일';
+      case "Day":
+        product.priceProp = '일 당';
         break;
     }
     var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';

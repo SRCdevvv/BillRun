@@ -8,7 +8,7 @@ import 'package:bilrun/model/deal_list_model.dart';
 
 
 
-class DealListController extends GetxController {
+class LendDealListController extends GetxController {
 
   static  var isLoading = true.obs;
   // ignore: deprecated_member_use
@@ -17,8 +17,7 @@ class DealListController extends GetxController {
 
   @override
   void onInit() {
-    dealFetchList('lend_deal_list');
-    print('lend딜리스트 실행');
+    dealFetchList('borrow_deal_list');
     super.onInit();
   }
 

@@ -1,7 +1,9 @@
  import 'package:flutter/material.dart';
  import 'package:get/get.dart';
  import 'deal_list_controller.dart';
+import 'deal_list_service.dart';
 import 'deal_list_tile.dart';
+import 'lend_deal_controller.dart';
 
 
 
@@ -17,17 +19,6 @@ import 'deal_list_tile.dart';
 
  class _DealManagementState extends State<DealManagement>
      with SingleTickerProviderStateMixin {
-
-
-   DealListController dealListController = Get.put(DealListController());
-
-
-   Future<Null> refresh() async{
-     DealListController.dealFetchList();
-     DealListController.dealFetchList();
-     dealListController = Get.put(DealListController());
-
-   }
 
 
    TabController _tabController;
@@ -128,7 +119,6 @@ import 'deal_list_tile.dart';
                onTap: (){
                  setState(() {
                    isTabed == true ? isTabed= false : isTabed = true;
-                   print(isTabed);
                  });
                },
              ),
@@ -136,29 +126,8 @@ import 'deal_list_tile.dart';
                child: TabBarView(
                  controller: _tabController,
                  children: [
-                   //빌려드
+                   lendDealList(),
                    rentDealList(),
-                   //빌림
-                   ListView.builder(
-                       itemCount: 5,
-                       itemBuilder: (BuildContext context, int index){
-                         return Column(
-                           children: [
-                             //RentDealList(),
-                             Container(
-                                 width: Get.width*0.866 ,
-                                 height: 0,
-                                 decoration: BoxDecoration(
-                                     border: Border.all(
-                                         color: const Color(0xffdedede),
-                                         width: 1
-                                     )
-                                 )
-                             ),
-                           ],
-                         );
-                       }),
-
 
 
 
@@ -184,8 +153,19 @@ import 'deal_list_tile.dart';
 
 
 Widget rentDealList(){
-   return Obx(   () {
-     return ListView.builder(
+  Future<Null> refresh() async{
+    DealListService.fetchDealList('lend_deal_list');
+    DealListController.dealFetchList('lend_deal_list');
+    DealListController dealListController = Get.put(DealListController());
+
+
+  }
+  DealListController dealListController = Get.put(DealListController());
+
+  return Obx(   () {
+     return RefreshIndicator( onRefresh: refresh,
+     child:
+     ListView.builder(
        itemCount: DealListController.dealLists.length,
        //DealListController.dealListController.value.length ,
        itemBuilder: (BuildContext context, int index) {
@@ -205,11 +185,60 @@ Widget rentDealList(){
            ],
          );
        },
+     ),
      );
+
+
    }
    );
 
 }
+
+
+ Widget lendDealList(){
+   Future<Null> refresh() async{
+     DealListService.fetchDealList('borrow_deal_list');
+     LendDealListController.dealFetchList('borrow_deal_list');
+     LendDealListController lendDealListController = Get.put(LendDealListController());
+   }
+
+   LendDealListController dealListController = Get.put(LendDealListController());
+
+   return Obx(   () {
+     return RefreshIndicator(child:
+
+     ListView.builder(
+       itemCount: LendDealListController.dealLists.length,
+       //DealListController.dealListController.value.length ,
+       itemBuilder: (BuildContext context, int index) {
+         return Column(
+           children: [
+             RentDealList(LendDealListController.dealLists[index]),
+             Container(
+                 width: Get.width * 0.866,
+                 height: 0,
+                 decoration: BoxDecoration(
+                     border: Border.all(
+                         color: const Color(0xffdedede),
+                         width: 1
+                     )
+                 )
+             ),
+           ],
+         );
+       },
+     ),
+
+         onRefresh: refresh,);
+
+
+
+
+
+   }
+   );
+
+ }
 
 
 
