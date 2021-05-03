@@ -17,6 +17,7 @@ class LendProductTile extends StatelessWidget {
 
     int differenceDay  = int.parse(DateTime.now().difference(lendproduct.createdAt).inDays.toString());
     int differenceHours  = int.parse(DateTime.now().difference(lendproduct.createdAt).inHours.toString());
+    int differneceMinute = int.parse(DateTime.now().difference(lendproduct.createdAt).inMinutes.toString());
 
 
 
@@ -33,6 +34,7 @@ class LendProductTile extends StatelessWidget {
         lendproduct.priceProp = '일 당';
         break;
     }
+    print(lendproduct.photos);
 
 
 
@@ -51,10 +53,14 @@ class LendProductTile extends StatelessWidget {
                   child: Container(
                     width:Get.width*0.417,
                     height:Get.width*0.417,
-                    child: Image.network(
-                      'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
-                      fit: BoxFit.fill,
-                    ),
+                    child:
+                    lendproduct.photos.isEmpty ?
+                        Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
+                        :
+                        Image.network(
+                        '${lendproduct.photos[0].photo}',
+                        fit: BoxFit.fill,
+                      ),
                   ),
                 ),
                 Positioned(
@@ -122,10 +128,10 @@ class LendProductTile extends StatelessWidget {
           ),
           Row(
             children: [
-              // CircleAvatar(
-              //   backgroundImage: NetworkImage('${lendproduct.user.profile}'),
-              //   radius: 16.0,
-              // ),
+               // CircleAvatar(
+               //   backgroundImage: NetworkImage('${lendproduct.user.profile}'),
+               //   radius: 12.0,
+               // ),
               Container(
                 height: 22,
                 child: Text('${lendproduct.user.nickname}',
@@ -143,7 +149,9 @@ class LendProductTile extends StatelessWidget {
                 child: Text(
 
                     differenceDay < 1 ?
-                    "$differenceHours시간 전 " : " ᛫$differenceDay일 전" ,
+                        differenceHours < 1 ?
+                        differneceMinute < 30 ? "방금 전": "᛫$differneceMinute분 전 " :
+                            "$differenceHours시간 전": " ᛫$differenceDay일 전" ,
 
 
                     overflow: TextOverflow.ellipsis,

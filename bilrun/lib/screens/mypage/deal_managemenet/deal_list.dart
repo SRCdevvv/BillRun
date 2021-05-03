@@ -1,4 +1,6 @@
- import 'package:flutter/material.dart';
+ import 'dart:ui';
+
+import 'package:flutter/material.dart';
  import 'package:get/get.dart';
  import 'deal_list_controller.dart';
 import 'deal_list_service.dart';
@@ -123,21 +125,23 @@ import 'lend_deal_controller.dart';
                },
              ),
              Expanded(
-               child: TabBarView(
-                 controller: _tabController,
-                 children: [
-                   lendDealList(),
-                   rentDealList(),
+
+                 child:
+                 TabBarView(
+                   controller: _tabController,
+
+                   children: [
+                     lendDealList(),
+                     rentDealList(),
+
+
+                   ],
+                 ) ,
+               )
 
 
 
 
-
-
-
-                 ],
-               ),
-             ),
            ],
          ),
        ),
@@ -206,8 +210,7 @@ Widget rentDealList(){
 
    return Obx(   () {
      return RefreshIndicator(child:
-
-     ListView.builder(
+       ListView.builder(
        itemCount: LendDealListController.dealLists.length,
        //DealListController.dealListController.value.length ,
        itemBuilder: (BuildContext context, int index) {
@@ -229,14 +232,15 @@ Widget rentDealList(){
        },
      ),
 
-         onRefresh: refresh,);
 
 
 
 
+     onRefresh: refresh,);
 
    }
-   );
+     );
+
 
  }
 

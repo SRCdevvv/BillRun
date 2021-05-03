@@ -37,15 +37,8 @@ class RentProductTile extends StatelessWidget {
         product.priceProp = '일 당';
         break;
     }
-    var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
-        //'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
-//     print(product.createdAt);
-//     var currentTime = DateTime.now();
-//
-//    var productTime = product.createdAt;
-//
-// var  TimeAgo = timeago.format(currentTime.subtract(Duration(hours:1)));
-// print(TimeAgo);
+    var url = product.photos[0].photo;
+
 
 
 
@@ -150,8 +143,12 @@ class RentProductTile extends StatelessWidget {
                         child: Container(
                           width:Get.width*0.16,
                           height:Get.width*0.16,
-                          child: Image.network(
-                            'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
+                          child:
+                          product.photos.isEmpty ?
+                          Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
+                              :
+                          Image.network(
+                            '$url',
                             fit: BoxFit.fill,
                           ),
                         ),
