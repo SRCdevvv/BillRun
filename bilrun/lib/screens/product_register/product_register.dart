@@ -23,6 +23,7 @@ class _initData {
   String caution;
   int price;
   String priceProp;
+  List images ;
 
 }
 
@@ -75,14 +76,19 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
         ),
         centerTitle: false,
       ),
-      body: ListView(
-        children: <Widget>[
+      body: SingleChildScrollView(
+        child:
           Form(
             key: _formKey,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 //TODO 멀티 이미지 픽커로 바꾸기
-                Container(child: MyApps()),
+                Padding(
+                  padding: const EdgeInsets.only(left:11),
+                  child: MyApps(),
+                ),
+
 
 
 
@@ -422,7 +428,6 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               ],
             ),
           ),
-        ],
       ),
     );
   }

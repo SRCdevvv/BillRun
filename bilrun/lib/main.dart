@@ -1,5 +1,6 @@
 import 'package:bilrun/screens/chat/notyet.dart';
 import 'package:bilrun/screens/mypage/deal_managemenet/deal_list.dart';
+import 'package:bilrun/screens/product_register/product_register.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
     DialogProductRegister(),
     //ImageUpload(),
      //ChatApp(),
-    DealManagement(),
+    //DealManagement(),
+    ProductRegister(),
     MyPageScreen()
   ];
   void _onTap(int index) {
