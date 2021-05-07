@@ -1,3 +1,4 @@
+import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
@@ -26,6 +27,7 @@ class LendMain extends StatefulWidget {
 }
 
 class _LendMainState extends State<LendMain> {
+  bool isTaped=false;
 
 
 
@@ -35,6 +37,8 @@ class _LendMainState extends State<LendMain> {
 
 
   LendProductController productController = Get.put(LendProductController());
+
+
 
 
 Future<Null> refresh() async{
@@ -92,19 +96,54 @@ Future<Null> refresh() async{
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           children: [
-                            OriginDivider(Colors.red[900], 100, 0, 0),
+                            OriginDivider(mainRed, 100, 0, 0),
                             noticeBannerWidget(),
+                            GestureDetector(
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(240,10,10,10),
+                                child: Container(
+                                  width: Get.width ,
+                                  height: Get.height * 0.03,
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.account_balance_outlined,color: isTaped ==false ? Color(0xff767676) : Color(0xffaa0000),size: 20,),
+
+                                      Text("주변 학교까지 보기",
+                                        style : TextStyle(
+                                            color:  isTaped ==false ? Color(0xff767676) : Color(0xffaa0000),
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontSize: 14.0
+                                        ),
+                                        textAlign: TextAlign.right,),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              onTap: (){
+                                setState(() {
+                                  isTaped == true ? isTaped= false : isTaped = true;
+                                });
+                              },
+                            ),
                             Row(
                               children: [
-                                Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                Padding(padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
                                   child: NowLocation(),
                                 ),
+                                // 지금 빌려드려요!
                                 Text(
-                                  '지금 빌려주세요!',
-                                  style: TextStyle(
-                                      fontSize: 22, fontWeight: FontWeight.bold),
-                                ),
-
+                                    "지금 빌려드려요!",
+                                    style: const TextStyle(
+                                        color:  const Color(0xff191919),
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle:  FontStyle.normal,
+                                        fontSize: 16.0
+                                    ),
+                                    textAlign: TextAlign.left
+                                )
                               ],
                             ),
                             Padding(

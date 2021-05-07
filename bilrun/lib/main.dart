@@ -1,11 +1,10 @@
 import 'package:bilrun/screens/chat/notyet.dart';
-import 'package:bilrun/screens/mypage/deal_managemenet/deal_list.dart';
+import 'package:bilrun/screens/product_register/product_register.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'package:get/get.dart';
-import 'package:bilrun/screens/product_register/product_register_popup.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'BILLRUN main'),
+      home: MyHomePage(title: '빌려주러 달려 가는 중 ! - 빌RUN'),
     );
   }
 }
@@ -37,10 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     LendMain(),
     RentMain(),
-    DialogProductRegister(),
+    showRegisterDialog(),
+
+    // DialogProductRegister(),
     //ImageUpload(),
-     //ChatApp(),
-    DealManagement(),
+    ChatApp(),
+    //DealManagement(),
+
     MyPageScreen()
   ];
   void _onTap(int index) {
@@ -57,36 +59,80 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-        body: _children[currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: Color(0xff999999),
-            selectedItemColor: Color(0xffaa0000),
-            type: BottomNavigationBarType.fixed,
-            onTap: _onTap,
-            currentIndex: currentIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: currentIndex == 0 ? Image.asset('assets/images/lendlogored.png',width: 22, height: 22,) : Image.asset('assets/images/lendlogo.png',width: 22,height: 22,),
-                label: '빌려드림',
+      body: _children[currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Color(0xff999999),
+          selectedItemColor: Color(0xffaa0000),
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          currentIndex: currentIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: currentIndex == 0
+                  ? Image.asset(
+                      'assets/images/lendlogored.png',
+                      width: 22,
+                      height: 22,
+                    )
+                  : Image.asset(
+                      'assets/images/lendlogo.png',
+                      width: 22,
+                      height: 22,
+                    ),
+              label: '빌려드림',
+            ),
+            BottomNavigationBarItem(
+              icon: currentIndex == 1
+                  ? Image.asset(
+                      'assets/images/rentlogored.png',
+                      width: 22,
+                      height: 22,
+                    )
+                  : Image.asset(
+                      'assets/images/rentlogo.png',
+                      width: 22,
+                      height: 22,
+                    ),
+              label: '빌림',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.add_box_rounded,
+                size: 22,
               ),
-              BottomNavigationBarItem(
-                icon: currentIndex == 1 ? Image.asset('assets/images/rentlogored.png',width: 22, height: 22,) : Image.asset('assets/images/rentlogo.png',width: 22,height: 22,),
-                label: '빌림',
+              label: '상품 등록',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/images/chatlogo.png',
+                width: 22,
+                height: 22,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_box_rounded,size: 22,),
-                label: '상품 등록',
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset('assets/images/chatlogo.png',width: 22,height: 22,),
-                label: '채팅',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: '마이페이지',
-              ),
-            ]));
+              label: '채팅',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '마이페이지',
+            ),
+          ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+    );
   }
+}
+
+Widget showRegisterDialog() {
+  return AlertDialog(
+    backgroundColor: Colors.white,
+    title: Text('상품 등록'),
+    actions: <Widget>[
+      TextButton(
+          onPressed: () => {Get.to(ProductRegister(), arguments: true)},
+          child: Text('빌려드림')),
+      TextButton(
+          onPressed: () => {Get.to(ProductRegister(), arguments: false)},
+          child: Text('빌림'))
+    ],
+  );
 }

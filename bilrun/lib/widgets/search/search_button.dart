@@ -7,7 +7,7 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         icon: Icon(Icons.search),
-        iconSize: 38.0,
+        iconSize: 25.0,
         color: Colors.black,
         onPressed: () {
             Get.to(SearchbarScreen());

@@ -1,3 +1,4 @@
+import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/mypage/deal_managemenet/deal_list_controller.dart';
 import 'package:bilrun/screens/rent/rent_controller.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
@@ -56,8 +57,6 @@ class _RentMainState extends State<RentMain> {
           ),
           backgroundColor: Colors.white,
           title: Row(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            // mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset('assets/images/logo.png', height: 40, width: 100)
             ],
@@ -88,21 +87,26 @@ class _RentMainState extends State<RentMain> {
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           children: [
-                            OriginDivider(Colors.red[900], 100, 0, 0),
+                            OriginDivider(mainRed, 100, 0, 0),
                            
                                  Padding(
                                   padding: const EdgeInsets.fromLTRB(0,20,0,0),
                                   child: Row(
                                     children: [
-                                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                        child: NowLocation(),
                                       ),
-
-                                       Text(
-                                          '지금 빌려주세요!',
-                                          style: TextStyle(
-                                              fontSize: 22, fontWeight: FontWeight.bold),
-                                        ),
+                                      Text(
+                                          "지금 빌려주세요!",
+                                          style: const TextStyle(
+                                              color:  const Color(0xff191919),
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: "NotoSansCJKkr",
+                                              fontStyle:  FontStyle.normal,
+                                              fontSize: 16.0
+                                          ),
+                                          textAlign: TextAlign.left
+                                      )
                                     ],
                                   ),
 

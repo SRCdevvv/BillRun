@@ -116,6 +116,12 @@
       "languageVersion": "2.5"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
@@ -266,7 +272,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-04-28T07:39:42.831784Z",
+  "generated": "2021-04-30T07:04:09.074310Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }

@@ -1,3 +1,5 @@
+
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
 import 'package:get/get.dart';
@@ -8,8 +10,19 @@ class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
   const LendProductTile(this.lendproduct);
 
+
   @override
   Widget build(BuildContext context) {
+
+
+    int differenceDay  = int.parse(DateTime.now().difference(lendproduct.createdAt).inDays.toString());
+    int differenceHours  = int.parse(DateTime.now().difference(lendproduct.createdAt).inHours.toString());
+    int differneceMinute = int.parse(DateTime.now().difference(lendproduct.createdAt).inMinutes.toString());
+
+
+
+
+
     switch (lendproduct.priceProp) {
       case "1h":
         lendproduct.priceProp = '시간 당';
@@ -21,8 +34,12 @@ class LendProductTile extends StatelessWidget {
         lendproduct.priceProp = '일 당';
         break;
     }
+    print(lendproduct.photos);
+
+
 
     return Container(
+      padding: EdgeInsets.only(bottom: 10),
       color: Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,13 +51,16 @@ class LendProductTile extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
-                    padding: EdgeInsets.only(bottom:8),
-                    width:double.infinity,
-                    height: 150,
-                    child: Image.network(
-                      'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg',
-                      fit: BoxFit.fill,
-                    ),
+                    width:Get.width*0.417,
+                    height:Get.width*0.417,
+                    child:
+                    lendproduct.photos.isEmpty ?
+                        Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
+                        :
+                        Image.network(
+                        '${lendproduct.photos[0].photo}',
+                        fit: BoxFit.fill,
+                      ),
                   ),
                 ),
                 Positioned(
@@ -53,8 +73,10 @@ class LendProductTile extends StatelessWidget {
           Container(
             width: 150,
             height: 22,
+            padding: EdgeInsets.only(top: 3),
 
             child: Text("${lendproduct.name}",
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                     color: const Color(0xff191919),
                     fontWeight: FontWeight.w400,
@@ -68,9 +90,9 @@ class LendProductTile extends StatelessWidget {
             children: [
 
               Container(
-                width: 39,
                 height: 18,
                 child: Text("${lendproduct.price}",
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff191919),
                         fontWeight: FontWeight.w700,
@@ -80,7 +102,6 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                width: 13,
                 height: 22,
                 child: Text("원",
                     style: const TextStyle(
@@ -92,9 +113,9 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                width: 30,
                 height: 18,
                 child: Text("/${lendproduct.priceProp}",
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff999999),
                         fontWeight: FontWeight.w400,
@@ -103,34 +124,34 @@ class LendProductTile extends StatelessWidget {
                         fontSize: 12.0),
                     textAlign: TextAlign.left),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 5, 0),
+                  child : Text(
+                      "1.1km",
+                      style: const TextStyle(
+                          color:  const Color(0xffaa0000),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "NotoSansCJKkr",
+                          fontStyle:  FontStyle.normal,
+                          fontSize: 14.0
+                      ),
+                      textAlign: TextAlign.left
+                  )
+              ),
             ],
           ),
-          Row(
-            children: [
-              // CircleAvatar(
-              //   backgroundImage: NetworkImage('${lendproduct.user.profile}'),
-              //   radius: 16.0,
-              // ),
+
               Container(
-                width: 44,
-                height: 22,
-                child: Text('${lendproduct.user.nickname}',
-                    style: const TextStyle(
-                        color: const Color(0xff191919),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "NotoSansCJKkr",
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14.0),
-                    textAlign: TextAlign.left),
-              ),
-              Container(
-                  width: 3,
-                  height: 3,
-                  decoration: BoxDecoration(color: const Color(0xff999999))),
-              Container(
-                width: 41,
                 height: 16,
-                child: Text("30분 전",
+                child: Text(
+
+                    differenceDay < 1 ?
+                        differenceHours < 1 ?
+                        differneceMinute < 30 ? "방금 전": "$differneceMinute분 전 " :
+                            "$differenceHours시간 전": " $differenceDay일 전" ,
+
+
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         color: const Color(0xff999999),
                         fontWeight: FontWeight.w400,
@@ -139,10 +160,11 @@ class LendProductTile extends StatelessWidget {
                         fontSize: 10.0),
                     textAlign: TextAlign.left),
               ),
-            ],
-          ),
+            
+          
         ],
       ),
     );
   }
 }
+

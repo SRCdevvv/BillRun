@@ -21,26 +21,24 @@ class RentProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    switch(product.priceProp){
-      case "1h" :
-        product.priceProp = '시간';
+
+    int differenceDay  = int.parse(DateTime.now().difference(product.createdAt).inDays.toString());
+    int differenceHours  = int.parse(DateTime.now().difference(product.createdAt).inHours.toString());
+
+
+    switch (product.priceProp) {
+      case "1h":
+        product.priceProp = '시간 당';
         break;
-      case "30m" :
-        product.priceProp = '30분';
+      case "Week":
+        product.priceProp = '주 당';
         break;
-      case "Day" :
-        product.priceProp = '일';
+      case "Day":
+        product.priceProp = '일 당';
         break;
     }
-    var url = 'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
-        //'https://blog.kakaocdn.net/dn/wqpYE/btqITvqCt4a/xkeX4Gou1Osaz5VWKoiG4k/img.jpg';
-//     print(product.createdAt);
-//     var currentTime = DateTime.now();
-//
-//    var productTime = product.createdAt;
-//
-// var  TimeAgo = timeago.format(currentTime.subtract(Duration(hours:1)));
-// print(TimeAgo);
+    var url = product.photos[0].photo;
+
 
 
 
@@ -60,6 +58,7 @@ class RentProductTile extends StatelessWidget {
                         width: 246,
                         height: 22,
                         child: Text('${product.name}',
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               color:  const Color(0xff191919),
                               fontWeight: FontWeight.w400,
@@ -74,9 +73,9 @@ class RentProductTile extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                              width: 40,
                               height: 22,
                               child: Text('${product.price}',
+                                  overflow: TextOverflow.ellipsis,
                                   style:TextStyle(
                                       color:  const Color(0xff191919),
                                       fontWeight: FontWeight.w700,
@@ -86,7 +85,7 @@ class RentProductTile extends StatelessWidget {
                                   ),
                                   textAlign: TextAlign.left )),
                           Container(
-                            width: 13,
+
                             height: 22,
                             child: Text('원',
                                 style:TextStyle(
@@ -102,9 +101,9 @@ class RentProductTile extends StatelessWidget {
 
                           Container(
                             padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            width: 27,
                             height: 18,
                             child: Text('/${product.priceProp}',
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     color:  const Color(0xff999999),
                                     fontWeight: FontWeight.w400,
@@ -116,40 +115,22 @@ class RentProductTile extends StatelessWidget {
                             ),),
                           Container(
                               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              width: 67,
+
                               height: 16,
-                              child: Stack(children: [
-                                // 7시간 전
-                                PositionedDirectional(
-                                  top: 0,
-                                  start: 7,
-                                  child:
-                                  Text(
-                                      "7시간 전",
-                                      style: const TextStyle(
-                                          color:  const Color(0xff999999),
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: "NotoSansCJKkr",
-                                          fontStyle:  FontStyle.normal,
-                                          fontSize: 10.0
-                                      ),
-                                      textAlign: TextAlign.left
-                                  ),
-                                ),
-                                // 타원 58
-                                PositionedDirectional(
-                                  top: 7,
-                                  start: 0,
-                                  child:
-                                  Container(
-                                      width: 3,
-                                      height: 3,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xff999999)
-                                      )
-                                  ),
-                                )
-                              ])
+                              child: Container(
+                                height: 16,
+                                child: Text(
+                                    differenceDay < 1 ?
+                                    "$differenceHours시간 전 " : " ᛫$differenceDay일 전" ,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        color: const Color(0xff999999),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 10.0),
+                                    textAlign: TextAlign.left),
+                              ),
 
                           ),
                         ],
@@ -157,19 +138,25 @@ class RentProductTile extends StatelessWidget {
 
                       onTap: ()=>{ Get.to(DetailScreen(),arguments:product.id, )},
                       trailing:
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(10)
-                            )),
-                        child: Image.network('$url',
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          width:Get.width*0.16,
+                          height:Get.width*0.16,
+                          child:
+                          product.photos.isEmpty ?
+                          Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
+                              :
+                          Image.network(
+                            '$url',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
 
-                          fit: BoxFit.contain,),
-                      )
+                       )
                   ),
-                ),
+                
 
 
 

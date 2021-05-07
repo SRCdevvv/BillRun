@@ -13,18 +13,21 @@ class DealListController extends GetxController {
   static  var isLoading = true.obs;
   // ignore: deprecated_member_use
   static  var dealLists = List<DealList>().obs;
+  static String nowStatus ;
 
   @override
   void onInit() {
-    dealFetchList();
+    dealFetchList('lend_deal_list');
+    print('lend딜리스트 실행');
     super.onInit();
   }
 
 
-  static  Future  dealFetchList() async {
+
+  static  Future  dealFetchList(String status) async {
     try {
       isLoading(true);
-      var dealList = await DealListService.fetchDealList();
+      var dealList = await DealListService.fetchDealList('$status');
 
 
       if (dealList != null) {

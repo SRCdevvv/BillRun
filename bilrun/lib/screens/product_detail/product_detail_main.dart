@@ -37,7 +37,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // print('메인 : ${lendDetailController.productList.value.name}');
     final ProductDetailInfo = detailProductController.productList.value;
 
 
