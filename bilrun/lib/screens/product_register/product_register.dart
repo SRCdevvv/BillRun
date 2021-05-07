@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/product_register/product_register_service.dart';
 import 'package:bilrun/screens/product_register/upload_file.dart';
@@ -85,7 +86,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               children: <Widget>[
                 //TODO 멀티 이미지 픽커로 바꾸기
                 Padding(
-                  padding: const EdgeInsets.only(left:11),
+                  padding: const EdgeInsets.fromLTRB(45,30,0,0),
                   child: MyApps(),
                 ),
 
@@ -104,13 +105,25 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     },
                     decoration: InputDecoration(
                       labelText: '상품명',
+                      labelStyle: TextStyle(color: Colors.grey[600]),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: lightGrey),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color:mainRed)
+                      ),
                     ),
+                    cursorColor:mainGreyy,
+
+
+
                     onSaved:(String value) {
                       this._data.productName = value;
                     },
 
                   ),
                 ),
+
 
                 //TODO 카테고리 만들기
                 Row(children: <Widget>[
@@ -128,7 +141,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                         onPressed: () {}),
                   ),
                 ]),
-                OriginDivider(Colors.grey[500], 1, 65, 60),
+                OriginDivider(lightGrey, 1, 65, 60),
 
                 Padding(
                   padding: const EdgeInsets.fromLTRB(60, 0, 0, 10),
@@ -147,7 +160,17 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]')),],
                             decoration: InputDecoration(
                               hintText: '가격',
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: lightGrey),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color:mainRed)
+                              ),
                             ),
+
+                           cursorColor:mainGreyy,
+
+
                             onSaved: ( value){
                             this._data.price = int.parse(value);
                             },
@@ -329,47 +352,84 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             ),
 
 
+                OriginDivider(lightGrey, 1, 24, 24),
 
-            TextFormField(
-                  maxLines: 8,
-              validator: (value){
-                if(value.isEmpty){
-                  return '상품 설명은 필수 입력 항목입니다!';
-                } else{
-                  return null;
-                }
-              },
-                  decoration: InputDecoration(
-                    hintText: ProductCategory == true
-                          ? "빌려줄 상품 정보와 상태를 자세하게 작성해주세요. "
-                       : "빌릴 상품에 원하는 기능 및 옵션을 작성해주세요.",
-                    border: OutlineInputBorder(),
-                  ),
-                  onSaved:(String value) {
-                    this._data.description = value;
-                  },
-                ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(44, 0, 24, 0),
+              child: TextFormField(
+                    maxLines: 8,
+                validator: (value){
+                  if(value.isEmpty){
+                    return '상품 설명은 필수 입력 항목입니다!';
+                  } else{
+                    return null;
+                  }
+                },
+                    decoration: InputDecoration(
+                      hintText: ProductCategory == true
+                            ? "상품 정보와 상태를 자세하게 작성해주세요. "
+                         : "빌릴 상품에 원하는 기능 및 옵션을 작성해주세요.",
 
+                      hintStyle:TextStyle(
+                          color:  const Color(0xff999999),
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "NotoSansCJKkr",
+                          fontStyle:  FontStyle.normal,
+                          fontSize: 16.0) ,
 
-
-
-                TextFormField(
-                  validator: (value){
-                    if(value.isEmpty){
-                      return '거래 요구사항은 필수 입력 항목입니다!';
-                    } else{
-                      return null;
-                    }
-                  },
-                  maxLines: 8,
-                  decoration: InputDecoration(
-                    hintText: "거래 관련 요구사항을 적어주세요.",
-                    border: OutlineInputBorder(),
-                  ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color:Colors.transparent),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color:mainRed)
+                      ),
+                    ),
+                cursorColor:mainGreyy,
                     onSaved:(String value) {
-                    this._data.caution = value;
+                      this._data.description = value;
                     },
+                  ),
+            ),
+
+
+                OriginDivider(lightGrey, 1, 24, 24),
+
+
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(44,0,0,0),
+                  child: TextFormField(
+                    validator: (value){
+                      if(value.isEmpty){
+                        return '거래 요구사항은 필수 입력 항목입니다!';
+                      } else{
+                        return null;
+                      }
+                    },
+                    maxLines: 8,
+                    decoration: InputDecoration(
+                      hintText: "거래 관련 요구사항을 자세하게 적어주세요.",
+                      hintStyle:TextStyle(
+                          color:  const Color(0xff999999),
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "NotoSansCJKkr",
+                          fontStyle:  FontStyle.normal,
+                          fontSize: 16.0) ,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color:mainRed)
+                      ),
+                    ),
+                    cursorColor:mainGreyy,
+                      onSaved:(String value) {
+                      this._data.caution = value;
+                      },
+                  ),
                 ),
+
+                OriginDivider(lightGrey, 1, 24, 24),
 
                 Row(
                   children: <Widget>[
@@ -442,6 +502,7 @@ Container ProductTextfield(String title) {
     child: TextField(
       decoration: InputDecoration(
         labelText: '$title',
+
       ),
     ),
   );

@@ -104,26 +104,38 @@ class _MyAppState extends State<MyApps> {
 
 
     return Container(
-      height: 100,
+      height: 104,
       width: double.infinity,
         child:
           Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(10)
+            Column(
+              children: [
+                Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(10)
+                      ),
+                      color: const Color(0xffdedede)
                   ),
-                  color: const Color(0xffdedede)
-              ),
-              child: IconButton(
-                icon: Icon(Icons.camera_alt_outlined, color: Colors.white, size: 27.5,),
-                onPressed: loadAssets,
-              ),
+                  child: IconButton(
+                    icon: Icon(Icons.camera_alt_outlined, color: Colors.white, size: 27.5,),
+                    onPressed: loadAssets,
+                  ),
+                ),
+                Text(("${images.length}/10"),
+                    style: const TextStyle(
+                    color:  const Color(0xff191919),
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "NotoSansCJKkr",
+                  fontStyle:  FontStyle.normal,
+                  fontSize: 16.0
+              ),),
+                        ],
             ),
             Expanded(child: buildGridView()),
 
