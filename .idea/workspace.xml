@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9843a93c-7cf8-49c2-a620-11016c6ee779" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
@@ -28,9 +27,11 @@
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
@@ -38,11 +39,9 @@
       <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/mypage/mypage_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register_popup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register_popup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/location/now_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/location/now_location.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/search/search_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/search/search_button.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,8 +171,8 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613512385986" />
-    <state width="1302" height="137" key="GridCell.Tab.0.bottom" timestamp="1620118995181">
-      <screen x="1440" y="25" width="1344" height="731" />
+    <state width="1558" height="174" key="GridCell.Tab.0.bottom" timestamp="1620353441705">
+      <screen x="1440" y="25" width="1600" height="875" />
     </state>
     <state width="1558" height="168" key="GridCell.Tab.0.bottom/-1112.91.1112.809/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619598108212" />
     <state width="1398" height="137" key="GridCell.Tab.0.bottom/-1112.91.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1619685482971" />
@@ -183,12 +182,12 @@
     <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.25.1440.875/-1112.91.1112.809@0.25.1440.875" timestamp="1619944135522" />
     <state width="1238" height="136" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1280.695@1440.25.1280.695" timestamp="1619762199978" />
     <state width="1302" height="137" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1344.731@1440.25.1344.731" timestamp="1620118995181" />
-    <state width="1558" height="201" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1619487080778" />
+    <state width="1558" height="174" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1620353441705" />
     <state width="699" height="201" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1600.875@0.25.1440.875" timestamp="1619165022857" />
     <state width="1558" height="206" key="GridCell.Tab.0.bottom/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619770923591" />
     <state width="699" height="201" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1619140784458" />
-    <state width="1302" height="137" key="GridCell.Tab.0.center" timestamp="1620118995181">
-      <screen x="1440" y="25" width="1344" height="731" />
+    <state width="1558" height="174" key="GridCell.Tab.0.center" timestamp="1620353441705">
+      <screen x="1440" y="25" width="1600" height="875" />
     </state>
     <state width="1558" height="168" key="GridCell.Tab.0.center/-1112.91.1112.809/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619598108212" />
     <state width="1398" height="137" key="GridCell.Tab.0.center/-1112.91.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1619685482957" />
@@ -198,12 +197,12 @@
     <state width="1398" height="206" key="GridCell.Tab.0.center/0.25.1440.875/-1112.91.1112.809@0.25.1440.875" timestamp="1619944135522" />
     <state width="1238" height="136" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1280.695@1440.25.1280.695" timestamp="1619762199977" />
     <state width="1302" height="137" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1344.731@1440.25.1344.731" timestamp="1620118995181" />
-    <state width="1558" height="201" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1619487080777" />
+    <state width="1558" height="174" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1620353441705" />
     <state width="699" height="201" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1600.875@0.25.1440.875" timestamp="1619165022856" />
     <state width="1558" height="206" key="GridCell.Tab.0.center/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619770923591" />
     <state width="699" height="201" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1619140784457" />
-    <state width="1302" height="137" key="GridCell.Tab.0.left" timestamp="1620118995181">
-      <screen x="1440" y="25" width="1344" height="731" />
+    <state width="1558" height="174" key="GridCell.Tab.0.left" timestamp="1620353441705">
+      <screen x="1440" y="25" width="1600" height="875" />
     </state>
     <state width="1558" height="168" key="GridCell.Tab.0.left/-1112.91.1112.809/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619598108212" />
     <state width="1398" height="137" key="GridCell.Tab.0.left/-1112.91.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1619685482898" />
@@ -213,12 +212,12 @@
     <state width="1398" height="206" key="GridCell.Tab.0.left/0.25.1440.875/-1112.91.1112.809@0.25.1440.875" timestamp="1619944135522" />
     <state width="1238" height="136" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1280.695@1440.25.1280.695" timestamp="1619762199976" />
     <state width="1302" height="137" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1344.731@1440.25.1344.731" timestamp="1620118995181" />
-    <state width="1558" height="201" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1619487080775" />
+    <state width="1558" height="174" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1620353441705" />
     <state width="699" height="201" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1600.875@0.25.1440.875" timestamp="1619165022856" />
     <state width="1558" height="206" key="GridCell.Tab.0.left/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619770923591" />
     <state width="699" height="201" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1619140784457" />
-    <state width="1302" height="137" key="GridCell.Tab.0.right" timestamp="1620118995181">
-      <screen x="1440" y="25" width="1344" height="731" />
+    <state width="1558" height="174" key="GridCell.Tab.0.right" timestamp="1620353441705">
+      <screen x="1440" y="25" width="1600" height="875" />
     </state>
     <state width="1558" height="168" key="GridCell.Tab.0.right/-1112.91.1112.809/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619598108212" />
     <state width="1398" height="137" key="GridCell.Tab.0.right/-1112.91.1112.809/0.25.1440.875@0.25.1440.875" timestamp="1619685482969" />
@@ -228,7 +227,7 @@
     <state width="1398" height="206" key="GridCell.Tab.0.right/0.25.1440.875/-1112.91.1112.809@0.25.1440.875" timestamp="1619944135522" />
     <state width="1238" height="136" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1280.695@1440.25.1280.695" timestamp="1619762199978" />
     <state width="1302" height="137" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1344.731@1440.25.1344.731" timestamp="1620118995181" />
-    <state width="1558" height="201" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1619487080778" />
+    <state width="1558" height="174" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1600.875/-1112.91.1112.809@1440.25.1600.875" timestamp="1620353441705" />
     <state width="699" height="201" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1600.875@0.25.1440.875" timestamp="1619165022857" />
     <state width="1558" height="206" key="GridCell.Tab.0.right/0.25.1440.875/1440.25.1600.875@1440.25.1600.875" timestamp="1619770923591" />
     <state width="699" height="201" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1619140784458" />

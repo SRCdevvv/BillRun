@@ -16,7 +16,7 @@ class _NowLocation extends State<NowLocation> {
         Icon(Icons.location_on, color: Color(0xffaa0000), size: 22.0),
         // 자양1동
         Text(
-            "자양1동",
+            "한양대학교",
             style: const TextStyle(
                 color:  const Color(0xffaa0000),
                 fontWeight: FontWeight.w700,
