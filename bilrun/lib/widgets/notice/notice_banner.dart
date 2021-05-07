@@ -27,14 +27,20 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
             items: imgList.map((e) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    elevation: 0,
-                    child: Container(
-                      width: Get.width,
-                      child: Image.asset(
-                        e,
-                        fit: BoxFit.fill,
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Card(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      elevation: 0,
+                      child: Container(
+                        width: Get.width*0.867,
+                        decoration:BoxDecoration(
+                          borderRadius:
+                            BorderRadius.circular(20)),
+                        child: Image.asset(
+                          e,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   );
@@ -42,12 +48,14 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
               );
             }).toList(),
             options: CarouselOptions(
-              height: Get.height / 3.5,
+              height: Get.height * 0.135,
+              aspectRatio: 3,
               enlargeCenterPage: true,
+
               // autoPlay: true,
               // autoPlayInterval: Duration(seconds: 3),
               // autoPlayAnimationDuration: Duration(milliseconds: 800),
-              viewportFraction: 1,
+
               onPageChanged: (index, reason) {
                 setState(() {
                   _current = index;

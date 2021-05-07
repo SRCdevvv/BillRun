@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'BILLRUN main'),
+      home: MyHomePage(title: '빌려주러 달려 가는 중 ! - 빌RUN'),
     );
   }
 }
@@ -38,11 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     LendMain(),
     RentMain(),
-    DialogProductRegister(),
+    showRegisterDialog(),
+
+
+   // DialogProductRegister(),
     //ImageUpload(),
-     //ChatApp(),
+     ChatApp(),
     //DealManagement(),
-    ProductRegister(),
+
     MyPageScreen()
   ];
   void _onTap(int index) {
@@ -62,6 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
         body: _children[currentIndex],
+        floatingActionButton: new FloatingActionButton(
+          onPressed:(){showDialog(context: context, builder: (_) => showRegisterDialog());},
+          tooltip: 'Increment',
+          child: new Icon(Icons.add),
+          elevation: 4.0,
+        ),
+
         bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: Color(0xff999999),
             selectedItemColor: Color(0xffaa0000),
@@ -78,8 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: '빌림',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.add_box_rounded,size: 22,),
+                icon: Icon(Icons.add_box_rounded,size: 22, ),
                 label: '상품 등록',
+
               ),
               BottomNavigationBarItem(
                 icon: Image.asset('assets/images/chatlogo.png',width: 22,height: 22,),
@@ -89,6 +100,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.person),
                 label: '마이페이지',
               ),
-            ]));
+            ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+    );
   }
+}
+
+
+Widget showRegisterDialog() {
+
+  return AlertDialog(
+    backgroundColor:Colors.white,
+
+    title: Text('상품 등록'),
+    actions: <Widget> [
+      TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
+      TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
+
+    ],
+
+
+  );
 }

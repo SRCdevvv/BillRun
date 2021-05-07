@@ -144,7 +144,6 @@ class _MyPageScreenState extends State<MyPageScreen> {
                         child: Row(
 
 
-                        //TODO 아이콘 대신 사진 넣어 제플린이랑 똑같이 만들기
                             children: <Widget> [
 
                               Padding(

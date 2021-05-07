@@ -28,7 +28,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
         children: <Widget>[
           //TODO 뭐든 불러오기
           BackdropFilter(filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child : showDialog()),
+          child : showRegisterDialog()),
         ],
       );
   }
@@ -36,19 +36,18 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
 
 
 
-Widget showDialog() {
+ Widget showRegisterDialog() {
 
-  return AlertDialog(
-    backgroundColor:Colors.white,
+return AlertDialog(
+backgroundColor:Colors.white,
 
-    title: Text('상품 등록'),
-    actions: <Widget> [
-      TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
-      TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
+title: Text('상품 등록'),
+actions: <Widget> [
+TextButton(onPressed: ()=> {Get.to(ProductRegister(),arguments: true)}, child: Text('빌려드림')),
+TextButton(onPressed: ()=>{Get.to(ProductRegister(),arguments: false)}, child: Text('빌림'))
 
-    ],
+],
 
 
-
-  );
+);
 }

@@ -124,34 +124,31 @@ class LendProductTile extends StatelessWidget {
                         fontSize: 12.0),
                     textAlign: TextAlign.left),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 5, 0),
+                  child : Text(
+                      "1.1km",
+                      style: const TextStyle(
+                          color:  const Color(0xffaa0000),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "NotoSansCJKkr",
+                          fontStyle:  FontStyle.normal,
+                          fontSize: 14.0
+                      ),
+                      textAlign: TextAlign.left
+                  )
+              ),
             ],
           ),
-          Row(
-            children: [
-               // CircleAvatar(
-               //   backgroundImage: NetworkImage('${lendproduct.user.profile}'),
-               //   radius: 12.0,
-               // ),
-              Container(
-                height: 22,
-                child: Text('${lendproduct.user.nickname}',
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        color: const Color(0xff191919),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "NotoSansCJKkr",
-                        fontStyle: FontStyle.normal,
-                        fontSize: 14.0),
-                    textAlign: TextAlign.left),
-              ),
+
               Container(
                 height: 16,
                 child: Text(
 
                     differenceDay < 1 ?
                         differenceHours < 1 ?
-                        differneceMinute < 30 ? "방금 전": "᛫$differneceMinute분 전 " :
-                            "$differenceHours시간 전": " ᛫$differenceDay일 전" ,
+                        differneceMinute < 30 ? "방금 전": "$differneceMinute분 전 " :
+                            "$differenceHours시간 전": " $differenceDay일 전" ,
 
 
                     overflow: TextOverflow.ellipsis,
@@ -163,8 +160,8 @@ class LendProductTile extends StatelessWidget {
                         fontSize: 10.0),
                     textAlign: TextAlign.left),
               ),
-            ],
-          ),
+            
+          
         ],
       ),
     );
