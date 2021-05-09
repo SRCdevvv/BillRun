@@ -1,28 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'notice_controller.dart';
+import 'package:bilrun/model/notice_model.dart';
 
 class noticeBannerWidget extends StatefulWidget {
+
+
+
+
   @override
   _noticeBannerWidget createState() => _noticeBannerWidget();
+
+
+
 }
 
-final List<String> imgList = [
 
-  'assets/images/main_2.jpg',
-  'assets/images/main_3.jpg',
 
-];
 
 class _noticeBannerWidget extends State<noticeBannerWidget> {
+
+  
+
+
+
+
+
+
+
+
+
+
   int _current = 0;
 
-  //TODO 3초에 하나씩 자동으로 넘어가도록 만들
+
   @override
   Widget build(BuildContext context) {
+
+   // print(NoticeController.noticeLists.length);
+
+    //
+    // for(int i=0; i<=NoticeController.noticeLists.length; i++){
+    //   imgList.add(NoticeController.noticeLists.value[i].bannerPhoto);
+    // }
+
+
+
+
+
+    List<String> imgList=[
+ 'https://img.khan.co.kr/news/2019/11/08/l_2019110801001014500075871.jpg',
+
+     ];
+    print(NoticeController.noticeLists);
+
+    //
+    // Future addImage() async{
+    //   await imgList.add(NoticeController.noticeLists.value[0].bannerPhoto);
+    // }
+
+    // for(int i =0 ; i <=NoticeController.noticeLists.length ; i++){
+    //   imgList.add(NoticeController.noticeLists.value[i].bannerPhoto);
+    // }
+
+
+
     return Container(
       child: Column(
         children: <Widget>[
+
+
           CarouselSlider(
             items: imgList.map((e) {
               return Builder(
@@ -37,12 +85,11 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
                         decoration:BoxDecoration(
                           borderRadius:
                             BorderRadius.circular(20)),
-                        child: Image.asset(
-                          e,
-                          fit: BoxFit.cover,
+                        child: Image.network(e,  fit: BoxFit.cover,),
+
                         ),
                       ),
-                    ),
+
                   );
                 },
               );
@@ -82,8 +129,10 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
                   );
                 }).toList(),
               )),
+
         ],
       ),
     );
   }
 }
+

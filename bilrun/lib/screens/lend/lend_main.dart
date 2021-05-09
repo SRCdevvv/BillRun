@@ -41,6 +41,7 @@ class _LendMainState extends State<LendMain> {
 
 
 
+
 Future<Null> refresh() async{
   ProductListService.fetchLendProducts();
   LendProductController.fetchProducts();
@@ -96,8 +97,11 @@ Future<Null> refresh() async{
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           children: [
-                            OriginDivider(mainRed, 100, 0, 0),
-                            noticeBannerWidget(),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:8.0),
+                              child: noticeBannerWidget(),
+                            ),
                             GestureDetector(
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(240,10,10,10),

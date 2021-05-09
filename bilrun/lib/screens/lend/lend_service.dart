@@ -9,7 +9,7 @@ class ProductListService {
 
   static Future<List<ProductList>> fetchLendProducts() async {
     var response = await client.get(
-        'http://35.175.245.21/api/lend_product_list/?format=json');
+        'http://54.144.140.114/api/lend_product_list/?format=json');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
