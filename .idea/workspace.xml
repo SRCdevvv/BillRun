@@ -28,12 +28,6 @@
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/mypage/deal_managemenet/deal_list_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/mypage/deal_managemenet/deal_list_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

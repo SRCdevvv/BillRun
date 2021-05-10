@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bilrun/model/deal_list_model.dart';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -9,7 +10,7 @@ class DealListService {
 
   static Future<List<DealList>> fetchDealList(String status) async {
     var response = await client.get(
-        'http://54.144.140.114/api/$status/1');
+        '$serviceUrl/$status/1');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:intl/intl.dart';
 
 import 'package:http/http.dart' as http;
@@ -9,7 +10,7 @@ class ProductListService {
 
   static Future<List<ProductList>> fetchLendProducts() async {
     var response = await client.get(
-        'http://54.144.140.114/api/lend_product_list/?format=json');
+        '$serviceUrl/lend_product_list/?format=json');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
