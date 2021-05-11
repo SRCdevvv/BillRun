@@ -20,8 +20,8 @@ class DetailProductService {
 
     if(response.statusCode ==200){
       String jsonString = utf8.decode(response.bodyBytes);
-      // print('아이디: $IdOfProduct');
-      //print('서비스: ${RentDetailProductFromJson(jsonString)}');
+       print('아이디: $IdOfProduct');
+      print('서비스: ${detailProductFromJson(jsonString)}');
       return detailProductFromJson(jsonString);
     }
     else{

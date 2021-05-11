@@ -113,7 +113,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                         borderSide: BorderSide(color:mainRed)
                       ),
                     ),
-                    cursorColor:mainGreyy,
+                    cursorColor:mainGrey,
 
 
 
@@ -168,7 +168,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                               ),
                             ),
 
-                           cursorColor:mainGreyy,
+                           cursorColor:mainGrey,
 
 
                             onSaved: ( value){
@@ -384,7 +384,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                           borderSide: BorderSide(color:mainRed)
                       ),
                     ),
-                cursorColor:mainGreyy,
+                cursorColor:mainGrey,
                     onSaved:(String value) {
                       this._data.description = value;
                     },
@@ -422,7 +422,7 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                           borderSide: BorderSide(color:mainRed)
                       ),
                     ),
-                    cursorColor:mainGreyy,
+                    cursorColor:mainGrey,
                       onSaved:(String value) {
                       this._data.caution = value;
                       },

@@ -1,5 +1,7 @@
 import 'dart:core';
 
+import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/lend/lend_like.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,10 +9,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 Container SmallIcon(IconData) {
   return Container(
-    padding: EdgeInsets.fromLTRB(30, 0, 0, 10),
+    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: IconButton(
       icon: Icon(IconData),
-      iconSize: 20,
+      iconSize: 10,
       color: Colors.grey[500],
       onPressed: (){},
     ),
@@ -19,10 +21,14 @@ Container SmallIcon(IconData) {
 
 Container SmallTitle(String Title, color, double sizeFont) {
   return Container(
-    padding: EdgeInsets.fromLTRB(5, 0, 10, 10),
+    padding: EdgeInsets.fromLTRB(5, 0, 0, 10),
     child: Text(Title,
         style: TextStyle(
-            fontWeight: FontWeight.normal, fontSize: sizeFont, color: color),
+         color:   Color(0xff000000),
+            fontWeight: FontWeight.w500,
+            fontFamily: "NotoSansCJKkr",
+            fontStyle:  FontStyle.normal,
+            fontSize: 14.0),
     ),
   );
 }
@@ -32,22 +38,26 @@ Container MediumTitle(String Title) {
     padding: EdgeInsets.fromLTRB(20, 20, 10, 10),
     child: Text(Title,
         style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            color: Colors.black)),
+            color:  const Color(0xff000000),
+            fontWeight: FontWeight.w700,
+            fontFamily: "NotoSansCJKkr",
+            fontStyle:  FontStyle.normal,
+            fontSize: 16.0)),
   );
 }
 
 Container MediumText(String texts) {
   return Container(
     padding: EdgeInsets.fromLTRB(20, 5, 10, 10),
-    width: 300,
-    height: 150,
+    width: Get.width*0.862,
+    height: 130,
     child: Text(texts,
         style: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 20,
-            color: Colors.grey[700])),
+            color:  const Color(0xff000000),
+            fontWeight: FontWeight.w400,
+            fontFamily: "NotoSansCJKkr",
+            fontStyle:  FontStyle.normal,
+            fontSize: 16.0)),
   );
 }
 
@@ -78,70 +88,104 @@ Widget ProductbottomBarWidget( String cost, String priceProp, int IdOfProduct) {
     color: Colors.white,
     child: Row(
       children: <Widget>[
+        // Padding(
+        //   padding: const EdgeInsets.fromLTRB(30, 10, 0, 10),
+        //   child: GestureDetector(
+        //     //onTap: () { _launchURL(IdOfProduct);},
+        //     child: Icon(Icons.favorite_border_rounded,
+        //         size: 20, color: mainRed),
+        //   ),
+        // ),
+
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
-          child: GestureDetector(
-            //onTap: () { _launchURL(IdOfProduct);},
-            child: Icon(Icons.favorite_border_rounded,
-                size: 40, color: Colors.red[900]),
-          ),
+          padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+          child: ProductLike(),
         ),
         Container(
           margin: EdgeInsets.only(left: 15, right: 10),
           height: 40,
           width: 1,
-          color: Colors.grey[300],
+          color: lightGrey,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
+            Container(
               padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+              width: 180,
               child: Text(
                 "$cost",
                 style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                  color:  Color(0xff000000),
+                    fontWeight: FontWeight.w700,
+                    fontFamily: "NotoSansCJKkr",
+                    fontStyle:  FontStyle.normal,
+                    fontSize: 20.0),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10,0,0,0),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.red[900]),
+              padding: const EdgeInsets.fromLTRB(20,0,0,0),
+              child: // 사각형 23949
+                  Container(
+                  width: 56,
+                  height: 24,
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                  Radius.circular(15)
                   ),
-                  backgroundColor: Colors.white,
-                ),
-                child: Text(
+                  border: Border.all(
+                  color: const Color(0xffaa0000),
+                  width: 2
+                  ),
+                  color: const Color(0xffffffff)
+                  ),
+
+
+                   child: Padding(
+                     padding: const EdgeInsets.fromLTRB( 10,2,0,0),
+                     child: Text(
                   "$priceProp",
                   style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.red[900],
+                        color:  const Color(0xffaa0000),
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "NotoSansCJKkr",
+                        fontStyle:  FontStyle.normal,
+                        fontSize: 14.0
                   ),
                 ),
+                   ),
               ),
             ),
           ],
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(50,10,30,20),
+          padding: const EdgeInsets.fromLTRB(0,10,30,20),
 
           child: Container(
             width:100 ,
             height: 40,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.red[900],
-              ),
-              child: Text(
-                "빌리기",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
+            child: // 사각형 23947
+          Container(
+          width: 100,
+          height: 40,
+          decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+          Radius.circular(10)
+          ),
+          color: const Color(0xffaa0000)
+          ),
+
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(25,10,0,0),
+                child: Text(
+                  "빌리기",
+                  style: TextStyle(
+                      color:  const Color(0xffffffff),
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "NotoSansCJKkr",
+                      fontStyle:  FontStyle.normal,
+                      fontSize: 16.0),
                 ),
               ),
             ),

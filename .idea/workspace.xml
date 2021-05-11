@@ -21,30 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="9843a93c-7cf8-49c2-a620-11016c6ee779" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/design/product_detail_design_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/design/product_detail_design_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/design/usedColors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/design/usedColors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_like.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_like.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_product_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/lend/lend_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/etc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/etc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/detail_screen_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/detail_screen_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_detail/product_detail_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/screens/product_register/product_register.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_banner.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bilrun/lib/widgets/notice/notice_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

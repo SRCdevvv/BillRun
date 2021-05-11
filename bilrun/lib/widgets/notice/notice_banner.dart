@@ -64,7 +64,7 @@ bool isLoading = true;
       NoticeController.isLoading.value ?
 
       Center(child: CircularProgressIndicator(),)
-      
+
           :
 
     Container(
@@ -154,7 +154,7 @@ bool isLoading = true;
                        BoxShape.circle,
 
 
-                      color:  mainGreyy,
+                      color:  mainGrey,
                     ),
                   );
                 }).toList(),

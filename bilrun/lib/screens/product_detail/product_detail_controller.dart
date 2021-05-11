@@ -25,7 +25,7 @@ class DetailProductController extends GetxController{
 
       if(DetailProduct !=null){
         productList.value = DetailProduct;
-        // print('컨트롤러: ${productList.value.name}');
+         print('컨트롤러: ${productList.value.name}');
       }
 
     }
