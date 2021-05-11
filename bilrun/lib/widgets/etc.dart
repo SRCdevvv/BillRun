@@ -1,2 +1,2 @@
 
-String serviceUrl = 'http://35.175.245.21/api';
+String serviceUrl = 'http://54.144.140.114/api';

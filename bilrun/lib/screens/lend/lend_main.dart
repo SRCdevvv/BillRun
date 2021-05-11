@@ -2,6 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
+import 'package:bilrun/widgets/notice/notice_controller.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,13 +27,14 @@ class LendMain extends StatefulWidget {
   _LendMainState createState() => _LendMainState();
 }
 
+
+
+ List<String> noticeImgList=[
+NoticeController.noticeLists[0].bannerPhoto,
+NoticeController.noticeLists[1].bannerPhoto];
+
 class _LendMainState extends State<LendMain> {
   bool isTaped=false;
-
-
-
-
-
 
 
 
@@ -42,21 +44,21 @@ class _LendMainState extends State<LendMain> {
 
 
 
+
+
 Future<Null> refresh() async{
   ProductListService.fetchLendProducts();
   LendProductController.fetchProducts();
   this.productController = Get.put(LendProductController());
-
-
 }
+
+
 
 
 
   @override
   Widget build(BuildContext context) {
-
-//TODO 전체 화면 스크롤
-  //TODO 오버픽셀 고치기
+  //print("lend main : ${LendProductController.productList}");
 
       return
         Scaffold(

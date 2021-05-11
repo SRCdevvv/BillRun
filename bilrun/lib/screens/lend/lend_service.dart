@@ -11,9 +11,11 @@ class ProductListService {
   static Future<List<ProductList>> fetchLendProducts() async {
     var response = await client.get(
         '$serviceUrl/lend_product_list/?format=json');
+        // print('lend : ${response.body}');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
+
 
 
 

@@ -34,7 +34,7 @@ class LendProductTile extends StatelessWidget {
         lendproduct.priceProp = '일 당';
         break;
     }
-    print(lendproduct.photos);
+
 
 
 
@@ -44,32 +44,32 @@ class LendProductTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          GestureDetector(
-            onTap: ()=>{ Get.to(DetailScreen(),arguments:lendproduct.id, )},
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    width:Get.width*0.417,
-                    height:Get.width*0.417,
-                    child:
-                    lendproduct.photos.isEmpty ?
-                        Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
-                        :
-                        Image.network(
-                        '${lendproduct.photos[0].photo}',
-                        fit: BoxFit.fill,
-                      ),
-                  ),
-                ),
-                Positioned(
-                  right: 5,
-                  child:ProductLike(), ),
-
-              ],
-            ),
-          ),
+          // GestureDetector(
+          //   onTap: ()=>{ Get.to(DetailScreen(),arguments:lendproduct.id, )},
+          //   child: Stack(
+          //     children: [
+          //       ClipRRect(
+          //         borderRadius: BorderRadius.circular(20),
+          //         child: Container(
+          //           width:Get.width*0.417,
+          //           height:Get.width*0.417,
+          //           child:
+          //           lendproduct.photos.isEmpty ?
+          //               Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
+          //               :
+          //               Image.network(
+          //               '${lendproduct.photos[0].photo}',
+          //               fit: BoxFit.fill,
+          //             ),
+          //         ),
+          //       ),
+          //       Positioned(
+          //         right: 5,
+          //         child:ProductLike(), ),
+          //
+          //     ],
+          //   ),
+          // ),
           Container(
             width: 150,
             height: 22,

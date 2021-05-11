@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
 import 'package:bilrun/model/product_list_model.dart';
+import 'package:bilrun/widgets/notice/notice_controller.dart';
 
 
 
@@ -36,7 +37,7 @@ static  Future  fetchProducts() async {
 
       if (products != null) {
         productList.value = products;
-        print("컨트롤러 실행됨");
+        print("lend 컨트롤러 실행됨");
 
       }
       else if(products == null){

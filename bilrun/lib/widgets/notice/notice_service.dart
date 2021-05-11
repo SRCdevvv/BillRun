@@ -11,18 +11,19 @@ class NoticeService {
 
   static Future<List<NoticeList>> fetchNotice() async {
     var response = await client.get(
-        '$serviceUrl/api/notice/?format=json');
+        '$serviceUrl/notice/?format=json');
+    //print('notice : ${response.body}');
+
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
 
-
-
-
       return noticeListFromJson(jsonString);
+
     }
     else {
       return null;
     }
+
   }
 }

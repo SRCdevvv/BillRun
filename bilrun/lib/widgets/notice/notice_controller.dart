@@ -15,29 +15,34 @@ class NoticeController extends GetxController {
   static  var noticeLists = List<NoticeList>().obs;
   static String nowStatus ;
 
+
+
   @override
   void onInit() {
     NoticeFetchList();
     super.onInit();
+    print("공지 onit 실행됨");
   }
 
 
-
+  // ignore: non_constant_identifier_names
   static  Future  NoticeFetchList() async {
     try {
       isLoading(true);
-      var noticeList = await NoticeService.fetchNotice();
+      var notice = await NoticeService.fetchNotice();
+     // print('notice controller : $notice');
 
 
 
-      if (noticeList != null) {
-        noticeLists.value = noticeList;
+      if (notice != null) {
+        noticeLists.value = notice;
+        print("공지 컨트롤러 실행됨");
 
 
 
       }
-      else if(NoticeList == null) {
-        print('error');
+      else if(notice== null) {
+        print('Notice Error');
         return Scaffold(
           body: Column(
             children: [
