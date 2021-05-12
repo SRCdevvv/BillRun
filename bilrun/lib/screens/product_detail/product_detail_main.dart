@@ -9,6 +9,7 @@ import 'package:bilrun/design/product_detail_design_widget.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
 import 'package:bilrun/widgets/banner.dart';
+
 import 'package:bilrun/screens/product_detail/detail_screen_info.dart';
 
 void main() => runApp(DetailScreen());
@@ -25,8 +26,15 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+
   final DetailProductController detailProductController =
       Get.put(DetailProductController());
+
+
+static List<String> productPhotos =['https://blog.kakaocdn.net/dn/bKy6Mm/btqKfqu72Ga/05lByPgN2H0tYN3lHP3VU1/img.png'];
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +55,12 @@ class _DetailScreenState extends State<DetailScreen> {
     String cost = ProductDetailInfo.price;
     String priceProp = ProductDetailInfo.priceProp;
     int IdOfProduct = ProductDetailInfo.id;
-    List productPhoto = [];
-    //
-    // for(int i = 0 ;i <= detailProductController.productList.value.photos.length; i++){
-    //   productPhoto.add(detailProductController.productList.value.photos[i]);
-    //
-    // }
 
-    print(detailProductController.productList.value.photos.length);
+
+
+
+    print(detailProductController.productList.value.photos);
+
 
 
 
@@ -72,12 +78,15 @@ class _DetailScreenState extends State<DetailScreen> {
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(children: <Widget>[
-                ProductPhotos(productPhoto, (index, reason) {
+                ProductPhotos(productPhotos, (index, reason) {
                   setState(() {
                     current = index;
                     print(current);
                   });
                 }),
+
+
+
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
