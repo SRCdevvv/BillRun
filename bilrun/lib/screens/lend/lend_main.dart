@@ -106,6 +106,7 @@ Future<Null> refresh() async{
                                         return Text("notice error");
                                       }
                                       else{
+                                        noticeImgList.clear();
                                         for(int i=0; i<NoticeController.noticeLists.length; i++){
                                           noticeImgList.add(NoticeController.noticeLists[i].bannerPhoto);
                                         }
