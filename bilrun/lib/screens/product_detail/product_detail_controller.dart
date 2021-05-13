@@ -6,8 +6,8 @@ import 'package:bilrun/screens/product_detail/product_detail_service.dart';
 
 
 class DetailProductController extends GetxController{
-  var isLoading = true.obs;
-  var productList = DetailProduct().obs;
+static  var isLoading = true.obs;
+ static var productList = DetailProduct().obs;
 
   @override
   void onInit() {
@@ -18,14 +18,14 @@ class DetailProductController extends GetxController{
 
 
 
-  Future fetchRentDetail() async{
+ static Future fetchRentDetail() async{
     try{
       isLoading(true);
       var DetailProduct = await DetailProductService.fetchLendDetailInfo();
 
       if(DetailProduct !=null){
         productList.value = DetailProduct;
-        // print('컨트롤러: ${productList.value.name}');
+         print('컨트롤러: ${productList.value.name}');
       }
 
     }

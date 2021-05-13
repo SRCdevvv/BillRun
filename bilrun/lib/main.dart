@@ -1,5 +1,6 @@
 import 'package:bilrun/screens/chat/notyet.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
+import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
@@ -34,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   final List<Widget> _children = [
+    //noticeBannerWidget(),
     LendMain(),
     RentMain(),
     showRegisterDialog(),
@@ -41,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // DialogProductRegister(),
     //ImageUpload(),
     ChatApp(),
+
+   // noticeBannerWidget(),
     //DealManagement(),
 
     MyPageScreen()

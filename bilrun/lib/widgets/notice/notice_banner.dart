@@ -1,30 +1,64 @@
+import 'package:bilrun/design/usedColors.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'notice_controller.dart';
+import 'package:bilrun/screens/lend/lend_main.dart';
 
 class noticeBannerWidget extends StatefulWidget {
+
+
+
   @override
   _noticeBannerWidget createState() => _noticeBannerWidget();
+
+
+
 }
 
-final List<String> imgList = [
 
-  'assets/images/main_2.jpg',
-  'assets/images/main_3.jpg',
 
-];
 
 class _noticeBannerWidget extends State<noticeBannerWidget> {
+
+
+
+
+
   int _current = 0;
 
-  //TODO 3초에 하나씩 자동으로 넘어가도록 만들
+NoticeController noticeController = Get.put(NoticeController());
+
+
+bool isLoading = true;
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+
+    //addImage();
+
+
+    return
+
+
+
+
+      Container(
       child: Column(
         children: <Widget>[
+
+
+
+
           CarouselSlider(
-            items: imgList.map((e) {
+            items:
+
+            noticeImgList.map((e) {
+
+
               return Builder(
                 builder: (BuildContext context) {
                   return ClipRRect(
@@ -35,20 +69,19 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
                       child: Container(
                         width: Get.width*0.867,
                         decoration:BoxDecoration(
-                          borderRadius:
+                            borderRadius:
                             BorderRadius.circular(20)),
-                        child: Image.asset(
-                          e,
-                          fit: BoxFit.cover,
-                        ),
+                        child: Image.network(e,  fit: BoxFit.cover,),
+
                       ),
                     ),
+
                   );
                 },
               );
             }).toList(),
             options: CarouselOptions(
-              height: Get.height * 0.135,
+              height:Get.height * 0.135,
               aspectRatio: 3,
               enlargeCenterPage: true,
 
@@ -59,31 +92,194 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
               onPageChanged: (index, reason) {
                 setState(() {
                   _current = index;
+                  print(_current);
                 });
               },
             ),
           ),
+
           Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: imgList.map((url) {
-                  int index = imgList.indexOf(url);
-                  return Container(
-                    width: 8.0,
-                    height: 8.0,
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      shape:
-                      _current == index ? BoxShape.rectangle : BoxShape.circle,
+                children: noticeImgList.map((url) {
+                  int index = noticeImgList.indexOf(url);
+                  return
 
-                      //TODO :  BoxDecoration 길고 둥글게 만들기
-                      color: _current == index ? Colors.red[900] : Colors.grey,
-                    ),
-                  );
+                    _current == index?
+                    Container(
+                      width:  18.0,
+                      height: 6.0,
+                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+
+                        borderRadius :  BorderRadius.circular(3),
+                        color:  mainRed ,
+                      ),
+                    )
+
+
+
+                        :
+
+
+
+                    Container(
+                      width:  6,
+                      height: 6,
+                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape:
+                        BoxShape.circle,
+
+
+                        color:  mainGrey,
+                      ),
+                    );
                 }).toList(),
               )),
+
+          // FloatingActionButton(onPressed: (){
+          //   setState(() {
+          //     _current = 0;
+          //     addImage();
+          //
+          //   });}),
+
         ],
       ),
     );
+
+
+
+
+
+    // return
+    // FutureBuilder(
+    //     future: NoticeController.NoticeFetchList(),
+    //     builder: (context, snapshot){
+    //
+    //       if(snapshot.connectionState==ConnectionState.waiting){
+    //         return CircularProgressIndicator();
+    //       }
+    //
+    //       if(snapshot.hasError){
+    //         return Text("notice error");
+    //       }
+    //
+    //       else{
+    //         return  Container(
+    //           child: Column(
+    //             children: <Widget>[
+    //
+    //
+    //
+    //
+    //               CarouselSlider(
+    //                 items:
+    //
+    //                 noticeImgList.map((e) {
+    //                   return Builder(
+    //                     builder: (BuildContext context) {
+    //                       return ClipRRect(
+    //                         borderRadius: BorderRadius.circular(20),
+    //                         child: Card(
+    //                           clipBehavior: Clip.antiAliasWithSaveLayer,
+    //                           elevation: 0,
+    //                           child: Container(
+    //                             width: Get.width*0.867,
+    //                             decoration:BoxDecoration(
+    //                                 borderRadius:
+    //                                 BorderRadius.circular(20)),
+    //                             child: Image.network(e,  fit: BoxFit.cover,),
+    //
+    //                           ),
+    //                         ),
+    //
+    //                       );
+    //                     },
+    //                   );
+    //                 }).toList(),
+    //                 options: CarouselOptions(
+    //                   height:Get.height * 0.135,
+    //                   aspectRatio: 3,
+    //                   enlargeCenterPage: true,
+    //
+    //                   // autoPlay: true,
+    //                   // autoPlayInterval: Duration(seconds: 3),
+    //                   // autoPlayAnimationDuration: Duration(milliseconds: 800),
+    //
+    //                   onPageChanged: (index, reason) {
+    //                     setState(() {
+    //                       _current = index;
+    //                       print(_current);
+    //                     });
+    //                   },
+    //                 ),
+    //               ),
+    //
+    //               Container(
+    //                   child: Row(
+    //                     mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: noticeImgList.map((url) {
+    //                       int index = noticeImgList.indexOf(url);
+    //                       return
+    //
+    //                         _current == index?
+    //                         Container(
+    //                           width:  18.0,
+    //                           height: 6.0,
+    //                           margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+    //                           decoration: BoxDecoration(
+    //                             shape: BoxShape.rectangle,
+    //
+    //                             borderRadius :  BorderRadius.circular(3),
+    //                             color:  mainRed ,
+    //                           ),
+    //                         )
+    //
+    //
+    //
+    //                             :
+    //
+    //
+    //
+    //                         Container(
+    //                           width:  6,
+    //                           height: 6,
+    //                           margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+    //                           decoration: BoxDecoration(
+    //                             shape:
+    //                             BoxShape.circle,
+    //
+    //
+    //                             color:  mainGrey,
+    //                           ),
+    //                         );
+    //                     }).toList(),
+    //                   )),
+    //
+    //               // FloatingActionButton(onPressed: (){
+    //               //   setState(() {
+    //               //     _current = 0;
+    //               //     addImage();
+    //               //
+    //               //   });}),
+    //
+    //             ],
+    //           ),
+    //         );
+    //
+    //       }
+    //
+    //     });
+
+
+
+
+
   }
 }
+
+
+

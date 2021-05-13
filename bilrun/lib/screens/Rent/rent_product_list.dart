@@ -37,7 +37,7 @@ class RentProductTile extends StatelessWidget {
         product.priceProp = '일 당';
         break;
     }
-    var url = product.photos[0].photo;
+    //var url = product.photos[0].photo;
 
 
 
@@ -148,7 +148,7 @@ class RentProductTile extends StatelessWidget {
                           Image.network('https://www.city.kr/files/attach/images/164/317/333/022/f10f68187fc57c148616fcca1536ea0f.jpg', fit: BoxFit.fill,)
                               :
                           Image.network(
-                            '$url',
+                            '${product.photos[0]}',
                             fit: BoxFit.fill,
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:bilrun/design/usedColors.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/screens/lend/lend_controller.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -16,8 +17,8 @@ bool _isPressed =false;
   Widget build(BuildContext context) {
     return IconButton(
       iconSize : 20.0,
-      icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline),
-      color: _isPressed? Colors.red[900] : Colors.white,
+      icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline,),
+      color: _isPressed? mainRed : Colors.white,
       onPressed:(){
         setState(() {
           _isPressed==true  ? _isPressed=false : _isPressed =true;
