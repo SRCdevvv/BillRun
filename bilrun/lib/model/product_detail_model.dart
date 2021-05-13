@@ -18,7 +18,7 @@ class DetailProduct {
     this.priceProp,
     this.user,
     this.photos,
-    this.borrow,
+    this.lend,
     this.category,
     this.placeOption,
     this.hits,
@@ -35,7 +35,7 @@ class DetailProduct {
   String priceProp;
   User user;
   List<Photo> photos;
-  bool borrow;
+  bool lend;
   String category;
   bool placeOption;
   int hits;
@@ -52,7 +52,7 @@ class DetailProduct {
     priceProp: json["price_prop"],
     user: User.fromJson(json["user"]),
     photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
-    borrow: json["borrow"],
+    lend: json["lend"],
     category: json["category"],
     placeOption: json["place_option"],
     hits: json["hits"],
@@ -70,7 +70,7 @@ class DetailProduct {
     "price_prop": priceProp,
     "user": user.toJson(),
     "photos": List<dynamic>.from(photos.map((x) => x.toJson())),
-    "borrow": borrow,
+    "lend": lend,
     "category": category,
     "place_option": placeOption,
     "hits": hits,

@@ -2,6 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
+import 'package:bilrun/widgets/notice/notice_controller.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,13 +27,12 @@ class LendMain extends StatefulWidget {
   _LendMainState createState() => _LendMainState();
 }
 
+
+
+List<String> noticeImgList=[];
+
 class _LendMainState extends State<LendMain> {
   bool isTaped=false;
-
-
-
-
-
 
 
 
@@ -45,17 +45,12 @@ Future<Null> refresh() async{
   ProductListService.fetchLendProducts();
   LendProductController.fetchProducts();
   this.productController = Get.put(LendProductController());
-
-
 }
-
 
 
   @override
   Widget build(BuildContext context) {
-
-//TODO 전체 화면 스크롤
-  //TODO 오버픽셀 고치기
+  //print("lend main : ${LendProductController.productList}");
 
       return
         Scaffold(
@@ -96,8 +91,34 @@ Future<Null> refresh() async{
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           children: [
-                            OriginDivider(mainRed, 100, 0, 0),
-                            noticeBannerWidget(),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:8.0),
+                              child: FutureBuilder(
+                                future: NoticeController.NoticeFetchList(),
+                                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return Center(child: CircularProgressIndicator());
+                                      }
+
+                                      if (snapshot.hasError) {
+                                        return Text("notice error");
+                                      }
+                                      else{
+                                        for(int i=0; i<NoticeController.noticeLists.length; i++){
+                                          noticeImgList.add(NoticeController.noticeLists[i].bannerPhoto);
+                                        }
+                                        return noticeBannerWidget();
+                                      }
+                                    }
+
+                              ),
+
+
+
+
+                            ),
                             GestureDetector(
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(240,10,10,10),
