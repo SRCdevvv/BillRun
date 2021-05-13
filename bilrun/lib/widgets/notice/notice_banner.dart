@@ -35,39 +35,18 @@ bool isLoading = true;
 
 
 
-  //
-  // Future<Null> addImage()  async{
-  //
-  //   NoticeController noticeController = await Get.put(NoticeController());
-  //       noticeImgList.add( NoticeController.noticeLists[0].bannerPhoto);
-  //       noticeImgList.add(NoticeController.noticeLists[1].bannerPhoto);
-  //   isLoading = false;
-  //   print("addImage future 실행");
-  //
-  // }
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
+
     //addImage();
-
-    print(NoticeController.isLoading.value);
-
-
 
 
     return
-      NoticeController.isLoading.value ?
 
-      Center(child: CircularProgressIndicator(),)
 
-          :
 
-    Container(
+
+      Container(
       child: Column(
         children: <Widget>[
 
@@ -127,36 +106,36 @@ bool isLoading = true;
                   return
 
                     _current == index?
-                  Container(
-                          width:  18.0,
-                          height: 6.0,
-                          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                          decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
+                    Container(
+                      width:  18.0,
+                      height: 6.0,
+                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
 
-                            borderRadius :  BorderRadius.circular(3),
-                          color:  mainRed ,
-                          ),
-                          )
+                        borderRadius :  BorderRadius.circular(3),
+                        color:  mainRed ,
+                      ),
+                    )
 
 
 
-                    :
+                        :
 
 
 
                     Container(
-                    width:  6,
-                    height: 6,
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                    decoration: BoxDecoration(
-                      shape:
-                       BoxShape.circle,
+                      width:  6,
+                      height: 6,
+                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape:
+                        BoxShape.circle,
 
 
-                      color:  mainGrey,
-                    ),
-                  );
+                        color:  mainGrey,
+                      ),
+                    );
                 }).toList(),
               )),
 
@@ -174,7 +153,133 @@ bool isLoading = true;
 
 
 
+
+    // return
+    // FutureBuilder(
+    //     future: NoticeController.NoticeFetchList(),
+    //     builder: (context, snapshot){
+    //
+    //       if(snapshot.connectionState==ConnectionState.waiting){
+    //         return CircularProgressIndicator();
+    //       }
+    //
+    //       if(snapshot.hasError){
+    //         return Text("notice error");
+    //       }
+    //
+    //       else{
+    //         return  Container(
+    //           child: Column(
+    //             children: <Widget>[
+    //
+    //
+    //
+    //
+    //               CarouselSlider(
+    //                 items:
+    //
+    //                 noticeImgList.map((e) {
+    //                   return Builder(
+    //                     builder: (BuildContext context) {
+    //                       return ClipRRect(
+    //                         borderRadius: BorderRadius.circular(20),
+    //                         child: Card(
+    //                           clipBehavior: Clip.antiAliasWithSaveLayer,
+    //                           elevation: 0,
+    //                           child: Container(
+    //                             width: Get.width*0.867,
+    //                             decoration:BoxDecoration(
+    //                                 borderRadius:
+    //                                 BorderRadius.circular(20)),
+    //                             child: Image.network(e,  fit: BoxFit.cover,),
+    //
+    //                           ),
+    //                         ),
+    //
+    //                       );
+    //                     },
+    //                   );
+    //                 }).toList(),
+    //                 options: CarouselOptions(
+    //                   height:Get.height * 0.135,
+    //                   aspectRatio: 3,
+    //                   enlargeCenterPage: true,
+    //
+    //                   // autoPlay: true,
+    //                   // autoPlayInterval: Duration(seconds: 3),
+    //                   // autoPlayAnimationDuration: Duration(milliseconds: 800),
+    //
+    //                   onPageChanged: (index, reason) {
+    //                     setState(() {
+    //                       _current = index;
+    //                       print(_current);
+    //                     });
+    //                   },
+    //                 ),
+    //               ),
+    //
+    //               Container(
+    //                   child: Row(
+    //                     mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: noticeImgList.map((url) {
+    //                       int index = noticeImgList.indexOf(url);
+    //                       return
+    //
+    //                         _current == index?
+    //                         Container(
+    //                           width:  18.0,
+    //                           height: 6.0,
+    //                           margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+    //                           decoration: BoxDecoration(
+    //                             shape: BoxShape.rectangle,
+    //
+    //                             borderRadius :  BorderRadius.circular(3),
+    //                             color:  mainRed ,
+    //                           ),
+    //                         )
+    //
+    //
+    //
+    //                             :
+    //
+    //
+    //
+    //                         Container(
+    //                           width:  6,
+    //                           height: 6,
+    //                           margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+    //                           decoration: BoxDecoration(
+    //                             shape:
+    //                             BoxShape.circle,
+    //
+    //
+    //                             color:  mainGrey,
+    //                           ),
+    //                         );
+    //                     }).toList(),
+    //                   )),
+    //
+    //               // FloatingActionButton(onPressed: (){
+    //               //   setState(() {
+    //               //     _current = 0;
+    //               //     addImage();
+    //               //
+    //               //   });}),
+    //
+    //             ],
+    //           ),
+    //         );
+    //
+    //       }
+    //
+    //     });
+
+
+
+
+
   }
 }
+
 
 

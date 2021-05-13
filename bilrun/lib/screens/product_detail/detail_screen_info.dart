@@ -1,11 +1,14 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/lend/lend_controller.dart';
-import 'package:bilrun/screens/lend/lend_product_list.dart';
+import 'package:bilrun/screens/product_detail/etc_list/etc_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/design/product_detail_design_widget.dart';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/model/product_detail_model.dart';
+
+import 'detail_list.dart';
+import 'etc_list/etc_list.dart';
 
 
 
@@ -23,10 +26,25 @@ class DetailScreenInfo extends StatelessWidget {
     int differenceDay  = int.parse(DateTime.now().difference(product.createdAt).inDays.toString());
     int differenceHours  = int.parse(DateTime.now().difference(product.createdAt).inHours.toString());
     int differenceMinute = int.parse(DateTime.now().difference(product.createdAt).inMinutes.toString());
-    LendProductController lendProductController = Get.put(LendProductController());
+    EtcProductController etcProductController = Get.put(EtcProductController());
 
     return
       Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft:Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: mainGrey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0,3),
+            )
+          ]
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -121,10 +139,10 @@ class DetailScreenInfo extends StatelessWidget {
             ),
 
             OriginDivider(lightGrey, 1, 30, 30),
-            MediumTitle(product.borrow == true ? '상품 정보' : '이런 제품을 찾고있어요'),
+            MediumTitle(product.lend == true ? '상품 정보' : '이런 제품을 찾고있어요'),
             MediumText('${product.description}'),
             OriginDivider(lightGrey, 1, 30, 30),
-            MediumTitle( product.borrow == true ? '꼭 지켜주세요!' : '이런 제품을 우대해요'),
+            MediumTitle( product.lend == true ? '꼭 지켜주세요!' : '이런 제품을 우대해요'),
             MediumText('${product.caution}'),
 
             OriginDivider(lightGrey, 1, 30, 30),
@@ -246,7 +264,7 @@ class DetailScreenInfo extends StatelessWidget {
                       shrinkWrap: true,
 
                       children: List.generate(
-                          LendProductController.productList.length,
+                          EtcProductController.productList.length,
 
 
                               (index) {
@@ -254,7 +272,7 @@ class DetailScreenInfo extends StatelessWidget {
                             return
 
 
-                              LendProductTile(LendProductController.productList[index]);
+                              EtcProductTile(EtcProductController.productList[index], EtcProductController.productList[index].user.id);
 
 
                           }

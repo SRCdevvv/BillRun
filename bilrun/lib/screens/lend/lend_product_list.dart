@@ -6,9 +6,15 @@ import 'package:get/get.dart';
 import 'lend_like.dart';
 import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 
+
+
+
 class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
   const LendProductTile(this.lendproduct);
+
+
+
 
 
   @override
@@ -38,6 +44,8 @@ class LendProductTile extends StatelessWidget {
 
 
 
+
+
     return Container(
       padding: EdgeInsets.only(bottom: 10),
       color: Colors.transparent,
@@ -45,7 +53,9 @@ class LendProductTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           GestureDetector(
-            onTap: ()=>{ Get.to(DetailScreen(),arguments:lendproduct.id, )},
+            onTap: ()=>{ Get.to(DetailScreen(),
+              arguments:lendproduct,
+            )},
             child: Stack(
               children: [
                 ClipRRect(

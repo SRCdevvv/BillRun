@@ -29,9 +29,7 @@ class LendMain extends StatefulWidget {
 
 
 
- List<String> noticeImgList=[
-NoticeController.noticeLists[0].bannerPhoto,
-NoticeController.noticeLists[1].bannerPhoto];
+List<String> noticeImgList=[];
 
 class _LendMainState extends State<LendMain> {
   bool isTaped=false;
@@ -43,17 +41,11 @@ class _LendMainState extends State<LendMain> {
 
 
 
-
-
-
 Future<Null> refresh() async{
   ProductListService.fetchLendProducts();
   LendProductController.fetchProducts();
   this.productController = Get.put(LendProductController());
 }
-
-
-
 
 
   @override
@@ -102,7 +94,30 @@ Future<Null> refresh() async{
 
                             Padding(
                               padding: const EdgeInsets.only(top:8.0),
-                              child: noticeBannerWidget(),
+                              child: FutureBuilder(
+                                future: NoticeController.NoticeFetchList(),
+                                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return Center(child: CircularProgressIndicator());
+                                      }
+
+                                      if (snapshot.hasError) {
+                                        return Text("notice error");
+                                      }
+                                      else{
+                                        for(int i=0; i<NoticeController.noticeLists.length; i++){
+                                          noticeImgList.add(NoticeController.noticeLists[i].bannerPhoto);
+                                        }
+                                        return noticeBannerWidget();
+                                      }
+                                    }
+
+                              ),
+
+
+
+
                             ),
                             GestureDetector(
                               child: Padding(

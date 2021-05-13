@@ -26,15 +26,45 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  //
+   addPhoto() {
+  var  addPhotoController =  detailProductController.productList.value;
 
-  final DetailProductController detailProductController =
+    for(int i = 0; i < addPhotoController.photos.length; i++){
+      productPhotos.add(  addPhotoController.photos[i].photo);
+
+    }
+  }
+
+
+
+
+  DetailProductController detailProductController =
       Get.put(DetailProductController());
 
+//'https://blog.kakaocdn.net/dn/Ugrws/btqA57LsJRf/e1qWY8UhqIrEG58bWrm8C1/img.jpg','https://hamonikr.org/files/attach/images/118/310/070/d79db7380d8f96b4990147e7dbc75f08.jpg'
 
-static List<String> productPhotos =['https://blog.kakaocdn.net/dn/bKy6Mm/btqKfqu72Ga/05lByPgN2H0tYN3lHP3VU1/img.png'];
+  static List<String> productPhotos = [];
+  @override
+  void initState() {
+
+    productPhotos.clear();
+
+    if (detailProductController.isLoading.value){
+      Center(child: IconButton(icon: Icon(Icons.refresh, color: Colors.red,), onPressed: (){
+        setState(() {
+        addPhoto();
+      });}),);
+    }
+
+   else{
+      addPhoto();
+
+      }
 
 
-
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,28 +82,22 @@ static List<String> productPhotos =['https://blog.kakaocdn.net/dn/bKy6Mm/btqKfqu
         break;
     }
 
+    //print('길이:${ProductDetailInfo.photos[0].photo}');
+
     String cost = ProductDetailInfo.price;
     String priceProp = ProductDetailInfo.priceProp;
     int IdOfProduct = ProductDetailInfo.id;
 
-
-
-
-    print(detailProductController.productList.value.photos);
-
-
-
-
     return MaterialApp(
       home: Scaffold(
-          // appBar: AppBar(
-          //   title: Text(
-          //     '테스트',
-          //     style: TextStyle(color: Colors.black),
-          //   ),
-          //   backgroundColor: Colors.transparent,
-          //   elevation: 0.0,
-          // ),
+          appBar: AppBar(
+            title: Text(
+              '앱바',
+              style: TextStyle(color: Colors.black),
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+          ),
           extendBodyBehindAppBar: true,
           body: SafeArea(
             child: SingleChildScrollView(
@@ -84,9 +108,20 @@ static List<String> productPhotos =['https://blog.kakaocdn.net/dn/bKy6Mm/btqKfqu
                     print(current);
                   });
                 }),
-
-
-
+                FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (ProductDetailInfo.photos == null) {
+                      productPhotos.add(
+                          'https://blog.kakaocdn.net/dn/Ugrws/btqA57LsJRf/e1qWY8UhqIrEG58bWrm8C1/img.jpg');
+                    } else {
+                      for (int i = 0;
+                          i < ProductDetailInfo.photos.length;
+                          i++) {
+                        productPhotos.add(ProductDetailInfo.photos[i].photo);
+                      }
+                    }
+                  });
+                }),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
