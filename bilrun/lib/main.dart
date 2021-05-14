@@ -1,4 +1,5 @@
 import 'package:bilrun/screens/chat/notyet.dart';
+import 'package:bilrun/screens/product_register/practice_convert.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
 import 'package:bilrun/screens/sign%20_in_up/univ/select_univ.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
@@ -37,9 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _children = [
     //noticeBannerWidget(),
+    showRegisterDialog(),
     LendMain(),
     RentMain(),
-    showRegisterDialog(),
+
 
     // DialogProductRegister(),
     //ImageUpload(),
@@ -65,65 +67,66 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SelectUniv(),
 
-      // body: _children[currentIndex],
-      //
-      // bottomNavigationBar: BottomNavigationBar(
-      //     unselectedItemColor: Color(0xff999999),
-      //     selectedItemColor: Color(0xffaa0000),
-      //     type: BottomNavigationBarType.fixed,
-      //     onTap: _onTap,
-      //     currentIndex: currentIndex,
-      //     items: [
-      //       BottomNavigationBarItem(
-      //         icon: currentIndex == 0
-      //             ? Image.asset(
-      //                 'assets/images/lendlogored.png',
-      //                 width: 22,
-      //                 height: 22,
-      //               )
-      //             : Image.asset(
-      //                 'assets/images/lendlogo.png',
-      //                 width: 22,
-      //                 height: 22,
-      //               ),
-      //         label: '빌려드림',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: currentIndex == 1
-      //             ? Image.asset(
-      //                 'assets/images/rentlogored.png',
-      //                 width: 22,
-      //                 height: 22,
-      //               )
-      //             : Image.asset(
-      //                 'assets/images/rentlogo.png',
-      //                 width: 22,
-      //                 height: 22,
-      //               ),
-      //         label: '빌림',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(
-      //           Icons.add_box_rounded,
-      //           size: 22,
-      //         ),
-      //         label: '상품 등록',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Image.asset(
-      //           'assets/images/chatlogo.png',
-      //           width: 22,
-      //           height: 22,
-      //         ),
-      //         label: '채팅',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(Icons.person),
-      //         label: '마이페이지',
-      //       ),
-      //     ]),
+     // body: PraticeApp(),
+
+       body: _children[currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Color(0xff999999),
+          selectedItemColor: Color(0xffaa0000),
+          type: BottomNavigationBarType.fixed,
+          onTap: _onTap,
+          currentIndex: currentIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: currentIndex == 0
+                  ? Image.asset(
+                      'assets/images/lendlogored.png',
+                      width: 22,
+                      height: 22,
+                    )
+                  : Image.asset(
+                      'assets/images/lendlogo.png',
+                      width: 22,
+                      height: 22,
+                    ),
+              label: '빌려드림',
+            ),
+            BottomNavigationBarItem(
+              icon: currentIndex == 1
+                  ? Image.asset(
+                      'assets/images/rentlogored.png',
+                      width: 22,
+                      height: 22,
+                    )
+                  : Image.asset(
+                      'assets/images/rentlogo.png',
+                      width: 22,
+                      height: 22,
+                    ),
+              label: '빌림',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.add_box_rounded,
+                size: 22,
+              ),
+              label: '상품 등록',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/images/chatlogo.png',
+                width: 22,
+                height: 22,
+              ),
+              label: '채팅',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: '마이페이지',
+            ),
+          ]),
 
     );
   }

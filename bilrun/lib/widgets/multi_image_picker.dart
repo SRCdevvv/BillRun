@@ -1,51 +1,29 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 
 
 class MyApps extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  MyAppState createState() => new MyAppState();
+  static MyAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<MyAppState>();
 }
 
-class _MyAppState extends State<MyApps> {
+class MyAppState extends State<MyApps> {
  static List<Asset> images = List<Asset>();
   String _error;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+ String _string = "please input text";
+
+ set string(String value) => setState(() => _string = value);
 
 
-  Widget buildHorizontalListView(){
-    if(images !=null)
-      return Container(
-        height: 80,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children:
-          List.generate(images.length, (index) {
-            Asset asset = images[index];
-            return Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
 
-              child:
-              AssetThumb(
-                asset: asset,
-                width: 80,
-                height: 80,),
-            );
-          }),
-        ),
-      );
-    else return Container(color: Colors.white,);
-  }
-
-  Widget buildGridView(){
+ Widget buildGridView(){
     return ListView(
       scrollDirection: Axis.horizontal,
       children: List.generate(images.length,(index) {
@@ -53,6 +31,7 @@ class _MyAppState extends State<MyApps> {
           padding: EdgeInsets.all(8.0),
           child: Stack(
             children: [
+
               AssetThumb(asset: images[index], width: 100, height: 100),
               InkWell(
                 onTap: () {
@@ -61,6 +40,7 @@ class _MyAppState extends State<MyApps> {
                   });
                 },
                     child: Icon(Icons.cancel, color: Color(0xffdedede),)),
+
 
             ],
           ),
@@ -76,8 +56,10 @@ class _MyAppState extends State<MyApps> {
 
 
   Future<void> loadAssets() async {
+   images.clear();
     setState(() {
       images = List<Asset>();
+
     });
 
     List<Asset> resultList;
@@ -95,12 +77,63 @@ class _MyAppState extends State<MyApps> {
 
     setState(() {
       images = resultList;
+      convertAssetToFile();
+
       if (error == null) _error = 'No Error Dectected';
     });
   }
 
+ static List<File> fileImgArray=[];
+
+ static Future convertAssetToFile() async{
+   print("future 실행 ");
+
+   // for(int i=0; i < images.length;i++){
+   //   Directory motherDirectory = await getExternalStorageDirectory();
+   //   Directory dummyDirectory =
+   //   await Directory('${motherDirectory.path}')
+   //       .create(recursive: true);
+   //
+   //   File convertedFile = File(
+   //     '${dummyDirectory.path}/${DateTime.now()}',
+   //   );
+   //
+   //   var bytes = await images.getByteData();
+   //
+   //   await convertedFile.writeAsBytes(bytes.buffer.asUint8List());
+   //   print("convertedFile:$convertedFile");
+   //
+   //
+   // }
+
+   images.forEach((images) async{
+
+
+      Directory motherDirectory = await getExternalStorageDirectory();
+      Directory dummyDirectory =
+      await Directory('${motherDirectory.path}')
+          .create(recursive: true);
+
+      File convertedFile = File(
+        '${dummyDirectory.path}/${DateTime.now()}',
+      );
+
+      var bytes = await images.getByteData();
+
+      await convertedFile.writeAsBytes(bytes.buffer.asUint8List());
+      print("convertedFile:$convertedFile");
+
+
+    });
+
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
 
 
     return Container(
@@ -113,6 +146,7 @@ class _MyAppState extends State<MyApps> {
           children: <Widget>[
             Column(
               children: [
+
                 Container(
                   width: 80,
                   height: 80,
@@ -135,6 +169,7 @@ class _MyAppState extends State<MyApps> {
                   fontStyle:  FontStyle.normal,
                   fontSize: 16.0
               ),),
+
                         ],
             ),
             Expanded(child: buildGridView()),
@@ -156,4 +191,9 @@ class _MyAppState extends State<MyApps> {
 
 
   }
+
+
+
+
+
 }

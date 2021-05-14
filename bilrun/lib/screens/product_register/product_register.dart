@@ -1,5 +1,7 @@
 import 'dart:core';
 
+import 'dart:io';
+
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/product_register/product_register_service.dart';
@@ -11,6 +13,9 @@ import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
+
+import '../../main.dart';
 
 void main() => runApp(ProductRegister());
 
@@ -24,9 +29,11 @@ class _initData {
   String caution;
   int price;
   String priceProp;
-  List images ;
+  List<Asset> images ;
+
 
 }
+
 
 class ProductRegister extends StatelessWidget {
   @override
@@ -43,6 +50,9 @@ class ProductRegisterWidget extends StatefulWidget {
 class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
  static List<bool> isSelected;
 
+
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -52,10 +62,18 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   }
 
   _initData _data = new _initData();
+
   final _formKey = GlobalKey<FormState>();
+
+
+
 
   @override
   Widget build(BuildContext context) {
+
+
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -84,11 +102,12 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                //TODO 멀티 이미지 픽커로 바꾸기
                 Padding(
                   padding: const EdgeInsets.fromLTRB(45,30,0,0),
-                  child: MyApps(),
+                  child:MyApps(),
                 ),
+
+
 
 
 
@@ -478,10 +497,13 @@ class _ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     onTap: () async{
                       if(_formKey.currentState.validate()){
                         _formKey.currentState.save();
-                         await getOrCreateInitAPIData(_data.price, _data.productName, _data.description, _data.caution, ProductCategory,PriceProp);
+                         await getOrCreateInitAPIData(_data.price, _data.productName, _data.description, _data.caution, ProductCategory,PriceProp,_data.images);
                          //await asyncFileUpload('업로드예시', images[0]);
 
+
+
                       }
+                      Get.to(MyApp());
 
 
                     }),
