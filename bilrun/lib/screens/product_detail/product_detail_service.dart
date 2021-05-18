@@ -35,7 +35,7 @@ class DetailProductService {
 
 
     response = await client.get(
-        '$serviceUrl/lend_product_list/${getArguments.id}?format=json');
+        Uri.parse('$serviceUrl/lend_product_list/${getArguments.id}?format=json'));
     print(getArguments.id);
 
 

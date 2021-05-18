@@ -8,7 +8,7 @@ class RentProductListService {
 
   static Future<List<ProductList>> fetchRentProducts() async {
     var response = await client.get(
-        '$serviceUrl/rent_product_list/?format=json');
+        Uri.parse( '$serviceUrl/rent_product_list/?format=json'));
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);

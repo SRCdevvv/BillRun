@@ -11,7 +11,7 @@ class NoticeService {
 
   static Future<List<NoticeList>> fetchNotice() async {
     var response = await client.get(
-        '$serviceUrl/notice/?format=json');
+        Uri.parse('$serviceUrl/notice/?format=json'));
     //print('notice : ${response.body}');
 
 

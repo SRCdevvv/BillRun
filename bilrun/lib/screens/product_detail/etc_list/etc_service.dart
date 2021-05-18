@@ -12,7 +12,7 @@ class EtcProductService {
 
   static Future<List<ProductList>> fetchEtcProducts(int userId) async {
     var response = await client.get(
-        '$serviceUrl/lend_product_list/user_id=$userId?format=json');
+        Uri.parse( '$serviceUrl/lend_product_list/user_id=$userId?format=json'));
      print('etc lend : ${response.body}');
 
     if (response.statusCode == 200) {
