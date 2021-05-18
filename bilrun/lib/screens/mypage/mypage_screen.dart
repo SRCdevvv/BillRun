@@ -22,14 +22,12 @@ class _MyPageScreenState extends State<MyPageScreen> {
           child: ListView(
             children: <Widget>[
               Row(children: <Widget>[
-                //TODO 프로필 사진 바꾸기
                 Stack(children: [
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
                         shape: BoxShape.circle,
-                        //TODO 사진 그림자로 바꾸기
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 10,
@@ -47,7 +45,6 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
 
                 ]),
-                //TODO 닉네임 바꾸기
                 Column(
                   children: [
 
