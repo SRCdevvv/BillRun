@@ -16,6 +16,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
         leading: Padding(
           padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
           child: IconButton(

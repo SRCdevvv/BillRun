@@ -9,7 +9,11 @@ class SelectUniv extends StatefulWidget {
   _SelectUnivState createState() => _SelectUnivState();
 }
 
+
+
 class _SelectUnivState extends State<SelectUniv> {
+
+  static String univName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +98,7 @@ class _SelectUnivState extends State<SelectUniv> {
                               fontSize: 26.0,
                               letterSpacing: 0,
                           ),
-                          text: "우리끼리 "),
+                          text: "우리끼리"),
                       TextSpan(
                           style: const TextStyle(
                               color: const Color(0xff191919),
@@ -109,20 +113,20 @@ class _SelectUnivState extends State<SelectUniv> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(80, 10, 0, 10),
+                padding: const EdgeInsets.fromLTRB(80, 30, 0, 10),
                 child: Container(
                   width: Get.width * 0.562,
-                  height: Get.width * 0.666,
+                  height: Get.height * 0.232,
                   child: Image.asset(
-                    'assets/images/main_2.jpg',
-                    fit: BoxFit.cover,
+                    'assets/images/img_1.png',
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
 
         // 빌RUN은 커뮤니티를 기반으로  믿을 수 있는  사람과 거래할 수 있는 물품 공유 플랫폼입니다.  커뮤니티 인증 후 서비스를 이용해주세요!
         Padding(
-          padding: const EdgeInsets.fromLTRB(30, 5, 0, 10),
+          padding: const EdgeInsets.fromLTRB(30, 40, 0, 10),
           child: Text(
               "빌RUN은 커뮤니티를 기반으로  믿을 수 있는 \n사람과 거래할 수 있는 물품 공유 플랫폼입니다. \n커뮤니티 인증 후 서비스를 이용해주세요!",
               style: const TextStyle(
@@ -138,7 +142,7 @@ class _SelectUnivState extends State<SelectUniv> {
 
               // 사각형 24070
               Padding(
-                padding: const EdgeInsets.fromLTRB(40, 10,0, 15),
+                padding: const EdgeInsets.fromLTRB(40, 20,0, 15),
                 child: Stack(
                   children:<Widget> [
                     Container(
@@ -232,7 +236,8 @@ class _SelectUnivState extends State<SelectUniv> {
                       icon: Icon(Icons.arrow_forward_ios, color: mainRed,),
                       iconSize: 20,
                       onPressed: (){
-                        Get.to(CertificationUniv());
+                        univName = 'HY';
+                        Get.to(()=> CertificationUniv(), arguments:univName );
                       },
                     ),)
                 ],
@@ -243,7 +248,8 @@ class _SelectUnivState extends State<SelectUniv> {
                   onPressed: (){},
                   child:
                   Padding(
-                    padding: const EdgeInsets.only(left:100,top: 0),
+                    padding: const EdgeInsets.only(left:100,top: 50),
+                    //TODO 밑줄 이상한거 고치기
                     child: Text(
                         "우리 학교도 빌RUN 오픈 신청하기 ",
                         style: const TextStyle(

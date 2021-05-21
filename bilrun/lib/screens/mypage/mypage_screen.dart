@@ -1,4 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -93,7 +94,9 @@ class _MyPageScreenState extends State<MyPageScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(60,0,0,0),
-                          child: IconButton(icon:Icon(Icons.arrow_forward_ios) , onPressed: (){}),
+                          child: IconButton(icon:Icon(Icons.arrow_forward_ios) , onPressed: (){
+                            Get.to(ProfileDetailScreen());
+                          }),
                         )
 
                       ],

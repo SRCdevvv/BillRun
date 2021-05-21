@@ -1,7 +1,9 @@
 import 'package:bilrun/screens/chat/notyet.dart';
+import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/product_register/practice_convert.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
-import 'package:bilrun/screens/sign%20_in_up/univ/select_univ.dart';
+import 'package:bilrun/screens/sign_in_up/univ/select_univ.dart';
+import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:flutter/material.dart';
 import 'screens/lend/lend_main.dart';
@@ -38,9 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _children = [
     //noticeBannerWidget(),
-    showRegisterDialog(),
-    LendMain(),
+
+   // MyApps(),
+   // ProfileDetailScreen(),
+   // LendMain(),
+    SelectUniv(),
     RentMain(),
+    showRegisterDialog(),
 
 
     // DialogProductRegister(),
