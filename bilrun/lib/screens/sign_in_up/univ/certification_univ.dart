@@ -125,6 +125,7 @@ class _CertificationUnivState extends State<CertificationUniv> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: TextFormField(
+                                keyboardType: TextInputType.emailAddress,
                                 key: _key,
                                 validator: (value) {
                                   if (value.isEmpty) {
