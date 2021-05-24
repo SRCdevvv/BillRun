@@ -5,13 +5,11 @@ import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
-
 class pickup extends StatefulWidget {
   @override
   pickupState createState() => new pickupState();
   static pickupState of(BuildContext context) =>
       context.findAncestorStateOfType<pickupState>();
-
 }
 
 class pickupState extends State<pickup> {
@@ -19,11 +17,12 @@ class pickupState extends State<pickup> {
   static List<File> ImgFiles = List<File>();
   String _error;
 
+  static bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
   }
-
 
   Widget buildGridView() {
     return ListView(
@@ -67,15 +66,11 @@ class pickupState extends State<pickup> {
     setState(() {
       images = resultList;
 
-      for(int i =0; i<images.length ; i++){
+      for (int i = 0; i < images.length; i++) {
         getImageFileFromAssets(images[i]);
         print("for문 $i번 실행");
-
       }
-
-
-
-
+      isLoading = true;
 
       if (error == null) _error = 'No Error Dectected';
     });
@@ -85,7 +80,7 @@ class pickupState extends State<pickup> {
     final byteData = await asset.getByteData();
 
     final tempFile =
-    File("${(await getTemporaryDirectory()).path}/${asset.name}");
+        File("${(await getTemporaryDirectory()).path}/${asset.name}");
     final file = await tempFile.writeAsBytes(
       byteData.buffer
           .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
@@ -97,9 +92,6 @@ class pickupState extends State<pickup> {
 
     return file;
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {

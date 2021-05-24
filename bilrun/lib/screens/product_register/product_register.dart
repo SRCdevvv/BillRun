@@ -10,7 +10,6 @@ import 'package:bilrun/design/divider_example.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-
 void main() => runApp(ProductRegister());
 
 bool ProductCategory;
@@ -22,7 +21,7 @@ class _initData {
   String caution;
   int price;
   String priceProp;
-  List<File> imageFiles;
+  List<File> imageFiles = [];
 }
 
 class ProductRegister extends StatelessWidget {
@@ -40,13 +39,8 @@ class ProductRegisterWidget extends StatefulWidget {
 class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   static List<bool> isSelected;
 
-  
-
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     ProductCategory = Get.arguments;
     isSelected = [true, false, false];
@@ -56,6 +50,15 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
   final _formKey = GlobalKey<FormState>();
 
+  Future loadData() {
+    if (pickupState.isLoading == true) {
+      for (int i = 0; i < pickupState.images.length; i++) {
+        data.imageFiles.add(pickupState.ImgFiles[i]);
+      }
+    }
+
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +92,24 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(45, 30, 0, 0),
                 child: pickup(),
-
               ),
 
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: FutureBuilder(
+                    future: loadData(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+
+                      if (snapshot.hasError) {
+                        return Text("imgFiles error");
+                      } else {
+                        return Text("${data.imageFiles}");
+                      }
+                    }),
+              ),
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(60, 10, 60, 10),

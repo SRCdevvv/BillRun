@@ -1,13 +1,15 @@
 import 'dart:io';
+import 'package:bilrun/widgets/multi_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'product_register.dart';
 
 void main() {
-  runApp(PraticeApp());
+  runApp(PracticeApp());
 }
 
-class PraticeApp extends StatelessWidget {
+class PracticeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,6 +36,7 @@ class PraticeApp extends StatelessWidget {
               var bytes = await pickedAsset[0].getByteData();
 
               await convertedFile.writeAsBytes(bytes.buffer.asUint8List());
+
             },
           ),
         ),

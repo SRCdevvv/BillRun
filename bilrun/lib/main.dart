@@ -46,9 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
    // ProfileDetailScreen(),
    // LendMain(),
    // SelectUniv(),
-    CertificationPhone(),
-    RentMain(),
+    //CertificationPhone(),
     showRegisterDialog(),
+    RentMain(),
+
 
 
     // DialogProductRegister(),
