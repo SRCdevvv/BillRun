@@ -40,26 +40,22 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   final List<Widget> _children = [
-    //noticeBannerWidget(),
-
-   // MyApps(),
-   // ProfileDetailScreen(),
-   // LendMain(),
-   // SelectUniv(),
+    // ProfileDetailScreen(),
+    MyPageScreen(),
+    LendMain(),
+    RentMain(),
+    // SelectUniv(),
     //CertificationPhone(),
     showRegisterDialog(),
-    RentMain(),
-
-
 
     // DialogProductRegister(),
     //ImageUpload(),
     ChatApp(),
 
-   // noticeBannerWidget(),
+    // noticeBannerWidget(),
     //DealManagement(),
 
-    MyPageScreen()
+    
   ];
   void _onTap(int index) {
     setState(() {
@@ -76,10 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // body: PraticeApp(),
 
-     // body: PraticeApp(),
-
-       body: _children[currentIndex],
+      body: _children[currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Color(0xff999999),
@@ -136,7 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
               label: '마이페이지',
             ),
           ]),
-
     );
   }
 }
