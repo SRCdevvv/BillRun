@@ -18,7 +18,7 @@ bool _isPressed =false;
     return IconButton(
       iconSize : 20.0,
       icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline,),
-      color: _isPressed? mainRed : Colors.white,
+      color: _isPressed? mainRed : Colors.grey[200],
       onPressed:(){
         setState(() {
           _isPressed==true  ? _isPressed=false : _isPressed =true;
