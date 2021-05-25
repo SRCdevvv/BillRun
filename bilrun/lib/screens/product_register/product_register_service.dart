@@ -42,33 +42,52 @@ Future<DetailProduct> getOrCreateInitAPIData(
     // "updated_at": "2021-05-14T13:10:27.755806"
   };
 
-  var uri = Uri.parse('$url');
+  try {
+    var uri = Uri.parse('$url');
 
-  var request = http.MultipartRequest('POST', uri);
-  request.fields["name"] = "$RegisterName";
-  request.fields["description"] = "$RegisterDescription";
-  request.fields["caution"] = "$RegisterCaution";
-  request.fields["price"] = "$RegisterPrice";
-  request.fields["price_prop"] = "$RegisterPriceProp";
-  request.fields["user.id"] = "1";
-  request.fields["lend"] = "$RegisterCategory";
-  request.fields["category"] = "Digital";
-  request.fields["place_option"] = "true";
+    var request = http.MultipartRequest('POST', uri);
+    request.fields["name"] = "$RegisterName";
+    request.fields["description"] = "$RegisterDescription";
+    request.fields["caution"] = "$RegisterCaution";
+    request.fields["price"] = "$RegisterPrice";
+    request.fields["price_prop"] = "$RegisterPriceProp";
+    request.fields["user.id"] = "1";
+    request.fields["lend"] = "$RegisterCategory";
+    request.fields["category"] = "Digital";
+    request.fields["place_option"] = "true";
 
-  // request.files.add(await http.MultipartFile.fromPath(
-  //     'file', '${RegisterImage[0]}',
-  //     contentType: MediaType('image', 'jpg')));
+    // request.files.add(await http.MultipartFile.fromPath(
+    //     'file', '${RegisterImage[0]}',
+    //     contentType: MediaType('image', 'jpg')));
 
-  var multipartFile = http.MultipartFile.fromBytes(
-    'file',
-    (await rootBundle.load('assets/images/main_1.jpg')).buffer.asUint8List(),
-    filename: 'test01.jpg',
-    contentType: MediaType('image', 'jpg'),
-  );
+    // var multipartFile = http.MultipartFile.fromBytes(
+    //   'file',
+    //   (await rootBundle.load('assets/images/main_1.jpg')).buffer.asUint8List(),
+    //   filename: 'test01.jpg',
+    //   contentType: MediaType('image', 'jpg'),
+    // );
+    //
+    // request.files.add(multipartFile);
 
-  request.files.add(multipartFile);
+    final multipartFile = await http.MultipartFile.fromPath(
+        'Image', '${RegisterImage[0]}');
+    request.files.add(multipartFile);
 
-  var response = await request.send();
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      print("success");
+    } else {
+      print("fail: ${response.statusCode}");
+    }
+  } catch(e){
+    print("failllll: $e");
+  }
 
-  if (response.statusCode == 200) print('Upload');
-}
+
+
+  // var response = await request.send();
+  //
+  // if (response.statusCode == 200) print('Upload');
+
+  }
+

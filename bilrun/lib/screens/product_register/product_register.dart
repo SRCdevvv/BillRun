@@ -38,6 +38,7 @@ class ProductRegisterWidget extends StatefulWidget {
 
 class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   static List<bool> isSelected;
+  Future myFuture;
 
   @override
   void initState() {
@@ -50,6 +51,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
   final _formKey = GlobalKey<FormState>();
 
+
   Future loadData() {
     if (pickupState.isLoading == true) {
       for (int i = 0; i < pickupState.images.length; i++) {
@@ -59,6 +61,8 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
     return null;
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +110,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                       if (snapshot.hasError) {
                         return Text("imgFiles error");
                       } else {
-                        return Text("${data.imageFiles}");
+                        return Text("${data.imageFiles.length}");
                       }
                     }),
               ),

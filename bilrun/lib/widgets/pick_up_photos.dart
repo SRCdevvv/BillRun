@@ -85,6 +85,9 @@ class pickupState extends State<pickup> {
       byteData.buffer
           .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
     );
+
+
+
     print("이미지 변환 실행 ");
 
     ImgFiles.add(file);
