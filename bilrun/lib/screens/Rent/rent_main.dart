@@ -2,6 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/mypage/deal_managemenet/deal_list_controller.dart';
 import 'package:bilrun/screens/rent/rent_controller.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
+import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,7 @@ class _RentMainState extends State<RentMain> {
                                   child: Row(
                                     children: [
                                       Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                       child: NowLocation(),
+                                       child: NowCommunity(),
                                       ),
                                       Text(
                                           "지금 빌려주세요!",

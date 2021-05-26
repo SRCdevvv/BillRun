@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _children = [
     // ProfileDetailScreen(),
-    calculator(),
+    
     LendMain(),
     RentMain(),
     // SelectUniv(),
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // DialogProductRegister(),
     //ImageUpload(),
-   // ChatApp(),
+    ChatApp(),
     MyPageScreen(),
 
     // noticeBannerWidget(),

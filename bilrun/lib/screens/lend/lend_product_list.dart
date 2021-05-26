@@ -1,4 +1,5 @@
 
+import 'package:bilrun/widgets/location/calculate_location.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -135,9 +136,10 @@ class LendProductTile extends StatelessWidget {
                     textAlign: TextAlign.left),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20, 0, 5, 0),
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child : Text(
-                      "1.1km",
+                    //TODO product에 위도 경도 업데이트 되면 수정하기
+                      "${calculateLocation(37.12400,126.123000,37.425120,126.365252)}",
                       style: const TextStyle(
                           color:  const Color(0xffaa0000),
                           fontWeight: FontWeight.w700,

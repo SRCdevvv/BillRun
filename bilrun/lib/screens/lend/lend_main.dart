@@ -1,5 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
+import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:bilrun/widgets/notice/notice_controller.dart';
@@ -115,11 +116,9 @@ Future<Null> refresh() async{
                                     }
 
                               ),
-
-
-
-
                             ),
+                                  
+                
                             GestureDetector(
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(240,10,10,10),
@@ -152,7 +151,7 @@ Future<Null> refresh() async{
                             Row(
                               children: [
                                 Padding(padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                  child: NowLocation(),
+                                  child: NowCommunity(),
                                 ),
                                 // 지금 빌려드려요!
                                 Text(
