@@ -1,10 +1,10 @@
-
 import 'package:bilrun/screens/chat/notyet.dart';
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
 import 'package:bilrun/screens/sign_in_up/univ/select_univ.dart';
 import 'package:bilrun/widgets/location/calculate_location.dart';
+import 'package:bilrun/widgets/location/set_location.dart';
 
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:flutter/material.dart';
@@ -42,8 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _children = [
     // ProfileDetailScreen(),
-    
-    LendMain(),
+    SetLocation(),
+    //LendMain(),
     RentMain(),
     // SelectUniv(),
     //CertificationPhone(),
@@ -56,8 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // noticeBannerWidget(),
     //DealManagement(),
-
-
   ];
   void _onTap(int index) {
     setState(() {

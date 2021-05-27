@@ -10,6 +10,12 @@
 @import geolocator;
 #endif
 
+#if __has_include(<google_maps_flutter/FLTGoogleMapsPlugin.h>)
+#import <google_maps_flutter/FLTGoogleMapsPlugin.h>
+#else
+@import google_maps_flutter;
+#endif
+
 #if __has_include(<image_picker/FLTImagePickerPlugin.h>)
 #import <image_picker/FLTImagePickerPlugin.h>
 #else
@@ -34,14 +40,22 @@
 @import url_launcher;
 #endif
 
+#if __has_include(<webview_flutter/FLTWebViewFlutterPlugin.h>)
+#import <webview_flutter/FLTWebViewFlutterPlugin.h>
+#else
+@import webview_flutter;
+#endif
+
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
+  [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [MultiImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePickerPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
+  [FLTWebViewFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTWebViewFlutterPlugin"]];
 }
 
 @end

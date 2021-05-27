@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="20"
 9        android:targetSdkVersion="29" />
 10    <!--
 11         Flutter needs it to communicate with the running application
@@ -26,166 +26,190 @@
 18    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 18-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:13:5-81
 18-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:13:22-78
-19    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+19    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- Include required permissions for Google Maps API to run. -->
 19-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:14:5-79
 19-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:14:22-76
-20
-21    <application
-21-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:17:5-57:19
-22        android:name="io.flutter.app.FlutterApplication"
-22-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:18:9-57
-23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-23-->[androidx.core:core:1.1.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
-24        android:debuggable="true"
-25        android:icon="@mipmap/ic_launcher"
-25-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:21:9-43
-26        android:label="bilrun"
-26-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:19:9-31
-27        android:usesCleartextTraffic="true" >
-27-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:20:9-44
-28        <activity
-28-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:22:9-50:20
-29            android:name="SRCcompanycom.example.bilrun.MainActivity"
-29-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:23:13-41
-30            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-30-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:26:13-163
-31            android:hardwareAccelerated="true"
-31-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:27:13-47
-32            android:launchMode="singleTop"
-32-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:24:13-43
-33            android:theme="@style/LaunchTheme"
-33-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:25:13-47
-34            android:windowSoftInputMode="adjustResize" >
-34-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:28:13-55
-35
-36            <!--
-37                 Specifies an Android theme to apply to this Activity as soon as
-38                 the Android process has started. This theme is visible to the user
-39                 while the Flutter UI initializes. After that, this theme continues
-40                 to determine the Window background behind the Flutter UI.
-41            -->
-42            <meta-data
-42-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:33:13-36:17
-43                android:name="io.flutter.embedding.android.NormalTheme"
-43-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:34:15-70
-44                android:resource="@style/NormalTheme" />
-44-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:35:15-52
+20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+20-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
+20-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
+21
+22    <uses-feature
+22-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+23        android:glEsVersion="0x00020000"
+23-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+24        android:required="true" />
+24-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+25
+26    <application
+26-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:17:5-61:19
+27        android:name="io.flutter.app.FlutterApplication"
+27-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:18:9-57
+28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+28-->[androidx.core:core:1.1.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
+29        android:debuggable="true"
+30        android:icon="@mipmap/ic_launcher"
+30-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:21:9-43
+31        android:label="bilrun"
+31-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:19:9-31
+32        android:usesCleartextTraffic="true" >
+32-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:20:9-44
+33        <meta-data
+33-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:22:9-23:73
+34            android:name="com.google.android.geo.API_KEY"
+34-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:22:20-65
+35            android:value="AIzaSyAxkyj1oYDHE7kYo3rd7JQAv8M3HOOwGzI" />
+35-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:23:16-71
+36
+37        <activity
+37-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:25:9-54:20
+38            android:name="SRCcompanycom.example.bilrun.MainActivity"
+38-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:26:13-41
+39            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+39-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:29:13-163
+40            android:hardwareAccelerated="true"
+40-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:30:13-47
+41            android:launchMode="singleTop"
+41-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:27:13-43
+42            android:theme="@style/LaunchTheme"
+42-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:28:13-47
+43            android:windowSoftInputMode="adjustResize" >
+43-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:31:13-55
+44
 45            <!--
-46                 Displays an Android View that continues showing the launch screen
-47                 Drawable until Flutter paints its first frame, then this splash
-48                 screen fades out. A splash screen is useful to avoid any visual
-49                 gap between the end of Android's launch screen and the painting of
-50                 Flutter's first frame.
-51            -->
-52            <meta-data
-52-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:42:13-45:17
-53                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-53-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:43:15-79
-54                android:resource="@drawable/launch_background" />
-54-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:44:15-61
-55
-56            <intent-filter>
-56-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:46:13-49:29
-57                <action android:name="android.intent.action.MAIN" />
-57-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:47:17-68
-57-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:47:25-66
-58
-59                <category android:name="android.intent.category.LAUNCHER" />
-59-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:48:17-76
-59-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:48:27-74
-60            </intent-filter>
-61        </activity>
-62        <!--
-63             Don't delete the meta-data below.
-64             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-65        -->
-66        <meta-data
-66-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:53:9-55:33
-67            android:name="flutterEmbedding"
-67-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:54:13-44
-68            android:value="2" />
-68-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:55:13-30
-69
-70        <provider
-70-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
-71            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-71-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
-72            android:authorities="SRCcompanycom.example.bilrun.flutter.image_provider"
-72-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
-73            android:exported="false"
-73-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
-74            android:grantUriPermissions="true" >
-74-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
-75            <meta-data
-75-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
-76                android:name="android.support.FILE_PROVIDER_PATHS"
-76-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
-77                android:resource="@xml/flutter_image_picker_file_paths" />
-77-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
-78        </provider>
-79
-80        <activity
-80-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
-81            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-81-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+46                 Specifies an Android theme to apply to this Activity as soon as
+47                 the Android process has started. This theme is visible to the user
+48                 while the Flutter UI initializes. After that, this theme continues
+49                 to determine the Window background behind the Flutter UI.
+50            -->
+51            <meta-data
+51-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:36:13-39:17
+52                android:name="io.flutter.embedding.android.NormalTheme"
+52-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:37:15-70
+53                android:resource="@style/NormalTheme" />
+53-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:38:15-52
+54            <!--
+55                 Displays an Android View that continues showing the launch screen
+56                 Drawable until Flutter paints its first frame, then this splash
+57                 screen fades out. A splash screen is useful to avoid any visual
+58                 gap between the end of Android's launch screen and the painting of
+59                 Flutter's first frame.
+60            -->
+61            <meta-data
+61-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:45:13-48:17
+62                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+62-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:46:15-79
+63                android:resource="@drawable/launch_background" />
+63-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:47:15-61
+64
+65            <intent-filter>
+65-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:50:13-53:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:51:17-68
+66-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:51:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:52:17-76
+68-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:52:27-74
+69            </intent-filter>
+70        </activity>
+71        <!--
+72             Don't delete the meta-data below.
+73             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+74        -->
+75        <meta-data
+75-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:57:9-59:33
+76            android:name="flutterEmbedding"
+76-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:58:13-44
+77            android:value="2" />
+77-->/Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/android/app/src/main/AndroidManifest.xml:59:13-30
+78
+79        <provider
+79-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
+80            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+80-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
+81            android:authorities="SRCcompanycom.example.bilrun.flutter.image_provider"
+81-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
 82            android:exported="false"
-82-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
-83            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-83-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
-84
-85        <provider
-85-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:12:9-20:20
-86            android:name="com.sangcomz.fishbun.FishBunFileProvider"
-86-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:13:13-68
-87            android:authorities="SRCcompanycom.example.bilrun.fishbunfileprovider"
-87-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:14:13-71
-88            android:exported="false"
-88-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:15:13-37
-89            android:grantUriPermissions="true" >
-89-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:16:13-47
-90            <meta-data
-90-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
-91                android:name="android.support.FILE_PROVIDER_PATHS"
-91-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
-92                android:resource="@xml/provider_paths" />
-92-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
-93        </provider>
-94
-95        <activity
-95-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:22:9-25:51
-96            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
-96-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:23:13-71
-97            android:label="@string/album"
-97-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:24:13-42
-98            android:theme="@style/FishBunTheme" />
-98-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:25:13-48
-99        <activity
-99-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:26:9-28:51
-100            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
-100-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:27:13-73
-101            android:theme="@style/FishBunTheme" />
-101-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:28:13-48
-102        <activity
-102-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:29:9-31:54
-103            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
-103-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:30:13-73
-104            android:theme="@style/DetailViewTheme" />
-104-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:31:13-51
-105        <activity
-105-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
-106            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-106-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
-107            android:exported="false"
-107-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
-108            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-108-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
-109
-110        <meta-data
-110-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
-111            android:name="com.google.android.gms.version"
-111-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
-112            android:value="@integer/google_play_services_version" />
-112-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
-113    </application>
-114
-115</manifest>
+82-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
+83            android:grantUriPermissions="true" >
+83-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
+84            <meta-data
+84-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
+85                android:name="android.support.FILE_PROVIDER_PATHS"
+85-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
+86                android:resource="@xml/flutter_image_picker_file_paths" />
+86-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
+87        </provider>
+88
+89        <activity
+89-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+90            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+90-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+91            android:exported="false"
+91-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+92            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+92-->[:url_launcher] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/url_launcher/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+93
+94        <provider
+94-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:12:9-20:20
+95            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+95-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:13:13-68
+96            android:authorities="SRCcompanycom.example.bilrun.fishbunfileprovider"
+96-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:14:13-71
+97            android:exported="false"
+97-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:15:13-37
+98            android:grantUriPermissions="true" >
+98-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:16:13-47
+99            <meta-data
+99-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
+100                android:name="android.support.FILE_PROVIDER_PATHS"
+100-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
+101                android:resource="@xml/provider_paths" />
+101-->[:image_picker] /Users/kimwonhee/Desktop/GitHub/BillRun/bilrun/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
+102        </provider>
+103
+104        <activity
+104-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:22:9-25:51
+105            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+105-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:23:13-71
+106            android:label="@string/album"
+106-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:24:13-42
+107            android:theme="@style/FishBunTheme" />
+107-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:25:13-48
+108        <activity
+108-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:26:9-28:51
+109            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+109-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:27:13-73
+110            android:theme="@style/FishBunTheme" />
+110-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:28:13-48
+111        <activity
+111-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:29:9-31:54
+112            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+112-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:30:13-73
+113            android:theme="@style/DetailViewTheme" /> <!-- Needs to be explicitly declared on P+ -->
+113-->[com.sangcomz:FishBun:0.11.2] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/2897e9dd00f6f757effd3a8661c8ffb0/jetified-FishBun-0.11.2/AndroidManifest.xml:31:13-51
+114        <uses-library
+114-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+115            android:name="org.apache.http.legacy"
+115-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+116            android:required="false" />
+116-->[com.google.android.gms:play-services-maps:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/6b9b7fc1ad481537ed0a66d62976ec46/play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+117
+118        <activity
+118-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+119            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+119-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+120            android:exported="false"
+120-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+121            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+121-->[com.google.android.gms:play-services-base:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/5ac9ad6f13ea0190a3570ea7a43d9f59/play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+122
+123        <meta-data
+123-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+124            android:name="com.google.android.gms.version"
+124-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+125            android:value="@integer/google_play_services_version" />
+125-->[com.google.android.gms:play-services-basement:17.0.0] /Users/kimwonhee/.gradle/caches/transforms-2/files-2.1/d0394056138d4e0854d7a8f99f45a2d9/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+126    </application>
+127
+128</manifest>

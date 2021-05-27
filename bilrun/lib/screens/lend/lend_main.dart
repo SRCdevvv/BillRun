@@ -2,6 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/location/controller_location.dart';
+import 'package:bilrun/widgets/location/set_location.dart';
 import 'package:bilrun/widgets/main_drawer.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:bilrun/widgets/notice/notice_controller.dart';
@@ -85,7 +86,7 @@ class _LendMainState extends State<LendMain> {
                           size: 25,
                         ),
                         onPressed: () {
-                          Get.to(null);
+                          Get.to(SetLocation());
                         })
                   ],
                 );
