@@ -1,3 +1,4 @@
+import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/design/usedColors.dart';
 
@@ -15,15 +16,22 @@ class SetLocation extends StatefulWidget {
   _SetLocationState createState() => _SetLocationState();
 }
 
-class _SetLocationState extends State<SetLocation> {
+class _SetLocationState extends State<SetLocation>
+    with AutomaticKeepAliveClientMixin<SetLocation> {
   String addressJSON = '';
   double lat;
   double long;
+  List<String> addressList = [];
+
+  LatLng _kMapCenter;
+  BitmapDescriptor _markerIcon;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-
     LocationDataController.locationData();
   }
 
@@ -103,6 +111,7 @@ class _SetLocationState extends State<SetLocation> {
                             setState(() {
                               addressJSON =
                                   '${model.address} ${model.buildingName}';
+                              addressList.add(addressJSON);
                             });
                           },
                         ),
@@ -117,6 +126,7 @@ class _SetLocationState extends State<SetLocation> {
                       setState(() {
                         LocationService.fetchLocation();
                         addressJSON = LocationService.address.substring(5);
+                        addressList.add(addressJSON);
                         //MapLocatonService.fetchMapLocation();
                       });
                     },
@@ -171,6 +181,31 @@ class _SetLocationState extends State<SetLocation> {
                     } else {
                       lat = LocationService.lat;
                       long = LocationService.long;
+                      _kMapCenter =
+                          LatLng(LocationService.lat, LocationService.long);
+                      Set<Marker> _createMarker() {
+                        return <Marker>[
+                          Marker(
+                              draggable: true,
+                              markerId: MarkerId("marker_1"),
+                              position: LatLng(lat, long),
+                              infoWindow: InfoWindow(title: "$addressJSON"),
+                              onDragEnd: ((newPosition) {
+                                print(newPosition.latitude);
+                                print(newPosition.longitude);
+                                setState(() {
+                                  lat = newPosition.latitude;
+                                  long = newPosition.longitude;
+                                  LocationService.fetchLocation();
+                                  addressJSON =
+                                      LocationService.address.substring(5);
+                                  addressList.add(addressJSON);
+                                });
+
+                                print(addressList);
+                              }))
+                        ].toSet();
+                      }
 
                       return Center(
                         child: Padding(
@@ -179,10 +214,12 @@ class _SetLocationState extends State<SetLocation> {
                               width: Get.width * 0.867,
                               height: Get.height * 0.27,
                               child: GoogleMap(
-                                  initialCameraPosition: CameraPosition(
-                                target: LatLng(lat, long),
-                                zoom: 16,
-                              ))),
+                                initialCameraPosition: CameraPosition(
+                                  target: LatLng(lat, long),
+                                  zoom: 16,
+                                ),
+                                markers: _createMarker(),
+                              )),
                         ),
                       );
                     }
@@ -204,18 +241,25 @@ class _SetLocationState extends State<SetLocation> {
                 ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: 5,
+                    itemCount: addressList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Column(children: [
                         Container(
                             height: 40,
                             width: Get.width * 0.867,
-                            child: Text("hello")),
-                        Container(
-                          height: 1,
-                          color: Color(0xffdedede),
-                          width: Get.width * 0.867,
-                        ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                "${addressList[index]}",
+                                style: TextStyle(
+                                    color: const Color(0xff191919),
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "NotoSansCJKkr",
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 14.0),
+                              ),
+                            )),
+                        OriginDivider(lightGrey, 1, 30, 30)
                       ]);
                     }),
               ],

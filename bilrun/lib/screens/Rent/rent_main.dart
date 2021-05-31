@@ -1,15 +1,15 @@
 import 'package:bilrun/design/usedColors.dart';
-import 'package:bilrun/screens/mypage/deal_managemenet/deal_list_controller.dart';
+
 import 'package:bilrun/screens/rent/rent_controller.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/location/controller_location.dart';
-import 'package:bilrun/widgets/main_drawer.dart';
+
 import 'package:bilrun/widgets/search/search_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:bilrun/widgets/location/now_location.dart';
+
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/screens/Rent/rent_product_list.dart';
 

@@ -14,6 +14,8 @@ class LocationService {
   static double long;
   static double lat;
 
+  //loadLocation과 fetchlocation 분리하기.
+
   static Future loadLocation() async {}
 
   static Future<LocationData> fetchLocation() async {
