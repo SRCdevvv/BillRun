@@ -44,10 +44,28 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "crypto",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "dependencies",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/dependencies-0.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "disposables",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/disposables-0.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "fake_async",
@@ -130,6 +148,18 @@
     {
       "name": "google_maps_flutter_platform_interface",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_platform_interface-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/hive-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive_flutter",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/hive_flutter-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -266,6 +296,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "quiver",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/kimwonhee/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -392,7 +428,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-05-27T07:30:37.319352Z",
+  "generated": "2021-05-31T06:36:28.972046Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }

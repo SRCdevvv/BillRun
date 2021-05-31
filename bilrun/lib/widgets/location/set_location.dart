@@ -1,13 +1,12 @@
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
-import 'package:bilrun/design/usedColors.dart';
-
 import 'package:bilrun/widgets/location/controller_location.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hive/hive.dart';
 import 'service_location.dart';
 import 'package:kopo/kopo.dart';
 
@@ -22,9 +21,7 @@ class _SetLocationState extends State<SetLocation>
   double lat;
   double long;
   List<String> addressList = [];
-
-  LatLng _kMapCenter;
-  BitmapDescriptor _markerIcon;
+  var localData;
 
   @override
   bool get wantKeepAlive => true;
@@ -33,6 +30,10 @@ class _SetLocationState extends State<SetLocation>
   void initState() {
     super.initState();
     LocationDataController.locationData();
+  }
+
+  Future loadAddressData() async {
+    localData = await Hive.box('addressDatas').get('address');
   }
 
   @override
@@ -119,6 +120,7 @@ class _SetLocationState extends State<SetLocation>
                     ],
                   ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                   child: InkWell(
@@ -127,7 +129,7 @@ class _SetLocationState extends State<SetLocation>
                         LocationService.fetchLocation();
                         addressJSON = LocationService.address.substring(5);
                         addressList.add(addressJSON);
-                        //MapLocatonService.fetchMapLocation();
+                        // localData = Hive.box('addressDatas').get('address');
                       });
                     },
                     child: Container(
@@ -181,8 +183,8 @@ class _SetLocationState extends State<SetLocation>
                     } else {
                       lat = LocationService.lat;
                       long = LocationService.long;
-                      _kMapCenter =
-                          LatLng(LocationService.lat, LocationService.long);
+
+                      LatLng(LocationService.lat, LocationService.long);
                       Set<Marker> _createMarker() {
                         return <Marker>[
                           Marker(
@@ -201,8 +203,6 @@ class _SetLocationState extends State<SetLocation>
                                       LocationService.address.substring(5);
                                   addressList.add(addressJSON);
                                 });
-
-                                print(addressList);
                               }))
                         ].toSet();
                       }
@@ -237,26 +237,47 @@ class _SetLocationState extends State<SetLocation>
                           fontSize: 16.0),
                       textAlign: TextAlign.left),
                 ),
-                //TODO list-builder 꾸며주기
+
                 ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: addressList.length,
                     itemBuilder: (BuildContext context, int index) {
+                      Hive.box('addressDatas').put('address', addressList);
+
                       return Column(children: [
                         Container(
                             height: 40,
                             width: Get.width * 0.867,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 10),
-                              child: Text(
-                                "${addressList[index]}",
-                                style: TextStyle(
-                                    color: const Color(0xff191919),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${addressList[index]}",
+                                    style: TextStyle(
+                                        color: const Color(0xff191919),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 14.0),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            addressList.removeAt(index);
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.cancel,
+                                          color: Color(0xffdedede),
+                                        )),
+                                  ),
+                                ],
                               ),
                             )),
                         OriginDivider(lightGrey, 1, 30, 30)
@@ -285,5 +306,16 @@ class _SetLocationState extends State<SetLocation>
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+}
+
+@HiveType(typeId: 1)
+class Address {
+  Address({this.address});
+  @HiveField(0)
+  String address;
+  @override
+  String toString() {
+    return '$address';
   }
 }

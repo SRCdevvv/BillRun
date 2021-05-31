@@ -8,12 +8,21 @@ import 'package:bilrun/widgets/location/set_location.dart';
 
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
 import 'screens/mypage/mypage_screen.dart';
 import 'package:get/get.dart';
+import 'dart:io';
 
-void main() => runApp(MyApp());
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('addressDatas');
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
