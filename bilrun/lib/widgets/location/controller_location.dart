@@ -1,6 +1,7 @@
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/location_model.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'service_location.dart';
 
 class LocationDataController extends GetxController {
@@ -9,15 +10,13 @@ class LocationDataController extends GetxController {
 
   @override
   void onInit() {
-    fetchLocationData();
     super.onInit();
   }
 
-  static Future fetchLocationData() async {
+  static Future fetchLocationData(LatLng latlng) async {
     try {
       isLoading(true);
-      var LocationData = await LocationService.fetchLocation();
-
+      var LocationData = await LocationService.convertLatLngToLocation(latlng);
       if (LocationData != null) {
         locationData.value = LocationData;
       }
