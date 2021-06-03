@@ -1,16 +1,16 @@
-import 'package:bilrun/design/usedColors.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:kopo/kopo.dart';
 
 Widget streetAddressSearch(String userAddress, IconButton iconButton) {
   return Stack(
     children: <Widget>[
       Container(
-        child: Center(
-          child: Text(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 10, 2),
+          child: AutoSizeText(
             userAddress == null ? "주소를 검색해주세요" : "$userAddress",
             style: const TextStyle(
                 color: const Color(0xff191919),
@@ -20,7 +20,7 @@ Widget streetAddressSearch(String userAddress, IconButton iconButton) {
                 fontSize: 16.0),
           ),
         ),
-        width: 312,
+        width: Get.width * 0.744,
         height: 40,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -75,7 +75,7 @@ Widget nowLocationLoadButton(onTap) {
   );
 }
 
-Widget loadGoogleMap(LatLng latLng) {
+Widget loadGoogleMap(LatLng latLng, Set<Marker> marker) {
   return Center(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -87,7 +87,7 @@ Widget loadGoogleMap(LatLng latLng) {
               target: latLng,
               zoom: 16,
             ),
-            //markers: marker,
+            markers: marker,
           )),
     ),
   );

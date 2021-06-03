@@ -1,10 +1,6 @@
 import 'dart:convert';
-
 import 'package:bilrun/model/convert_location_model.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:bilrun/model/location_model.dart';
 
 class GeocodingService {
   static double geoLat;
@@ -17,7 +13,7 @@ class GeocodingService {
     final url =
         'https://maps.googleapis.com/maps/api/geocode/json?address=$locationAddress&key=$geocodeAPIKEY&language=ko';
     response = await http.get(Uri.parse(url));
-    print("check geocode : $url");
+    // print("check geocode : $url");
 
     if (response.statusCode == 200) {
       var jsonString = utf8.decode(response.bodyBytes);
@@ -25,7 +21,7 @@ class GeocodingService {
       geoLat = jsonData["results"][0]["geometry"]["location"]["lat"];
       geoLng = jsonData["results"][0]["geometry"]["location"]["lng"];
 
-      print('$geoLat  $geoLng');
+      //print('$geoLat  $geoLng');
 
       return convertLocationDataFromJson(jsonString);
     } else {

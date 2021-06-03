@@ -25,8 +25,9 @@ class _SetLocationState extends State<SetLocation>
   double nowLng;
   List<String> addressList = [];
   var localData;
-  GoogleMapController _mapController;
   static String jibunAddress;
+  static double existingLat = lat;
+  static double existingLng = lng;
 
   Future<void> convertData() async {
     await GeocodingService.convertLocationToLatlng('$jibunAddress');
@@ -142,15 +143,11 @@ class _SetLocationState extends State<SetLocation>
 
                 //구글맵
 
-                // Center(
-                //   child: Padding(
-                //     padding: const EdgeInsets.only(bottom: 20),
-                //     child: LocationMap(
-                //       marker: createMarker(),
-                //       latlng: LatLng(lat, lng),
-                //     ),
-                //   ),
-                // ),
+                Center(
+                    child: lat != existingLat || lng != existingLng
+                        ? loadGoogleMap(LatLng(lat, lng), createMarker())
+                        : loadGoogleMap(
+                            LatLng(existingLat, existingLng), createMarker())),
 
                 // 최근 주소
                 Padding(
@@ -251,9 +248,16 @@ class _SetLocationState extends State<SetLocation>
               print("$lat $lng");
               print("반영전 : $userAddress");
               await LocationService.convertLatLngToLocation(LatLng(lat, lng));
-              userAddress = LocationService.address;
-              print("반영후 : $userAddress");
-              addressList.add(userAddress);
+              try {
+                setState(() {
+                  userAddress = LocationService.address;
+                });
+
+                print("반영후 : $userAddress");
+                addressList.add(userAddress);
+              } catch (e) {
+                print("$e + 위치 탐색 실패");
+              }
             });
           }))
     ].toSet();
@@ -268,31 +272,5 @@ class Address {
   @override
   String toString() {
     return '$address';
-  }
-}
-
-class LocationMap extends StatelessWidget {
-  const LocationMap({
-    Key key,
-    @required this.marker,
-    this.latlng,
-  }) : super(key: key);
-
-  final Set<Marker> marker;
-  final LatLng latlng;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * 0.867,
-      height: Get.height * 0.27,
-      child: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: latlng,
-          zoom: 16,
-        ),
-        markers: marker,
-      ),
-    );
   }
 }

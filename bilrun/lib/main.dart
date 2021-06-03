@@ -47,12 +47,13 @@ int currentIndex = 0;
 int passIndex = 0;
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: unused_field
   int _counter = 0;
 
   final List<Widget> _children = [
     // ProfileDetailScreen(),
-    SetLocation(),
-    //LendMain(),
+    //SetLocation(),
+    LendMain(),
     RentMain(),
     // SelectUniv(),
     //CertificationPhone(),

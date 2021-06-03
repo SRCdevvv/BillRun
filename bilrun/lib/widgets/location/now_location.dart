@@ -10,9 +10,6 @@ class NowLocationService {
     double nowLat = currentPosition.latitude;
     double nowLng = currentPosition.longitude;
 
-    //print("Run NowLocation");
-    // print('$nowLat $nowLng');
-
     returnLatLng = LatLng(nowLat, nowLng);
     return returnLatLng;
   }
