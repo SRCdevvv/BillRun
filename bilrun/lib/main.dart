@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     // ProfileDetailScreen(),
     //SetLocation(),
+
     LendMain(),
     RentMain(),
     // SelectUniv(),
