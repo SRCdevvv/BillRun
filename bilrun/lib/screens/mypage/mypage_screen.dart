@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'deal_managemenet/deal_list.dart';
+import 'like_product_list.dart';
 
 void main() => runApp(MyPageScreen());
 
@@ -134,7 +135,9 @@ class _MyPageScreenState extends State<MyPageScreen> {
                                       child: Column(
                                         children: <Widget>[
                                           IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Get.to(() => LikeListScreen());
+                                            },
                                             icon: Image.asset(
                                               'assets/images/favoriteListButton.png',
                                               width: 30,
