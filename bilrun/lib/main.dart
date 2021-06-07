@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/chat/chat_list/chat_list_screen.dart';
 import 'package:bilrun/screens/chat/notyet.dart';
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     // ProfileDetailScreen(),
     //SetLocation(),
-
+    ChatScreen(),
     LendMain(),
     RentMain(),
     // SelectUniv(),
@@ -62,7 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // DialogProductRegister(),
     //ImageUpload(),
-    ChatApp(),
+    //ChatApp(),
+
     MyPageScreen(),
 
     // noticeBannerWidget(),
