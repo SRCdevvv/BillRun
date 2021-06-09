@@ -9,11 +9,11 @@ class ReviewListService {
   static Future<List<UserReviewData>> fetchReviewList() async {
     var response =
         await client.get(Uri.parse('$serviceUrl/review/user_id%3D1'));
-    print("url : $serviceUrl/review/user_id%3D1");
+    // print("url : $serviceUrl/review/user_id%3D1");
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
-      print(jsonString);
+      //print(jsonString);
 
       return userReviewDataFromJson(jsonString);
     } else {

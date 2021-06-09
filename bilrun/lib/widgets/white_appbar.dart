@@ -17,7 +17,7 @@ AppBar whiteAppBar(String title) {
     title: Padding(
       padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
       child: Text(
-        "title",
+        "$title",
         style: TextStyle(color: Colors.black, fontSize: 24.0),
       ),
     ),

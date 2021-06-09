@@ -1,4 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/model/product_review_model.dart';
+import 'package:bilrun/screens/mypage/profile/product_review_services/product_review_controller.dart';
 import 'package:bilrun/screens/mypage/profile/profile_components.dart';
 import 'package:bilrun/screens/mypage/profile/review_list_card.dart';
 import 'package:bilrun/widgets/location/controller_location.dart';
@@ -15,7 +17,8 @@ class ProfileDetailScreen extends StatefulWidget {
 
 class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   ReviewListController reviewListController = Get.put(ReviewListController());
-
+  ProductReviewListController productReviewListController =
+      Get.put(ProductReviewListController());
   int Q1;
   int Q2;
   int Q3;
@@ -32,6 +35,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
             ),
             Container(
               child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
                     //프로
@@ -107,7 +111,24 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                               spreadRadius: 0)
                         ], color: const Color(0xffffffff)),
                         child: SharedProduct("받은 물품 리뷰", () {})),
-                    ReviewCard(),
+                    //ReviewCard(),
+                    Obx(() {
+                      if (ProductReviewListController.isLoading.value)
+                        return Center(child: CircularProgressIndicator());
+                      else {
+                        return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount:
+                              ProductReviewListController.reviewList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            var returnData =
+                                ProductReviewListController.reviewList;
+                            return ReviewCard(reviewDatas: returnData[index]);
+                          },
+                        );
+                      }
+                    })
                   ],
                 ),
               ),
@@ -131,12 +152,9 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
         } else {
           int count1 = 0;
 
-          print("countScore RUN");
-
           for (int i = 0; i < ReviewListController.reviewList.length; i++) {
             if (ReviewListController.reviewList[i].q1 == '상') {
               count1++;
-              print("count  : $count1");
             }
             Q1 = count1;
             print("Q1 : $Q1");
@@ -161,15 +179,11 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
         } else {
           int count = 0;
 
-          print("countScore RUN");
-
           for (int i = 0; i < ReviewListController.reviewList.length; i++) {
             if (ReviewListController.reviewList[i].q2 == '상') {
               count++;
-              print("count  : $count");
             }
             Q2 = count;
-            print("Q1 : $Q2");
           }
 
           return getReviewList("물품 상태가 설명 그대로예요!", Q2);
