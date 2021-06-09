@@ -1,5 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
+import 'package:bilrun/screens/mypage/profile/review_services/review_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -136,6 +137,8 @@ class _MyPageScreenState extends State<MyPageScreen> {
                                         children: <Widget>[
                                           IconButton(
                                             onPressed: () {
+                                              ReviewListController
+                                                  .ReviewFetchList();
                                               Get.to(() => LikeListScreen());
                                             },
                                             icon: Image.asset(
