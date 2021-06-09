@@ -92,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_rating_bar",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_spinkit",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-5.0.0",
       "packageUri": "lib/",
@@ -416,7 +422,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-09T07:04:03.645381Z",
+  "generated": "2021-06-09T10:07:35.104255Z",
   "generator": "pub",
   "generatorVersion": "2.13.1"
 }
