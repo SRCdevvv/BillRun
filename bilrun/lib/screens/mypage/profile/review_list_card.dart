@@ -27,112 +27,109 @@ class _ReviewCardState extends State<ReviewCard> {
     int differenceDay = int.parse(
         DateTime.now().difference(reviewData.createdAt).inDays.toString());
 
-    return SingleChildScrollView(
-      child: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  ProfilePhoto(25),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8, bottom: 5),
-                              child: Text(
-                                "${reviewData.user.nickname}",
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                ProfilePhoto(25),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, bottom: 5),
+                            child: Text(
+                              "${reviewData.user.nickname}",
+                              style: const TextStyle(
+                                  color: const Color(0xff191919),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "NotoSansCJKkr",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.0),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("$differenceDay일 전",
                                 style: const TextStyle(
-                                    color: const Color(0xff191919),
+                                    color: const Color(0xff999999),
                                     fontWeight: FontWeight.w400,
                                     fontFamily: "NotoSansCJKkr",
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 16.0),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Text("$differenceDay일 전",
-                                  style: const TextStyle(
-                                      color: const Color(0xff999999),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: "NotoSansCJKkr",
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 12.0),
-                                  textAlign: TextAlign.left),
-                            ),
-                          ],
-                        ),
-                        StarBar(reviewData.score),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 48.0, top: 5, bottom: 10),
-                child: Container(
-                  width: Get.width * 0.655,
-                  height: 30,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border:
-                          Border.all(color: const Color(0xff767676), width: 1),
-                      color: const Color(0xffffffff)),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 3, 0, 3),
-                    child: Text(
-                      "${reviewData.deal.product.name}",
-                      style: const TextStyle(
-                          color: const Color(0xff767676),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "NotoSansCJKkr",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 13.0),
-                    ),
+                                    fontSize: 12.0),
+                                textAlign: TextAlign.left),
+                          ),
+                        ],
+                      ),
+                      StarBar(reviewData.score),
+                    ],
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  width: Get.width * 0.655,
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 48.0, top: 5, bottom: 10),
+              child: Container(
+                width: Get.width * 0.655,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    border:
+                        Border.all(color: const Color(0xff767676), width: 1),
+                    color: const Color(0xffffffff)),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 3, 0, 3),
                   child: Text(
-                    "${reviewData.content}",
+                    "${reviewData.deal.product.name}",
                     style: const TextStyle(
-                        color: const Color(0xff191919),
+                        color: const Color(0xff767676),
                         fontWeight: FontWeight.w400,
                         fontFamily: "NotoSansCJKkr",
                         fontStyle: FontStyle.normal,
-                        fontSize: 14.0),
-                    textAlign: TextAlign.left,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: isTaped == true ? 100 : 3,
+                        fontSize: 13.0),
                   ),
                 ),
               ),
-              Center(
-                  child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    isTaped == true ? isTaped = false : isTaped = true;
-                  });
-                },
-                icon: Icon(Icons.keyboard_arrow_down),
-                iconSize: 30,
-                color: mainGrey,
-              )),
-              OriginDivider(lightGrey, 1, 10, 20)
-            ],
-          ),
+            ),
+            Center(
+              child: Container(
+                width: Get.width * 0.655,
+                child: Text(
+                  "${reviewData.content}",
+                  style: const TextStyle(
+                      color: const Color(0xff191919),
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "NotoSansCJKkr",
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.0),
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: isTaped == true ? 100 : 3,
+                ),
+              ),
+            ),
+            Center(
+                child: IconButton(
+              onPressed: () {
+                setState(() {
+                  isTaped == true ? isTaped = false : isTaped = true;
+                });
+              },
+              icon: Icon(Icons.keyboard_arrow_down),
+              iconSize: 30,
+              color: mainGrey,
+            )),
+            OriginDivider(lightGrey, 1, 10, 20)
+          ],
         ),
       ),
     );
