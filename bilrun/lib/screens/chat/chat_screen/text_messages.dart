@@ -10,56 +10,132 @@ class TextMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-      child: Row(
-        children: [
-          // 오후 7:41
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 8.0,
-              right: 8,
-            ),
-            child: Text("${message.datetime}",
-                style: const TextStyle(
-                    color: const Color(0xff191919),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "NotoSansCJKkr",
-                    fontStyle: FontStyle.normal,
-                    fontSize: 12.0),
-                textAlign: TextAlign.left),
-          ),
+    if (message.messageStatus == MessageStatus.not_sent ||
+        message.messageStatus == MessageStatus.not_view) {
+      return Center(child: Text("error! try again"));
+    } else {
+      if (message.isSender == true) {
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+          child: SendMassegeBox(),
+        );
+      } else {
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+          child: IncomingMassegeBox(),
+        );
+      }
+    }
+  }
 
-          MassegeBox(),
-        ],
-      ),
+  Widget IncomingMassegeBox() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        UserPhoto(),
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 닉네임
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 0, 3),
+                child: Text("${message.nickname}",
+                    style: ChatNickName(), textAlign: TextAlign.left),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: IncomingMessageText(),
+              ),
+            ],
+          ),
+        ),
+        TimeOfMassege(),
+      ],
     );
   }
 
-  Widget MassegeBox() {
+  Widget SendMassegeBox() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TimeOfMassege(),
+        Flexible(
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
+            decoration: BoxDecoration(
+              color: mainRed,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  topLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+            ),
+            child: Text(
+              "${message.text}",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget TimeOfMassege() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 8, 10),
+      child: Text("${message.datetime}",
+          style: const TextStyle(
+              color: const Color(0xff191919),
+              fontWeight: FontWeight.w400,
+              fontFamily: "NotoSansCJKkr",
+              fontStyle: FontStyle.normal,
+              fontSize: 12.0),
+          textAlign: TextAlign.left),
+    );
+  }
+
+  Widget IncomingMessageText() {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 20 * 0.75,
-        vertical: 20 / 2,
+        horizontal: 15,
+        vertical: 10,
       ),
       decoration: BoxDecoration(
-        color: message.isSender == true ? mainRed : Color(0xffffe8e8),
-        borderRadius: message.isSender == true
-            ? BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                topLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10))
-            : BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
+        color: Color(0xffffe8e8),
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10)),
       ),
       child: Text(
         "${message.text}",
         style: TextStyle(
-          color: message.isSender == true ? Colors.white : Colors.black,
+          color: Colors.black,
         ),
       ),
     );
   }
+
+  Widget UserPhoto() {
+    return CircleAvatar(
+      backgroundColor: Colors.green,
+      radius: 25,
+    );
+  }
+}
+
+TextStyle ChatNickName() {
+  return TextStyle(
+      color: const Color(0xff191919),
+      fontWeight: FontWeight.w400,
+      fontFamily: "NotoSansCJKkr",
+      fontStyle: FontStyle.normal,
+      fontSize: 14.0);
 }

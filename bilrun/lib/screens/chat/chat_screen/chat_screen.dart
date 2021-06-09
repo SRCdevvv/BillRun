@@ -20,7 +20,7 @@ class MessagesScreen extends StatelessWidget {
       flexibleSpace: Container(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 15.0,
+            top: 28.0,
           ),
           child: Column(
             children: [
@@ -96,7 +96,7 @@ Widget productInfoInChat() {
             fontWeight: FontWeight.w400,
             fontFamily: "NotoSansCJKkr",
             fontStyle: FontStyle.normal,
-            fontSize: 20.0),
+            fontSize: 18.0),
       ),
       Padding(
         padding: const EdgeInsets.only(top: 8.0),

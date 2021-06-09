@@ -7,6 +7,7 @@ class ChatMessage {
   final MessageStatus messageStatus;
   final bool isSender;
   final String datetime;
+  final String nickname;
 
   ChatMessage({
     this.text = '',
@@ -14,33 +15,38 @@ class ChatMessage {
     this.messageStatus,
     this.isSender,
     this.datetime,
+    this.nickname = '',
   });
 }
 
 List demeChatMessages = [
   ChatMessage(
-    text: "Hi Sajol,",
+    text:
+        "Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,Hi Sajol,",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: false,
     datetime: "오후 7:52",
+    nickname: '워니이잉',
   ),
   ChatMessage(
-    text: "Hello, How are you?",
+    text:
+        "Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?Hello, How are you?",
     messageType: ChatMessageType.text,
     messageStatus: MessageStatus.viewed,
     isSender: true,
     datetime: "오후 7:53",
   ),
   ChatMessage(
-    text: "",
+    text: "wht???",
     messageType: ChatMessageType.audio,
     messageStatus: MessageStatus.viewed,
     isSender: false,
     datetime: "오후 7:54",
+    nickname: '워니이잉',
   ),
   ChatMessage(
-    text: "",
+    text: "asap~",
     messageType: ChatMessageType.video,
     messageStatus: MessageStatus.viewed,
     isSender: true,
@@ -59,6 +65,7 @@ List demeChatMessages = [
     messageStatus: MessageStatus.viewed,
     isSender: false,
     datetime: "오후 8:02",
+    nickname: '워니이잉',
   ),
   ChatMessage(
     text: "Glad you like it",
