@@ -1,6 +1,7 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_review_model.dart';
 import 'package:bilrun/screens/mypage/profile/product_review_services/product_review_controller.dart';
+import 'package:bilrun/screens/mypage/profile/product_review_services/product_review_page.dart';
 import 'package:bilrun/screens/mypage/profile/profile_components.dart';
 import 'package:bilrun/screens/mypage/profile/review_list_card.dart';
 import 'package:bilrun/widgets/location/controller_location.dart';
@@ -34,103 +35,108 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
               color: mypageGrey,
             ),
             Container(
-              child: SingleChildScrollView(
+              child: ListView(
                 scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    //프로
-                    Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: const Color(0xffffffff)),
-                      child: Row(children: <Widget>[
-                        //TODO 프로필 사진 바꾸기
-                        Stack(children: [
-                          ProfileUserPhotoEdit(),
-                          Positioned(
-                              bottom: 10, right: 10, child: EditPhoto(() {}))
-                        ]),
-                        //TODO 닉네임 바꾸기
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  UserName('유저 이름'),
-                                  EditUserName(() {}),
-                                ],
-                              ),
-                              UserMoney("24,500"),
-                            ],
-                          ),
-                        ),
-                      ]),
-                    ),
-                    BillRunScore(77),
-                    Community("한양대학교"),
-
-                    ShadowBox(
-                      SharedProduct("공유 물품 보기", () {}),
-                      50,
-                    ),
-
-                    // 받은 평가
-                    ShadowBox(
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // 받은 평가
+                children: [
+                  Column(
+                    children: [
+                      //프로
+                      Container(
+                        width: Get.width,
+                        decoration:
+                            BoxDecoration(color: const Color(0xffffffff)),
+                        child: Row(children: <Widget>[
+                          //TODO 프로필 사진 바꾸기
+                          Stack(children: [
+                            ProfileUserPhotoEdit(),
+                            Positioned(
+                                bottom: 10, right: 10, child: EditPhoto(() {}))
+                          ]),
+                          //TODO 닉네임 바꾸기
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 5, 0, 5),
-                            child: Text("받은 평가",
-                                style: ProfileMenu(),
-                                textAlign: TextAlign.left),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                            padding: const EdgeInsets.only(left: 10),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Question1(),
-                                Question2(),
-                                Question3(),
+                                Row(
+                                  children: [
+                                    UserName('유저 이름'),
+                                    EditUserName(() {}),
+                                  ],
+                                ),
+                                UserMoney("24,500"),
                               ],
                             ),
                           ),
-                        ],
+                        ]),
                       ),
-                      null,
-                    ),
-                    Container(
-                        width: Get.width,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                              color: const Color(0x0d000000),
-                              offset: Offset(0, 6),
-                              blurRadius: 8,
-                              spreadRadius: 0)
-                        ], color: const Color(0xffffffff)),
-                        child: SharedProduct("받은 물품 리뷰", () {})),
-                    //ReviewCard(),
-                    Obx(() {
-                      if (ProductReviewListController.isLoading.value)
-                        return Center(child: CircularProgressIndicator());
-                      else {
-                        return ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount:
-                              ProductReviewListController.reviewList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            var returnData =
-                                ProductReviewListController.reviewList;
-                            return ReviewCard(reviewDatas: returnData[index]);
-                          },
-                        );
-                      }
-                    })
-                  ],
-                ),
+                      BillRunScore(77),
+                      Community("한양대학교"),
+
+                      ShadowBox(
+                        SharedProduct("공유 물품 보기", () {}),
+                        50,
+                      ),
+
+                      // 받은 평가
+                      ShadowBox(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // 받은 평가
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 5),
+                              child: Text("받은 평가",
+                                  style: ProfileMenu(),
+                                  textAlign: TextAlign.left),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Column(
+                                children: [
+                                  Question1(),
+                                  Question2(),
+                                  Question3(),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        null,
+                      ),
+                      Container(
+                          width: Get.width,
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                color: const Color(0x0d000000),
+                                offset: Offset(0, 6),
+                                blurRadius: 8,
+                                spreadRadius: 0)
+                          ], color: const Color(0xffffffff)),
+                          child: SharedProduct("받은 물품 리뷰", () {
+                            Get.to(() => ProductReviewListPage());
+                          })),
+
+                      Obx(() {
+                        if (ProductReviewListController.isLoading.value)
+                          return Center(child: CircularProgressIndicator());
+                        else {
+                          return ListView.builder(
+                            //reverse: true,
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: 2,
+                            itemBuilder: (BuildContext context, int index) {
+                              var returnData =
+                                  ProductReviewListController.reviewList;
+                              return ReviewCard(reviewDatas: returnData[index]);
+                            },
+                          );
+                        }
+                      })
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
