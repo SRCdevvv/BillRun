@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/deal_list_model.dart';
+import 'package:bilrun/widgets/create_review/product_review/create_product_review_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
@@ -107,7 +108,11 @@ class RentDealList extends StatelessWidget {
             Row(
               children: [
                 detailViewButton(() {}),
-                wirteReviewButton(() {}),
+                reviewStatus == "COM"
+                    ? wirteReviewButton(() {
+                        Get.to(() => CreateProductReview());
+                      })
+                    : doneReviewButton(),
               ],
             ),
           ],
@@ -145,7 +150,7 @@ class RentDealList extends StatelessWidget {
 
   Widget wirteReviewButton(Callback callback) {
     return TextButton(
-      onPressed: () {},
+      onPressed: callback,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 00, 0),
         child: Container(
@@ -154,6 +159,60 @@ class RentDealList extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
             color: mainRed,
+          ),
+          child: Center(
+            child: Text("리뷰 작성",
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "NotoSansCJKkr",
+                    fontStyle: FontStyle.normal,
+                    fontSize: 14.0),
+                textAlign: TextAlign.left),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget doneReviewButton() {
+    return TextButton(
+      onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 00, 0),
+        child: Container(
+          width: Get.width * 0.2,
+          height: 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            color: mainGrey,
+          ),
+          child: Center(
+            child: Text("리뷰 작성 완료",
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: "NotoSansCJKkr",
+                    fontStyle: FontStyle.normal,
+                    fontSize: 12.0),
+                textAlign: TextAlign.left),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget overReviewButton(Callback callback) {
+    return TextButton(
+      onPressed: () {},
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 00, 0),
+        child: Container(
+          width: Get.width * 0.2,
+          height: 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            color: mainGrey,
           ),
           child: Center(
             child: Text("리뷰 작성",
