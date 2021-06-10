@@ -8,7 +8,7 @@ class DealListService {
 
   static Future<List<DealList>> fetchDealList(String status) async {
     var response = await client.get(Uri.parse('$serviceUrl/$status/1'));
-    print('$serviceUrl / $status / 1');
+    print('$serviceUrl/$status/1');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);

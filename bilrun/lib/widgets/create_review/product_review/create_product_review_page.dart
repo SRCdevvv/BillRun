@@ -2,6 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:bilrun/model/deal_list_model.dart';
 
 class CreateProductReview extends StatefulWidget {
   CreateProductReview({Key key}) : super(key: key);
@@ -18,9 +19,12 @@ class InitData {
 class _CreateProductReviewState extends State<CreateProductReview> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  DealList dealList;
+
   @override
   void initState() {
     // 상단 바 정보 받아오기
+    dealList = Get.arguments;
     super.initState();
   }
 
@@ -222,11 +226,15 @@ class _CreateProductReviewState extends State<CreateProductReview> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: productPhotoInChat(),
+                      child: productPhotoInChat(
+                        //'${dealList.product.photos[0].photo}'
+                        'assets/images/img_1.png',
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 18.0, top: 5),
-                      child: productInfoInChat(),
+                      child: productInfoInChat("${dealList.product.name}",
+                          dealList.product.price, dealList.product.priceProp),
                     ),
                   ],
                 ),
@@ -239,36 +247,43 @@ class _CreateProductReviewState extends State<CreateProductReview> {
   }
 }
 
-Widget productPhotoInChat() {
+Widget productPhotoInChat(String photoPath) {
   return Container(
     width: Get.width * 0.139,
     height: Get.width * 0.138,
     decoration: BoxDecoration(
-      color: Colors.red,
+      color: Colors.transparent,
       borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    child: Image.asset(
+      '$photoPath',
+      width: Get.width * 0.139,
+      height: Get.width * 0.138,
+      fit: BoxFit.fill,
     ),
   );
 }
 
-Widget productInfoInChat() {
+Widget productInfoInChat(String title, String price, String priceProp) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        "상품명",
+        "$title",
         style: const TextStyle(
             color: const Color(0xff191919),
             fontWeight: FontWeight.w400,
             fontFamily: "NotoSansCJKkr",
             fontStyle: FontStyle.normal,
             fontSize: 18.0),
+        overflow: TextOverflow.ellipsis,
       ),
       Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Row(
           children: [
             Text(
-              "가격",
+              "$price",
               style: const TextStyle(
                   color: const Color(0xff191919),
                   fontWeight: FontWeight.w700,
@@ -286,7 +301,7 @@ Widget productInfoInChat() {
                   fontSize: 14.0),
             ),
             Text(
-              " /시간",
+              " /$priceProp",
               style: const TextStyle(
                   color: const Color(0xff999999),
                   fontWeight: FontWeight.w400,

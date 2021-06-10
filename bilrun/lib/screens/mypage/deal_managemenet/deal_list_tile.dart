@@ -17,6 +17,7 @@ class RentDealList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(this.product);
     String reviewStatus = '${product.dealProp}';
 
     switch (product.product.priceProp) {
@@ -110,7 +111,7 @@ class RentDealList extends StatelessWidget {
                 detailViewButton(() {}),
                 reviewStatus == "COM"
                     ? wirteReviewButton(() {
-                        Get.to(() => CreateProductReview());
+                        Get.to(() => CreateProductReview(), arguments: product);
                       })
                     : doneReviewButton(),
               ],
