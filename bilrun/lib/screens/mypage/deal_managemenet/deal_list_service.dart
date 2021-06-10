@@ -3,32 +3,19 @@ import 'package:bilrun/model/deal_list_model.dart';
 import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
 
-
-
 class DealListService {
   static var client = http.Client();
 
   static Future<List<DealList>> fetchDealList(String status) async {
-    var response = await client.get(
-        Uri.parse ('$serviceUrl/$status/1'));
+    var response = await client.get(Uri.parse('$serviceUrl/$status/1'));
+    print('$serviceUrl / $status / 1');
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
 
       return dealListFromJson(jsonString);
-    }
-    else {
+    } else {
       return null;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-

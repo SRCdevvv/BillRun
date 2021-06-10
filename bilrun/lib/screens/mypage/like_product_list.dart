@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/lend/lend_product_list.dart';
+import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,31 +39,7 @@ class _LikeListScreenState extends State<LikeListScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: Padding(
-          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: IconButton(
-            icon: Icon(Icons.keyboard_backspace),
-            color: Colors.black,
-            iconSize: 35.0,
-            onPressed: () => {Get.back()},
-          ),
-        ),
-        title: Padding(
-          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-          child: Text(
-            "찜한 목록",
-            style: TextStyle(
-                color: const Color(0xff191919),
-                fontWeight: FontWeight.w400,
-                fontFamily: "NotoSansCJKkr",
-                fontStyle: FontStyle.normal,
-                fontSize: 20.0),
-          ),
-        ),
-        centerTitle: false,
-      ),
+      appBar: whiteAppBar('찜한 목록'),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

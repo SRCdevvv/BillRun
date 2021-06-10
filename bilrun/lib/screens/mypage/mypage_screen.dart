@@ -4,7 +4,7 @@ import 'package:bilrun/screens/mypage/profile/user_review_services/review_contro
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'deal_managemenet/deal_list.dart';
+import 'deal_managemenet/deal_list_screen.dart';
 import 'like_product_list.dart';
 
 void main() => runApp(MyPageScreen());

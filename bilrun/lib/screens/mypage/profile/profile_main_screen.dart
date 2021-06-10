@@ -122,7 +122,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                           return Center(child: CircularProgressIndicator());
                         else {
                           return ListView.builder(
-                            //reverse: true,
+                            reverse: true,
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
                             itemCount: 2,
