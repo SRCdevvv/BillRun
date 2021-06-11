@@ -1,3 +1,9 @@
+//채팅 메시지 화면 디자인에 사용된 디자인입니다.
+//메시지 타입은 사용하지 않았고, 메시지 스테이터스를 이용해서 메시지를 표시했습니다.
+
+//isSender를 이용해서 보내는 사람인지 아닌지를 판단해서 채팅화면을꾸몄습니다.
+//date 타임은 임의로 String 값으로 넣어놨습니다.
+
 enum ChatMessageType { text, audio, image, video }
 enum MessageStatus { not_sent, not_view, viewed }
 

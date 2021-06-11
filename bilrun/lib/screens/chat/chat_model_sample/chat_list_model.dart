@@ -1,3 +1,7 @@
+//채팅 리스트 디자인을 만들 때 사용한 모델 샘플입니다.
+
+//Chat - 이름, 마지막 메시지, 유저이미지,마지막 채팅 시간 으로 이루어져 있습니다.
+//isActive는 활성화 여부인데 디자인 구현시 메시지를 읽었는지 안읽었는지 표시로 사용했습니다.
 class Chat {
   final String name, lastMessage, image, time;
   final bool isActive;

@@ -1,7 +1,7 @@
-import 'package:bilrun/screens/chat/chat_model_sample/model_chat_list.dart';
+import 'package:bilrun/screens/chat/chat_model_sample/chat_list_model.dart';
 import 'package:flutter/material.dart';
-import 'body_chat_list.dart';
-import 'card_chat_list.dart';
+import 'chat_list_body.dart';
+import 'chat_list_card.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -12,6 +12,7 @@ class _ChatScreenState extends State<ChatScreen> {
   int _selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
+    //채팅 데이터가 없으면 채팅 없다는 내용
     if (chatsData.isEmpty) {
       return Scaffold(
           appBar: null,
@@ -48,6 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ));
+      //채팅 데이터가 있으면 앱바와 채팅리스트 바디 리턴
     } else {
       return Scaffold(
         appBar: buildAppBar(),

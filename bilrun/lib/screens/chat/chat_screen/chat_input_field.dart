@@ -11,7 +11,7 @@ class ChatInputField extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 20,
-        vertical: 20 / 2,
+        vertical: 10,
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -26,6 +26,7 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
+            //더하기 버튼
             Icon(
               Icons.add,
               color: mainRed,
@@ -44,6 +45,7 @@ class ChatInputField extends StatelessWidget {
                 child: Row(
                   children: [
                     SizedBox(width: 5),
+                    //메시지 입력창
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
@@ -52,6 +54,7 @@ class ChatInputField extends StatelessWidget {
                         ),
                       ),
                     ),
+                    //메시지 보내는 버튼
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.send),

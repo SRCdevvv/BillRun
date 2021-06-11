@@ -1,6 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 
-import '../chat_model_sample/message_model.dart';
+import '../chat_model_sample/chat_message_model.dart';
 import 'package:flutter/material.dart';
 
 class TextMessage extends StatelessWidget {
@@ -33,6 +33,7 @@ class TextMessage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        //유저 사진
         UserPhoto(),
         Flexible(
           child: Column(
@@ -44,6 +45,7 @@ class TextMessage extends StatelessWidget {
                 child: Text("${message.nickname}",
                     style: ChatNickName(), textAlign: TextAlign.left),
               ),
+              //전송받은 메시지
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: IncomingMessageText(),
@@ -51,16 +53,19 @@ class TextMessage extends StatelessWidget {
             ],
           ),
         ),
+        //메시지 시간
         TimeOfMassege(),
       ],
     );
   }
 
+//보낸 메시지
   Widget SendMassegeBox() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        //메시지 받은 시각
         TimeOfMassege(),
         Flexible(
           child: Container(
@@ -75,6 +80,7 @@ class TextMessage extends StatelessWidget {
                   topLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)),
             ),
+            //메시지 내용
             child: Text(
               "${message.text}",
               style: TextStyle(

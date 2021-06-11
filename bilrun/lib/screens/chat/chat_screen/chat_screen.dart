@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'body_chat_screen.dart';
+import 'chat_screen_body.dart';
 
 class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //앱바 및 채팅 바디 리턴
     return Scaffold(
       appBar: buildAppBar(),
       body: BodyChat(),
@@ -74,6 +75,7 @@ class MessagesScreen extends StatelessWidget {
   }
 }
 
+//물건 사진
 Widget productPhotoInChat() {
   return Container(
     width: Get.width * 0.139,
@@ -85,6 +87,7 @@ Widget productPhotoInChat() {
   );
 }
 
+//물건 정보
 Widget productInfoInChat() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
