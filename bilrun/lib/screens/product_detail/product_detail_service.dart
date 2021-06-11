@@ -6,9 +6,7 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/product_detail_model.dart';
 
-
-
-class GetArguments{
+class GetArguments {
   final int ProductID;
   final int userID;
   final bool type;
@@ -16,41 +14,27 @@ class GetArguments{
   GetArguments(this.ProductID, this.userID, this.type);
 }
 
-
-
 class DetailProductService {
   static var client = http.Client();
 
-
-
-  static Future<DetailProduct> fetchLendDetailInfo() async{
-
+  static Future<DetailProduct> fetchLendDetailInfo() async {
     var getArguments = Get.arguments;
-
 
     var response;
 
-
     // var IdOfProduct=1;
 
-
     response = await client.get(
-        Uri.parse('$serviceUrl/lend_product_list/${getArguments.id}?format=json'));
-    print(getArguments.id);
+        Uri.parse('$serviceUrl/lend_product_list/$getArguments?format=json'));
 
-
-
-
-    if(response.statusCode ==200){
+    if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
       // print('아이디: ${getArguments.id}');
       print('서비스: ${detailProductFromJson(jsonString)}');
       return detailProductFromJson(jsonString);
-    }
-    else{
+    } else {
       print('접속오류');
       return null;
     }
   }
-
 }
