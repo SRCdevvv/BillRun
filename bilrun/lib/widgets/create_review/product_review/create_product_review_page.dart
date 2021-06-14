@@ -1,4 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/widgets/create_review/user_review/create_user_review_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -158,6 +159,7 @@ class _CreateProductReviewState extends State<CreateProductReview> {
           Get.snackbar('작성 완료', '물품 리뷰가 등록되었습니다.');
           print(this.data.reviewText);
           print(this.data.rating);
+          Get.to(() => CreateUserReview(), arguments: dealList);
         }
       }),
     );

@@ -57,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // ProfileDetailScreen(),
     //SetLocation(),
     //CreateProductReview(),
-    CreateUserReview(),
-
+    //CreateUserReview(),
+    MyPageScreen(),
     LendMain(),
     RentMain(),
     // SelectUniv(),
@@ -69,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
     //ImageUpload(),
 
     ChatScreen(),
-    MyPageScreen(),
 
     // noticeBannerWidget(),
     //DealManagement(),

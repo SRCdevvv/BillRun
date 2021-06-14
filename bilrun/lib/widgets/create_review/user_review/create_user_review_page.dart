@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:bilrun/design/usedColors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import 'package:get/get.dart';
 import 'package:bilrun/model/deal_list_model.dart';
 
@@ -21,13 +19,23 @@ class _CreateUserReviewState extends State<CreateUserReview> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   DealList dealList;
-  List<bool> isSelected;
+  static List<bool> isSelected;
+  static List<bool> isSelected1;
+  static List<bool> isSelected2;
+
+  static String q1;
+  static String q2;
+  static String q3;
+
   @override
   void initState() {
     // 상단 바 정보 받아오기
     dealList = Get.arguments;
 
     isSelected = [true, false, false];
+    isSelected1 = [true, false, false];
+    isSelected2 = [true, false, false];
+
     super.initState();
   }
 
@@ -89,14 +97,15 @@ class _CreateUserReviewState extends State<CreateUserReview> {
                                 fontStyle: FontStyle.normal,
                                 fontSize: 16.0),
                             textAlign: TextAlign.center)),
-                ratingOpponent("시간 약속을 잘 지켰어요!"),
+                ratingOpponent("시간 약속을 잘 지켰어요!", ThreeTogleButton()),
                 Padding(
                   padding: const EdgeInsets.only(top: 15.0),
-                  child: ratingOpponent("물품 상태가 설명 그대로예요!"),
+                  child:
+                      ratingOpponent("물품 상태가 설명 그대로예요!", ThreeTogleButton1()),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15.0),
-                  child: ratingOpponent("친절하고 매너가 좋아요!"),
+                  child: ratingOpponent("친절하고 매너가 좋아요!", ThreeTogleButton2()),
                 ),
               ],
             ),
@@ -112,10 +121,12 @@ class _CreateUserReviewState extends State<CreateUserReview> {
     );
   }
 
-  Widget RateButton(VoidCallback onPressed, String iconName) {
-    return TextButton(
+  Widget RateButton(VoidCallback onPressed, Icon iconType, Color color) {
+    return IconButton(
       onPressed: onPressed,
-      child: Text("$iconName"),
+      icon: iconType,
+      iconSize: 35,
+      color: color,
     );
   }
 
@@ -124,26 +135,163 @@ class _CreateUserReviewState extends State<CreateUserReview> {
       borderColor: Colors.transparent,
       borderWidth: 5,
       selectedBorderColor: Colors.transparent,
-      selectedColor: mainRed,
+      selectedColor: Colors.green,
       splashColor: Colors.transparent,
       color: mainGrey,
       focusColor: Colors.transparent,
       fillColor: Colors.transparent,
       children: <Widget>[
-        // first toggle button
-        RateButton(() {}, "^-^"),
-        RateButton(() {}, "'_'"),
-        RateButton(() {}, "--"),
+        RateButton(() {
+          setState(() {
+            isSelected = [true, false, false];
+          });
+        }, Icon(Icons.sentiment_very_dissatisfied),
+            isSelected[0] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected = [false, true, false];
+          });
+        }, Icon(Icons.sentiment_neutral),
+            isSelected[1] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected = [false, false, true];
+          });
+        }, Icon(Icons.sentiment_very_satisfied),
+            isSelected[2] == true ? mainRed : mainGrey),
       ],
       onPressed: (int index) {
         setState(() {
           for (int i = 0; i < isSelected.length; i++) {
             isSelected[i] = i == index;
-            if (isSelected[i] == true) {}
+            if (isSelected[i] == true) {
+              switch (i) {
+                case 0:
+                  q1 = "하";
+                  break;
+                case 1:
+                  q1 = "중";
+                  break;
+                case 3:
+                  q1 = "상";
+                  break;
+              }
+            }
           }
+          print(q1);
         });
       },
       isSelected: isSelected,
+    );
+  }
+
+  Widget ThreeTogleButton1() {
+    return ToggleButtons(
+      borderColor: Colors.transparent,
+      borderWidth: 5,
+      selectedBorderColor: Colors.transparent,
+      selectedColor: Colors.green,
+      splashColor: Colors.transparent,
+      color: mainGrey,
+      focusColor: Colors.transparent,
+      fillColor: Colors.transparent,
+      children: <Widget>[
+        RateButton(() {
+          setState(() {
+            isSelected1 = [true, false, false];
+          });
+        }, Icon(Icons.sentiment_very_dissatisfied),
+            isSelected1[0] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected1 = [false, true, false];
+          });
+        }, Icon(Icons.sentiment_neutral),
+            isSelected1[1] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected1 = [false, false, true];
+          });
+        }, Icon(Icons.sentiment_very_satisfied),
+            isSelected1[2] == true ? mainRed : mainGrey),
+      ],
+      onPressed: (int index) {
+        setState(() {
+          for (int i = 0; i < isSelected.length; i++) {
+            isSelected1[i] = i == index;
+            if (isSelected1[i] == true) {
+              switch (i) {
+                case 0:
+                  q2 = "하";
+                  break;
+                case 1:
+                  q2 = "중";
+                  break;
+                case 3:
+                  q2 = "상";
+                  break;
+              }
+            }
+          }
+          print(q2);
+        });
+      },
+      isSelected: isSelected1,
+    );
+  }
+
+  Widget ThreeTogleButton2() {
+    return ToggleButtons(
+      borderColor: Colors.transparent,
+      borderWidth: 5,
+      selectedBorderColor: Colors.transparent,
+      selectedColor: Colors.green,
+      splashColor: Colors.transparent,
+      color: mainGrey,
+      focusColor: Colors.transparent,
+      fillColor: Colors.transparent,
+      children: <Widget>[
+        RateButton(() {
+          setState(() {
+            isSelected2 = [true, false, false];
+          });
+        }, Icon(Icons.sentiment_very_dissatisfied),
+            isSelected2[0] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected2 = [false, true, false];
+          });
+        }, Icon(Icons.sentiment_neutral),
+            isSelected2[1] == true ? mainRed : mainGrey),
+        RateButton(() {
+          setState(() {
+            isSelected2 = [false, false, true];
+          });
+        }, Icon(Icons.sentiment_very_satisfied),
+            isSelected2[2] == true ? mainRed : mainGrey),
+      ],
+      onPressed: (int index) {
+        setState(() {
+          for (int i = 0; i < isSelected2.length; i++) {
+            isSelected2[i] = i == index;
+            if (isSelected2[i] == true) {
+              switch (i) {
+                case 0:
+                  q3 = "하";
+                  break;
+                case 1:
+                  q3 = "중";
+                  break;
+                case 3:
+                  q3 = "상";
+                  break;
+              }
+            }
+          }
+          print(q3);
+        });
+      },
+      isSelected: isSelected2,
     );
   }
 
@@ -215,11 +363,11 @@ class _CreateUserReviewState extends State<CreateUserReview> {
                         'assets/images/img_1.png',
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 18.0, top: 5),
-                    //   child: productInfoInChat("${dealList.product.name}",
-                    //       dealList.product.price, dealList.product.priceProp),
-                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0, top: 5),
+                      child: productInfoInChat("${dealList.product.name}",
+                          dealList.product.price, dealList.product.priceProp),
+                    ),
                   ],
                 ),
               ),
@@ -230,7 +378,7 @@ class _CreateUserReviewState extends State<CreateUserReview> {
     );
   }
 
-  Widget ratingOpponent(String question) {
+  Widget ratingOpponent(String question, Widget widget) {
     return // 사각형 24037
         Container(
       width: 312,
@@ -253,7 +401,7 @@ class _CreateUserReviewState extends State<CreateUserReview> {
                     fontSize: 16.0),
                 textAlign: TextAlign.left),
           ),
-          ThreeTogleButton(),
+          widget,
         ],
       ),
     );
