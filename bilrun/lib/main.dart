@@ -2,6 +2,8 @@ import 'package:bilrun/screens/chat/chat_list/chat_list_screen.dart';
 
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/product_register/product_register.dart';
+import 'package:bilrun/screens/sign_in_up/loading_page/ToS_agree_page.dart';
+import 'package:bilrun/screens/sign_in_up/loading_page/log_in_page.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
 import 'package:bilrun/screens/sign_in_up/univ/select_univ.dart';
 import 'package:bilrun/widgets/create_review/product_review/create_product_review_page.dart';
@@ -58,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //SetLocation(),
     //CreateProductReview(),
     //CreateUserReview(),
-    MyPageScreen(),
+    //SignInPage(),
+    ToSAgreePage(),
     LendMain(),
     RentMain(),
     // SelectUniv(),
@@ -69,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //ImageUpload(),
 
     ChatScreen(),
+    MyPageScreen(),
 
     // noticeBannerWidget(),
     //DealManagement(),
