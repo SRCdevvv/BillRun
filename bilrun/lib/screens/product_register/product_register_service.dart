@@ -69,8 +69,8 @@ Future<DetailProduct> getOrCreateInitAPIData(
     //
     // request.files.add(multipartFile);
 
-    final multipartFile = await http.MultipartFile.fromPath(
-        'Image', '${RegisterImage[0]}');
+    final multipartFile =
+        await http.MultipartFile.fromPath('Image', '${RegisterImage[0]}');
     request.files.add(multipartFile);
 
     http.StreamedResponse response = await request.send();
@@ -79,15 +79,11 @@ Future<DetailProduct> getOrCreateInitAPIData(
     } else {
       print("fail: ${response.statusCode}");
     }
-  } catch(e){
+  } catch (e) {
     print("failllll: $e");
   }
-
-
 
   // var response = await request.send();
   //
   // if (response.statusCode == 200) print('Upload');
-
-  }
-
+}

@@ -56,16 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   final List<Widget> _children = [
-    // ProfileDetailScreen(),
-    //SetLocation(),
-    //CreateProductReview(),
-    //CreateUserReview(),
-    //SignInPage(),
-    ToSAgreePage(),
     LendMain(),
     RentMain(),
-    // SelectUniv(),
-    //CertificationPhone(),
+
     showRegisterDialog(),
 
     // DialogProductRegister(),

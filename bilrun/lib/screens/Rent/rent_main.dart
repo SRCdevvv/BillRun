@@ -44,48 +44,50 @@ class _RentMainState extends State<RentMain> {
         child: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: FutureBuilder(
-              future: LocationDataController.fetchLocationData(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                }
+          title: Text("빌림"),
 
-                if (snapshot.hasError) {
-                  return Text("banner error ${snapshot.hasError}");
-                } else {
-                  var location =
-                      LocationDataController.locationData.value.results[0];
-                  print(location);
-                  fullLocation = location.formattedAddress;
-                  fullLocation = fullLocation.substring(5);
-                }
-                return Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        "$fullLocation",
-                        style: const TextStyle(
-                            color: const Color(0xff191919),
-                            fontWeight: FontWeight.w700,
-                            fontFamily: "NotoSansCJKkr",
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16.0),
-                      ),
-                    ),
-                    IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: Colors.black,
-                          size: 25,
-                        ),
-                        onPressed: () {
-                          Get.to(null);
-                        })
-                  ],
-                );
-              }),
+          // FutureBuilder(
+          //     future: LocationDataController.fetchLocationData(),
+          //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+          //       if (snapshot.connectionState == ConnectionState.waiting) {
+          //         return Center(child: CircularProgressIndicator());
+          //       }
+
+          //       if (snapshot.hasError) {
+          //         return Text("banner error ${snapshot.hasError}");
+          //       } else {
+          //         var location =
+          //             LocationDataController.locationData.value.results[0];
+          //         print(location);
+          //         fullLocation = location.formattedAddress;
+          //         fullLocation = fullLocation.substring(5);
+          //       }
+          //       return Row(
+          //         children: [
+          //           Padding(
+          //             padding: const EdgeInsets.only(left: 15),
+          //             child: Text(
+          //               "$fullLocation",
+          //               style: const TextStyle(
+          //                   color: const Color(0xff191919),
+          //                   fontWeight: FontWeight.w700,
+          //                   fontFamily: "NotoSansCJKkr",
+          //                   fontStyle: FontStyle.normal,
+          //                   fontSize: 16.0),
+          //             ),
+          //           ),
+          //           IconButton(
+          //               icon: Icon(
+          //                 Icons.keyboard_arrow_down_outlined,
+          //                 color: Colors.black,
+          //                 size: 25,
+          //               ),
+          //               onPressed: () {
+          //                 Get.to(null);
+          //               })
+          //         ],
+          //       );
+          //     }),
           actions: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
