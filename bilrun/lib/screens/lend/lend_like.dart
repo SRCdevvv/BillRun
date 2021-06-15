@@ -3,31 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:bilrun/screens/lend/lend_controller.dart';
 import 'package:bilrun/model/product_list_model.dart';
 
-
 class ProductLike extends StatefulWidget {
+  double iconSize;
+  ProductLike({@required this.iconSize});
+
   @override
-  _ProductLikeState createState() => _ProductLikeState();
+  _ProductLikeState createState() => _ProductLikeState(iconSize: iconSize);
 }
 
 class _ProductLikeState extends State<ProductLike> {
+  bool _isPressed = false;
 
-bool _isPressed =false;
+  double iconSize;
+  _ProductLikeState({@required this.iconSize});
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      iconSize : 20.0,
-      icon:_isPressed? Icon(Icons.favorite) : Icon(Icons.favorite_outline,),
-      color: _isPressed? mainRed : Colors.grey[200],
-      onPressed:(){
+      iconSize: iconSize,
+      icon: _isPressed
+          ? Icon(Icons.favorite)
+          : Icon(
+              Icons.favorite_outline,
+            ),
+      color: _isPressed ? mainRed : Colors.grey[200],
+      onPressed: () {
         setState(() {
-          _isPressed==true  ? _isPressed=false : _isPressed =true;
+          _isPressed == true ? _isPressed = false : _isPressed = true;
         });
-
       },
-
     );
-
   }
 }
-

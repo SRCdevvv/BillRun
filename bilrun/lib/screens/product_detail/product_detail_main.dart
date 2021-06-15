@@ -1,6 +1,7 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/lend/lend_like.dart';
+import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
 
 import 'package:bilrun/screens/product_detail/service/product_detail_controller.dart';
 
@@ -10,6 +11,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:bilrun/widgets/banner.dart';
 
 import 'package:bilrun/screens/product_detail/detail_body.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 void main() => runApp(DetailScreen());
 
@@ -54,7 +56,13 @@ class _DetailScreenState extends State<DetailScreen> {
                     icon: Icon(Icons.keyboard_backspace, color: Colors.black)),
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showCupertinoModalBottomSheet(
+                        expand: false,
+                        context: context,
+                        builder: (context) => ModalFit(),
+                      );
+                    },
                     icon: Icon(Icons.more_vert),
                     color: Colors.black,
                   ),
@@ -108,13 +116,15 @@ class _DetailScreenState extends State<DetailScreen> {
 
             return Container(
               width: Get.width,
-              height: 100,
+              height: 80,
               color: Colors.white,
               child: Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    child: ProductLike(),
+                    padding: const EdgeInsets.only(left: 15),
+                    child: ProductLike(
+                      iconSize: 30,
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 15, right: 10),
@@ -128,7 +138,6 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: <Widget>[
                       Container(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        width: 180,
                         child: Text(
                           "${DetailProductController.productList.value.price}원",
                           style: TextStyle(
@@ -167,29 +176,25 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                     ],
                   ),
+                  Spacer(),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 10, 30, 20),
                     child: Container(
-                      width: 100,
+                      width: Get.width * 0.24,
                       height: 40,
-                      child: // 사각형 23947
-                          Container(
-                        width: 100,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: const Color(0xffaa0000)),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
-                          child: Text(
-                            "빌리기",
-                            style: TextStyle(
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w400,
-                                fontFamily: "NotoSansCJKkr",
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16.0),
-                          ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: const Color(0xffaa0000)),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
+                        child: Text(
+                          "빌리기",
+                          style: TextStyle(
+                              color: const Color(0xffffffff),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "NotoSansCJKkr",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16.0),
                         ),
                       ),
                     ),

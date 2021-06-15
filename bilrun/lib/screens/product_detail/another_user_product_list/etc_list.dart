@@ -64,7 +64,9 @@ class EtcProductTile extends StatelessWidget {
                 ),
                 Positioned(
                   right: 5,
-                  child: ProductLike(),
+                  child: ProductLike(
+                    iconSize: 20,
+                  ),
                 ),
               ],
             ),
