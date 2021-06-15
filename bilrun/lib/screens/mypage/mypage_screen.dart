@@ -72,45 +72,42 @@ class _MyPageScreenState extends State<MyPageScreen> {
                                   AssetImage('assets/images/main_1.jpg'),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 30),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: Text(
-                                        '사용자 이름',
-                                        style: TextStyle(
-                                            color: const Color(0xff000000),
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 18.0),
-                                      ),
-                                    ),
-                                    Text("23,500 원",
-                                        style: TextStyle(
-                                            color: mainRed,
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: "NotoSansCJKkr",
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 20.0),
-                                        textAlign: TextAlign.left),
-                                  ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Text(
+                                    '사용자 이름',
+                                    style: TextStyle(
+                                        color: const Color(0xff000000),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 18.0),
+                                  ),
                                 ),
-                              ),
-                              IconButton(
-                                  icon: Icon(Icons.arrow_forward_ios),
-                                  onPressed: () {
-                                    Get.to(ProfileDetailScreen());
-                                  }),
-                            ],
+                                Text("23,500 원",
+                                    style: TextStyle(
+                                        color: mainRed,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: "NotoSansCJKkr",
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 20.0),
+                                    textAlign: TextAlign.left),
+                              ],
+                            ),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30.0),
+                            child: IconButton(
+                                icon: Icon(Icons.arrow_forward_ios),
+                                onPressed: () {
+                                  Get.to(ProfileDetailScreen());
+                                }),
                           ),
                         ],
                       ),
