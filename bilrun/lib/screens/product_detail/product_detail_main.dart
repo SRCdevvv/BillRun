@@ -1,5 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
+import 'package:bilrun/screens/lend/lend_like.dart';
 
 import 'package:bilrun/screens/product_detail/service/product_detail_controller.dart';
 
@@ -76,8 +77,128 @@ class _DetailScreenState extends State<DetailScreen> {
             ],
           ),
         ),
+        bottomNavigationBar: BottomButton(),
       ),
     );
+  }
+
+  Widget BottomButton() {
+    return FutureBuilder(
+        future: DetailProductController.fetchRentDetail(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            return Text("bottomBar error ${snapshot.hasError}");
+          } else {
+            var convert = DetailProductController.productList.value.priceProp;
+            switch (convert) {
+              case "1h":
+                convert = '시간';
+                break;
+              case "30m":
+                convert = '30분';
+                break;
+              case "Day":
+                convert = '일';
+                break;
+            }
+
+            return Container(
+              width: Get.width,
+              height: 100,
+              color: Colors.white,
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                    child: ProductLike(),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
+                    height: 40,
+                    width: 1,
+                    color: lightGrey,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        width: 180,
+                        child: Text(
+                          "${DetailProductController.productList.value.price}원",
+                          style: TextStyle(
+                              color: Color(0xff000000),
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "NotoSansCJKkr",
+                              fontStyle: FontStyle.normal,
+                              fontSize: 20.0),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: // 사각형 23949
+                            Container(
+                          width: 56,
+                          height: 24,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                              border: Border.all(
+                                  color: const Color(0xffaa0000), width: 2),
+                              color: const Color(0xffffffff)),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 2, 0, 0),
+                            child: Text(
+                              "$convert",
+                              style: TextStyle(
+                                  color: const Color(0xffaa0000),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "NotoSansCJKkr",
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 14.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 30, 20),
+                    child: Container(
+                      width: 100,
+                      height: 40,
+                      child: // 사각형 23947
+                          Container(
+                        width: 100,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: const Color(0xffaa0000)),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
+                          child: Text(
+                            "빌리기",
+                            style: TextStyle(
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "NotoSansCJKkr",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        });
   }
 
   Widget ProductPhoto() {

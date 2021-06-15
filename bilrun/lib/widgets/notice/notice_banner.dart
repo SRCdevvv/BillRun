@@ -19,8 +19,6 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //addImage();
-
     return Container(
       child: Column(
         children: <Widget>[
@@ -39,7 +37,7 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
                             borderRadius: BorderRadius.circular(20)),
                         child: Image.network(
                           e,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
@@ -59,7 +57,6 @@ class _noticeBannerWidget extends State<noticeBannerWidget> {
               onPageChanged: (index, reason) {
                 setState(() {
                   _current = index;
-                  print(_current);
                 });
               },
             ),

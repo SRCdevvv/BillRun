@@ -41,19 +41,33 @@ class DetailScreenBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
-            child: Container(
-              child: Text(
-                '${product.name}',
-                style: TextStyle(
-                    color: const Color(0xff000000),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "NotoSansCJKkr",
-                    fontStyle: FontStyle.normal,
-                    fontSize: 20.0),
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 10, 10, 10),
+                child: Container(
+                  child: Text(
+                    '${product.name}',
+                    style: TextStyle(
+                        color: const Color(0xff000000),
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "NotoSansCJKkr",
+                        fontStyle: FontStyle.normal,
+                        fontSize: 20.0),
+                  ),
+                ),
               ),
-            ),
+              Spacer(),
+              //학교 인증 마크
+              Padding(
+                padding: const EdgeInsets.only(right: 40.0, top: 10),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/chatlogo.png'),
+                  backgroundColor: Colors.white,
+                  radius: 17,
+                ),
+              ),
+            ],
           ),
 
           Row(
