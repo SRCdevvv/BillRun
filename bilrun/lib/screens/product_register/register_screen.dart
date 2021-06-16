@@ -31,7 +31,8 @@ class _initData {
   int price;
   String priceProp;
   String productAddress;
-  String productCategory;
+  bool productCategory;
+  String productMenu;
   LatLng productLatLng;
   List<File> imageFiles = [];
 }
@@ -89,7 +90,23 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                   (String newValue) {
                     setState(() {
                       selectedCategory = newValue;
-                      data.productCategory = newValue;
+                      if (selectedCategory == '전공도서') {
+                        data.productMenu = 'MajorBook';
+                      } else if (selectedCategory == '생활잡화') {
+                        data.productMenu = 'Household';
+                      } else if (selectedCategory == '디지털/가전') {
+                        data.productMenu = 'Digital';
+                      } else if (selectedCategory == '게임/취미') {
+                        data.productMenu = 'Game';
+                      } else if (selectedCategory == '여성잡화') {
+                        data.productMenu = 'Woman';
+                      } else if (selectedCategory == '남성잡화') {
+                        data.productMenu = 'Man';
+                      } else if (selectedCategory == '스포츠') {
+                        data.productMenu = 'Sports';
+                      } else if (selectedCategory == '기타') {
+                        data.productMenu = 'Etc';
+                      }
                     });
                   },
                 ),
@@ -109,12 +126,17 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                             switch (i) {
                               case 0:
                                 PriceProp = "1h";
+
                                 break;
                               case 1:
+                                //TODO 30m -> Day으로 고쳐야함
                                 PriceProp = "Day";
+
                                 break;
                               case 2:
-                                PriceProp = "Week";
+                                //TODO Day -> Week으로 고쳐야함
+                                PriceProp = "30m";
+
                                 break;
                             }
                           }
@@ -161,14 +183,16 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
         ),
       ),
       bottomNavigationBar: RegisterButton(() async {
+        print(data.productMenu);
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
           await getOrCreateInitAPIData(
+            ProductCategory,
             data.price,
             data.productName,
             data.description,
             data.caution,
-            ProductCategory,
+            data.productMenu,
             PriceProp,
           );
         }

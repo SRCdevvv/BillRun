@@ -1,6 +1,8 @@
 import 'package:bilrun/screens/chat/chat_list/chat_list_screen.dart';
 
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
+import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
+import 'package:bilrun/screens/product_register/register_popup.dart';
 import 'package:bilrun/screens/product_register/register_screen.dart';
 import 'package:bilrun/screens/sign_in_up/loading_page/ToS_agree_page.dart';
 import 'package:bilrun/screens/sign_in_up/loading_page/log_in_page.dart';
@@ -16,6 +18,7 @@ import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'screens/lend/lend_main.dart';
 import 'screens/Rent/rent_main.dart';
@@ -57,13 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   final List<Widget> _children = [
-    showRegisterDialog(),
     LendMain(),
     RentMain(),
 
-    // DialogProductRegister(),
     //ImageUpload(),
 
+    DialogProductRegister(),
     ChatScreen(),
     MyPageScreen(),
 
@@ -125,9 +127,17 @@ class _MyHomePageState extends State<MyHomePage> {
               label: '빌림',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add_box_rounded,
-                size: 22,
+              icon: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(Icons.add_box_rounded),
+                iconSize: 22,
+                onPressed: () {
+                  showCupertinoModalBottomSheet(
+                    expand: false,
+                    context: context,
+                    builder: (context) => DialogProductRegister(),
+                  );
+                },
               ),
               label: '상품 등록',
             ),
@@ -146,19 +156,4 @@ class _MyHomePageState extends State<MyHomePage> {
           ]),
     );
   }
-}
-
-Widget showRegisterDialog() {
-  return AlertDialog(
-    backgroundColor: Colors.white,
-    title: Text('상품 등록'),
-    actions: <Widget>[
-      TextButton(
-          onPressed: () => {Get.to(ProductRegister(), arguments: true)},
-          child: Text('빌려드림')),
-      TextButton(
-          onPressed: () => {Get.to(ProductRegister(), arguments: false)},
-          child: Text('빌림'))
-    ],
-  );
 }
