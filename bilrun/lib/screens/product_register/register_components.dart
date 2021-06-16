@@ -218,7 +218,7 @@ Widget RegisterCaution(onSaved) {
   );
 }
 
-Widget RegisterLocation(onPressed) {
+Widget RegisterLocation(String title, onPressed) {
   return Row(
     children: <Widget>[
       IconButton(
@@ -229,7 +229,7 @@ Widget RegisterLocation(onPressed) {
           onPressed: () {}),
       Container(
         child: // 서울특별시 광진구 자양1동
-            Text("서울특별시 광진구 자양1동",
+            Text("$title",
                 style: const TextStyle(
                     color: const Color(0xff000000),
                     fontWeight: FontWeight.w400,

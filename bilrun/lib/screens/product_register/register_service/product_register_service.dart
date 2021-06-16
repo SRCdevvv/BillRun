@@ -10,37 +10,14 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 
 Future<DetailProduct> getOrCreateInitAPIData(
-    RegisterPrice,
-    RegisterName,
-    RegisterDescription,
-    RegisterCaution,
-    RegisterCategory,
-    RegisterPriceProp,
-    RegisterImage) async {
+  RegisterPrice,
+  RegisterName,
+  RegisterDescription,
+  RegisterCaution,
+  RegisterCategory,
+  RegisterPriceProp,
+) async {
   String url = '$serviceUrl/product_list/';
-  var formData = {
-    "name": "$RegisterName",
-    "description": "$RegisterDescription",
-    "caution": "$RegisterCaution",
-    "price": "$RegisterPrice",
-    "price_prop": "$RegisterPriceProp",
-    "user": {
-      "id": 1,
-      // "place": "서울시 중구",
-      // "username": "yoonyoung",
-      // "nickname": "배가고프군그래",
-      // "phone": "",
-      // "user": 2
-    },
-    "photos": ["$RegisterImage"],
-    "lend": true,
-    "category": "Digital",
-    "place_option": true,
-    //"hits": 51,
-    //"like_count": 3,
-    //"created_at": "2021-04-14T17:20:13.460141",
-    // "updated_at": "2021-05-14T13:10:27.755806"
-  };
 
   try {
     var uri = Uri.parse('$url');
@@ -69,18 +46,18 @@ Future<DetailProduct> getOrCreateInitAPIData(
     //
     // request.files.add(multipartFile);
 
-    final multipartFile =
-        await http.MultipartFile.fromPath('Image', '${RegisterImage[0]}');
-    request.files.add(multipartFile);
+    // final multipartFile =
+    //     await http.MultipartFile.fromPath('Image', '${RegisterImage[0]}');
+    // request.files.add(multipartFile);
 
     http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       print("success");
     } else {
       print("fail: ${response.statusCode}");
     }
   } catch (e) {
-    print("failllll: $e");
+    print("error: $e");
   }
 
   // var response = await request.send();

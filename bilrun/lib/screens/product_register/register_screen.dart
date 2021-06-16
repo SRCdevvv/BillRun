@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:bilrun/design/divider_example.dart';
 
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() => runApp(ProductRegister());
 
@@ -19,6 +20,9 @@ bool ProductCategory;
 String PriceProp;
 String productAddress;
 String selectedCategory;
+String title = "주소를 등록해주세요.";
+
+var value;
 
 class _initData {
   String productName;
@@ -28,6 +32,7 @@ class _initData {
   String priceProp;
   String productAddress;
   String productCategory;
+  LatLng productLatLng;
   List<File> imageFiles = [];
 }
 
@@ -140,12 +145,12 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                 SizedBox(
                   height: 10,
                 ),
-                RegisterLocation(() {
-                  // Get.to(() => SetLocation());
-                  // setState(() {
-                  //   productAddress = Get.arguments;
-                  //   print(productAddress);
-                  // });
+                RegisterLocation(title, () async {
+                  data.productAddress = await Get.to((() => SetLocation()));
+                  print("productAddress : ${data.productAddress}");
+                  setState(() {
+                    title = data.productAddress;
+                  });
                 }),
                 SizedBox(
                   height: 20,
@@ -159,14 +164,13 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
           await getOrCreateInitAPIData(
-              data.price,
-              data.productName,
-              data.description,
-              data.caution,
-              ProductCategory,
-              PriceProp,
-              data.imageFiles);
-          Get.back();
+            data.price,
+            data.productName,
+            data.description,
+            data.caution,
+            ProductCategory,
+            PriceProp,
+          );
         }
       }),
     );

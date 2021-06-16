@@ -26,6 +26,7 @@ class _SetLocationState extends State<SetLocation>
   List<String> addressList = [];
   var localData;
   static String jibunAddress;
+  static String productAddress;
   static double existingLat = lat;
   static double existingLng = lng;
 
@@ -90,7 +91,7 @@ class _SetLocationState extends State<SetLocation>
                         onPressed: () async {
                           KopoModel model = await Get.to(() => Kopo());
 
-                          //print(model.toJson());
+                          print(model.toJson());
                           setState(() {
                             userAddress = ' ${model.jibunAddress}';
                             print(userAddress);
@@ -99,6 +100,9 @@ class _SetLocationState extends State<SetLocation>
                                 ('${model.jibunAddress.replaceAll(new RegExp(r"\s+"), "")}');
                             print('지번주소 : $jibunAddress');
                             convertData();
+                            productAddress =
+                                ('${model.sido} ${model.sigungu} ${model.bname1} ${model.bname2}');
+                            print(productAddress);
                           });
                         },
                       ),
@@ -134,6 +138,7 @@ class _SetLocationState extends State<SetLocation>
                             lat = nowLat;
                             lng = nowLng;
                             userAddress = LocationService.address;
+                            productAddress = LocationService.productAddress;
                           });
                         });
                       },
@@ -143,11 +148,11 @@ class _SetLocationState extends State<SetLocation>
 
                 //구글맵
 
-                Center(
-                    child: lat != existingLat || lng != existingLng
-                        ? loadGoogleMap(LatLng(lat, lng), createMarker())
-                        : loadGoogleMap(
-                            LatLng(existingLat, existingLng), createMarker())),
+                // Center(
+                //     child: lat != existingLat || lng != existingLng
+                //         ? loadGoogleMap(LatLng(lat, lng), createMarker())
+                //         : loadGoogleMap(
+                //             LatLng(existingLat, existingLng), createMarker())),
 
                 // 최근 주소
                 Padding(
@@ -217,7 +222,7 @@ class _SetLocationState extends State<SetLocation>
         height: 60,
         child: FloatingActionButton.extended(
           onPressed: () {
-            //Get.back(result: userAddress);
+            Get.back(result: productAddress);
           },
           label: Text("주소 등록",
               style: const TextStyle(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bilrun/model/convert_location_model.dart';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
 
 class GeocodingService {
@@ -9,11 +10,15 @@ class GeocodingService {
       String locationAddress) async {
     var response;
 
-    String geocodeAPIKEY = 'AIzaSyAxkyj1oYDHE7kYo3rd7JQAv8M3HOOwGzI';
     final url =
         'https://maps.googleapis.com/maps/api/geocode/json?address=$locationAddress&key=$geocodeAPIKEY&language=ko';
-    response = await http.get(Uri.parse(url));
-    // print("check geocode : $url");
+
+    try {
+      response = await http.get(Uri.parse(url));
+      print("check geocode : $url");
+    } catch (e) {
+      print(e);
+    }
 
     if (response.statusCode == 200) {
       var jsonString = utf8.decode(response.bodyBytes);
