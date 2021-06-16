@@ -2,7 +2,7 @@ import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/widgets/location/service_geocoing.dart';
-import 'package:bilrun/widgets/location/widgetOfLocation.dart';
+import 'package:bilrun/widgets/location/location_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -216,7 +216,9 @@ class _SetLocationState extends State<SetLocation>
         width: 240,
         height: 60,
         child: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            //Get.back(result: userAddress);
+          },
           label: Text("주소 등록",
               style: const TextStyle(
                   color: const Color(0xffffffff),
