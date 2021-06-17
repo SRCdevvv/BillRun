@@ -35,6 +35,7 @@ class _initData {
   String productMenu;
   LatLng productLatLng;
   List<File> imageFiles = [];
+  File imageFile;
 }
 
 class ProductRegister extends StatelessWidget {
@@ -78,9 +79,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 28.0),
-                  child: pickup(),
-                ),
+                    padding: const EdgeInsets.only(top: 28.0), child: pickup()),
                 RegisterName((String value) {
                   this.data.productName = value;
                 }),
@@ -184,6 +183,8 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
       ),
       bottomNavigationBar: RegisterButton(() async {
         print(data.productMenu);
+        data.imageFile = pickupState.ImgFiles[0];
+        print(data.imageFile);
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
           await getOrCreateInitAPIData(
@@ -194,6 +195,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             data.caution,
             data.productMenu,
             PriceProp,
+            data.imageFile,
           );
         }
       }),

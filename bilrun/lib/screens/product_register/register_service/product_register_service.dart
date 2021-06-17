@@ -1,15 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:bilrun/main.dart';
 import 'package:bilrun/model/product_detail_model.dart';
-import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 import 'package:bilrun/widgets/etc.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
 
-Future<DetailProduct> getOrCreateInitAPIData(
+Future<void> getOrCreateInitAPIData(
   RegisterCategory,
   RegisterPrice,
   RegisterName,
@@ -17,6 +11,7 @@ Future<DetailProduct> getOrCreateInitAPIData(
   RegisterCaution,
   RegisterMenu,
   RegisterPriceProp,
+  RegisterImage,
 ) async {
   String url = '$serviceUrl/product_list/';
 
@@ -33,6 +28,12 @@ Future<DetailProduct> getOrCreateInitAPIData(
     request.fields["lend"] = "$RegisterCategory";
     request.fields["category"] = "$RegisterMenu";
     request.fields["place_option"] = "true";
+
+//TODO 사진 path 구하기...
+
+    final multipartFile =
+        await http.MultipartFile.fromPath('Image', '$RegisterImage');
+    request.files.add(multipartFile);
 
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 201) {
