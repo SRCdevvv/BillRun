@@ -60,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   final List<Widget> _children = [
-    LendMain(),
+    CertificationPhone(),
+    //LendMain(),
     RentMain(),
 
     //ImageUpload(),

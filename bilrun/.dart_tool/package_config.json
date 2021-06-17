@@ -62,6 +62,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/dio-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
@@ -422,7 +428,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-16T13:41:56.791821Z",
+  "generated": "2021-06-17T14:19:46.844034Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }
