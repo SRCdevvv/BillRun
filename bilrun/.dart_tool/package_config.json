@@ -92,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_countdown_timer",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/flutter_countdown_timer-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.1",
       "packageUri": "lib/",
@@ -428,7 +434,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-17T14:19:46.844034Z",
+  "generated": "2021-06-21T13:36:45.639930Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }

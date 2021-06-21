@@ -1,8 +1,10 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_components.dart';
+import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 
 class CertificationPhone extends StatefulWidget {
@@ -19,10 +21,13 @@ class _CertificationPhoneState extends State<CertificationPhone> {
   String phoneNum = '';
   String passWord = "";
   bool isPassed = false;
-  bool colorPassed = false;
 
   bool _visibility = true;
   bool _visibility2 = true;
+
+  bool isReMessage = false;
+
+  int _endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 70;
 
   void _show() {
     setState(() {
@@ -84,7 +89,9 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                 },
                                 (String value) {
                                   phoneNum = value;
-                                  colorPassed = true;
+                                  setState(() {
+                                    isPassed = true;
+                                  });
                                 },
                               ),
                             ),
@@ -94,12 +101,13 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                             Padding(
                               padding: const EdgeInsets.only(left: 30),
                               child: submitButton(
-                                  colorPassed == false
+                                  '인증번호 받기',
+                                  isPassed == false
                                       ? Color(0xffdbdbdb)
                                       : mainRed, () async {
                                 if (_key.currentState.validate()) {
                                   _key.currentState.save();
-                                  await PostPhoneNum.postPhoneNum();
+                                  await PostPhoneNum.postPhoneNum(phoneNum);
                                 }
                                 if (isPassed == true) {
                                   _visibility ? _hide() : _show();
@@ -136,7 +144,7 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                       () {
                                         setState(() {
                                           isPassed = false;
-                                          colorPassed = false;
+                                          isPassed = false;
                                           _visibility = true;
                                         });
                                       },
@@ -144,16 +152,51 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(30, 20, 0, 0),
-                                  child: InputNumberBox('인증번호 입력', (value) {
-                                    if (value.isEmpty) {
-                                      return '인증 번호를 입력해주세요.';
-                                    } else {
-                                      return null;
-                                    }
-                                  }, (String value) {
-                                    passWord = value;
-                                  }),
+                                  child: InputNumberBox(
+                                    '인증번호 입력',
+                                    (value) {
+                                      if (value.isEmpty) {
+                                        return '인증 번호를 입력해주세요.';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    (String value) {
+                                      passWord = value;
+                                    },
+                                  ),
                                 ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(35, 5, 0, 0),
+                                  child: CountdownTimer(
+                                    endTime: _endTime,
+                                    widgetBuilder: (_, time) {
+                                      if (time == null) {
+                                        return TextButton(
+                                          onPressed: () async {
+                                            await PostPhoneNum.postPhoneNum(
+                                                phoneNum);
+                                          },
+                                          child: Text("인증번호 다시 받기",
+                                              style: TextStyle(
+                                                color: mainRed,
+                                                fontSize: 15,
+                                              )),
+                                        );
+                                      }
+                                      return Text(
+                                        time.min == null
+                                            ? "0분 ${time.sec}초"
+                                            : '${time.min}분${time.sec}초',
+                                        style: TextStyle(
+                                          color: mainRed,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+
                                 // 타인과 공유하지 마세요!
                                 Padding(
                                     padding:
@@ -163,10 +206,11 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 30),
                                   child: submitButton(
+                                      '인증번호 확인',
                                       passWord.isEmpty
                                           ? Color(0xffdbdbdb)
-                                          : mainRed, () {
-                                    Get.to(CertificationUniv());
+                                          : mainRed, () async {
+                                    await PostCheckInNum.postCheckInNum();
                                   }),
                                 ),
                               ],

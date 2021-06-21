@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:bilrun/design/usedColors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 
 Widget InfoText() {
@@ -32,7 +35,11 @@ Widget InfoText() {
   ]));
 }
 
-Widget InputNumberBox(String title, validator, onSaved) {
+Widget InputNumberBox(
+  String title,
+  validator,
+  onSaved,
+) {
   return Container(
     width: Get.width * 0.767,
     height: Get.height * 0.068,
@@ -54,7 +61,7 @@ Widget InputNumberBox(String title, validator, onSaved) {
   );
 }
 
-Widget submitButton(color, onTap) {
+Widget submitButton(String title, color, onTap) {
   return Container(
     width: Get.width * 0.767,
     height: Get.height * 0.068,
@@ -63,7 +70,7 @@ Widget submitButton(color, onTap) {
     child: // 인증번호 받기
         InkWell(
       child: Center(
-        child: Text("인증번호 받기",
+        child: Text("$title",
             style: const TextStyle(
                 color: Color(0xffffffff),
                 fontWeight: FontWeight.w400,
@@ -158,5 +165,32 @@ Widget againInputForm(onTap) {
         onTap: onTap,
       ),
     ),
+  );
+}
+
+Widget MessageTimer(int endTime, onPressed) {
+  bool isReMessage = false;
+  return CountdownTimer(
+    endTime: endTime,
+    widgetBuilder: (_, time) {
+      if (time == null) {
+        return TextButton(
+          onPressed: onPressed,
+          child: isReMessage == false
+              ? Text("인증번호 다시 받기",
+                  style: TextStyle(
+                    color: mainRed,
+                    fontSize: 15,
+                  ))
+              : MessageTimer(endTime, onPressed),
+        );
+      }
+      return Text(
+        time.min == null ? "0분 ${time.sec}초" : '${time.min}분${time.sec}초',
+        style: TextStyle(
+          color: mainRed,
+        ),
+      );
+    },
   );
 }
