@@ -4,12 +4,12 @@ import 'package:dio/dio.dart';
 class PostCheckInNum {
   static bool result;
 
-  static Future<void> postCheckInNum() async {
+  static Future<void> postCheckInNum(String phoneNum, int checkNum) async {
     Dio dio = Dio();
     try {
       print("인증번호 실행");
       Response response = await dio.post('$serviceUrl/sms_confirm',
-          data: {'phone': '01027857532', 'auth_number': 5004});
+          data: {'phone': '$phoneNum', 'auth_number': checkNum});
       if (response.statusCode == 200) {
         print(response.statusCode);
         result = true;
