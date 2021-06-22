@@ -1,5 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
+import 'package:bilrun/screens/sign_in_up/service/univ_certification_model.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,11 +11,18 @@ class CertificationUniv extends StatefulWidget {
 }
 
 class _CertificationUnivState extends State<CertificationUniv> {
-  final _key = GlobalKey<FormState>();
+  final _emailKey = GlobalKey<FormState>();
 
-  String univName = Get.arguments;
+  static String univName;
+  @override
+  void initState() {
+    univName = Get.arguments;
+    super.initState();
+  }
+
   String email = '';
   String passWord = "";
+  String exampleEmail = "학교 이메일을 입력해주세요.";
 
   bool _visibility = true;
   bool _visibility2 = true;
@@ -33,6 +41,20 @@ class _CertificationUnivState extends State<CertificationUniv> {
 
   @override
   Widget build(BuildContext context) {
+    switch (univName) {
+      case "한양대":
+        exampleEmail = "billrun@hanyang.ac.kr";
+        break;
+      case "동국대":
+        exampleEmail = "billrun@dongkuk.ac.kr";
+        break;
+      case "가천대":
+        exampleEmail = "billrun@gachon.gc.ac.kr";
+        break;
+      default:
+        exampleEmail = "학교 이메일을 입력해주세요.";
+    }
+
     return Scaffold(
       appBar: whiteAppBar('커뮤니티 인증'),
       body: SafeArea(
@@ -90,86 +112,95 @@ class _CertificationUnivState extends State<CertificationUniv> {
                       textAlign: TextAlign.left),
                 ),
 
-                Visibility(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(30, 10, 0, 15),
-                            child: Container(
-                              width: 312,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  border: Border.all(
-                                      color: const Color(0xffdbdbdb),
-                                      width: 2)),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: TextFormField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  key: _key,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return '이메일을 입력해주세요.';
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onSaved: (String value) {
-                                    email = value;
-                                  },
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'billrun@hanyang.ac.kr',
+                Form(
+                  key: _emailKey,
+                  child: Visibility(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(30, 10, 0, 15),
+                              child: Container(
+                                width: 312,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    border: Border.all(
+                                        color: const Color(0xffdbdbdb),
+                                        width: 2)),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return '이메일을 입력해주세요.';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onSaved: (String value) {
+                                      email = value;
+                                    },
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: '$exampleEmail',
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
 
-                          //TODO Value 값이 채워지면 활성화 시키기
+                            //TODO Value 값이 채워지면 활성화 시키기
 
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30),
-                            child: Container(
-                              width: 312,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  color: email.isEmpty
-                                      ? Color(0xffdbdbdb)
-                                      : mainRed),
-                              child: // 인증번호 받기
-                                  Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 100, top: 13),
-                                child: InkWell(
-                                  child: Text("인증 메일 받기",
-                                      style: const TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: "NotoSansCJKkr",
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.0),
-                                      textAlign: TextAlign.left),
-                                  onTap: () {
-                                    _visibility ? _hide() : _show();
-                                    _visibility2 =
-                                        _visibility == true ? false : true;
-                                  },
+                            Padding(
+                              padding: const EdgeInsets.only(left: 30),
+                              child: Container(
+                                width: 312,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: email.isEmpty
+                                        ? Color(0xffdbdbdb)
+                                        : mainRed),
+                                child: // 인증번호 받기
+                                    Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 100, top: 13),
+                                  child: InkWell(
+                                    child: Text("인증 메일 받기",
+                                        style: const TextStyle(
+                                            color: Color(0xffffffff),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "NotoSansCJKkr",
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16.0),
+                                        textAlign: TextAlign.left),
+                                    onTap: () async {
+                                      _visibility ? _hide() : _show();
+                                      _visibility2 =
+                                          _visibility == true ? false : true;
+                                      if (_emailKey.currentState.validate()) {
+                                        _emailKey.currentState.save();
+                                        print(email);
+                                        print(univName);
+                                      }
+                                      await PostCheckInEmail.postCheckInEmail(
+                                          "01027857532", email, univName);
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    visible: true),
+                      visible: true),
+                ),
 
                 Visibility(
                     child: Padding(
