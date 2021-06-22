@@ -2,7 +2,7 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_components.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
-import 'package:bilrun/screens/sign_in_up/univ/certification_univ.dart';
+import 'package:bilrun/screens/sign_in_up/univ/certification_univ_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
