@@ -59,8 +59,8 @@ Widget emailBox(String title, onSaved) {
         child: TextFormField(
           keyboardType: TextInputType.emailAddress,
           validator: (value) {
-            if (value.isEmpty) {
-              return '이메일을 입력해주세요.';
+            if (value.isEmpty || !value.contains("@")) {
+              return '올바른 이메일을 입력해주세요.';
             } else {
               return null;
             }
@@ -80,7 +80,7 @@ Widget submitEmailButton(bool isPassed, onTap) {
       height: Get.height * 0.068,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: isPassed == false ? Color(0xff505050) : mainRed),
+          color: Color(0xff505050)),
       child: InkWell(
         child: Center(
           child: Text(isPassed == false ? "인증메일 받기" : "인증메일 다시 받기",

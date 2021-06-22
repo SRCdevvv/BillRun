@@ -3,6 +3,7 @@ import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_components.d
 import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ_screen.dart';
+import 'package:bilrun/screens/sign_in_up/univ/select_univ_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
@@ -78,25 +79,30 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.fromLTRB(30, 10, 0, 15),
-                              child: InputNumberBox(
-                                '휴대폰 번호를 입력해주세요.',
-                                (value) {
-                                  if (value.isEmpty) {
-                                    return '휴대폰 번호를 입력해주세요.';
-                                  } else {
-                                    setState(() {
-                                      isPassed = true;
-                                    });
-                                    return null;
-                                  }
-                                },
-                                (String value) {
-                                  phoneNum = value;
+                              child: InputNumberBox('휴대폰 번호를 입력해주세요.', (value) {
+                                if (value.isEmpty) {
+                                  return '휴대폰 번호를 입력해주세요.';
+                                } else if (!value.isEmpty) {
+                                  bool mobileValid = RegExp(
+                                          r'^(0[12]0)([0-9]{3,4})([0-9]{4})$')
+                                      .hasMatch(value);
+                                  return mobileValid ? null : "Invalid mobile";
+                                } else {
                                   setState(() {
                                     isPassed = true;
                                   });
-                                },
-                              ),
+                                  return null;
+                                }
+                              }, (String value) {
+                                phoneNum = value;
+                                setState(() {
+                                  isPassed = true;
+                                });
+                              }, (text) {
+                                setState(() {
+                                  colorPassed = true;
+                                });
+                              }),
                             ),
 
                             //TODO Value 값이 채워지면 활성화 시키기
@@ -160,19 +166,17 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(30, 20, 0, 0),
-                                    child: InputNumberBox(
-                                      '인증번호 입력',
-                                      (value) {
-                                        if (value.isEmpty) {
-                                          return '인증 번호를 입력해주세요.';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      (String value) {
-                                        checkNum = value;
-                                      },
-                                    ),
+                                    child: InputNumberBox('인증번호 입력', (value) {
+                                      if (value.isEmpty) {
+                                        return '인증 번호를 입력해주세요.';
+                                      } else {
+                                        return null;
+                                      }
+                                    }, (String value) {
+                                      checkNum = value;
+                                    }, (text) {
+                                      colorPassed = true;
+                                    }),
                                   ),
                                   Padding(
                                     padding:
@@ -218,7 +222,7 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                     padding: const EdgeInsets.only(left: 30),
                                     child: submitButton(
                                         '인증번호 확인',
-                                        checkNum.isEmpty
+                                        colorPassed == true
                                             ? Color(0xffdbdbdb)
                                             : mainRed, () async {
                                       if (_key.currentState.validate()) {
@@ -228,6 +232,11 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                         print(checkInNum.runtimeType);
                                         await PostCheckInNum.postCheckInNum(
                                             phoneNum, checkInNum);
+                                        if (PostCheckInNum.result == true) {
+                                          Get.to(() => SelectUniv());
+                                        } else {
+                                          phoneNum = "인증실패, 인증번호를 다시 입력해주세요.";
+                                        }
                                       }
                                     }),
                                   ),

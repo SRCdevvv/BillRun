@@ -39,6 +39,7 @@ Widget InputNumberBox(
   String title,
   validator,
   onSaved,
+  onChanged,
 ) {
   return Container(
     width: Get.width * 0.767,
@@ -49,6 +50,7 @@ Widget InputNumberBox(
     child: Padding(
       padding: const EdgeInsets.only(left: 20),
       child: TextFormField(
+        onChanged: onChanged,
         keyboardType: TextInputType.number,
         validator: validator,
         onSaved: onSaved,
