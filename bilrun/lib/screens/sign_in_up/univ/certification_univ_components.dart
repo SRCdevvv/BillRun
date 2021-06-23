@@ -1,4 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,7 +48,7 @@ Widget CguideText() {
       textAlign: TextAlign.left);
 }
 
-Widget emailBox(String title, onSaved) {
+Widget emailBox({String title, validator, Function onSaved, onChanged}) {
   return Container(
       width: Get.width * 0.767,
       height: Get.height * 0.068,
@@ -58,13 +59,8 @@ Widget emailBox(String title, onSaved) {
         padding: const EdgeInsets.only(left: 20),
         child: TextFormField(
           keyboardType: TextInputType.emailAddress,
-          validator: (value) {
-            if (value.isEmpty || !value.contains("@")) {
-              return '올바른 이메일을 입력해주세요.';
-            } else {
-              return null;
-            }
-          },
+          validator: validator,
+          onChanged: onChanged,
           onSaved: onSaved,
           decoration: InputDecoration(
             border: InputBorder.none,
@@ -74,7 +70,10 @@ Widget emailBox(String title, onSaved) {
       ));
 }
 
-Widget submitEmailButton(bool isPassed, onTap) {
+Widget submitEmailButton({
+  bool status,
+  onTap,
+}) {
   return Container(
       width: Get.width * 0.767,
       height: Get.height * 0.068,
@@ -83,7 +82,7 @@ Widget submitEmailButton(bool isPassed, onTap) {
           color: Color(0xff505050)),
       child: InkWell(
         child: Center(
-          child: Text(isPassed == false ? "인증메일 받기" : "인증메일 다시 받기",
+          child: Text(status == true ? "인증메일 받기" : "인증메일 다시 받기",
               style: const TextStyle(
                   color: Color(0xffffffff),
                   fontWeight: FontWeight.w400,
@@ -138,19 +137,24 @@ Widget afterSubmitText() {
 }
 
 Widget bottomSubmitButton() {
-  return Container(
-      width: Get.width,
-      height: 60,
-      color: mainRed,
-      child: Center(
-        child: Text(
-          "인증 완료",
-          style: const TextStyle(
-              color: const Color(0xffffffff),
-              fontWeight: FontWeight.w500,
-              fontFamily: "NotoSansCJKkr",
-              fontStyle: FontStyle.normal,
-              fontSize: 18.0),
-        ),
-      ));
+  return InkWell(
+    onTap: () {
+      Get.to(() => MainScreen());
+    },
+    child: Container(
+        width: Get.width,
+        height: 60,
+        color: mainRed,
+        child: Center(
+          child: Text(
+            "인증 완료",
+            style: const TextStyle(
+                color: const Color(0xffffffff),
+                fontWeight: FontWeight.w500,
+                fontFamily: "NotoSansCJKkr",
+                fontStyle: FontStyle.normal,
+                fontSize: 18.0),
+          ),
+        )),
+  );
 }

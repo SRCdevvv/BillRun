@@ -63,7 +63,7 @@ Widget InputNumberBox(
   );
 }
 
-Widget submitButton(String title, color, onTap) {
+Widget submitButton({String title, Color color, Function onTap}) {
   return Container(
     width: Get.width * 0.767,
     height: Get.height * 0.068,

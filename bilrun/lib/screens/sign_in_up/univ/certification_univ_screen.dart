@@ -1,6 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
-import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
-import 'package:bilrun/screens/sign_in_up/service/univ_certification_model.dart';
+import 'package:bilrun/screens/sign_in_up/service/univ_certification_service.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ_components.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,13 @@ class CertificationUniv extends StatefulWidget {
 class _CertificationUnivState extends State<CertificationUniv> {
   final _emailKey = GlobalKey<FormState>();
 
-  static String univName;
-  bool _visibility = true;
+  String univName;
+  bool serviceTermAgreement;
+  String UserPhoneNumber;
+
+  bool isPassed = false;
+  bool isColored = false;
+  bool _visibility = false;
 
   void _show() {
     setState(() {
@@ -31,15 +35,18 @@ class _CertificationUnivState extends State<CertificationUniv> {
 
   @override
   void initState() {
-    univName = Get.arguments;
+    serviceTermAgreement = Get.arguments['serviceTermAgreement'];
+    univName = Get.arguments['CommunityName'];
+    UserPhoneNumber = Get.arguments['phone'];
+
+    print("email :: $serviceTermAgreement $univName $UserPhoneNumber");
+
     super.initState();
   }
 
   String email = '';
   String passWord = "";
   String exampleEmail = "학교 이메일을 입력해주세요.";
-
-  //bool isPassed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +94,24 @@ class _CertificationUnivState extends State<CertificationUniv> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(30, 0, 0, 15),
                             child: emailBox(
-                              "$exampleEmail",
-                              (String value) {
-                                email = value;
-                              },
-                            ),
+                                title: "$exampleEmail",
+                                validator: (value) {
+                                  if (value.isEmpty || !value.contains("@")) {
+                                    isPassed = false;
+                                    return '올바른 이메일을 입력해주세요.';
+                                  } else {
+                                    isPassed = true;
+                                    return null;
+                                  }
+                                },
+                                onSaved: (String value) {
+                                  email = value;
+                                },
+                                onChanged: (text) {
+                                  setState(() {
+                                    isColored = true;
+                                  });
+                                }),
                           ),
 
                           //TODO Value 값이 채워지면 활성화 시키기
@@ -101,16 +121,21 @@ class _CertificationUnivState extends State<CertificationUniv> {
                             child: Padding(
                                 padding: const EdgeInsets.only(left: 30),
                                 child: submitEmailButton(
-                                  false,
-                                  () async {
+                                  status: isPassed,
+                                  onTap: () async {
                                     if (_emailKey.currentState.validate()) {
                                       _emailKey.currentState.save();
-                                      print(email);
-                                      print(univName);
                                     }
+                                    _visibility = isPassed;
                                     _visibility ? _hide() : _show();
                                     await PostCheckInEmail.postCheckInEmail(
-                                        "01027857532", email, univName);
+                                        "$UserPhoneNumber", email, univName);
+
+                                    PostCheckInEmail.result == true
+                                        ? Get.snackbar(
+                                            '이메일 발송 성공', '이메일을 확인해주세요.')
+                                        : Get.snackbar(
+                                            '이메일 발송 실패', '이메일 주소를 확인해주세요.');
                                   },
                                 )),
                           ),
@@ -118,21 +143,24 @@ class _CertificationUnivState extends State<CertificationUniv> {
                               visible: !_visibility,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 30),
-                                child: submitEmailButton(!_visibility, () {
-                                  _visibility ? _hide() : _show();
-                                }),
+                                child: submitEmailButton(
+                                  status: !_visibility,
+                                  onTap: () {
+                                    _visibility ? _hide() : _show();
+                                  },
+                                ),
                               )),
                         ],
                       ),
                     ),
                     Visibility(
-                      visible: _visibility,
+                      visible: !_visibility,
                       child: Padding(
                           padding: const EdgeInsets.only(left: 80, top: 20),
                           child: bottomGuideText()),
                     ),
                     Visibility(
-                      visible: !_visibility,
+                      visible: _visibility,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 30),
                         child: afterSubmitText(),
@@ -145,6 +173,6 @@ class _CertificationUnivState extends State<CertificationUniv> {
           ),
         ),
         bottomNavigationBar:
-            Visibility(visible: !_visibility, child: bottomSubmitButton()));
+            Visibility(visible: _visibility, child: bottomSubmitButton()));
   }
 }

@@ -1,5 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
-import 'package:bilrun/screens/sign_in_up/loading_page/ToS_agree_page.dart';
+import 'package:bilrun/screens/sign_in_up/loading_page/ToS_agreement/ToS_agreement_page.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -54,13 +54,13 @@ class SignInPage extends StatelessWidget {
         ),
         // 꼭 구매할 필요없는 물건이라면, 빌려쓰는 건 어때요? 모두가 함께하는 지속가능한 소비, 빌RUN에서 경험해보세요😁
         Padding(
-          padding: const EdgeInsets.fromLTRB(30, 40, 0, 20),
+          padding: const EdgeInsets.fromLTRB(35, 40, 0, 50),
           child: Center(
             child: Container(
               width: Get.width * 0.894,
               height: Get.height * 0.089,
               child: Text(
-                  " 꼭 구매할 필요없는 물건이라면, 빌려쓰는 건\n어때요?모두가 함께하는 지속가능한 소비,\n빌RUN에서 경험해보세요😁",
+                  "꼭 구매할 필요없는 물건이라면, 빌려쓰는 건\n어때요?모두가 함께하는 지속가능한 소비,\n빌RUN에서 경험해보세요😁",
                   style: const TextStyle(
                       color: const Color(0xff000000),
                       fontWeight: FontWeight.w400,

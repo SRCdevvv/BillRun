@@ -10,16 +10,13 @@ AppBar whiteAppBar(String title) {
       child: IconButton(
         icon: Icon(Icons.keyboard_backspace),
         color: Colors.black,
-        iconSize: 40.0,
+        iconSize: 30.0,
         onPressed: () => {Get.back()},
       ),
     ),
-    title: Padding(
-      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-      child: Text(
-        "$title",
-        style: TextStyle(color: Colors.black, fontSize: 24.0),
-      ),
+    title: Text(
+      "$title",
+      style: TextStyle(color: Colors.black, fontSize: 20.0),
     ),
     centerTitle: false,
   );

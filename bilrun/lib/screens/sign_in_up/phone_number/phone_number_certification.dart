@@ -4,6 +4,7 @@ import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ_screen.dart';
 import 'package:bilrun/screens/sign_in_up/univ/select_univ_screen.dart';
+import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
@@ -23,8 +24,18 @@ class _CertificationPhoneState extends State<CertificationPhone> {
   String phoneNum = '';
   int checkInNum;
 
+  var serviceTermAgreement;
+
+  @override
+  void initState() {
+    super.initState();
+    serviceTermAgreement = Get.arguments;
+    print("서비스 이용약관 동의 : $serviceTermAgreement");
+  }
+
   bool isPassed = false;
   bool colorPassed = false;
+  bool colorPassed2 = false;
 
   bool _visibility = true;
   bool _visibility2 = true;
@@ -48,15 +59,7 @@ class _CertificationPhoneState extends State<CertificationPhone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          "전화번호 인증",
-          style: TextStyle(color: Colors.black, fontSize: 20.0),
-        ),
-        centerTitle: false,
-      ),
+      appBar: whiteAppBar('전화번호 인증'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -86,7 +89,9 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                   bool mobileValid = RegExp(
                                           r'^(0[12]0)([0-9]{3,4})([0-9]{4})$')
                                       .hasMatch(value);
-                                  return mobileValid ? null : "Invalid mobile";
+                                  return mobileValid
+                                      ? null
+                                      : "올바른 휴대폰 번호를 적어주세요.";
                                 } else {
                                   setState(() {
                                     isPassed = true;
@@ -110,23 +115,28 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                             Padding(
                               padding: const EdgeInsets.only(left: 30),
                               child: submitButton(
-                                  '인증번호 받기',
-                                  colorPassed == false
+                                  title: '인증번호 받기',
+                                  color: colorPassed == false
                                       ? Color(0xffdbdbdb)
-                                      : mainRed, () async {
-                                if (_key.currentState.validate()) {
-                                  _key.currentState.save();
-                                  await PostPhoneNum.postPhoneNum(phoneNum);
-                                }
-                                if (isPassed == true) {
-                                  _visibility ? _hide() : _show();
-                                  _visibility2 =
-                                      _visibility == true ? false : true;
-                                  _endTime =
-                                      DateTime.now().millisecondsSinceEpoch +
+                                      : mainRed,
+                                  onTap: () async {
+                                    if (_key.currentState.validate()) {
+                                      _key.currentState.save();
+                                      Get.snackbar('문자 전송 완료', '잠시만 기다려주세요.',
+                                          backgroundColor: Colors.white,
+                                          duration: Duration(seconds: 3),
+                                          snackPosition: SnackPosition.TOP);
+                                      await PostPhoneNum.postPhoneNum(phoneNum);
+                                    }
+                                    if (isPassed == true) {
+                                      _visibility ? _hide() : _show();
+                                      _visibility2 =
+                                          _visibility == true ? false : true;
+                                      _endTime = DateTime.now()
+                                              .millisecondsSinceEpoch +
                                           1000 * 300;
-                                }
-                              }),
+                                    }
+                                  }),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 58.0),
@@ -175,7 +185,9 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                     }, (String value) {
                                       checkNum = value;
                                     }, (text) {
-                                      colorPassed = true;
+                                      setState(() {
+                                        colorPassed2 = true;
+                                      });
                                     }),
                                   ),
                                   Padding(
@@ -221,24 +233,45 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 30),
                                     child: submitButton(
-                                        '인증번호 확인',
-                                        colorPassed == true
-                                            ? Color(0xffdbdbdb)
-                                            : mainRed, () async {
-                                      if (_key.currentState.validate()) {
-                                        _key.currentState.save();
-                                        print(checkNum);
-                                        checkInNum = int.tryParse(checkNum);
-                                        print(checkInNum.runtimeType);
-                                        await PostCheckInNum.postCheckInNum(
-                                            phoneNum, checkInNum);
-                                        if (PostCheckInNum.result == true) {
-                                          Get.to(() => SelectUniv());
-                                        } else {
-                                          phoneNum = "인증실패, 인증번호를 다시 입력해주세요.";
-                                        }
-                                      }
-                                    }),
+                                        title: '인증번호 확인',
+                                        color: colorPassed2 == true
+                                            ? mainRed
+                                            : Color(0xffdbdbdb),
+                                        onTap: () async {
+                                          if (_key.currentState.validate()) {
+                                            _key.currentState.save();
+                                            print(checkNum);
+                                            checkInNum = int.tryParse(checkNum);
+                                            print(checkInNum.runtimeType);
+                                            await PostCheckInNum.postCheckInNum(
+                                                phoneNum, checkInNum);
+                                            if (PostCheckInNum.result == true) {
+                                              Get.snackbar('인증 성공',
+                                                  '휴대폰 번호 인증에 성공하였습니다.',
+                                                  duration:
+                                                      Duration(seconds: 3),
+                                                  backgroundColor:
+                                                      Colors.white);
+                                              Get.to(
+                                                () => SelectUniv(),
+                                                arguments: {
+                                                  "serviceAgreement":
+                                                      serviceTermAgreement,
+                                                  "phone": "$phoneNum"
+                                                },
+                                                duration: Duration(seconds: 2),
+                                                transition: Transition.native,
+                                              );
+                                            } else {
+                                              Get.snackbar(
+                                                  '인증 실패', '올바른 인증번호를 입력해주세요.',
+                                                  duration:
+                                                      Duration(seconds: 5),
+                                                  backgroundColor:
+                                                      Colors.white);
+                                            }
+                                          }
+                                        }),
                                   ),
                                 ],
                               ),

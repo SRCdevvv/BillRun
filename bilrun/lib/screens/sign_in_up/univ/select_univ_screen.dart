@@ -11,12 +11,25 @@ class SelectUniv extends StatefulWidget {
 
 class _SelectUnivState extends State<SelectUniv> {
   UnivModel univModel;
+
   final _formKey = GlobalKey<FormState>();
 
   static String univName;
   static String searchName;
+  bool serviceTermAgreement;
+  String UserPhoneNumber;
 
   bool isSelected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    serviceTermAgreement = Get.arguments["serviceAgreement"];
+    UserPhoneNumber = Get.arguments["phone"];
+
+    print(
+        "$serviceTermAgreement ${serviceTermAgreement.runtimeType} $UserPhoneNumber");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +117,11 @@ class _SelectUnivState extends State<SelectUniv> {
                       bottom: 2,
                       child: NextStepButton(
                         () {
-                          Get.to(() => CertificationUniv(),
-                              arguments: univName);
-                          print(univName);
+                          Get.to(() => CertificationUniv(), arguments: {
+                            "serviceTermAgreement": serviceTermAgreement,
+                            "CommunityName": "$univName",
+                            "phone": "$UserPhoneNumber"
+                          });
                         },
                       ),
                     )

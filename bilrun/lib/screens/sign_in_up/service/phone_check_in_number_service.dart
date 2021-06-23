@@ -1,15 +1,21 @@
 import 'package:bilrun/widgets/etc.dart';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 
 class PostCheckInNum {
   static bool result;
 
   static Future<void> postCheckInNum(String phoneNum, int checkNum) async {
-    Dio dio = Dio();
+    String url = "$serviceUrl/sms_confirm";
+
     try {
-      print("인증번호 실행");
-      Response response = await dio.post('$serviceUrl/sms_confirm',
-          data: {'phone': '$phoneNum', 'auth_number': checkNum});
+      var uri = Uri.parse("$url");
+
+      var request = http.MultipartRequest('POST', uri);
+
+      final headers = {"Content-type": "application/json"};
+      final json = '{"phone":"$phoneNum", "auth_number":$checkNum}';
+      final response = await http.post(uri, headers: headers, body: json);
+
       if (response.statusCode == 200) {
         print(response.statusCode);
         result = true;
@@ -17,15 +23,13 @@ class PostCheckInNum {
         print(response);
         return true;
       } else {
-        print(response.statusCode);
+        print("fail: ${response.statusCode}");
         print("인증번호2 실패");
         result = false;
         return false;
       }
     } catch (e) {
-      Exception(e);
-    } finally {
-      dio.close();
+      print("error : $e");
     }
   }
 }
