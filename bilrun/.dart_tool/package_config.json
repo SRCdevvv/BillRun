@@ -369,7 +369,7 @@
     },
     {
       "name": "url_launcher",
-      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.0.3",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -387,7 +387,7 @@
     },
     {
       "name": "url_launcher_platform_interface",
-      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-2.0.2",
+      "rootUri": "file:///Users/kimwonhee/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -434,7 +434,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-22T07:28:26.527143Z",
+  "generated": "2021-06-24T06:10:07.840316Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }

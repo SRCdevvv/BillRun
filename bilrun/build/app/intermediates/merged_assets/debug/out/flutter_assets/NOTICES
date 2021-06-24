@@ -6093,6 +6093,7 @@ google_maps_flutter_platform_interface
 image_picker_platform_interface
 path_provider_windows
 url_launcher
+url_launcher_platform_interface
 
 Copyright 2013 The Flutter Authors. All rights reserved.
 
@@ -12646,7 +12647,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 path_provider_macos
-url_launcher_platform_interface
 
 Copyright 2017 The Chromium Authors. All rights reserved.
 

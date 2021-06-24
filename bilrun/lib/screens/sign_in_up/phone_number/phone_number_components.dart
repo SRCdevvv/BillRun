@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/widgets/launch_kakaotalk_plus_friend.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
@@ -99,7 +100,9 @@ Widget contactUs() {
               fontSize: 12.0),
           textAlign: TextAlign.left),
       TextButton(
-        onPressed: () {},
+        onPressed: () {
+          launchKaKaoChannel();
+        },
         child: Text("문의하기",
             style: const TextStyle(
                 color: const Color(0xff505050),

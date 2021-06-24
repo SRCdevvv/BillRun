@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: '빌RUN - 빌려주러 달려가는 중!',
       home: SignInPage(),
     );
   }
