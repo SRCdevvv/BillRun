@@ -1,8 +1,8 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/lend/lend_main.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_components.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
-import 'package:bilrun/screens/sign_in_up/univ/certification_univ_screen.dart';
 import 'package:bilrun/screens/sign_in_up/univ/select_univ_screen.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
@@ -252,16 +252,33 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                                       Duration(seconds: 3),
                                                   backgroundColor:
                                                       Colors.white);
-                                              Get.to(
-                                                () => SelectUniv(),
-                                                arguments: {
-                                                  "serviceAgreement":
-                                                      serviceTermAgreement,
-                                                  "phone": "$phoneNum"
-                                                },
-                                                duration: Duration(seconds: 2),
-                                                transition: Transition.native,
-                                              );
+                                              if (PostCheckInNum.UserToken ==
+                                                  null) {
+                                                Get.to(
+                                                  () => SelectUniv(),
+                                                  arguments: {
+                                                    "serviceAgreement":
+                                                        serviceTermAgreement,
+                                                    "phone": "$phoneNum"
+                                                  },
+                                                  duration:
+                                                      Duration(seconds: 2),
+                                                  transition: Transition.native,
+                                                );
+                                              } else {
+                                                Get.snackbar(
+                                                    '로그인 성공', '빌RUN에 로그인했습니다..',
+                                                    duration:
+                                                        Duration(seconds: 3),
+                                                    backgroundColor:
+                                                        Colors.white);
+                                                Get.to(
+                                                  () => LendMain(),
+                                                  duration:
+                                                      Duration(seconds: 2),
+                                                  transition: Transition.native,
+                                                );
+                                              }
                                             } else {
                                               Get.snackbar(
                                                   '인증 실패', '올바른 인증번호를 입력해주세요.',
