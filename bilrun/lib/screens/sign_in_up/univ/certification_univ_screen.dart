@@ -1,4 +1,5 @@
-import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:bilrun/screens/sign_in_up/service/terms_agreement_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/univ_certification_service.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ_components.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
@@ -16,6 +17,8 @@ class _CertificationUnivState extends State<CertificationUniv> {
   String univName;
   bool serviceTermAgreement;
   String UserPhoneNumber;
+  int UserId;
+  String UserToken;
 
   bool isPassed = false;
   bool isColored = false;
@@ -131,11 +134,14 @@ class _CertificationUnivState extends State<CertificationUniv> {
                                     await PostCheckInEmail.postCheckInEmail(
                                         "$UserPhoneNumber", email, univName);
 
-                                    PostCheckInEmail.result == true
-                                        ? Get.snackbar(
-                                            '이메일 발송 성공', '이메일을 확인해주세요.')
-                                        : Get.snackbar(
-                                            '이메일 발송 실패', '이메일 주소를 확인해주세요.');
+                                    if (await PostCheckInEmail.result == true) {
+                                      UserId = PostCheckInEmail.UserId;
+                                      print("유저 아이디 : $UserId");
+                                      Get.snackbar('이메일 발송 성공', '이메일을 확인해주세요.');
+                                    } else {
+                                      Get.snackbar(
+                                          '이메일 발송 실패', '이메일 주소를 확인해주세요.');
+                                    }
                                   },
                                 )),
                           ),
@@ -172,7 +178,19 @@ class _CertificationUnivState extends State<CertificationUniv> {
             ),
           ),
         ),
-        bottomNavigationBar:
-            Visibility(visible: _visibility, child: bottomSubmitButton()));
+        bottomNavigationBar: Visibility(
+            visible: _visibility,
+            child: bottomSubmitButton(onTap: () async {
+              print("유저 아이디:$UserId");
+              await PostTermsAgreement.postTermsAgreement(
+                  UserId, serviceTermAgreement);
+
+              if (PostTermsAgreement.UserToken != null) {
+                UserToken = PostTermsAgreement.UserToken;
+                // print("받는값 : ${PostTermsAgreement.UserToken}");
+                // print("넘기는값:$UserToken");
+                Get.offAll(MainScreen());
+              }
+            })));
   }
 }

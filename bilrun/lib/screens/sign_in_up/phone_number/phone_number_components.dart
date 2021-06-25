@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bilrun/design/usedColors.dart';
-import 'package:bilrun/widgets/launch_kakaotalk_plus_friend.dart';
+import 'package:bilrun/widgets/launch_kakao_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';

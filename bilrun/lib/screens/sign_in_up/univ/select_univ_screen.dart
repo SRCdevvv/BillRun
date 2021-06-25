@@ -1,7 +1,7 @@
 import 'package:bilrun/screens/sign_in_up/service/univ_model.dart';
 import 'package:bilrun/screens/sign_in_up/univ/certification_univ_screen.dart';
 import 'package:bilrun/screens/sign_in_up/univ/select_univ_components.dart';
-import 'package:bilrun/widgets/launch_kakaotalk_plus_friend.dart';
+import 'package:bilrun/widgets/launch_kakao_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';

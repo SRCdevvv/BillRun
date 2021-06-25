@@ -136,11 +136,9 @@ Widget afterSubmitText() {
   );
 }
 
-Widget bottomSubmitButton() {
+Widget bottomSubmitButton({onTap}) {
   return InkWell(
-    onTap: () {
-      Get.to(() => MainScreen());
-    },
+    onTap: onTap,
     child: Container(
         width: Get.width,
         height: 60,

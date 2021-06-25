@@ -16,9 +16,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      home: MainScreenPage(title: '빌려주러 달려 가는 중 ! - 빌RUN'),
+    return Scaffold(
+      body: MainScreenPage(title: '빌려주러 달려 가는 중 ! - 빌RUN'),
     );
   }
 }
