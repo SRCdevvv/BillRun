@@ -24,8 +24,8 @@ class DetailProductService {
 
     // var IdOfProduct=1;
 
-    response = await client.get(
-        Uri.parse('$serviceUrl/lend_product_list/$getArguments?format=json'));
+    response = await client
+        .get(Uri.parse('$serviceUrl/product/$getArguments?format=json'));
 
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 launchKaKaoChannel() async {
   String url = "http://pf.kakao.com/_CuLxcK";
+
   if (await canLaunch(url)) {
     await launch(url);
   } else {

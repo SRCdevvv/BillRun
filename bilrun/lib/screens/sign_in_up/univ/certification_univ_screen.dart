@@ -189,7 +189,7 @@ class _CertificationUnivState extends State<CertificationUniv> {
                 UserToken = PostTermsAgreement.UserToken;
                 // print("받는값 : ${PostTermsAgreement.UserToken}");
                 // print("넘기는값:$UserToken");
-                Get.offAll(MainScreen());
+                Get.offAll(MainScreen(), arguments: UserToken);
               }
             })));
   }

@@ -274,6 +274,8 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                                         Colors.white);
                                                 Get.to(
                                                   () => LendMain(),
+                                                  arguments:
+                                                      PostCheckInNum.UserToken,
                                                   duration:
                                                       Duration(seconds: 2),
                                                   transition: Transition.native,

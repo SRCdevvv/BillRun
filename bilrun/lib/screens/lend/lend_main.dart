@@ -1,8 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/community/now_community.dart';
-import 'package:bilrun/widgets/location/controller_location.dart';
-import 'package:bilrun/widgets/location/set_location.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:bilrun/widgets/notice/notice_controller.dart';
 import 'package:bilrun/widgets/search/search_button.dart';
@@ -11,8 +9,6 @@ import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:bilrun/screens/lend/lend_controller.dart';
 import 'lend_product_list.dart';
-import 'package:bilrun/widgets/location/now_location.dart';
-import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
 
 void main() => runApp(LendMain());
@@ -31,12 +27,21 @@ List<String> noticeImgList = [];
 class _LendMainState extends State<LendMain> {
   bool isTaped = false;
   static String fullLocation;
+  static String UserToken;
+
+  @override
+  void initState() {
+    super.initState();
+    UserToken = Get.arguments;
+  }
 
   LendProductController productController = Get.put(LendProductController());
 
   Future<Null> refresh() async {
     ProductListService.fetchLendProducts();
     LendProductController.fetchProducts();
+    UserToken = Get.arguments;
+
     this.productController = Get.put(LendProductController());
   }
 

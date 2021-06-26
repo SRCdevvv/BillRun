@@ -16,13 +16,14 @@ class PostCheckInNum {
       final headers = {"Content-type": "application/json"};
       final json = '{"phone":"$phoneNum", "auth_number":$checkNum}';
       final response = await http.post(uri, headers: headers, body: json);
+      print(json);
 
       if (response.statusCode == 200) {
         print(response.statusCode);
 
         var jsonData = jsonDecode(response.body);
         UserToken = jsonData["token"];
-        print(UserToken);
+        print("유저토큰 :: $UserToken");
 
         result = true;
         print("인증번호2 성공");
