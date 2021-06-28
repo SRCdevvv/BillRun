@@ -1,6 +1,6 @@
 import 'package:bilrun/model/user_review_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'review_service.dart';
 
 class ReviewListController extends GetxController {
@@ -8,9 +8,11 @@ class ReviewListController extends GetxController {
   // ignore: deprecated_member_use
   static var reviewList = List<UserReviewData>().obs;
   static String nowStatus;
+  static String userToken;
 
   @override
   void onInit() {
+    userToken = Get.arguments;
     ReviewFetchList();
     super.onInit();
     // print('리뷰리스트 실행');
@@ -19,7 +21,7 @@ class ReviewListController extends GetxController {
   static Future ReviewFetchList() async {
     try {
       isLoading(true);
-      var reviewLists = await ReviewListService.fetchReviewList();
+      var reviewLists = await ReviewListService.fetchReviewList(userToken);
       //print("컨트롤러실행");
 
       if (reviewList != null) {

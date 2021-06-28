@@ -1,6 +1,6 @@
 import 'package:bilrun/model/product_review_model.dart';
 
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'product_review_service.dart';
 
 class ProductReviewListController extends GetxController {
@@ -8,9 +8,11 @@ class ProductReviewListController extends GetxController {
   // ignore: deprecated_member_use
   static var reviewList = List<ProductReviewData>().obs;
   static String nowStatus;
+  static String userToken;
 
   @override
   void onInit() {
+    userToken = Get.arguments;
     ReviewFetchList();
     super.onInit();
     print('물품리뷰리스트 실행');
@@ -19,7 +21,8 @@ class ProductReviewListController extends GetxController {
   static Future ReviewFetchList() async {
     try {
       isLoading(true);
-      var reviewLists = await ProductReviewListService.fetchReviewList();
+      var reviewLists =
+          await ProductReviewListService.fetchReviewList(userToken);
       print("컨트롤러실행");
 
       if (reviewList != null) {

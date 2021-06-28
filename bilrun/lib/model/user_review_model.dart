@@ -16,6 +16,7 @@ class UserReviewData {
     this.q1,
     this.q2,
     this.q3,
+    this.q4,
     this.user,
     this.createdAt,
   });
@@ -23,6 +24,7 @@ class UserReviewData {
   String q1;
   String q2;
   String q3;
+  String q4;
   User user;
   DateTime createdAt;
 
@@ -30,6 +32,7 @@ class UserReviewData {
         q1: json["q1"],
         q2: json["q2"],
         q3: json["q3"],
+        q4: json["q4"],
         user: User.fromJson(json["user"]),
         createdAt: DateTime.parse(json["created_at"]),
       );
@@ -38,6 +41,7 @@ class UserReviewData {
         "q1": q1,
         "q2": q2,
         "q3": q3,
+        "q4": q4,
         "user": user.toJson(),
         "created_at": createdAt.toIso8601String(),
       };
