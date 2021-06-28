@@ -8,7 +8,8 @@ import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 
 class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
-  const LendProductTile(this.lendproduct);
+  final String userToken;
+  const LendProductTile(this.lendproduct, this.userToken);
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +40,7 @@ class LendProductTile extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () => {
-              Get.to(
-                DetailScreen(),
-                arguments: lendproduct.id,
-              )
+              Get.to(DetailScreen(), arguments: [lendproduct.id, userToken])
             },
             child: Stack(
               children: [

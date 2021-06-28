@@ -13,8 +13,19 @@ class DialogProductRegister extends StatefulWidget {
 }
 
 class _DialogProductRegisterState extends State<DialogProductRegister> {
+  static String userToken;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userToken = Get.arguments;
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("물품 등록 팝업 $userToken");
+
     return Material(
       child: SafeArea(
         child: Container(
@@ -48,8 +59,10 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     height: Get.height * 0.167 * 0.3,
                     child: Center(
                       child: TextButton(
-                        onPressed: () =>
-                            {Get.to(ProductRegister(), arguments: true)},
+                        onPressed: () => {
+                          Get.to(ProductRegister(),
+                              arguments: [true, userToken])
+                        },
                         child: Text("빌려드림",
                             style: const TextStyle(
                                 color: const Color(0xff767676),
@@ -71,8 +84,10 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     height: Get.height * 0.167 * 0.3,
                     child: Center(
                       child: TextButton(
-                        onPressed: () =>
-                            {Get.to(ProductRegister(), arguments: false)},
+                        onPressed: () => {
+                          Get.to(ProductRegister(),
+                              arguments: [false, userToken])
+                        },
                         child: Text("빌림",
                             style: const TextStyle(
                                 color: const Color(0xff767676),

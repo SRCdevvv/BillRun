@@ -25,13 +25,19 @@ class RentMain extends StatefulWidget {
 }
 
 class _RentMainState extends State<RentMain> {
+  static String UserToken;
   RentProductController rentProductController =
       Get.put(RentProductController());
 
   Future<Null> refresh() async {
-    RentProductListService.fetchRentProducts();
+    RentProductListService.fetchRentProducts(UserToken);
     RentProductController.rentfetchProducts();
     rentProductController = Get.put(RentProductController());
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   static String fullLocation;

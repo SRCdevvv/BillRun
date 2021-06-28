@@ -117,7 +117,8 @@ class _SearchbarScreenState extends State<SearchbarScreen> {
                               LendProductController.productList.length,
                               (index) {
                             return LendProductTile(
-                                LendProductController.productList[index]);
+                                LendProductController.productList[index],
+                                'null');
                           }),
                         );
                     }),

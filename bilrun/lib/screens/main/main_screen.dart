@@ -54,6 +54,14 @@ class _MainScreenPageState extends State<MainScreenPage> {
     });
   }
 
+  static String userToken;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userToken = Get.arguments;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,11 +107,12 @@ class _MainScreenPageState extends State<MainScreenPage> {
                 icon: Icon(Icons.add_box_rounded),
                 iconSize: 22,
                 onPressed: () {
-                  showCupertinoModalBottomSheet(
-                    expand: false,
-                    context: context,
-                    builder: (context) => DialogProductRegister(),
-                  );
+                  // showCupertinoModalBottomSheet(
+                  //   expand: false,
+                  //   context: context,
+                  //   builder: (context) => DialogProductRegister(),
+                  // );
+                  Get.dialog(DialogProductRegister(), arguments: userToken);
                 },
               ),
               label: '상품 등록',

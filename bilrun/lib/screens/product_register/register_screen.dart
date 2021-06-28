@@ -53,11 +53,13 @@ class ProductRegisterWidget extends StatefulWidget {
 class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   static List<bool> isSelected;
   Future myFuture;
+  String userToken;
 
   @override
   void initState() {
     super.initState();
-    ProductCategory = Get.arguments;
+    ProductCategory = Get.arguments[0];
+    userToken = Get.arguments[1];
     isSelected = [true, false, false];
   }
 
@@ -67,6 +69,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print("register screen : $userToken");
     return Scaffold(
       appBar: whiteAppBar(ProductCategory == true ? "빌려드림 상품 등록 " : "빌림 상품 등록"),
       body: SingleChildScrollView(
@@ -90,21 +93,21 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                     setState(() {
                       selectedCategory = newValue;
                       if (selectedCategory == '전공도서') {
-                        data.productMenu = 'MajorBook';
+                        data.productMenu = 'majorBook';
                       } else if (selectedCategory == '생활잡화') {
-                        data.productMenu = 'Household';
+                        data.productMenu = 'household';
                       } else if (selectedCategory == '디지털/가전') {
-                        data.productMenu = 'Digital';
+                        data.productMenu = 'digital';
                       } else if (selectedCategory == '게임/취미') {
-                        data.productMenu = 'Game';
+                        data.productMenu = 'game';
                       } else if (selectedCategory == '여성잡화') {
-                        data.productMenu = 'Woman';
+                        data.productMenu = 'woman';
                       } else if (selectedCategory == '남성잡화') {
-                        data.productMenu = 'Man';
+                        data.productMenu = 'man';
                       } else if (selectedCategory == '스포츠') {
-                        data.productMenu = 'Sports';
+                        data.productMenu = 'sports';
                       } else if (selectedCategory == '기타') {
-                        data.productMenu = 'Etc';
+                        data.productMenu = 'etc';
                       }
                     });
                   },
@@ -183,8 +186,9 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
       ),
       bottomNavigationBar: RegisterButton(() async {
         print(data.productMenu);
-        data.imageFile = pickupState.ImgFiles[0];
-        print(data.imageFile);
+        print(userToken);
+        // data.imageFile = pickupState.ImgFiles[0];
+        // print(data.imageFile);
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
           await getOrCreateInitAPIData(
@@ -196,6 +200,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             data.productMenu,
             PriceProp,
             data.imageFile,
+            userToken,
           );
         }
       }),

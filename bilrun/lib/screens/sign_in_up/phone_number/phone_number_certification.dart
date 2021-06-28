@@ -1,5 +1,6 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/lend/lend_main.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_components.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_check_in_number_service.dart';
 import 'package:bilrun/screens/sign_in_up/service/phone_num_service.dart';
@@ -272,8 +273,8 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                                         Duration(seconds: 3),
                                                     backgroundColor:
                                                         Colors.white);
-                                                Get.to(
-                                                  () => LendMain(),
+                                                Get.off(
+                                                  () => MainScreen(),
                                                   arguments:
                                                       PostCheckInNum.UserToken,
                                                   duration:

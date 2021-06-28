@@ -1,4 +1,5 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/model/product_review_model.dart';
 import 'package:bilrun/widgets/banner.dart';
 import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
@@ -38,9 +39,10 @@ class _LendMainState extends State<LendMain> {
   LendProductController productController = Get.put(LendProductController());
 
   Future<Null> refresh() async {
-    ProductListService.fetchLendProducts();
-    LendProductController.fetchProducts();
     UserToken = Get.arguments;
+    print("lend에서 useToken : $UserToken");
+    ProductListService.fetchLendProducts(UserToken);
+    // LendProductController.fetchProducts();
 
     this.productController = Get.put(LendProductController());
   }
@@ -118,7 +120,7 @@ class _LendMainState extends State<LendMain> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: FutureBuilder(
-                            future: NoticeController.NoticeFetchList(),
+                            future: NoticeController.NoticeFetchList(UserToken),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
                               if (snapshot.connectionState ==
@@ -214,7 +216,8 @@ class _LendMainState extends State<LendMain> {
                                   LendProductController.productList.length,
                                   (index) {
                                 return LendProductTile(
-                                    LendProductController.productList[index]);
+                                    LendProductController.productList[index],
+                                    UserToken);
                               }),
                             );
                         }),
