@@ -104,18 +104,18 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
                         ),
                         null,
                       ),
-                      Container(
-                          width: Get.width,
-                          decoration: BoxDecoration(boxShadow: [
-                            BoxShadow(
-                                color: const Color(0x0d000000),
-                                offset: Offset(0, 6),
-                                blurRadius: 8,
-                                spreadRadius: 0)
-                          ], color: const Color(0xffffffff)),
-                          child: SharedProduct("받은 물품 리뷰", () {
-                            Get.to(() => ProductReviewListPage());
-                          })),
+                      // Container(
+                      //     width: Get.width,
+                      //     decoration: BoxDecoration(boxShadow: [
+                      //       BoxShadow(
+                      //           color: const Color(0x0d000000),
+                      //           offset: Offset(0, 6),
+                      //           blurRadius: 8,
+                      //           spreadRadius: 0)
+                      //     ], color: const Color(0xffffffff)),
+                      //     child: SharedProduct("받은 물품 리뷰", () {
+                      //       Get.to(() => ProductReviewListPage());
+                      //     })),
 
                       Obx(() {
                         if (ProductReviewListController.isLoading.value)

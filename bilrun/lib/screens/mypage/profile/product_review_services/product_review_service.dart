@@ -9,7 +9,7 @@ class ProductReviewListService {
 
   static Future<List<ProductReviewData>> fetchReviewList(var userToken) async {
     var response = await client.get(
-      Uri.parse('$serviceUrl/review/pro_id=1'),
+      Uri.parse('$serviceUrl/review/pro_id=3'),
       headers: {HttpHeaders.authorizationHeader: "jwt $userToken"},
     );
 

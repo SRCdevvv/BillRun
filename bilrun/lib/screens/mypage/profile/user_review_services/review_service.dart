@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ReviewListService {
   static var client = http.Client();
+  static bool result;
 
   static Future<List<UserReviewData>> fetchReviewList(var userToken) async {
     var response = await client.get(
@@ -17,9 +18,13 @@ class ReviewListService {
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
       //print(jsonString);
+      result = true;
+      print("result :: $result");
 
       return userReviewDataFromJson(jsonString);
     } else {
+      result = false;
+      print("result :: $result");
       return null;
     }
   }

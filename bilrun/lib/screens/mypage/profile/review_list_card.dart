@@ -1,4 +1,5 @@
 import 'package:bilrun/design/divider_example.dart';
+import 'package:bilrun/design/text_theme.dart';
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_review_model.dart';
 import 'package:bilrun/screens/mypage/profile/product_review_services/product_review_controller.dart';
@@ -49,23 +50,13 @@ class _ReviewCardState extends State<ReviewCard> {
                             padding: const EdgeInsets.only(left: 8, bottom: 5),
                             child: Text(
                               "${reviewData.user.nickname}",
-                              style: const TextStyle(
-                                  color: const Color(0xff191919),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "NotoSansCJKkr",
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16.0),
+                              style: modernStyle(16),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Text("$differenceDay일 전",
-                                style: const TextStyle(
-                                    color: const Color(0xff999999),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "NotoSansCJKkr",
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 12.0),
+                                style: modernStyle(14),
                                 textAlign: TextAlign.left),
                           ),
                         ],
@@ -105,12 +96,7 @@ class _ReviewCardState extends State<ReviewCard> {
                 width: Get.width * 0.655,
                 child: Text(
                   "${reviewData.content}",
-                  style: const TextStyle(
-                      color: const Color(0xff191919),
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "NotoSansCJKkr",
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14.0),
+                  style: modernStyle(14),
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
                   maxLines: isTaped == true ? 100 : 3,
