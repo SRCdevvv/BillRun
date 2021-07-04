@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "bilrun",
-            "cwd": "bilrun",
+            "name": "billrun",
+            "cwd": "billrun",
             "request": "launch",
             "type": "dart"
         }
