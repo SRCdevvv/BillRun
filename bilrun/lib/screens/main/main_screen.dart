@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainScreenPage(title: '빌려주러 달려 가는 중 ! - 빌RUN');
+    return Material(child: MainScreenPage(title: '빌려주러 달려 가는 중 ! - 빌RUN'));
   }
 }
 

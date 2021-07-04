@@ -2,14 +2,11 @@ import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/lend/lend_like.dart';
 import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
-
 import 'package:bilrun/screens/product_detail/service/product_detail_controller.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:bilrun/widgets/banner.dart';
-
 import 'package:bilrun/screens/product_detail/detail_body.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -71,7 +68,7 @@ class _DetailScreenState extends State<DetailScreen> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    ProductPhoto(),
+                    //ProductPhoto(),
                     Obx(() {
                       if (DetailProductController.isLoading.value)
                         return Container(child: CircularProgressIndicator());
@@ -207,6 +204,7 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Widget ProductPhoto() {
+    var dpController = DetailProductController.productList.value;
     return FutureBuilder(
         future: DetailProductController.fetchRentDetail(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -218,16 +216,51 @@ class _DetailScreenState extends State<DetailScreen> {
             return Text("banner error ${snapshot.hasError}");
           } else {
             productImgList.clear();
-            // for (int i = 0;
-            //     i < DetailProductController.productList.value.photos.length;
-            //     i++) {
-            //   productImgList.add(
-            //       DetailProductController.productList.value.photos[i].photo);
-            // }
-            productImgList
-                .add(DetailProductController.productList.value.photo1);
-            productImgList
-                .add(DetailProductController.productList.value.photo2);
+            if (dpController.lend == true) {
+              productImgList
+                  .add(DetailProductController.productList.value.photo1);
+              if (dpController.photo2.isNotEmpty) {
+                productImgList
+                    .add(DetailProductController.productList.value.photo2);
+              }
+              if (dpController.photo3.isNotEmpty) {
+                productImgList
+                    .add(DetailProductController.productList.value.photo2);
+              }
+              if (dpController.photo4.isNotEmpty) {
+                productImgList
+                    .add(DetailProductController.productList.value.photo2);
+              }
+              if (dpController.photo5.isNotEmpty) {
+                productImgList
+                    .add(DetailProductController.productList.value.photo2);
+              }
+            }
+            if (dpController.lend == false) {
+              if (dpController.photo1.isEmpty) {
+                return null;
+              } else {
+                productImgList
+                    .add(DetailProductController.productList.value.photo1);
+                if (dpController.photo2.isNotEmpty) {
+                  productImgList
+                      .add(DetailProductController.productList.value.photo2);
+                }
+                if (dpController.photo3.isNotEmpty) {
+                  productImgList
+                      .add(DetailProductController.productList.value.photo2);
+                }
+                if (dpController.photo4.isNotEmpty) {
+                  productImgList
+                      .add(DetailProductController.productList.value.photo2);
+                }
+                if (dpController.photo5.isNotEmpty) {
+                  productImgList
+                      .add(DetailProductController.productList.value.photo2);
+                }
+              }
+            }
+
             productImgList
                 .add(DetailProductController.productList.value.photo3);
             productImgList
