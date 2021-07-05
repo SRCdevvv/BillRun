@@ -27,21 +27,20 @@ class _LendMainState extends State<LendMain> {
   // static String fullLocation;
   static String UserToken;
 
-  @override
-  void initState() {
-    super.initState();
-    UserToken = Get.arguments;
-  }
-
   LendProductController productController = Get.put(LendProductController());
 
   Future<Null> refresh() async {
-    UserToken = Get.arguments;
-    print("lend에서 useToken : $UserToken");
+    // print("lend에서 useToken : $UserToken");
     ProductListService.fetchLendProducts(UserToken);
     // LendProductController.fetchProducts();
 
     this.productController = Get.put(LendProductController());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    UserToken = Get.arguments;
   }
 
   @override
@@ -90,7 +89,7 @@ class _LendMainState extends State<LendMain> {
           //                 size: 25,
           //               ),
           //               onPressed: () {
-          //                 Get.to(SetLocation());
+          //                 Get.to(()=>SetLocation());
           //               })
           //         ],
           //       );

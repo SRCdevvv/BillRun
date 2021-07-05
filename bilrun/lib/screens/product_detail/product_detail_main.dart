@@ -238,7 +238,7 @@ class _DetailScreenState extends State<DetailScreen> {
             }
             if (dpController.lend == false) {
               if (dpController.photo1.isEmpty) {
-                return null;
+                productImgList.clear();
               } else {
                 productImgList
                     .add(DetailProductController.productList.value.photo1);
@@ -261,14 +261,6 @@ class _DetailScreenState extends State<DetailScreen> {
               }
             }
 
-            productImgList
-                .add(DetailProductController.productList.value.photo3);
-            productImgList
-                .add(DetailProductController.productList.value.photo4);
-            productImgList
-                .add(DetailProductController.productList.value.photo5);
-
-            print(productImgList);
             return DetailBanner();
           }
         });

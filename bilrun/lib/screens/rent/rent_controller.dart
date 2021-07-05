@@ -7,10 +7,10 @@ class RentProductController extends GetxController {
   static var isLoading = true.obs;
   // ignore: deprecated_member_use
   static var rentProductList = List<ProductList>().obs;
-  static String userToken;
+  static String userToken = Get.arguments;
+
   @override
   void onInit() {
-    userToken = Get.arguments;
     rentfetchProducts();
     super.onInit();
   }

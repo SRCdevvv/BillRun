@@ -1,6 +1,7 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/product_detail/another_user_product_list/etc_controller.dart';
 import 'package:bilrun/screens/product_detail/another_user_product_list/etc_list.dart';
+import 'package:bilrun/screens/product_detail/service/product_detail_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -261,8 +262,8 @@ class DetailScreenBody extends StatelessWidget {
                               EtcProductController.productList.length, (index) {
                             return EtcProductTile(
                                 EtcProductController.productList[index],
-                                EtcProductController
-                                    .productList[index].user.id);
+                                EtcProductController.productList[index].user.id,
+                                DetailProductService.userToken);
                           }),
                         );
                     }),

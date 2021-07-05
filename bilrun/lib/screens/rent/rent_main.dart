@@ -21,7 +21,7 @@ class RentMain extends StatefulWidget {
 }
 
 class _RentMainState extends State<RentMain> {
-  static String UserToken;
+  static String UserToken = RentProductController.userToken;
   RentProductController rentProductController =
       Get.put(RentProductController());
 
@@ -31,15 +31,11 @@ class _RentMainState extends State<RentMain> {
     rentProductController = Get.put(RentProductController());
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   static String fullLocation;
 
   @override
   Widget build(BuildContext context) {
+    print("rent main token : $UserToken");
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(52),

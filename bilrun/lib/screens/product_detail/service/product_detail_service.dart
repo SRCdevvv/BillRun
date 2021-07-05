@@ -8,11 +8,10 @@ import 'package:bilrun/model/product_detail_model.dart';
 
 class DetailProductService {
   static var client = http.Client();
+  static var productID = Get.arguments[0];
+  static var userToken = Get.arguments[1];
 
   static Future<DetailProduct> fetchLendDetailInfo() async {
-    var productID = Get.arguments[0];
-    var userToken = Get.arguments[1];
-
     var response;
 
     // var IdOfProduct=1;

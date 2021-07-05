@@ -58,7 +58,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     child: Center(
                       child: TextButton(
                         onPressed: () => {
-                          Get.to(ProductRegister(),
+                          Get.to(() => ProductRegister(),
                               arguments: [true, userToken])
                         },
                         child: Text("빌려드림",
@@ -83,7 +83,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     child: Center(
                       child: TextButton(
                         onPressed: () => {
-                          Get.to(ProductRegister(),
+                          Get.to(() => ProductRegister(),
                               arguments: [false, userToken])
                         },
                         child: Text("빌림",

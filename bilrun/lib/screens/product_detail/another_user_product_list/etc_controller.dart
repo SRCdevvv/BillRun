@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:bilrun/screens/product_detail/service/product_detail_service.dart';
 import 'package:get/state_manager.dart';
 import 'etc_service.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -13,25 +13,14 @@ class EtcProductController extends GetxController {
   static Future fetchEtcProducts(userId) async {
     try {
       isLoading(true);
-      var products = await EtcProductService.fetchEtcProducts(userId);
+      var products = await EtcProductService.fetchEtcProducts(
+          userId, DetailProductService.userToken);
 
       if (products != null) {
         productList.value = products;
       } else if (products == null) {
-        print('error');
-        return Scaffold(
-          body: Column(
-            children: [Text('데이터 로드 실패')],
-          ),
-        );
-      } else {
-        return Scaffold(
-          body: Column(
-            children: [
-              Text('인터넷 연결을 확인해주세요.'),
-            ],
-          ),
-        );
+        print('etc controller error');
+        return null;
       }
     } finally {
       isLoading(false);
