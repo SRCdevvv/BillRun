@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/screens/lend/lend_service.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -12,7 +13,7 @@ class LendProductController extends GetxController {
 
   @override
   void onInit() {
-    userToken = Get.arguments;
+    userToken = MainScreenState.mainUserToken;
     fetchProducts();
     super.onInit();
     print("onit 실행됨");

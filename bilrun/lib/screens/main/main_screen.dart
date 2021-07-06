@@ -14,20 +14,23 @@ void main() async {
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);
   final String title;
+
   @override
-  _MainScreenState createState() => _MainScreenState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> {
+  static String mainUserToken = Get.arguments;
+
   int currentIndex = 0;
   int passIndex = 0;
   // ignore: unused_field
   int _counter = 0;
 
-  final List<Widget> _pages = [
+  final List<dynamic> _pages = [
     LendMain(),
     RentMain(),
-    //DialogProductRegister(),
+    DialogProductRegister(),
     ChatScreen(),
     MyPageScreen(),
   ];
@@ -43,13 +46,6 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _counter++;
     });
-  }
-
-  static String userToken;
-  @override
-  void initState() {
-    super.initState();
-    userToken = Get.arguments;
   }
 
   @override
@@ -93,19 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                 label: '빌림',
               ),
               BottomNavigationBarItem(
-                icon: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(Icons.add_box_rounded),
-                  iconSize: 22,
-                  onPressed: () {
-                    // showCupertinoModalBottomSheet(
-                    //   expand: false,
-                    //   context: context,
-                    //   builder: (context) => DialogProductRegister(),
-                    // );
-                    Get.dialog(DialogProductRegister(), arguments: userToken);
-                  },
-                ),
+                icon: Icon(Icons.add_box_rounded),
                 label: '상품 등록',
               ),
               BottomNavigationBarItem(
