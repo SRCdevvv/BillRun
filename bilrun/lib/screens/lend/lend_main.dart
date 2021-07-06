@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/widgets/community/now_community.dart';
 import 'package:bilrun/widgets/notice/notice_banner.dart';
 import 'package:bilrun/widgets/notice/notice_controller.dart';
@@ -25,19 +26,12 @@ List<String> noticeImgList = [];
 class _LendMainState extends State<LendMain> {
   bool isTaped = false;
   // static String fullLocation;
-  static String UserToken;
-
-  @override
-  void initState() {
-    super.initState();
-    UserToken = Get.arguments;
-  }
+  static String UserToken = MainScreenState.mainUserToken;
 
   LendProductController productController = Get.put(LendProductController());
 
   Future<Null> refresh() async {
-    UserToken = Get.arguments;
-    print("lend에서 useToken : $UserToken");
+    // print("lend에서 useToken : $UserToken");
     ProductListService.fetchLendProducts(UserToken);
     // LendProductController.fetchProducts();
 
@@ -90,7 +84,7 @@ class _LendMainState extends State<LendMain> {
           //                 size: 25,
           //               ),
           //               onPressed: () {
-          //                 Get.to(SetLocation());
+          //                 Get.to(()=>SetLocation());
           //               })
           //         ],
           //       );
@@ -230,5 +224,3 @@ class _LendMainState extends State<LendMain> {
     );
   }
 }
-
-// bool _isPressed = false;

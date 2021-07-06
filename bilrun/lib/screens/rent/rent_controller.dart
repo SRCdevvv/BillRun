@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,14 +9,15 @@ class RentProductController extends GetxController {
   // ignore: deprecated_member_use
   static var rentProductList = List<ProductList>().obs;
   static String userToken;
+
   @override
   void onInit() {
-    userToken = Get.arguments;
-    rentfetchProducts();
+    userToken = MainScreenState.mainUserToken;
+    rentfetchProducts(userToken);
     super.onInit();
   }
 
-  static Future rentfetchProducts() async {
+  static Future rentfetchProducts(String userToken) async {
     try {
       isLoading(true);
       var rentProducts =

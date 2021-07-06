@@ -1,4 +1,5 @@
 import 'package:bilrun/model/product_review_model.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 
 import 'package:get/get.dart';
 import 'product_review_service.dart';
@@ -12,7 +13,7 @@ class ProductReviewListController extends GetxController {
 
   @override
   void onInit() {
-    userToken = Get.arguments;
+    userToken = MainScreenState.mainUserToken;
     ReviewFetchList();
     super.onInit();
     print('물품리뷰리스트 실행');

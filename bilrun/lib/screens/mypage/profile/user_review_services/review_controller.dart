@@ -1,4 +1,5 @@
 import 'package:bilrun/model/user_review_model.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:get/get.dart';
 import 'review_service.dart';
 
@@ -11,7 +12,7 @@ class ReviewListController extends GetxController {
 
   @override
   void onInit() {
-    userToken = Get.arguments;
+    userToken = MainScreenState.mainUserToken;
     ReviewFetchList();
     super.onInit();
     // print('리뷰리스트 실행');

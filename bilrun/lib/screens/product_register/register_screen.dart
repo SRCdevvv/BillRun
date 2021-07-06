@@ -1,16 +1,14 @@
 import 'dart:core';
 import 'dart:io';
-
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/product_register/register_components.dart';
 import 'package:bilrun/screens/product_register/register_service/product_register_service.dart';
 import 'package:bilrun/widgets/location/set_location.dart';
-
 import 'package:bilrun/widgets/pick_up_photos.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/design/divider_example.dart';
-
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -59,7 +57,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   void initState() {
     super.initState();
     ProductCategory = Get.arguments[0];
-    userToken = Get.arguments[1];
+    userToken = MainScreenState.mainUserToken;
     isSelected = [true, false, false];
   }
 

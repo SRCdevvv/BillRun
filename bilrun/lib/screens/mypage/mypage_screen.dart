@@ -106,7 +106,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                             child: IconButton(
                                 icon: Icon(Icons.arrow_forward_ios),
                                 onPressed: () {
-                                  Get.to(ProfileDetailScreen());
+                                  Get.to(() => ProfileDetailScreen());
                                 }),
                           ),
                         ],
@@ -186,7 +186,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                                         children: <Widget>[
                                           IconButton(
                                             onPressed: () {
-                                              Get.to(DealManagement());
+                                              Get.to(() => DealManagement());
                                             },
                                             icon: Image.asset(
                                               'assets/images/dealListButton.png',

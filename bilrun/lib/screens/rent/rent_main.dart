@@ -1,5 +1,6 @@
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/rent/rent_controller.dart';
 import 'package:bilrun/screens/rent/rent_product_list.dart';
 import 'package:bilrun/screens/rent/rent_service.dart';
@@ -21,25 +22,21 @@ class RentMain extends StatefulWidget {
 }
 
 class _RentMainState extends State<RentMain> {
-  static String UserToken;
+  static String UserToken = MainScreenState.mainUserToken;
   RentProductController rentProductController =
       Get.put(RentProductController());
 
   Future<Null> refresh() async {
     RentProductListService.fetchRentProducts(UserToken);
-    RentProductController.rentfetchProducts();
+    RentProductController.rentfetchProducts(UserToken);
     rentProductController = Get.put(RentProductController());
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   static String fullLocation;
 
   @override
   Widget build(BuildContext context) {
+    print("rent main token : $UserToken");
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(52),

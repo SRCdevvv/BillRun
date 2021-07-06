@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/product_register/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
   @override
   void initState() {
     super.initState();
-    userToken = Get.arguments;
+    userToken = MainScreenState.mainUserToken;
   }
 
   @override
@@ -58,7 +59,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     child: Center(
                       child: TextButton(
                         onPressed: () => {
-                          Get.to(ProductRegister(),
+                          Get.to(() => ProductRegister(),
                               arguments: [true, userToken])
                         },
                         child: Text("빌려드림",
@@ -83,7 +84,7 @@ class _DialogProductRegisterState extends State<DialogProductRegister> {
                     child: Center(
                       child: TextButton(
                         onPressed: () => {
-                          Get.to(ProductRegister(),
+                          Get.to(() => ProductRegister(),
                               arguments: [false, userToken])
                         },
                         child: Text("빌림",

@@ -272,7 +272,7 @@ class _CertificationPhoneState extends State<CertificationPhone> {
                                                         Duration(seconds: 3),
                                                     backgroundColor:
                                                         Colors.white);
-                                                Get.off(
+                                                Get.offAll(
                                                   () => MainScreen(),
                                                   arguments:
                                                       PostCheckInNum.UserToken,

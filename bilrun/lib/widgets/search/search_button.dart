@@ -10,9 +10,7 @@ class SearchButton extends StatelessWidget {
         iconSize: 25.0,
         color: Colors.black,
         onPressed: () {
-            Get.to(SearchbarScreen());
-
-
+          Get.to(() => SearchbarScreen());
         });
   }
 }

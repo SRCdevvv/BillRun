@@ -10,6 +10,7 @@ class RentProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("rent token :: $userToken");
     int differenceDay = int.parse(
         DateTime.now().difference(product.createdAt).inDays.toString());
     int differenceHours = int.parse(
@@ -37,6 +38,10 @@ class RentProductTile extends StatelessWidget {
                 width: Get.width * 0.867,
                 height: Get.height * 0.081,
                 child: ListTile(
+                  onTap: () => {
+                    Get.to(() => DetailScreen(),
+                        arguments: [product.id, userToken])
+                  },
                   title: Container(
                     width: 246,
                     height: 22,
@@ -110,9 +115,6 @@ class RentProductTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onTap: () => {
-                    Get.to(DetailScreen(), arguments: [product.id, userToken])
-                  },
                   trailing: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Container(

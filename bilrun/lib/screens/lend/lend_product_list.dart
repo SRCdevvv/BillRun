@@ -39,7 +39,8 @@ class LendProductTile extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () => {
-              Get.to(DetailScreen(), arguments: [lendproduct.id, userToken])
+              Get.to(() => DetailScreen(),
+                  arguments: [lendproduct.id, userToken])
             },
             child: Stack(
               children: [
