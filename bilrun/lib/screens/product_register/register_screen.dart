@@ -6,6 +6,7 @@ import 'package:bilrun/screens/product_register/register_components.dart';
 import 'package:bilrun/screens/product_register/register_service/product_register_service.dart';
 import 'package:bilrun/widgets/location/set_location.dart';
 import 'package:bilrun/widgets/pick_up_photos.dart';
+import 'package:bilrun/widgets/pickup_photo_only.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/design/divider_example.dart';
@@ -19,10 +20,14 @@ String PriceProp;
 String productAddress;
 String selectedCategory;
 String title = "주소를 등록해주세요.";
+double setLat;
+double setLng;
+int status;
 
 var value;
 
 class _initData {
+  int userID;
   String productName;
   String description;
   String caution;
@@ -31,7 +36,8 @@ class _initData {
   String productAddress;
   bool productCategory;
   String productMenu;
-  LatLng productLatLng;
+  double productLat;
+  double productLng;
   List<File> imageFiles = [];
   File imageFile;
 }
@@ -52,12 +58,15 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   static List<bool> isSelected;
   Future myFuture;
   String userToken;
+  int userId;
 
   @override
   void initState() {
     super.initState();
     ProductCategory = Get.arguments[0];
     userToken = MainScreenState.mainUserToken;
+    data.userID = MainScreenState.mainUserId;
+    print("user id::: ${MainScreenState.mainUserId}");
     isSelected = [true, false, false];
   }
 
@@ -80,7 +89,8 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                    padding: const EdgeInsets.only(top: 28.0), child: pickup()),
+                    padding: const EdgeInsets.only(top: 28.0),
+                    child: ImagePickUP()),
                 RegisterName((String value) {
                   this.data.productName = value;
                 }),
@@ -166,11 +176,22 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
                   height: 10,
                 ),
                 RegisterLocation(title, () async {
-                  data.productAddress = await Get.to((() => SetLocation()));
-                  print("productAddress : ${data.productAddress}");
+                  List locationData = await Get.to((() => SetLocation()));
+
                   setState(() {
+                    data.productAddress = locationData[0];
                     title = data.productAddress;
+                    setLat = locationData[1];
+                    setLng = locationData[2];
+                    data.productLat = setLat;
+                    data.productLng = setLng;
                   });
+                  print("productAddress : ${data.productAddress}");
+                  print(
+                      "productLatLng1 : ${locationData[1]}&& ${locationData[2]}");
+                  print("productLatLng 2: $setLat && $setLng");
+                  print(
+                      "productLatLng3 : ${data.productLat} && ${data.productLng}");
                 }),
                 SizedBox(
                   height: 20,
@@ -181,13 +202,15 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
         ),
       ),
       bottomNavigationBar: RegisterButton(() async {
-        print(data.productMenu);
-        print(userToken);
+        print("userId : ${data.userID}");
+        print("userId2 : ${MainScreenState.mainUserId}");
         // data.imageFile = pickupState.ImgFiles[0];
         // print(data.imageFile);
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
-          await getOrCreateInitAPIData(
+          await postProduct
+              .getOrCreateInitAPIData(
+            data.userID,
             ProductCategory,
             data.price,
             data.productName,
@@ -196,8 +219,33 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             data.productMenu,
             PriceProp,
             data.imageFile,
+            data.productAddress,
+            data.productLat,
+            data.productLng,
             userToken,
-          );
+          )
+              .then((value) {
+            status = value;
+            print("value :: $value");
+            print("statusCode :: $status");
+            if (status == 201) {
+              data.productAddress = '';
+              Get.snackbar(
+                "물품 등록 성공",
+                "",
+                duration: Duration(seconds: 5),
+                backgroundColor: Colors.white,
+              );
+              Get.to(() => MainScreen(), arguments: [userToken, data.userID]);
+            } else {
+              Get.snackbar(
+                "물품 등록 실패",
+                "모든 항목을 작성했는지 확인해주세요.",
+                duration: Duration(seconds: 5),
+                backgroundColor: Colors.white,
+              );
+            }
+          });
         }
       }),
     );

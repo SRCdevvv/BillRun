@@ -1,5 +1,6 @@
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/product_register/register_screen.dart';
 import 'package:bilrun/widgets/location/now_location.dart';
 import 'package:bilrun/widgets/location/service_geocoing.dart';
 import 'package:bilrun/widgets/location/location_widget.dart';
@@ -21,8 +22,8 @@ class _SetLocationState extends State<SetLocation>
   String userAddress = '기본 주소 값';
   static double lat = 37.740354;
   static double lng = 127.199361;
-  double nowLat;
-  double nowLng;
+  static double nowLat;
+  static double nowLng;
   List<String> addressList = [];
   var localData;
   static String jibunAddress;
@@ -221,7 +222,7 @@ class _SetLocationState extends State<SetLocation>
         height: 60,
         child: FloatingActionButton.extended(
           onPressed: () {
-            Get.back(result: productAddress);
+            Get.back(result: ["$productAddress", lat, lng]);
           },
           label: Text("주소 등록",
               style: const TextStyle(

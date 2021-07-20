@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 class PostCheckInNum {
   static bool result;
   static String UserToken;
+  static int UserId;
 
   static Future<void> postCheckInNum(String phoneNum, int checkNum) async {
     String url = "$serviceUrl/sms_confirm";
@@ -23,7 +24,9 @@ class PostCheckInNum {
 
         var jsonData = jsonDecode(response.body);
         UserToken = jsonData["token"];
+        UserId = jsonData["user"];
         print("유저토큰 :: $UserToken");
+        print("유저id :: $UserId");
 
         result = true;
         print("인증번호2 성공");

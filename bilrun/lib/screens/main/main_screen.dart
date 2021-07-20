@@ -20,7 +20,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
-  static String mainUserToken = Get.arguments;
+  static String mainUserToken = Get.arguments[0];
+  static int mainUserId = Get.arguments[1];
 
   int currentIndex = 0;
   int passIndex = 0;
@@ -50,6 +51,8 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("user id in main :$mainUserId");
+    print("user id in main :${Get.arguments[1]}");
     return MaterialApp(
       home: Scaffold(
         body: _pages[currentIndex],

@@ -1,3 +1,4 @@
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:get/get.dart';
 import 'notice_service.dart';
 import 'package:bilrun/model/notice_model.dart';
@@ -11,7 +12,7 @@ class NoticeController extends GetxController {
 
   @override
   void onInit() {
-    userToken = Get.arguments;
+    userToken = MainScreenState.mainUserToken;
     NoticeFetchList(userToken);
     super.onInit();
     print("공지 onit 실행됨");

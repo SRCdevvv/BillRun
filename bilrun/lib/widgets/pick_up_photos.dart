@@ -20,11 +20,6 @@ class pickupState extends State<pickup> {
 
   static bool isLoading = false;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Widget buildGridView() {
     return ListView(
         scrollDirection: Axis.horizontal,
