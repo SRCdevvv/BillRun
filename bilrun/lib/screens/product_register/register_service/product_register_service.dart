@@ -1,4 +1,6 @@
 import 'package:bilrun/widgets/etc.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:http/http.dart' as http;
 
 class postProduct {
@@ -39,9 +41,19 @@ class postProduct {
 
 //TODO 사진 path 구하기...
 
+      var pic = await http.MultipartFile.fromPath("photo1", RegisterImage);
+
+      String path = RegisterImage;
+      // print("path:: $path");
+      // var name = path.substring(path.lastIndexOf("/") + 1, path.length);
+      // print("name::$name");
+      // var suffix = name.substring(name.lastIndexOf(".") + 1, name.length);
+      // print("suffix::$suffix");
+      request.files.add(pic);
+
       // final multipartFile =
-      //     await http.MultipartFile.fromPath('Image', '$RegisterImage');
-      // request.files.add(multipartFile);
+      //     await http.MultipartFile.fromPath('photo1', 'image/$suffix');
+      //request.files.add(multipartFile);
 
       http.StreamedResponse response = await request.send();
       status = response.statusCode;

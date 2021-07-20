@@ -1,6 +1,10 @@
 import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/model/user_info_model.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:bilrun/screens/mypage/mypage_service.dart';
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/mypage/profile/user_review_services/review_controller.dart';
+import 'package:bilrun/widgets/launch_kakao_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +19,18 @@ class MyPageScreen extends StatefulWidget {
 }
 
 class _MyPageScreenState extends State<MyPageScreen> {
+  int userId;
+  String userToken;
+  String name;
+  String community;
+  @override
+  void initState() {
+    userId = MainScreenState.mainUserId;
+    userToken = MainScreenState.mainUserToken;
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,24 +95,60 @@ class _MyPageScreenState extends State<MyPageScreen> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: Text(
-                                    '사용자 이름',
-                                    style: TextStyle(
-                                        color: const Color(0xff000000),
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 18.0),
-                                  ),
+                                  child: FutureBuilder(
+                                      future: UserInfoService.fetchUserlList(
+                                          userId, userToken),
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot snapshot) {
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return Center(
+                                              child:
+                                                  CircularProgressIndicator());
+                                        }
+
+                                        if (snapshot.hasError) {
+                                          return Text("nickname error");
+                                        } else {
+                                          name = UserInfoService.userNickName;
+                                          community =
+                                              UserInfoService.userCommunity;
+                                          return Column(
+                                            children: [
+                                              Text(
+                                                '$name',
+                                                style: TextStyle(
+                                                    color:
+                                                        const Color(0xff000000),
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: "NotoSansCJKkr",
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 18.0),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 8.0),
+                                                child: Text(
+                                                  "$community 인증 완료",
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              )
+                                            ],
+                                          );
+                                        }
+                                      }),
                                 ),
-                                Text("23,500 원",
-                                    style: TextStyle(
-                                        color: mainRed,
-                                        fontWeight: FontWeight.w700,
-                                        fontFamily: "NotoSansCJKkr",
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 20.0),
-                                    textAlign: TextAlign.left),
+                                // Text("23,500원",
+                                //     style: TextStyle(
+                                //         color: mainRed,
+                                //         fontWeight: FontWeight.w700,
+                                //         fontFamily: "NotoSansCJKkr",
+                                //         fontStyle: FontStyle.normal,
+                                //         fontSize: 20.0),
+                                //     textAlign: TextAlign.left),
                               ],
                             ),
                           ),
@@ -233,7 +285,9 @@ class _MyPageScreenState extends State<MyPageScreen> {
                         decoration: shadowDeco(),
                         child: Column(
                           children: [
-                            MypageMenu('결제수단 관리', () {}),
+                            MypageMenu('커뮤니티 설정', () {
+                              launchKaKaoChannel();
+                            }),
                             MypageMenu('알림 설정', () {}),
                           ],
                         ),

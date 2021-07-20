@@ -14,21 +14,24 @@ class ImagePickUP extends StatefulWidget {
 class _ImagePickUPState extends State<ImagePickUP> {
   File _image;
   String _image1 = "";
+  static String imagePath = "";
 
   final picker = ImagePicker();
 
-  Future loadPhoto() async {
+  Future<String> loadPhoto() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         _image1 = pickedFile.path;
         _image = File(pickedFile.path);
+        imagePath = json.encode(_image1);
         print(json.encode(_image1));
         print("file path...");
       } else {
         print('No image selected.');
       }
     });
+    return imagePath;
   }
 
   @override
