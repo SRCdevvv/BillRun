@@ -12,6 +12,11 @@ class LendProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // double productLat = lendproduct.lat;
+    // double productLng = lendproduct.lng;
+    double userLat = 37.55744;
+    double userLng = 127.04533;
+
     int differenceDay = int.parse(
         DateTime.now().difference(lendproduct.createdAt).inDays.toString());
     int differenceHours = int.parse(
@@ -124,7 +129,10 @@ class LendProductTile extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: Text(
                       //TODO product에 위도 경도 업데이트 되면 수정하기
-                      "${calculateLocation(37.12400, 126.123000, 37.425120, 126.365252)}",
+                      // productLat == null
+                      //     ? "위치설정필요"
+                      //     :
+                      "${calculateLocation(37.12510, 127.23003, 37.425120, 126.365252)}",
                       style: const TextStyle(
                           color: const Color(0xffaa0000),
                           fontWeight: FontWeight.w700,

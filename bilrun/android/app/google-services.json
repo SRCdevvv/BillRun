@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980957305379",
+    "project_id": "billrun-314101",
+    "storage_bucket": "billrun-314101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980957305379:android:f7b62255a28ed655c86f96",
+        "android_client_info": {
+          "package_name": "SRCcompanycom.example.bilrun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980957305379-p9h38tdk1m478r3l6fvundksnplbge13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Z4jT66KxJxNG8jMt5LqwUv8xAJ93C_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980957305379-p9h38tdk1m478r3l6fvundksnplbge13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

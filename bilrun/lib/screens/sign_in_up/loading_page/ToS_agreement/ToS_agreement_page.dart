@@ -1,9 +1,11 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/sign_in_up/phone_number/phone_number_certification.dart';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'Tos_agreement_component.dart';
 
@@ -15,6 +17,19 @@ class ToSAgreePage extends StatefulWidget {
 }
 
 class _ToSAgreePageState extends State<ToSAgreePage> {
+  void ToSDialog(BuildContext contexts, String ToS) {
+    showMaterialModalBottomSheet(
+        context: contexts,
+        builder: (context) => SingleChildScrollView(
+              controller: ModalScrollController.of(context),
+              child: SafeArea(
+                child: Container(
+                  child: Text("$ToS"),
+                ),
+              ),
+            ));
+  }
+
   static bool isAllChecked = false;
   static List<bool> isChecked = [false, false, false, false, false];
   static bool isPassed = false;
@@ -63,11 +78,36 @@ class _ToSAgreePageState extends State<ToSAgreePage> {
               padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
               child: Column(
                 children: [
-                  ToSAgreeLine(title: "서비스 이용약관", i: 0, onPressed: () {}),
-                  ToSAgreeLine(title: "개인정보 처리방침", i: 1, onPressed: () {}),
-                  ToSAgreeLine(title: "위치기반 서비스 이용약관", i: 2, onPressed: () {}),
-                  ToSAgreeLine(title: "결제 대행 서비스 이용약관", i: 3, onPressed: () {}),
-                  ToSAgreeLine(title: "마케팅 수신 알람(선택)", i: 4, onPressed: () {}),
+                  ToSAgreeLine(
+                      title: "서비스 이용약관",
+                      i: 0,
+                      onPressed: () {
+                        ToSDialog(context, serviceToS);
+                      }),
+                  ToSAgreeLine(
+                      title: "개인정보 처리방침",
+                      i: 1,
+                      onPressed: () {
+                        ToSDialog(context, PrivateInfoTos);
+                      }),
+                  ToSAgreeLine(
+                      title: "위치기반 서비스 이용약관",
+                      i: 2,
+                      onPressed: () {
+                        ToSDialog(context, locationToS);
+                      }),
+                  ToSAgreeLine(
+                      title: "결제 대행 서비스 이용약관",
+                      i: 3,
+                      onPressed: () {
+                        ToSDialog(context, paymentTos);
+                      }),
+                  ToSAgreeLine(
+                      title: "마케팅 수신 알람(선택)",
+                      i: 4,
+                      onPressed: () {
+                        ToSDialog(context, maketingTos);
+                      }),
                 ],
               ),
             )

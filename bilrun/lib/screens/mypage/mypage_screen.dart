@@ -4,9 +4,11 @@ import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/mypage/mypage_service.dart';
 import 'package:bilrun/screens/mypage/profile/profile_main_screen.dart';
 import 'package:bilrun/screens/mypage/profile/user_review_services/review_controller.dart';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:bilrun/widgets/launch_kakao_channel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'deal_managemenet/deal_list_screen.dart';
 import 'like_product_list.dart';
@@ -23,6 +25,20 @@ class _MyPageScreenState extends State<MyPageScreen> {
   String userToken;
   String name;
   String community;
+
+  void ToSDialog(BuildContext contexts, String ToS) {
+    showMaterialModalBottomSheet(
+        context: contexts,
+        builder: (context) => SingleChildScrollView(
+              controller: ModalScrollController.of(context),
+              child: SafeArea(
+                child: Container(
+                  child: Text("$ToS"),
+                ),
+              ),
+            ));
+  }
+
   @override
   void initState() {
     userId = MainScreenState.mainUserId;
@@ -85,7 +101,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                             child: CircleAvatar(
                               radius: 50.0,
                               backgroundImage:
-                                  AssetImage('assets/images/main_1.jpg'),
+                                  AssetImage('assets/images/billrun_logo.png'),
                             ),
                           ),
                           Padding(
@@ -152,15 +168,15 @@ class _MyPageScreenState extends State<MyPageScreen> {
                               ],
                             ),
                           ),
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 30.0),
-                            child: IconButton(
-                                icon: Icon(Icons.arrow_forward_ios),
-                                onPressed: () {
-                                  Get.to(() => ProfileDetailScreen());
-                                }),
-                          ),
+                          //Spacer(),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 30.0),
+                          //   child: IconButton(
+                          //       icon: Icon(Icons.arrow_forward_ios),
+                          //       onPressed: () {
+                          //         Get.to(() => ProfileDetailScreen());
+                          //       }),
+                          // ),
                         ],
                       ),
                     ),
@@ -313,11 +329,21 @@ class _MyPageScreenState extends State<MyPageScreen> {
                         child: Column(
                           children: [
                             MypageMenu("공지사항", () {}),
-                            MypageMenu("이용약관", () {}),
-                            MypageMenu('개인정보 처리 방침', () {}),
-                            MypageMenu('위치기반 서비스 이용약관', () {}),
-                            MypageMenu('버전 정보', () {}),
-                            MypageMenu('빌RUN에 문의하기', () {}),
+                            MypageMenu("이용약관", () {
+                              ToSDialog(context, serviceToS);
+                            }),
+                            MypageMenu('개인정보 처리 방침', () {
+                              ToSDialog(context, PrivateInfoTos);
+                            }),
+                            MypageMenu('위치기반 서비스 이용약관', () {
+                              ToSDialog(context, locationToS);
+                            }),
+                            MypageMenu('버전 정보', () {
+                              ToSDialog(context, "최신버전입니다.");
+                            }),
+                            MypageMenu('빌RUN에 문의하기', () {
+                              launchKaKaoChannel();
+                            }),
                           ],
                         ),
                       ),

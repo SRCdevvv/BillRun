@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -8,30 +10,52 @@ class ImagePickUP extends StatefulWidget {
   ImagePickUP({Key key}) : super(key: key);
 
   @override
-  _ImagePickUPState createState() => _ImagePickUPState();
+  ImagePickUPState createState() => ImagePickUPState();
 }
 
-class _ImagePickUPState extends State<ImagePickUP> {
+class ImagePickUPState extends State<ImagePickUP> {
   File _image;
-  String _image1 = "";
-  static String imagePath = "";
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User _user;
+  FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+  String _imageURL = "";
+
+  int userId;
+  static String productImageUrl;
 
   final picker = ImagePicker();
 
+  @override
+  void initState() {
+    super.initState();
+    _prepareService();
+    userId = MainScreenState.mainUserId;
+  }
+
+  void _prepareService() async {
+    _user = await _firebaseAuth.currentUser;
+  }
+
   Future<String> loadPhoto() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image == null) return null;
     setState(() {
-      if (pickedFile != null) {
-        _image1 = pickedFile.path;
-        _image = File(pickedFile.path);
-        imagePath = json.encode(_image1);
-        print(json.encode(_image1));
-        print("file path...");
-      } else {
-        print('No image selected.');
-      }
+      _image = File(image.path);
     });
-    return imagePath;
+
+    Reference storageReference =
+        _firebaseStorage.ref().child("products/$userId");
+
+    UploadTask storageUploadTask = storageReference.putFile(_image);
+
+    var imageUrl = await (await storageUploadTask).ref.getDownloadURL();
+
+    setState(() {
+      print("imageUrl :: $imageUrl");
+      productImageUrl = imageUrl;
+    });
+    return productImageUrl;
   }
 
   @override
@@ -65,11 +89,9 @@ class _ImagePickUPState extends State<ImagePickUP> {
                 child: Container(
                   width: 150,
                   height: 150,
-                  child: Center(
-                    child: _image == null
-                        ? Text("")
-                        : Image.file(File(_image.path)),
-                  ),
+                  // child: Center(
+                  //   child: _image == null ? Text("") : Text("$productImageUrl"),
+                  // ),
                 ),
               )
             ],
