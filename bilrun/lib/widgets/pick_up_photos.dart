@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:multi_image_picker2/multi_image_picker2.dart';
 import 'package:path_provider/path_provider.dart';
 
 class pickup extends StatefulWidget {
@@ -13,12 +16,29 @@ class pickup extends StatefulWidget {
 }
 
 class pickupState extends State<pickup> {
+  File _image;
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
+  String fileName;
+  User _user;
   static List<Asset> images = List<Asset>();
   static List<File> ImgFiles = List<File>();
+  int userId;
   // ignore: unused_field
   String _error;
-
   static bool isLoading = false;
+  static List<String> imageUrl = ["", "", "", "", ""];
+
+  @override
+  void initState() {
+    super.initState();
+    _prepareService();
+    userId = MainScreenState.mainUserId;
+  }
+
+  void _prepareService() async {
+    _user = await _firebaseAuth.currentUser;
+  }
 
   Widget buildGridView() {
     return ListView(
@@ -49,45 +69,33 @@ class pickupState extends State<pickup> {
     setState(() {
       images = List<Asset>();
     });
-    List<Asset> resultList;
     String error;
     try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 10,
+      images = await MultiImagePicker.pickImages(
+        maxImages: 5,
       );
+      print("image list length ::: ${images.length}");
     } on Exception catch (e) {
       error = e.toString();
     }
     if (!mounted) return;
     setState(() {
-      images = resultList;
-
-      for (int i = 0; i < images.length; i++) {
-        getImageFileFromAssets(images[i]);
-        print("for문 $i번 실행");
-      }
       isLoading = true;
 
       if (error == null) _error = 'No Error Dectected';
     });
-  }
 
-  Future<File> getImageFileFromAssets(Asset asset) async {
-    final byteData = await asset.getByteData();
+    for (int i = 0; i < images.length; i++) {
+      fileName = images[i].name;
+      Reference storageReference =
+          _firebaseStorage.ref().child("products/$userId/$fileName}");
 
-    final tempFile =
-        File("${(await getTemporaryDirectory()).path}/${asset.name}");
-    final file = await tempFile.writeAsBytes(
-      byteData.buffer
-          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
-    );
+      UploadTask storageUploadTask = storageReference
+          .putData((await images[i].getByteData()).buffer.asUint8List());
 
-    print("이미지 변환 실행 ");
-
-    ImgFiles.add(file);
-    print(ImgFiles);
-
-    return file;
+      imageUrl[i] = (await (await storageUploadTask).ref.getDownloadURL());
+      print("fileName[$i]::: ${fileName[i]}");
+    }
   }
 
   @override
@@ -117,7 +125,7 @@ class pickupState extends State<pickup> {
                 ),
               ),
               Text(
-                ("${images.length}/10"),
+                ("${images.length}/5"),
                 style: const TextStyle(
                     color: const Color(0xff191919),
                     fontWeight: FontWeight.w400,

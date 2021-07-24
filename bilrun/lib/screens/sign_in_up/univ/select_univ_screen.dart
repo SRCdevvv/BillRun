@@ -53,9 +53,18 @@ class _SelectUnivState extends State<SelectUniv> {
                 )),
 
                 // 빌RUN은 커뮤니티를 기반으로  믿을 수 있는  사람과 거래할 수 있는 물품 공유 플랫폼입니다.  커뮤니티 인증 후 서비스를 이용해주세요!
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 40, 0, 10),
-                  child: guideText(),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 40, 0, 10),
+                    child: guideText(),
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    child: Text(
+                        "현재는 '한양대학교'에서만 이용이 가능합니다!\n 학교 이름 두글자를 검색해주세요(ex.한양) "),
+                  ),
                 ),
 
                 // 사각형 24070

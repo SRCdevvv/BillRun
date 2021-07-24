@@ -14,7 +14,11 @@ class postProduct {
       RegisterCaution,
       RegisterMenu,
       RegisterPriceProp,
-      RegisterImage,
+      RegisterImage1,
+      RegisterImage2,
+      RegisterImage3,
+      RegisterImage4,
+      RegisterImage5,
       RegisterLocation,
       RegisterLat,
       RegisterLng,
@@ -38,22 +42,13 @@ class postProduct {
       // request.fields["location"] = "$RegisterLocation";
       request.fields["lat"] = "$RegisterLat";
       request.fields["lng"] = "$RegisterLng";
+      request.fields["photo1"] = "$RegisterImage1";
+      request.fields["photo2"] = "$RegisterImage2";
+      request.fields["photo3"] = "$RegisterImage3";
+      request.fields["photo4"] = "$RegisterImage4";
+      request.fields["photo5"] = "$RegisterImage5";
 
 //TODO 사진 path 구하기...
-
-      var pic = await http.MultipartFile.fromPath("photo1", RegisterImage);
-
-      String path = RegisterImage;
-      // print("path:: $path");
-      // var name = path.substring(path.lastIndexOf("/") + 1, path.length);
-      // print("name::$name");
-      // var suffix = name.substring(name.lastIndexOf(".") + 1, name.length);
-      // print("suffix::$suffix");
-      request.files.add(pic);
-
-      // final multipartFile =
-      //     await http.MultipartFile.fromPath('photo1', 'image/$suffix');
-      //request.files.add(multipartFile);
 
       http.StreamedResponse response = await request.send();
       status = response.statusCode;

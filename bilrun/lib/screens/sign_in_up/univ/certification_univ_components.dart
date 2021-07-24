@@ -124,7 +124,8 @@ Widget bottomGuideText() {
 
 Widget afterSubmitText() {
   return Center(
-    child: Text("인증 메일에서 링크를 누르면 계정이 활성화 됩니다.\n링크를 누른 후 아래 인증완료 버튼을 눌러주세요!",
+    child: Text(
+        "인증 메일에서 링크를 누르면 계정이 활성화 됩니다.\n링크를 누른 후 아래 인증완료 버튼을 눌러주세요!\n\n*메일이 전송됐다는 알림창이 뜨지 않을 경우,\n 메일 다시 받기 버튼을 눌러주세요.*",
         style: TextStyle(
             color: mainRed,
             fontWeight: FontWeight.w400,

@@ -40,7 +40,11 @@ class _initData {
   String productMenu;
   double productLat;
   double productLng;
-  String imageFile;
+  String productImg1;
+  String productImg2;
+  String productImg3;
+  String productImg4;
+  String productImg5;
 }
 
 class ProductRegister extends StatelessWidget {
@@ -60,11 +64,7 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
   Future myFuture;
   String userToken;
   int userId;
-  File _image;
-  String _image1 = "";
   static String imagePath = "";
-
-  final picker = ImagePicker();
 
   @override
   void initState() {
@@ -96,7 +96,8 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 28.0),
-                  child: ImagePickUP(),
+                  //child: ImagePickUP(),
+                  child: pickup(),
                 ),
                 RegisterName((String value) {
                   this.data.productName = value;
@@ -211,12 +212,14 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
       bottomNavigationBar: RegisterButton(() async {
         print("userId : ${data.userID}");
         print("userId2 : ${MainScreenState.mainUserId}");
-        // data.imageFile = pickupState.ImgFiles[0];
-        // print(data.imageFile);
-        print("등록화면에서 이미지 주소 ::: ${ImagePickUPState.productImageUrl}");
-        data.imageFile = ImagePickUPState.productImageUrl;
         if (_formKey.currentState.validate()) {
           _formKey.currentState.save();
+          data.productImg1 = pickupState.imageUrl[0];
+          data.productImg2 = pickupState.imageUrl[1];
+          data.productImg3 = pickupState.imageUrl[2];
+          data.productImg4 = pickupState.imageUrl[3];
+          data.productImg5 = pickupState.imageUrl[4];
+          print("${data.productImg3}");
           await postProduct
               .getOrCreateInitAPIData(
             data.userID,
@@ -227,7 +230,11 @@ class ProductRegisterWidgetState extends State<ProductRegisterWidget> {
             data.caution,
             data.productMenu,
             PriceProp,
-            data.imageFile,
+            data.productImg1,
+            data.productImg2,
+            data.productImg3,
+            data.productImg4,
+            data.productImg5,
             data.productAddress,
             data.productLat,
             data.productLng,

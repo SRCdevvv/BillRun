@@ -68,7 +68,7 @@ class _DetailScreenState extends State<DetailScreen> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    //ProductPhoto(),
+                    ProductPhoto(),
                     Obx(() {
                       if (DetailProductController.isLoading.value)
                         return Container(child: CircularProgressIndicator());
@@ -216,49 +216,20 @@ class _DetailScreenState extends State<DetailScreen> {
             return Text("banner error ${snapshot.hasError}");
           } else {
             productImgList.clear();
-            if (dpController.lend == true) {
-              productImgList
-                  .add(DetailProductController.productList.value.photo1);
-              if (dpController.photo2.isNotEmpty) {
-                productImgList
-                    .add(DetailProductController.productList.value.photo2);
-              }
-              if (dpController.photo3.isNotEmpty) {
-                productImgList
-                    .add(DetailProductController.productList.value.photo2);
-              }
-              if (dpController.photo4.isNotEmpty) {
-                productImgList
-                    .add(DetailProductController.productList.value.photo2);
-              }
-              if (dpController.photo5.isNotEmpty) {
-                productImgList
-                    .add(DetailProductController.productList.value.photo2);
-              }
+            if (dpController.photo1 != null) {
+              productImgList.add(dpController.photo1);
             }
-            if (dpController.lend == false) {
-              if (dpController.photo1.isEmpty) {
-                productImgList.clear();
-              } else {
-                productImgList
-                    .add(DetailProductController.productList.value.photo1);
-                if (dpController.photo2.isNotEmpty) {
-                  productImgList
-                      .add(DetailProductController.productList.value.photo2);
-                }
-                if (dpController.photo3.isNotEmpty) {
-                  productImgList
-                      .add(DetailProductController.productList.value.photo2);
-                }
-                if (dpController.photo4.isNotEmpty) {
-                  productImgList
-                      .add(DetailProductController.productList.value.photo2);
-                }
-                if (dpController.photo5.isNotEmpty) {
-                  productImgList
-                      .add(DetailProductController.productList.value.photo2);
-                }
-              }
+            if (dpController.photo2 != null) {
+              productImgList.add(dpController.photo2);
+            }
+            if (dpController.photo3 != null) {
+              productImgList.add(dpController.photo3);
+            }
+            if (dpController.photo4 != null) {
+              productImgList.add(dpController.photo4);
+            }
+            if (dpController.photo5 != null) {
+              productImgList.add(dpController.photo5);
             }
 
             return DetailBanner();

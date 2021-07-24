@@ -16,9 +16,9 @@ class ImagePickUP extends StatefulWidget {
 class ImagePickUPState extends State<ImagePickUP> {
   File _image;
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  User _user;
   FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-  String _imageURL = "";
+  String fileName;
+  User _user;
 
   int userId;
   static String productImageUrl;
@@ -44,8 +44,10 @@ class ImagePickUPState extends State<ImagePickUP> {
       _image = File(image.path);
     });
 
+    fileName = image.path.split('/').last;
+
     Reference storageReference =
-        _firebaseStorage.ref().child("products/$userId");
+        _firebaseStorage.ref().child("products/$userId/$fileName}");
 
     UploadTask storageUploadTask = storageReference.putFile(_image);
 
@@ -60,6 +62,7 @@ class ImagePickUPState extends State<ImagePickUP> {
 
   @override
   Widget build(BuildContext context) {
+    print("productImgURL ::: $productImageUrl");
     return Container(
       height: 104,
       width: double.infinity,
@@ -89,9 +92,9 @@ class ImagePickUPState extends State<ImagePickUP> {
                 child: Container(
                   width: 150,
                   height: 150,
-                  // child: Center(
-                  //   child: _image == null ? Text("") : Text("$productImageUrl"),
-                  // ),
+                  child: Center(
+                    child: _image == null ? Text("") : Image.file(_image),
+                  ),
                 ),
               )
             ],

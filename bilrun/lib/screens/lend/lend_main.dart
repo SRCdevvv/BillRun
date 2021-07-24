@@ -46,9 +46,23 @@ class _LendMainState extends State<LendMain> {
         child: AppBar(
           backgroundColor: Colors.white,
           elevation: 10,
-          title: Text(
-            "빌려드림",
-            style: TextStyle(color: Colors.black),
+          title: Row(
+            children: [
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 10),
+              //   child: Image.asset(
+              //     'assets/images/logo.png',
+              //     fit: BoxFit.contain,
+              //     width: 100,
+              //     height: 50,
+              //   ),
+              // ),
+              Text(
+                "빌려드림",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
           actions: <Widget>[
             Padding(
