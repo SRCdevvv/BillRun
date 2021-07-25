@@ -18,7 +18,7 @@ calculateLocation(double lat1, double long1, double lat2, double long2) {
   var distance = (result * 1000).round();
   var distanceResult;
 
-  if (distance > 10000) {
+  if (distance > 1000) {
     distanceResult = "${((result * 10).round()) / 10}km";
   } else {
     distanceResult = "$distance" + "m";

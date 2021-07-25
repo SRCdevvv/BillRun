@@ -42,8 +42,8 @@ class ProductList {
   String price;
   String priceProp;
   User user;
-  int lat;
-  int lng;
+  double lat;
+  double lng;
   String photo1;
   dynamic photo2;
   dynamic photo3;
