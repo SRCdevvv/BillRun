@@ -59,14 +59,14 @@ class DetailScreenBody extends StatelessWidget {
               ),
               Spacer(),
               //학교 인증 마크
-              Padding(
-                padding: const EdgeInsets.only(right: 40.0, top: 10),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/chatlogo.png'),
-                  backgroundColor: Colors.white,
-                  radius: 17,
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 40.0, top: 10),
+              //   child: CircleAvatar(
+              //     backgroundImage: AssetImage('assets/images/chatlogo.png'),
+              //     backgroundColor: Colors.white,
+              //     radius: 17,
+              //   ),
+              // ),
             ],
           ),
 
@@ -154,13 +154,13 @@ class DetailScreenBody extends StatelessWidget {
           OriginDivider(lightGrey, 1, 30, 30),
           Row(
             children: <Widget>[
-              Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
-                child: CircleAvatar(
-                  radius: 40.0,
-                  backgroundImage: AssetImage('assets/images/main_1.jpg'),
-                ),
-              ),
+              // Container(
+              //   padding: const EdgeInsets.fromLTRB(20, 20, 0, 10),
+              //   child: CircleAvatar(
+              //     radius: 40.0,
+              //     backgroundImage: AssetImage('assets/images/main_1.jpg'),
+              //   ),
+              // ),
               Container(
                 width: Get.width / 3,
                 child: Column(

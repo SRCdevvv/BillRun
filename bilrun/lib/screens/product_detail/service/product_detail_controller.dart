@@ -1,3 +1,4 @@
+import 'package:bilrun/model/product_review_model.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/product_detail_model.dart';
@@ -7,16 +8,11 @@ class DetailProductController extends GetxController {
   static var isLoading = true.obs;
   static var productList = DetailProduct().obs;
 
-  @override
-  void onInit() {
-    fetchRentDetail();
-    super.onInit();
-  }
-
-  static Future fetchRentDetail() async {
+  static Future fetchRentDetail(int ProductID) async {
     try {
       isLoading(true);
-      var DetailProduct = await DetailProductService.fetchLendDetailInfo();
+      var DetailProduct =
+          await DetailProductService.fetchLendDetailInfo(ProductID);
 
       if (DetailProduct != null) {
         productList.value = DetailProduct;

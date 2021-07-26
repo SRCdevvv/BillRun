@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:980957305379:android:f7b62255a28ed655c86f96",
         "android_client_info": {
-          "package_name": "SRCcompanycom.example.bilrun"
+          "package_name": "com.SRCcompany.billrun"
         }
       },
       "oauth_client": [

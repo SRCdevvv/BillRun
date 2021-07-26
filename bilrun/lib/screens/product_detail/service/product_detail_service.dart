@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:bilrun/screens/lend/lend_controller.dart';
 import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/state_manager.dart';
@@ -9,10 +11,10 @@ import 'package:bilrun/model/product_detail_model.dart';
 
 class DetailProductService {
   static var client = http.Client();
-  static var productID = Get.arguments[0];
+
   static var userToken = MainScreenState.mainUserToken;
 
-  static Future<DetailProduct> fetchLendDetailInfo() async {
+  static Future<DetailProduct> fetchLendDetailInfo(int productID) async {
     var response;
 
     // var IdOfProduct=1;

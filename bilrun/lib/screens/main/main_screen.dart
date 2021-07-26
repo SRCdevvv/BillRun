@@ -1,6 +1,7 @@
 import 'package:bilrun/design/divider_example.dart';
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/screens/chat/chat_list/chat_list_screen.dart';
+import 'package:bilrun/screens/chat/not_yet_chat.dart';
 import 'package:bilrun/screens/lend/lend_main.dart';
 import 'package:bilrun/screens/mypage/mypage_screen.dart';
 import 'package:bilrun/screens/product_register/register_popup.dart';
@@ -34,8 +35,8 @@ class MainScreenState extends State<MainScreen> {
     LendMain(),
     RentMain(),
     //DialogProductRegister(),
-
-    ChatScreen(),
+    NotYetApp(),
+    //ChatScreen(),
     MyPageScreen(),
   ];
 
@@ -54,8 +55,6 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("user id in main :$mainUserId");
-    print("user id in main :${Get.arguments[1]}");
     return MaterialApp(
       home: Scaffold(
         body: _pages[currentIndex],

@@ -1,3 +1,4 @@
+import 'package:bilrun/widgets/etc.dart';
 import 'package:bilrun/widgets/location/calculate_location.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -8,12 +9,13 @@ import 'package:bilrun/screens/product_detail/product_detail_main.dart';
 class LendProductTile extends StatelessWidget {
   final ProductList lendproduct;
   final String userToken;
+  static int LproductId;
   const LendProductTile(this.lendproduct, this.userToken);
-
   @override
   Widget build(BuildContext context) {
     // double productLat = lendproduct.lat;
     // double productLng = lendproduct.lng;
+
     double userLat = 37.55744;
     double userLng = 127.04533;
     print("lendproduct latlng:: ${lendproduct.lat}&&${lendproduct.lng}");
@@ -36,7 +38,7 @@ class LendProductTile extends StatelessWidget {
         lendproduct.priceProp = '일 당';
         break;
     }
-
+    LproductId = lendproduct.id;
     return Container(
       padding: EdgeInsets.only(bottom: 10),
       color: Colors.transparent,
@@ -44,10 +46,8 @@ class LendProductTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           GestureDetector(
-            onTap: () => {
-              Get.to(() => DetailScreen(),
-                  arguments: [lendproduct.id, userToken])
-            },
+            onTap: () =>
+                {Get.to(() => DetailScreen(), arguments: lendproduct.id)},
             child: Stack(
               children: [
                 ClipRRect(
@@ -61,7 +61,7 @@ class LendProductTile extends StatelessWidget {
                             fit: BoxFit.fill,
                           )
                         : Image.network(
-                            '${lendproduct.photo1}',
+                            '${addUrl + lendproduct.photo1}',
                             fit: BoxFit.fill,
                           ),
                   ),

@@ -1,5 +1,7 @@
 String serviceUrl = 'http://54.144.140.114/api';
 String geocodeAPIKEY = 'AIzaSyApgVRLaob3z_I3Z4nDxIr4TYTz8Zo0ekQ';
+String addUrl =
+    "https://firebasestorage.googleapis.com/v0/b/billrun-314101.appspot.com/o/";
 
 String serviceToS = "빌RUN 서비스이용약관"
     "\n\n 본  약관(이하  ‘본  약관’이라  함)은  사랑채컴퍼니(이하  ‘당사’라  함)가  소유하고  운영하는  빌RUN어플리케이션과 모바일 및 PC  포함 이와 관련된 웹사이트들을 통하여 제공되는 모든 제품 및 서비스(이하‘본 서비스’라 함)와 관련하여 본 약관에 따라 당사와 이용계약을 체결하고 본 서비스를 이용하는 고객(이하‘회원’이라 함)과 당사 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다. "

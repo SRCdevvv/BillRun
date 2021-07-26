@@ -90,13 +90,13 @@ class _MyPageScreenState extends State<MyPageScreen> {
                               color: Colors.transparent,
                               shape: BoxShape.circle,
                               //TODO 사진 그림자로 바꾸기
-                              boxShadow: [
-                                BoxShadow(
-                                    color: const Color(0x0d000000),
-                                    offset: Offset(3, 3),
-                                    blurRadius: 10,
-                                    spreadRadius: 0)
-                              ],
+                              // boxShadow: [
+                              //   BoxShadow(
+                              //       color: const Color(0x0d000000),
+                              //       offset: Offset(3, 3),
+                              //       blurRadius: 10,
+                              //       spreadRadius: 0)
+                              // ],
                             ),
                             child: CircleAvatar(
                               radius: 50.0,

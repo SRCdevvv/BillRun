@@ -20,11 +20,6 @@ class DetailProduct {
     this.user,
     this.lat,
     this.lng,
-    this.photo1,
-    this.photo2,
-    this.photo3,
-    this.photo4,
-    this.photo5,
     this.lend,
     this.category,
     this.hits,
@@ -32,6 +27,11 @@ class DetailProduct {
     this.location,
     this.createdAt,
     this.updatedAt,
+    this.photo1,
+    this.photo2,
+    this.photo3,
+    this.photo4,
+    this.photo5,
   });
 
   int id;
@@ -41,13 +41,8 @@ class DetailProduct {
   String price;
   String priceProp;
   User user;
-  int lat;
-  int lng;
-  String photo1;
-  dynamic photo2;
-  dynamic photo3;
-  dynamic photo4;
-  dynamic photo5;
+  double lat;
+  double lng;
   bool lend;
   String category;
   int hits;
@@ -55,6 +50,11 @@ class DetailProduct {
   dynamic location;
   DateTime createdAt;
   DateTime updatedAt;
+  String photo1;
+  String photo2;
+  String photo3;
+  String photo4;
+  String photo5;
 
   factory DetailProduct.fromJson(Map<String, dynamic> json) => DetailProduct(
         id: json["id"],
@@ -64,13 +64,8 @@ class DetailProduct {
         price: json["price"],
         priceProp: json["price_prop"],
         user: User.fromJson(json["user"]),
-        lat: json["lat"],
-        lng: json["lng"],
-        photo1: json["photo1"],
-        photo2: json["photo2"],
-        photo3: json["photo3"],
-        photo4: json["photo4"],
-        photo5: json["photo5"],
+        lat: json["lat"].toDouble(),
+        lng: json["lng"].toDouble(),
         lend: json["lend"],
         category: json["category"],
         hits: json["hits"],
@@ -78,6 +73,11 @@ class DetailProduct {
         location: json["location"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
+        photo1: json["photo1"],
+        photo2: json["photo2"],
+        photo3: json["photo3"],
+        photo4: json["photo4"],
+        photo5: json["photo5"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -90,11 +90,6 @@ class DetailProduct {
         "user": user.toJson(),
         "lat": lat,
         "lng": lng,
-        "photo1": photo1,
-        "photo2": photo2,
-        "photo3": photo3,
-        "photo4": photo4,
-        "photo5": photo5,
         "lend": lend,
         "category": category,
         "hits": hits,
@@ -102,6 +97,11 @@ class DetailProduct {
         "location": location,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
+        "photo1": photo1,
+        "photo2": photo2,
+        "photo3": photo3,
+        "photo4": photo4,
+        "photo5": photo5,
       };
 }
 

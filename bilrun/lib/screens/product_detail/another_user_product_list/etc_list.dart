@@ -1,3 +1,4 @@
+import 'package:bilrun/widgets/etc.dart';
 import 'package:flutter/material.dart';
 import 'package:bilrun/model/product_list_model.dart';
 import 'package:get/get.dart';
@@ -56,7 +57,7 @@ class EtcProductTile extends StatelessWidget {
                             fit: BoxFit.fill,
                           )
                         : Image.network(
-                            '${lendproduct.photo1}',
+                            '${addUrl + lendproduct.photo1}',
                             fit: BoxFit.fill,
                           ),
                   ),

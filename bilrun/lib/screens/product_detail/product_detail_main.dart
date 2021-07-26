@@ -3,6 +3,7 @@ import 'package:bilrun/model/product_detail_model.dart';
 import 'package:bilrun/screens/lend/lend_like.dart';
 import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
 import 'package:bilrun/screens/product_detail/service/product_detail_controller.dart';
+import 'package:bilrun/widgets/etc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -20,15 +21,29 @@ class DetailScreen extends StatefulWidget {
   String title;
 
   @override
-  _DetailScreenState createState() => _DetailScreenState();
+  DetailScreenState createState() => DetailScreenState();
 }
 
 List<String> productImgList = [];
 
-class _DetailScreenState extends State<DetailScreen> {
+class DetailScreenState extends State<DetailScreen> {
   DetailProduct detailProduct;
   DetailProductController detailProductController =
       Get.put(DetailProductController());
+
+  static int RealProductId;
+  @override
+  void initState() {
+    super.initState();
+    RealProductId = Get.arguments;
+  }
+
+  @override
+  void dispose() {
+    RealProductId = null;
+    productImgList.clear();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +104,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Widget BottomButton() {
     return FutureBuilder(
-        future: DetailProductController.fetchRentDetail(),
+        future: DetailProductController.fetchRentDetail(RealProductId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -204,9 +219,9 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Widget ProductPhoto() {
-    var dpController = DetailProductController.productList.value;
+    //var dpController = DetailProductController.productList.value;
     return FutureBuilder(
-        future: DetailProductController.fetchRentDetail(),
+        future: DetailProductController.fetchRentDetail(RealProductId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -215,21 +230,25 @@ class _DetailScreenState extends State<DetailScreen> {
           if (snapshot.hasError) {
             return Text("banner error ${snapshot.hasError}");
           } else {
-            productImgList.clear();
-            if (dpController.photo1 != null) {
-              productImgList.add(dpController.photo1);
+            if (DetailProductController.productList.value.photo1 != null) {
+              productImgList.add(
+                  addUrl + DetailProductController.productList.value.photo1);
             }
-            if (dpController.photo2 != null) {
-              productImgList.add(dpController.photo2);
+            if (DetailProductController.productList.value.photo2 != null) {
+              productImgList.add(
+                  addUrl + DetailProductController.productList.value.photo2);
             }
-            if (dpController.photo3 != null) {
-              productImgList.add(dpController.photo3);
+            if (DetailProductController.productList.value.photo3 != null) {
+              productImgList.add(
+                  addUrl + DetailProductController.productList.value.photo3);
             }
-            if (dpController.photo4 != null) {
-              productImgList.add(dpController.photo4);
+            if (DetailProductController.productList.value.photo4 != null) {
+              productImgList.add(
+                  addUrl + DetailProductController.productList.value.photo4);
             }
-            if (dpController.photo5 != null) {
-              productImgList.add(dpController.photo5);
+            if (DetailProductController.productList.value.photo5 != null) {
+              productImgList.add(
+                  addUrl + DetailProductController.productList.value.photo5);
             }
 
             return DetailBanner();

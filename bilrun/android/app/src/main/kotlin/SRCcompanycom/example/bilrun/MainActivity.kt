@@ -1,4 +1,4 @@
-package SRCcompanycom.example.bilrun
+package com.SRCcompany.billrun
 
 import io.flutter.embedding.android.FlutterActivity
 

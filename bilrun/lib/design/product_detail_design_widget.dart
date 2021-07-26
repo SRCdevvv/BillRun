@@ -47,7 +47,7 @@ Container MediumText(String texts) {
   return Container(
     padding: EdgeInsets.fromLTRB(20, 5, 10, 10),
     width: Get.width * 0.862,
-    height: 130,
+    height: 300,
     child: Text(texts,
         style: TextStyle(
             color: const Color(0xff000000),

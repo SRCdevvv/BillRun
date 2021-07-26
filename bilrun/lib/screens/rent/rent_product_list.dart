@@ -1,3 +1,4 @@
+import 'package:bilrun/widgets/etc.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bilrun/model/product_list_model.dart';
@@ -126,7 +127,7 @@ class RentProductTile extends StatelessWidget {
                               fit: BoxFit.fill,
                             )
                           : Image.network(
-                              '${product.photo1}',
+                              '${addUrl + product.photo1}',
                               fit: BoxFit.fill,
                             ),
                     ),
