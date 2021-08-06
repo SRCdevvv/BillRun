@@ -13,23 +13,39 @@ String chatRoomToJson(List<ChatRoom> data) =>
 class ChatRoom {
   ChatRoom({
     this.fromUser,
+    this.fromUserName,
+    this.fromUserPhoto,
     this.toUser,
+    this.toUserName,
+    this.toUserPhoto,
     this.chats,
   });
 
   int fromUser;
+  String fromUserName;
+  String fromUserPhoto;
   int toUser;
+  String toUserName;
+  String toUserPhoto;
   List<Chat> chats;
 
   factory ChatRoom.fromJson(Map<String, dynamic> json) => ChatRoom(
         fromUser: json["from_user"],
+        fromUserName: json["from_user_name"],
+        fromUserPhoto: json["from_user_photo"],
         toUser: json["to_user"],
+        toUserName: json["to_user_name"],
+        toUserPhoto: json["to_user_photo"],
         chats: List<Chat>.from(json["chats"].map((x) => Chat.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "from_user": fromUser,
+        "from_user_name": fromUserName,
+        "from_user_photo": fromUserPhoto,
         "to_user": toUser,
+        "to_user_name": toUserName,
+        "to_user_photo": toUserPhoto,
         "chats": List<dynamic>.from(chats.map((x) => x.toJson())),
       };
 }

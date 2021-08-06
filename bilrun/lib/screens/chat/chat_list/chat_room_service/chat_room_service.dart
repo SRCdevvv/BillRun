@@ -18,11 +18,12 @@ class ChatRoomService {
       headers: {HttpHeaders.authorizationHeader: "jwt $userToken"},
     );
 
-    print("서비스에서 유저토큰 : $userToken");
+    //print("서비스에서 유저토큰 : $userToken");
 
     if (response.statusCode == 200) {
-      print("연결 성공");
+      print("caht service연결 성공");
       String jsonString = utf8.decode(response.bodyBytes);
+      print("response.body :: ${response.toString()}");
       print("chat service : $jsonString");
       return chatRoomFromJson(jsonString);
     } else {
