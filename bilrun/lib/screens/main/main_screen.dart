@@ -35,7 +35,8 @@ class MainScreenState extends State<MainScreen> {
     LendMain(),
     RentMain(),
     //DialogProductRegister(),
-    NotYetApp(),
+    ChatScreen(),
+    //NotYetApp(),
     //ChatScreen(),
     MyPageScreen(),
   ];

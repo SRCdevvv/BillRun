@@ -1,30 +1,33 @@
 import 'package:bilrun/model/chat_model.dart';
+import 'package:bilrun/model/chat_room_model.dart';
+import 'package:bilrun/screens/chat/chat_list/chat_room_service/chat_room_service.dart';
 import 'package:bilrun/screens/chat/chat_service/chat_service.dart';
 import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
-// 리스트에 왜 취소선..? ㅠㅠ
-class ChatDataController extends GetxController {
+class ChatRoomDataController extends GetxController {
   static var isLoading = true.obs;
-  static var chatsList = List<Chat>().obs;
+  static var chatRoom = ChatRoom().obs;
+
   static String userToken;
   @override
   void onInit() {
     userToken = MainScreenState.mainUserToken;
-    chatFetchDatas();
+    chatRoomFetchDatas();
     super.onInit();
   }
 
-  static Future chatFetchDatas() async {
+  static Future chatRoomFetchDatas() async {
     try {
       isLoading(true);
-      var chatDatas = await ChatDataService.fetchChatDatas(userToken);
-      if (chatDatas != null) {
+      var chatRoomDatas = await ChatRoomService.fetchChatRoomDatas(userToken);
+      if (chatRoomDatas != null) {
         print("success");
-        chatsList.value = chatDatas;
-      } else if (chatDatas == null) {
+        chatRoom.value = chatRoomDatas;
+        print("chat List ::: ${chatRoom}");
+      } else if (chatRoomDatas == null) {
         print("error");
         return null;
       }

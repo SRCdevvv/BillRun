@@ -1,5 +1,8 @@
+import 'package:bilrun/model/chat_room_model.dart';
+import 'package:bilrun/screens/chat/chat_list/chat_room_service/chat_room_controller.dart';
 import 'package:bilrun/screens/chat/chat_model_sample/chat_list_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'chat_list_body.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -10,8 +13,13 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   // ignore: unused_field
   int _selectedIndex = 1;
+  ChatRoom chatRoom;
+  ChatRoomDataController chatRoomDataController =
+      Get.put(ChatRoomDataController());
+
   @override
   Widget build(BuildContext context) {
+    print("chat main :: ${ChatRoomDataController.chatRoom.value.chats}");
     //채팅 데이터가 없으면 채팅 없다는 내용
     if (chatsData.isEmpty) {
       return Scaffold(
