@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class ChatRoomDataController extends GetxController {
   static var isLoading = true.obs;
-  static var chatRoom = ChatRoom().obs;
+  static var chatRoom = List<ChatRoom>().obs;
 
   static String userToken;
   @override

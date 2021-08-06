@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-ChatRoom chatRoomFromJson(String str) => ChatRoom.fromJson(json.decode(str));
+List<ChatRoom> chatRoomFromJson(String str) =>
+    List<ChatRoom>.from(json.decode(str).map((x) => ChatRoom.fromJson(x)));
 
-String chatRoomToJson(ChatRoom data) => json.encode(data.toJson());
+String chatRoomToJson(List<ChatRoom> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ChatRoom {
   ChatRoom({

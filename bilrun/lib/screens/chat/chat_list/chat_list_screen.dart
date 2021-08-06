@@ -19,7 +19,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("chat main :: ${ChatRoomDataController.chatRoom.value.chats}");
+    print("chat main :: ${ChatRoomDataController.chatRoom[0]}");
     //채팅 데이터가 없으면 채팅 없다는 내용
     if (chatsData.isEmpty) {
       return Scaffold(

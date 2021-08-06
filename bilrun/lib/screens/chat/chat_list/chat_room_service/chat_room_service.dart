@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 // 채팅 리스트
 class ChatRoomService {
   static var client = http.Client();
-  static Future<ChatRoom> fetchChatRoomDatas(var userToken) async {
+  static Future<List<ChatRoom>> fetchChatRoomDatas(var userToken) async {
     var userToken = MainScreenState.mainUserToken;
     var response;
     response = await client.get(
