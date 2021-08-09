@@ -34,11 +34,14 @@ class ChatCard extends StatelessWidget {
     bool isToUser = false;
     isToUser = toUserNum == userNum;
     int chatRoomNum = chat.chats[0].room;
+    DateTime date = chat.chats[0].createdAt;
+    String convertingDate = DateFormat("MM월dd일 HH:mm").format(date);
     return Container(
       //Gesture가 가능한 위젯입니다.
       child: InkWell(
         onTap: () {
-          Get.to(() => MessagesScreen(), arguments: [isToUser, chatRoomNum]);
+          Get.to(() => MessageScreen(),
+              arguments: [isToUser, chatRoomNum, fromUserNum, toUserNum]);
         },
         child: Padding(
           padding:
@@ -79,7 +82,7 @@ class ChatCard extends StatelessWidget {
                             //채팅 시간
                             child: Text(
                               //""에서 참조 할때는 $를 사용하고, 한단어가 넘어가면 {}로 감싸줍니다.
-                              "${chat.chats[0].createdAt}",
+                              "$convertingDate",
                               style: const TextStyle(
                                   color: const Color(0xff999999),
                                   fontWeight: FontWeight.w400,

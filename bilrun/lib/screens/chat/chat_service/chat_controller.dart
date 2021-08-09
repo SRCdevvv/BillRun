@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
-// 리스트에 왜 취소선..? ㅠㅠ
 class ChatDataController extends GetxController {
   static var isLoading = true.obs;
   static var chatsList = List<Chat>().obs;
@@ -24,6 +23,7 @@ class ChatDataController extends GetxController {
       if (chatDatas != null) {
         print("success");
         chatsList.value = chatDatas;
+        //print(chatDatas);
       } else if (chatDatas == null) {
         print("error");
         return null;
