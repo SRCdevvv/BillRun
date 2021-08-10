@@ -56,6 +56,7 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("main에서 :: $mainUserId ");
     return MaterialApp(
       home: Scaffold(
         body: _pages[currentIndex],

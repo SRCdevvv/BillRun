@@ -11,7 +11,6 @@ class ChatInputField extends StatelessWidget {
     final _key = GlobalKey<FormState>();
     String message;
     return Container(
-      key: _key,
       padding: EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 10,
@@ -50,20 +49,23 @@ class ChatInputField extends StatelessWidget {
                     SizedBox(width: 5),
                     //메시지 입력창
                     Expanded(
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return '채팅을 입력해주세요.';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onSaved: (value) {
-                          message = value;
-                        },
-                        decoration: InputDecoration(
-                          hintText: "메시지를 입력하세요.",
-                          border: InputBorder.none,
+                      child: Form(
+                        key: _key,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return '채팅을 입력해주세요.';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onSaved: (value) {
+                            message = value;
+                          },
+                          decoration: InputDecoration(
+                            hintText: "메시지를 입력하세요.",
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
                     ),
@@ -76,6 +78,10 @@ class ChatInputField extends StatelessWidget {
                               "input message : $message, opponent : $opponent");
                           await PostChatMessage.postChatMessage(
                               message, opponent);
+                          print("전송결과 ::${PostChatMessage.result}");
+                          //refresh();
+                          message = null;
+                          _key.currentState.reset();
                         }
                       },
                       icon: Icon(Icons.send),

@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:bilrun/model/chat_model.dart';
 import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
@@ -23,11 +26,12 @@ class PostChatMessage {
 
       if (response.statusCode == 200) {
         print(response.statusCode);
-
+        String jsonString = utf8.decode(response.bodyBytes);
+        print("chat send : $jsonString");
         result = true;
         print("채팅 전송 성공");
 
-        return true;
+        return chatFromJson(jsonString);
       } else {
         print("fail: ${response.statusCode}");
         print("채팅 전송 실패");
