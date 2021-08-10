@@ -95,7 +95,8 @@ class DetailScreenState extends State<DetailScreen> {
                       if (DetailProductController.isLoading.value)
                         return Container(child: CircularProgressIndicator());
                       else {
-                        opponent = detailProduct.user.id;
+                        opponent =
+                            DetailProductController.productList.value.user.id;
                         return DetailScreenBody(
                             DetailProductController.productList.value);
                       }

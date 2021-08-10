@@ -30,26 +30,20 @@ class MessageScreenState extends State<MessageScreen> {
   int opponent;
   int toUser;
   int fromUser;
-  final _key = GlobalKey<FormState>();
+
   String message;
+  final _key = GlobalKey<FormState>();
 
   void timeOver() {
     refresh();
     return null;
   }
 
-  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 10;
-  void onEnd() {
-    refresh();
-    setState(() {
-      endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 60;
-    });
-  }
-
   Future<Null> refresh() async {
     ChatDataService.fetchChatDatas(MainScreenState.mainUserToken);
     ChatDataController.chatFetchDatas();
     chatDataController = Get.put(ChatDataController());
+
     print("새로고침");
   }
 
@@ -83,6 +77,14 @@ class MessageScreenState extends State<MessageScreen> {
     } else {
       opponent = fromUser;
     }
+    int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 10;
+    void onEnd() {
+      refresh();
+      setState(() {
+        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
+      });
+    }
+
     return Scaffold(
       appBar: whiteAppBar("나의 채팅"),
       body: SafeArea(
@@ -104,7 +106,8 @@ class MessageScreenState extends State<MessageScreen> {
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: Obx(() {
                     if (ChatDataController.isLoading.value) {
-                      return Center(child: CircularProgressIndicator());
+                      return Container();
+                      // Center(child: CircularProgressIndicator());
                     } else if (ChatDataController.chatsList.isBlank) {
                       return Container();
                     } else {
@@ -122,92 +125,93 @@ class MessageScreenState extends State<MessageScreen> {
                   })),
             ),
             //채팅 입력창
-            ChatInputField(
-              opponent: opponent,
-            ),
-
-            // Container(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: 20,
-            //     vertical: 10,
-            //   ),
-            //   decoration: BoxDecoration(
-            //     color: Theme.of(context).scaffoldBackgroundColor,
-            //     boxShadow: [
-            //       BoxShadow(
-            //         offset: Offset(0, 4),
-            //         blurRadius: 32,
-            //         color: mainRed.withOpacity(0.08),
-            //       ),
-            //     ],
-            //   ),
-            //   child: Row(
-            //     children: [
-            //       //더하기 버튼
-            //       Icon(
-            //         Icons.add,
-            //         color: mainRed,
-            //         size: 30,
-            //       ),
-            //       SizedBox(width: 20),
-            //       Expanded(
-            //         child: Container(
-            //           padding: EdgeInsets.symmetric(
-            //             horizontal: 20,
-            //           ),
-            //           decoration: BoxDecoration(
-            //             color: mainRed.withOpacity(0.05),
-            //             borderRadius: BorderRadius.circular(40),
-            //           ),
-            //           child: Row(
-            //             children: [
-            //               SizedBox(width: 5),
-            //               //메시지 입력창
-            //               Expanded(
-            //                 child: Form(
-            //                   key: _key,
-            //                   child: TextFormField(
-            //                     // validator: (value) {
-            //                     //   if (value.isEmpty) {
-            //                     //     return 'input chat message.';
-            //                     //   } else {
-            //                     //     return null;
-            //                     //   }
-            //                     // },
-            //                     onSaved: (String value) {
-            //                       message = value;
-            //                       print("message :: $message");
-            //                     },
-            //                     decoration: InputDecoration(
-            //                       hintText: "메시지를 입력하세요.",
-            //                       border: InputBorder.none,
-            //                     ),
-            //                   ),
-            //                 ),
-            //               ),
-            //               //메시지 보내는 버튼
-            //               IconButton(
-            //                 onPressed: () async {
-            //                   _key.currentState.save();
-            //                   print(
-            //                       "input message : $message, opponent : $opponent");
-            //                   await PostChatMessage.postChatMessage(
-            //                       message, opponent);
-            //                   print("전송결과 ::${PostChatMessage.result}");
-            //                   refresh();
-            //                   message = null;
-            //                   _key.currentState.reset();
-            //                 },
-            //                 icon: Icon(Icons.send),
-            //                 color: mainRed,
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
+            // ChatInputField(
+            //   opponent: opponent,
+            //   onTapp: refresh(),
             // ),
+
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 4),
+                    blurRadius: 32,
+                    color: mainRed.withOpacity(0.08),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  //더하기 버튼
+                  Icon(
+                    Icons.add,
+                    color: mainRed,
+                    size: 30,
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: mainRed.withOpacity(0.05),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 5),
+                          //메시지 입력창
+                          Expanded(
+                            child: Form(
+                              key: _key,
+                              child: TextFormField(
+                                // validator: (value) {
+                                //   if (value.isEmpty) {
+                                //     return 'input chat message.';
+                                //   } else {
+                                //     return null;
+                                //   }
+                                // },
+                                onSaved: (String value) {
+                                  message = value;
+                                  print("message :: $message");
+                                },
+                                decoration: InputDecoration(
+                                  hintText: "메시지를 입력하세요.",
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                          //메시지 보내는 버튼
+                          IconButton(
+                            onPressed: () async {
+                              _key.currentState.save();
+                              print(
+                                  "input message : $message, opponent : $opponent");
+                              await PostChatMessage.postChatMessage(
+                                  message, opponent);
+                              print("전송결과 ::${PostChatMessage.result}");
+                              refresh();
+                              message = null;
+                              _key.currentState.reset();
+                            },
+                            icon: Icon(Icons.send),
+                            color: mainRed,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

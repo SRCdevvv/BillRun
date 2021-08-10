@@ -10,6 +10,7 @@ class PostChatMessage {
   static String UserToken = MainScreenState.mainUserToken;
   static int opponent;
   static String message;
+  static int roomNum;
 
   static Future<void> postChatMessage(String message, int opponent) async {
     String url = "$serviceUrl/chat/";
@@ -27,8 +28,10 @@ class PostChatMessage {
       if (response.statusCode == 200) {
         print(response.statusCode);
         String jsonString = utf8.decode(response.bodyBytes);
-        print("chat send : $jsonString");
+        print("chat send : ${chatFromJson(jsonString)[0].chats[0].room}");
         result = true;
+
+        roomNum = chatFromJson(jsonString)[0].chats[0].room;
         print("채팅 전송 성공");
 
         return chatFromJson(jsonString);

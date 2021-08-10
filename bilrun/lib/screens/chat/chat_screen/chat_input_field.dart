@@ -4,8 +4,10 @@ import 'package:bilrun/screens/product_register/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChatInputField extends StatelessWidget {
-  const ChatInputField({Key key, this.opponent}) : super(key: key);
+  const ChatInputField({Key key, this.opponent, this.onTapp}) : super(key: key);
   final int opponent;
+  final Future onTapp;
+
   @override
   Widget build(BuildContext context) {
     final _key = GlobalKey<FormState>();
@@ -79,7 +81,7 @@ class ChatInputField extends StatelessWidget {
                           await PostChatMessage.postChatMessage(
                               message, opponent);
                           print("전송결과 ::${PostChatMessage.result}");
-                          //refresh();
+                          onTapp;
                           message = null;
                           _key.currentState.reset();
                         }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:bilrun/model/chat_model.dart';
 import 'package:bilrun/screens/chat/chat_screen/chat_screen.dart';
+import 'package:bilrun/screens/chat/chat_service/chat_send_service.dart';
 import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/widgets/etc.dart';
 import 'package:http/http.dart' as http;
@@ -12,6 +13,9 @@ class ChatDataService {
   static var client = http.Client();
   static Future<List<Chat>> fetchChatDatas(var userToken) async {
     var chatroomID = Get.arguments[1];
+    if (chatroomID == null) {
+      chatroomID = PostChatMessage.roomNum;
+    }
     var userToken = MainScreenState.mainUserToken;
     var response;
     response = await client.get(
