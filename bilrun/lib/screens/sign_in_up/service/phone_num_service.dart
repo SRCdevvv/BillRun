@@ -5,8 +5,8 @@ class PostPhoneNum {
   static bool result;
 
   static Future<void> postPhoneNum(String phoneNum) async {
-    //String url = "$serviceUrl/sms";
-    String url = "$serviceUrl/signin/";
+    String url = "$serviceUrl/sms";
+    //String url = "$serviceUrl/signin/";
     try {
       var uri = Uri.parse("$url");
 

@@ -92,12 +92,13 @@ class MessageScreenState extends State<MessageScreen> {
           //crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextButton(
-                onPressed: () {
-                  refresh();
-                },
-                child: Text("새로고침")),
+            // TextButton(
+            //     onPressed: () {
+            //       refresh();
+            //     },
+            //     child: Text("새로고침")),
             CountdownTimer(
+              textStyle: TextStyle(color: Colors.transparent),
               endTime: endTime,
               onEnd: onEnd,
             ),
