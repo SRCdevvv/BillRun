@@ -1,6 +1,8 @@
 import 'package:bilrun/design/usedColors.dart';
 import 'package:bilrun/model/product_detail_model.dart';
+import 'package:bilrun/screens/chat/chat_screen/chat_screen.dart';
 import 'package:bilrun/screens/lend/lend_like.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/product_detail/modal_bottom_sheet.dart';
 import 'package:bilrun/screens/product_detail/service/product_detail_controller.dart';
 import 'package:bilrun/widgets/etc.dart';
@@ -32,6 +34,8 @@ class DetailScreenState extends State<DetailScreen> {
       Get.put(DetailProductController());
 
   static int RealProductId;
+
+  int sendUser = MainScreenState.mainUserId;
   @override
   void initState() {
     super.initState();
@@ -42,12 +46,15 @@ class DetailScreenState extends State<DetailScreen> {
   void dispose() {
     RealProductId = null;
     productImgList.clear();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     detailProduct = DetailProductController.productList.value;
+
+    int opponent;
 
     return MaterialApp(
       home: Scaffold(
@@ -87,9 +94,12 @@ class DetailScreenState extends State<DetailScreen> {
                     Obx(() {
                       if (DetailProductController.isLoading.value)
                         return Container(child: CircularProgressIndicator());
-                      else
+                      else {
+                        opponent =
+                            DetailProductController.productList.value.user.id;
                         return DetailScreenBody(
                             DetailProductController.productList.value);
+                      }
                     }),
                   ],
                 ),
@@ -97,12 +107,19 @@ class DetailScreenState extends State<DetailScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomButton(),
+        bottomNavigationBar: BottomButton(onTap: () {
+          //       isToUser = Get.arguments[0];
+          // RoomNum = Get.arguments[1];
+          // fromUser = Get.arguments[2];
+          // toUser = Get.arguments[3];
+          Get.to(() => MessageScreen(),
+              arguments: [null, null, sendUser, opponent]);
+        }),
       ),
     );
   }
 
-  Widget BottomButton() {
+  Widget BottomButton({onTap}) {
     return FutureBuilder(
         future: DetailProductController.fetchRentDetail(RealProductId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -191,22 +208,25 @@ class DetailScreenState extends State<DetailScreen> {
                   Spacer(),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 10, 30, 20),
-                    child: Container(
-                      width: Get.width * 0.24,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: const Color(0xffaa0000)),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
-                        child: Text(
-                          "빌리기",
-                          style: TextStyle(
-                              color: const Color(0xffffffff),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "NotoSansCJKkr",
-                              fontStyle: FontStyle.normal,
-                              fontSize: 16.0),
+                    child: GestureDetector(
+                      onTap: onTap,
+                      child: Container(
+                        width: Get.width * 0.24,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: const Color(0xffaa0000)),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
+                          child: Text(
+                            "빌리기",
+                            style: TextStyle(
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "NotoSansCJKkr",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16.0),
+                          ),
                         ),
                       ),
                     ),

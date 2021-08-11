@@ -1,140 +1,221 @@
+import 'dart:async';
+
+import 'package:bilrun/design/usedColors.dart';
+import 'package:bilrun/screens/chat/chat_service/chat_controller.dart';
+import 'package:bilrun/screens/chat/chat_service/chat_send_service.dart';
+import 'package:bilrun/screens/chat/chat_service/chat_service.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
+import 'package:bilrun/screens/product_register/register_screen.dart';
+import 'package:bilrun/widgets/white_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 
+import 'chat_input_field.dart';
 import 'chat_screen_body.dart';
+import 'chat_text_messages.dart';
 
-class MessagesScreen extends StatelessWidget {
+class MessageScreen extends StatefulWidget {
+  MessageScreen({Key key}) : super(key: key);
+
+  @override
+  MessageScreenState createState() => MessageScreenState();
+}
+
+class MessageScreenState extends State<MessageScreen> {
+  ChatDataController chatDataController = Get.put(ChatDataController());
+  static int RoomNum;
+  bool isToUser;
+  var timeout = Duration(seconds: 3);
+  int opponent;
+  int toUser;
+  int fromUser;
+
+  String message;
+  final _key = GlobalKey<FormState>();
+
+  void timeOver() {
+    refresh();
+    return null;
+  }
+
+  Future<Null> refresh() async {
+    ChatDataService.fetchChatDatas(MainScreenState.mainUserToken);
+    ChatDataController.chatFetchDatas();
+    chatDataController = Get.put(ChatDataController());
+
+    print("새로고침");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    isToUser = Get.arguments[0];
+    RoomNum = Get.arguments[1];
+    fromUser = Get.arguments[2];
+    toUser = Get.arguments[3];
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    isToUser = false;
+    RoomNum = null;
+    fromUser = null;
+    toUser = null;
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("chat room num : $RoomNum,");
     //앱바 및 채팅 바디 리턴
-    return Scaffold(
-      appBar: buildAppBar(),
-      body: BodyChat(),
-    );
-  }
+    if (isToUser == false) {
+      opponent = toUser;
+    } else if (isToUser == null) {
+      opponent = toUser;
+    } else {
+      opponent = fromUser;
+    }
+    int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 10;
+    void onEnd() {
+      refresh();
+      setState(() {
+        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
+      });
+    }
 
-  AppBar buildAppBar() {
-    return AppBar(
-      toolbarHeight: 120,
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
-      flexibleSpace: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 28.0,
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: Icon(Icons.keyboard_backspace),
-                      iconSize: 30,
-                      color: Colors.black,
-                    ),
+    return Scaffold(
+      appBar: whiteAppBar("나의 채팅"),
+      body: SafeArea(
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            // TextButton(
+            //     onPressed: () {
+            //       refresh();
+            //     },
+            //     child: Text("새로고침")),
+            CountdownTimer(
+              textStyle: TextStyle(color: Colors.transparent),
+              endTime: endTime,
+              onEnd: onEnd,
+            ),
+            Expanded(
+              child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  child: Obx(() {
+                    if (ChatDataController.isLoading.value) {
+                      return Container();
+                      // Center(child: CircularProgressIndicator());
+                    } else if (ChatDataController.chatsList.isBlank) {
+                      return Container();
+                    } else {
+                      return ChatDataController.chatsList[0].chats.isEmpty
+                          ? Container()
+                          : ListView.builder(
+                              itemCount:
+                                  ChatDataController.chatsList[0].chats.length,
+                              itemBuilder: (context, index) => TextMessage(
+                                message: ChatDataController.chatsList[0],
+                                index: index,
+                              ),
+                            );
+                    }
+                  })),
+            ),
+            //채팅 입력창
+            // ChatInputField(
+            //   opponent: opponent,
+            //   onTapp: refresh(),
+            // ),
+
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 4),
+                    blurRadius: 32,
+                    color: mainRed.withOpacity(0.08),
                   ),
-                  Text("나의 채팅",
-                      style: TextStyle(
-                          color: const Color(0xff191919),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "NotoSansCJKkr",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 20.0),
-                      textAlign: TextAlign.left),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 8.0,
-                  left: 15,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: productPhotoInChat(),
+              child: Row(
+                children: [
+                  //더하기 버튼
+                  Icon(
+                    Icons.add,
+                    color: mainRed,
+                    size: 30,
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: mainRed.withOpacity(0.05),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 5),
+                          //메시지 입력창
+                          Expanded(
+                            child: Form(
+                              key: _key,
+                              child: TextFormField(
+                                // validator: (value) {
+                                //   if (value.isEmpty) {
+                                //     return 'input chat message.';
+                                //   } else {
+                                //     return null;
+                                //   }
+                                // },
+                                onSaved: (String value) {
+                                  message = value;
+                                  print("message :: $message");
+                                },
+                                decoration: InputDecoration(
+                                  hintText: "메시지를 입력하세요.",
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                          //메시지 보내는 버튼
+                          IconButton(
+                            onPressed: () async {
+                              _key.currentState.save();
+                              print(
+                                  "input message : $message, opponent : $opponent");
+                              await PostChatMessage.postChatMessage(
+                                  message, opponent);
+                              print("전송결과 ::${PostChatMessage.result}");
+                              refresh();
+                              message = null;
+                              _key.currentState.reset();
+                            },
+                            icon: Icon(Icons.send),
+                            color: mainRed,
+                          ),
+                        ],
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 18.0, top: 5),
-                      child: productInfoInChat(),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//물건 사진
-Widget productPhotoInChat() {
-  return Container(
-    width: Get.width * 0.139,
-    height: Get.width * 0.138,
-    decoration: BoxDecoration(
-      color: Colors.red,
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
-  );
-}
-
-//물건 정보
-Widget productInfoInChat() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        "상품명",
-        style: const TextStyle(
-            color: const Color(0xff191919),
-            fontWeight: FontWeight.w400,
-            fontFamily: "NotoSansCJKkr",
-            fontStyle: FontStyle.normal,
-            fontSize: 18.0),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Row(
-          children: [
-            Text(
-              "가격",
-              style: const TextStyle(
-                  color: const Color(0xff191919),
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "NotoSansCJKkr",
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18.0),
-            ),
-            Text(
-              "원",
-              style: const TextStyle(
-                  color: const Color(0xff191919),
-                  fontWeight: FontWeight.w400,
-                  fontFamily: "NotoSansCJKkr",
-                  fontStyle: FontStyle.normal,
-                  fontSize: 14.0),
-            ),
-            Text(
-              " /시간",
-              style: const TextStyle(
-                  color: const Color(0xff999999),
-                  fontWeight: FontWeight.w400,
-                  fontFamily: "NotoSansCJKkr",
-                  fontStyle: FontStyle.normal,
-                  fontSize: 14.0),
             ),
           ],
         ),
-      )
-    ],
-  );
+      ),
+    );
+  }
 }

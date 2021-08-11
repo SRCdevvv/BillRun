@@ -183,7 +183,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
                     Container(
                       width: Get.width,
-                      height: 100,
+                      height: Get.height * 0.15,
                       decoration: shadowDeco(),
                       child: Row(
                         children: [
