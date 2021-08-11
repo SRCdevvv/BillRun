@@ -18,11 +18,11 @@ class UserInfoService {
     print("user URL :: $serviceUrl/user_list/$userId");
     if (response.statusCode == 200) {
       String jsonString = utf8.decode(response.bodyBytes);
-      print(jsonString);
+      //print(jsonString);
       userNickName = userInfoFromJson(jsonString).nickname;
       userCommunity = userInfoFromJson(jsonString).community;
-      print(userNickName);
-      print(userCommunity);
+      //print(userNickName);
+      //print(userCommunity);
       return userInfoFromJson(jsonString);
     } else {
       return null;

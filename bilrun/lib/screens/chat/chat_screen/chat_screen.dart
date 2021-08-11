@@ -34,19 +34,15 @@ class MessageScreenState extends State<MessageScreen> {
   String message;
   final _key = GlobalKey<FormState>();
 
-  void timeOver() {
-    refresh();
-    return null;
-  }
-
   Future<Null> refresh() async {
     ChatDataService.fetchChatDatas(MainScreenState.mainUserToken);
     ChatDataController.chatFetchDatas();
     chatDataController = Get.put(ChatDataController());
 
-    print("새로고침");
+    print("채팅 방 새로고침");
   }
 
+  int endTime;
   @override
   void initState() {
     super.initState();
@@ -61,7 +57,7 @@ class MessageScreenState extends State<MessageScreen> {
     // TODO: implement dispose
     super.dispose();
     isToUser = false;
-    RoomNum = null;
+    RoomNum = 0;
     fromUser = null;
     toUser = null;
   }
@@ -77,14 +73,17 @@ class MessageScreenState extends State<MessageScreen> {
     } else {
       opponent = fromUser;
     }
-    int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 10;
+    endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
     void onEnd() {
-      refresh();
-      setState(() {
-        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
-      });
+      if (mounted) {
+        refresh();
+        setState(() {
+          endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 5;
+        });
+      }
     }
 
+    refresh();
     return Scaffold(
       appBar: whiteAppBar("나의 채팅"),
       body: SafeArea(
@@ -97,6 +96,7 @@ class MessageScreenState extends State<MessageScreen> {
             //       refresh();
             //     },
             //     child: Text("새로고침")),
+
             CountdownTimer(
               textStyle: TextStyle(color: Colors.transparent),
               endTime: endTime,

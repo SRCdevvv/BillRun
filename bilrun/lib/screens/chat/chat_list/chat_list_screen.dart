@@ -4,24 +4,46 @@ import 'package:bilrun/model/chat_room_model.dart';
 import 'package:bilrun/model/user_info_model.dart';
 import 'package:bilrun/screens/chat/chat_list/chat_list_card.dart';
 import 'package:bilrun/screens/chat/chat_list/chat_room_service/chat_room_controller.dart';
+import 'package:bilrun/screens/chat/chat_list/chat_room_service/chat_room_service.dart';
+import 'package:bilrun/screens/main/main_screen.dart';
 import 'package:bilrun/screens/mypage/mypage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatListScreen extends StatefulWidget {
   @override
-  _ChatListScreenState createState() => _ChatListScreenState();
+  ChatListScreenState createState() => ChatListScreenState();
 }
 
-class _ChatListScreenState extends State<ChatListScreen> {
+class ChatListScreenState extends State<ChatListScreen> {
   // ignore: unused_field
+
   int _selectedIndex = 1;
   ChatRoom chatRoom;
   ChatRoomDataController chatRoomDataController =
       Get.put(ChatRoomDataController());
+  String userToken = MainScreenState.mainUserToken;
+  @override
+  void initState() {
+    super.initState();
+    ChatRoomDataController chatRoomDataController =
+        Get.put(ChatRoomDataController());
+  }
+
+  Future<Null> refresh() async {
+    // ChatDataService.fetchChatDatas(MainScreenState.mainUserToken);
+    // ChatDataController.chatFetchDatas();
+    // chatDataController = Get.put(ChatDataController());
+    ChatRoomService.fetchChatRoomDatas(MainScreenState.mainUserToken);
+    ChatRoomDataController.chatRoomFetchDatas();
+    chatRoomDataController = Get.put(ChatRoomDataController());
+
+    print("채팅 리스트 새로고침");
+  }
 
   @override
   Widget build(BuildContext context) {
+    refresh();
     return Scaffold(
         appBar: buildAppBar(),
         body: SafeArea(child: Obx(() {

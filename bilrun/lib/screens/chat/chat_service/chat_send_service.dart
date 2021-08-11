@@ -28,7 +28,7 @@ class PostChatMessage {
       if (response.statusCode == 200) {
         print(response.statusCode);
         String jsonString = utf8.decode(response.bodyBytes);
-        print("chat send : ${chatFromJson(jsonString)[0].chats[0].room}");
+        // print("chat send : ${chatFromJson(jsonString)[0].chats[0].room}");
         result = true;
 
         roomNum = chatFromJson(jsonString)[0].chats[0].room;
@@ -36,7 +36,7 @@ class PostChatMessage {
 
         return chatFromJson(jsonString);
       } else {
-        print("fail: ${response.statusCode}");
+        // print("fail: ${response.statusCode}");
         print("채팅 전송 실패");
         result = false;
         return false;

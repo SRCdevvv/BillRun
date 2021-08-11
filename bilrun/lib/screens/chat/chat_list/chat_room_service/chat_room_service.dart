@@ -23,8 +23,8 @@ class ChatRoomService {
     if (response.statusCode == 200) {
       print("caht service연결 성공");
       String jsonString = utf8.decode(response.bodyBytes);
-      print("response.body :: ${response.toString()}");
-      print("chat service : $jsonString");
+      //print("response.body :: ${response.toString()}");
+      //  print("chat service : $jsonString");
       return chatRoomFromJson(jsonString);
     } else {
       print("service Error ${response.statusCode}");
